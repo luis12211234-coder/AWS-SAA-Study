@@ -60,3 +60,83 @@ AWS는 전 세계에 인프라를 구축하여 서비스를 제공한다.
 - 2004년 SQS를 공개했다.
 - 2006년 S3와 EC2를 출시했다.
 - 현재 전 세계 Region과 AZ를 통해 서비스를 제공한다.
+
+
+# AWS Global Infrastructure
+
+## AWSとは
+
+AWS（Amazon Web Services）は、Amazonが提供する世界最大のクラウドコンピューティングサービスである。
+
+2002年にAmazon社内のITインフラとして始まり、現在では世界中で利用されている。
+
+---
+
+## AWSの歴史
+
+| Year | Event |
+|------|-------|
+| 2002 | Amazon社内プロジェクト開始 |
+| 2004 | Amazon SQS公開 |
+| 2006 | Amazon S3・EC2公開 |
+| Today | 世界最大のクラウドサービス |
+
+---
+
+## AWSでできること
+
+- Webサイトのホスティング
+- モバイルバックエンド
+- ゲームサーバー
+- バックアップ・ストレージ
+- ビッグデータ分析
+- AI / Machine Learning
+
+---
+
+## Summary
+
+- AWSは世界最大のクラウドサービスである。
+- 世界中にRegionとAvailability Zoneを持つ。
+
+
+
+# AWS Global Infrastructure
+
+## What is AWS?
+
+AWS (Amazon Web Services) is the world's largest cloud computing platform.
+
+It started as Amazon's internal IT infrastructure in 2002 and has grown into the leading cloud service provider.
+
+---
+
+## AWS History
+
+| Year | Event |
+|------|-------|
+| 2002 | Internal IT project |
+| 2004 | Amazon SQS released |
+| 2006 | Amazon S3 and EC2 released |
+| Today | World's leading cloud platform |
+
+---
+
+## What can AWS do?
+
+- Website Hosting
+- Mobile Backend
+- Game Server
+- Backup & Storage
+- Big Data Analytics
+- AI / Machine Learning
+
+---
+
+## Summary
+
+- AWS is the world's largest cloud platform.
+- It started in 2002.
+- SQS was released in 2004.
+- S3 and EC2 were released in 2006.
+- AWS provides services through Regions and Availability Zones.
