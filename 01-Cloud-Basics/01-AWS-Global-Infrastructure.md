@@ -101,20 +101,7 @@ EC2를 두 개의 AZ에 배포하면,
 
 ---
 
-# Vocabulary
-
-| English | 한국어 | 日本語 |
-|----------|---------|---------|
-| Region | 리전 | リージョン |
-| Availability Zone | 가용 영역 | アベイラビリティゾーン |
-| Data Center | 데이터센터 | データセンター |
-| Edge Location | 엣지 로케이션 | エッジロケーション |
-| High Availability | 고가용성 | 高可用性 |
-| Latency | 지연 시간 | レイテンシー |
-
----
-
-# 日本語
+# 🇯🇵 日本語
 
 ## AWSとは
 
@@ -153,7 +140,7 @@ AWS（Amazon Web Services）は、Amazonが提供する世界最大のクラウ�
 
 ---
 
-# English
+# 🇺🇸 English
 
 ## What is AWS?
 
@@ -192,3 +179,25 @@ It started as Amazon's internal IT infrastructure in 2002 and has grown into the
 - SQS was released in 2004.
 - S3 and EC2 were released in 2006.
 - AWS provides services through Regions and Availability Zones.
+
+---
+
+# Vocabulary
+
+| English | 한국어 | 日本語 |
+|----------|---------|---------|
+| Region | 리전 | リージョン |
+| Availability Zone | 가용 영역 | アベイラビリティゾーン |
+| Data Center | 데이터센터 | データセンター |
+| Edge Location | 엣지 로케이션 | エッジロケーション |
+| High Availability | 고가용성 | 高可用性 |
+| Latency | 지연 시간 | レイテンシー |
+
+---
+
+# Review Questions
+
+1. Region과 Availability Zone의 차이점은 무엇인가?
+2. Region을 선택할 때 고려해야 하는 요소는 무엇인가?
+3. 대부분의 AWS 서비스는 Global인가, Regional인가?
+4. 여러 AZ에 EC2를 배포하는 이유는 무엇인가?
