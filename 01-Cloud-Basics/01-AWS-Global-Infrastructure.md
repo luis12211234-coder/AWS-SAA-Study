@@ -61,8 +61,55 @@ AWS는 전 세계에 인프라를 구축하여 서비스를 제공한다.
 - 2006년 S3와 EC2를 출시했다.
 - 현재 전 세계 Region과 AZ를 통해 서비스를 제공한다.
 
+# Exam Notes
 
-# AWS Global Infrastructure
+- 대부분의 AWS 서비스는 Regional Service이다.
+- IAM은 대표적인 Global Service이다.
+- Region은 하나 이상의 Availability Zone(AZ)으로 구성된다.
+- Availability Zone은 하나 이상의 독립적인 Data Center를 포함한다.
+- Region 선택 시 고려 요소:
+  - Compliance
+  - Latency
+  - Service Availability
+  - Pricing
+ 
+# Practical Example
+
+서울 지역에 서비스를 운영한다고 가정한다.
+
+Region
+↓
+
+ap-northeast-2 (Seoul)
+
+↓
+
+Availability Zone
+
+- ap-northeast-2a
+- ap-northeast-2c
+
+EC2를 두 개의 AZ에 배포하면,
+하나의 AZ에 장애가 발생하더라도
+다른 AZ가 서비스를 계속 제공할 수 있다.
+
+→ High Availability
+
+---
+
+# Vocabulary
+
+| English | 한국어 | 日本語 |
+|----------|---------|---------|
+| Region | 리전 | リージョン |
+| Availability Zone | 가용 영역 | アベイラビリティゾーン |
+| Data Center | 데이터센터 | データセンター |
+| Edge Location | 엣지 로케이션 | エッジロケーション |
+| High Availability | 고가용성 | 高可用性 |
+| Latency | 지연 시간 | レイテンシー |
+
+
+# 日本語
 
 ## AWSとは
 
@@ -101,7 +148,7 @@ AWS（Amazon Web Services）は、Amazonが提供する世界最大のクラウ�
 
 
 
-# AWS Global Infrastructure
+# English
 
 ## What is AWS?
 
