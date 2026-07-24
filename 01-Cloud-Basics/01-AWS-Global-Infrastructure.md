@@ -61,6 +61,8 @@ AWS는 전 세계에 인프라를 구축하여 서비스를 제공한다.
 - 2006년 S3와 EC2를 출시했다.
 - 현재 전 세계 Region과 AZ를 통해 서비스를 제공한다.
 
+---
+
 # Exam Notes
 
 - 대부분의 AWS 서비스는 Regional Service이다.
@@ -72,6 +74,8 @@ AWS는 전 세계에 인프라를 구축하여 서비스를 제공한다.
   - Latency
   - Service Availability
   - Pricing
+
+---
  
 # Practical Example
 
@@ -108,6 +112,7 @@ EC2를 두 개의 AZ에 배포하면,
 | High Availability | 고가용성 | 高可用性 |
 | Latency | 지연 시간 | レイテンシー |
 
+---
 
 # 日本語
 
@@ -146,7 +151,7 @@ AWS（Amazon Web Services）は、Amazonが提供する世界最大のクラウ�
 - AWSは世界最大のクラウドサービスである。
 - 世界中にRegionとAvailability Zoneを持つ。
 
-
+---
 
 # English
 
