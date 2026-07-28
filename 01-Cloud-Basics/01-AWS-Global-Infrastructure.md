@@ -67,7 +67,7 @@ AWS는 전 세계에 인프라를 구축하여 서비스를 제공한다.
 
 - 대부분의 AWS 서비스는 Regional Service이다.
 - IAM은 대표적인 Global Service이다.
-- Region은 하나 이상의 Availability Zone(AZ)으로 구성된다.
+- 각 AWS Region은 최소 3개의 Availability Zone(AZ)으로 구성된다.
 - Availability Zone은 하나 이상의 독립적인 Data Center를 포함한다.
 - Region 선택 시 고려 요소:
   - Compliance
@@ -136,7 +136,8 @@ AWS（Amazon Web Services）は、Amazonが提供する世界最大のクラウ�
 ## Summary
 
 - AWSは世界最大のクラウドサービスである。
-- 世界中にRegionとAvailability Zoneを持つ。
+- 各AWS Regionは最低3つのAvailability Zoneで構成される。
+- Availability Zoneは1つ以上の独立したData Centerで構成される。
 
 ---
 
@@ -178,7 +179,8 @@ It started as Amazon's internal IT infrastructure in 2002 and has grown into the
 - It started in 2002.
 - SQS was released in 2004.
 - S3 and EC2 were released in 2006.
-- AWS provides services through Regions and Availability Zones.
+- Each AWS Region contains at least three Availability Zones.
+- An Availability Zone consists of one or more discrete data centers.
 
 ---
 
