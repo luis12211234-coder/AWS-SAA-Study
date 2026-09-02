@@ -230,8 +230,7 @@ Storage 처리 성능이 중요한 Workload에 적합하다.
 
 EC2 Instance Type에 따라 CPU, Memory, Storage, Network Performance 등이 크게 달라진다.
 
-PDF의 예시 비교는 다음과 같다. fileciteturn1file0
-
+PDF의 예시 비교는 다음과 같다.
 | Instance | vCPU | Memory | Storage | Network Performance |
 |---|---:|---:|---|---|
 | t2.micro | 1 | 1 GiB | EBS Only | Low to Moderate |
