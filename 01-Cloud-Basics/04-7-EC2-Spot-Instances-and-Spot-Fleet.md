@@ -120,6 +120,7 @@ Target Capacity
 ├─ Number of Instances
 ├─ vCPU
 └─ Memory
+```
 
 ---
 
