@@ -105,6 +105,24 @@ Spot Fleet에는 On-Demand Capacity를 함께 사용할 수도 있다.
 
 ---
 
+## Spot Fleet Configuration
+
+Spot Fleet은 여러 Instance Type과 Availability Zone을 후보로 사용하여
+필요한 Target Capacity를 확보할 수 있다.
+
+### Target Capacity
+
+Target Capacity는 단순한 Instance 개수뿐 아니라
+필요한 Compute Resource를 기준으로 구성할 수도 있다.
+
+```text
+Target Capacity
+├─ Number of Instances
+├─ vCPU
+└─ Memory
+
+---
+
 ## Spot Fleet Allocation Strategies
 
 ### Lowest Price
