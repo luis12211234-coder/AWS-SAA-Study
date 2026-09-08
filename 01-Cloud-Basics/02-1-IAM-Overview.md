@@ -12,9 +12,11 @@ IAM은 Global Service이며, AWS 계정에 대한 접근 권한을 안전하게 
 
 AWS 계정을 생성하면 Root User가 자동으로 생성된다.
 
-Root User는 모든 권한을 가진 계정이며, 계정 생성 이후에는 가능한 사용하지 않는 것이 권장된다.
+Root User는 모든 권한을 가진 계정이며, Root User 자격 증명이 반드시 필요한 작업에만 사용해야 한다.
 
-일반적인 작업은 IAM User를 생성하여 수행해야 하며, Root User 계정은 공유해서는 안 된다.
+Root User에는 MFA를 활성화하고 Access Key를 생성하지 않아야 하며, 계정을 공유해서는 안 된다.
+
+일상적인 작업에서는 가능한 경우 IAM Identity Center 또는 역할(Role)을 통해 임시 자격 증명을 사용한다. IAM User가 필요한 특정 상황에서는 최소 권한과 MFA를 적용한다.
 
 ---
 
@@ -47,7 +49,7 @@ IAM Group은 여러 IAM User를 하나의 그룹으로 묶어 권한을 관리�
 
 ## IAM Policy
 
-IAM Policy는 사용자(User) 또는 그룹(Group)에 부여하는 권한 문서이다.
+IAM Policy는 사용자(User), 그룹(Group), 또는 역할(Role)에 권한을 부여하는 정책 문서이다.
 
 정책은 JSON 형식으로 작성되며, 어떤 AWS 서비스에 접근할 수 있는지 정의한다.
 
@@ -67,7 +69,8 @@ AWS는 최소 권한의 원칙(Principle of Least Privilege)을 따른다.
 
 - IAM은 사용자와 권한을 관리하는 Global Service이다.
 - Root User는 계정 생성 시 자동 생성된다.
-- 일반 작업은 IAM User를 사용한다.
+- Root User는 필요한 작업에만 사용하고 MFA로 보호한다.
+- 사람의 일상적인 접근에는 가능한 경우 임시 자격 증명을 사용한다.
 - IAM Group은 여러 사용자를 관리하기 위한 기능이다.
 - IAM Policy는 JSON 형식의 권한 문서이다.
 - AWS는 최소 권한 원칙을 따른다.
@@ -78,7 +81,9 @@ AWS는 최소 권한의 원칙(Principle of Least Privilege)을 따른다.
 
 - IAM은 Global Service이다.
 - Root User는 계정 생성 시 자동 생성된다.
-- Root User는 일상적인 작업에 사용하지 않는다.
+- Root User는 일상적인 작업에 사용하지 않고 MFA로 보호한다.
+- Root User의 Access Key는 생성하지 않는다.
+- 사람의 AWS 접근에는 가능한 경우 IAM Identity Center 또는 역할 기반 임시 자격 증명을 사용한다.
 - IAM Group에는 사용자만 포함할 수 있다.
 - 그룹 안에 다른 그룹을 포함할 수 없다.
 - 한 사용자는 여러 그룹에 속할 수 있다.
@@ -118,7 +123,7 @@ IAM（Identity and Access Management）は、AWSのユーザー・グループ�
 
 Root Userはアカウント作成時に自動生成される。
 
-通常の作業ではIAM Userを利用し、Root Userは日常的に使用しない。
+Root Userは必要な作業だけに使用し、MFAで保護する。日常的なアクセスでは、可能な限りIAM Identity CenterやRoleによる一時的な認証情報を利用する。
 
 ---
 
@@ -132,7 +137,7 @@ Root Userはアカウント作成時に自動生成される。
 
 ## IAM Policy
 
-IAM PolicyはJSON形式の権限設定ファイルである。
+IAM Policyはユーザー、グループ、Roleに権限を付与するJSON形式のポリシー文書である。
 
 必要最小限の権限（Least Privilege）を付与することが推奨される。
 
@@ -141,7 +146,8 @@ IAM PolicyはJSON形式の権限設定ファイルである。
 ## Summary
 
 - IAMはGlobal Serviceである。
-- Root Userは通常使用しない。
+- Root Userは通常使用せず、MFAで保護する。
+- 人のアクセスには可能な限り一時的な認証情報を利用する。
 - IAM PolicyはJSON形式で権限を管理する。
 - 最小権限の原則を適用する。
 
@@ -153,7 +159,9 @@ IAM PolicyはJSON形式の権限設定ファイルである。
 
 IAM (Identity and Access Management) is an AWS Global Service used to manage users, groups, and permissions.
 
-The Root User is created automatically when an AWS account is created and should not be used for daily tasks.
+The Root User is created automatically when an AWS account is created. It should be protected with MFA, should not have access keys, and should only be used for tasks that require root credentials.
+
+For daily human access, use temporary credentials through IAM Identity Center or roles whenever possible.
 
 ---
 
@@ -167,7 +175,7 @@ The Root User is created automatically when an AWS account is created and should
 
 ## IAM Policy
 
-IAM Policy is a JSON document that defines permissions for users or groups.
+An IAM Policy is a JSON document that defines permissions for users, groups, or roles.
 
 AWS follows the Principle of Least Privilege by granting only the permissions required.
 
@@ -176,7 +184,8 @@ AWS follows the Principle of Least Privilege by granting only the permissions re
 ## Summary
 
 - IAM is a Global Service.
-- Use IAM Users instead of the Root User.
+- Protect the Root User with MFA and do not use it for daily tasks.
+- Prefer temporary credentials for human access.
 - IAM Policies are written in JSON.
 - Follow the Principle of Least Privilege.
 

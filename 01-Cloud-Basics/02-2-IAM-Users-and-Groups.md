@@ -4,7 +4,9 @@
 
 IAM Users and Groups는 AWS 계정의 사용자를 생성하고 권한을 효율적으로 관리하기 위한 기능이다.
 
-사용자에게 직접 권한을 부여할 수도 있지만, 일반적으로는 그룹(Group)에 권한을 부여한 후 사용자를 그룹에 추가하는 방식을 권장한다.
+IAM User가 필요한 경우 사용자에게 직접 권한을 반복해서 부여하기보다, 일반적으로는 그룹(Group)에 권한을 부여한 후 사용자를 그룹에 추가하는 방식이 관리에 효율적이다.
+
+사람의 AWS 접근에는 장기 자격 증명을 가진 IAM User보다 IAM Identity Center나 역할(Role)을 통한 임시 자격 증명을 우선하는 것이 현재 AWS 보안 권장 사항이다.
 
 ---
 
@@ -14,7 +16,7 @@ IAM은 Global Service이므로 특정 Region에 종속되지 않는다.
 
 IAM User를 생성하면 모든 Region에서 동일한 계정을 사용할 수 있다.
 
-AWS에서는 Root User 대신 IAM User를 사용하는 것이 권장된다.
+Root User는 필요한 작업에만 사용해야 한다. 사람의 일상적인 접근에는 가능한 경우 임시 자격 증명을 사용하고, IAM User가 필요한 경우 MFA와 최소 권한을 적용한다.
 
 ---
 
@@ -105,7 +107,8 @@ Tag는 리소스 관리와 검색을 쉽게 해준다.
 ## Summary
 
 - IAM은 Global Service이다.
-- Root User 대신 IAM User 사용을 권장한다.
+- Root User는 필요한 작업에만 사용한다.
+- 사람의 접근에는 가능한 경우 임시 자격 증명을 사용한다.
 - 권한은 그룹을 통해 관리하는 것이 효율적이다.
 - 사용자는 그룹의 권한을 상속받는다.
 - Account Alias는 로그인 URL을 간소화한다.
@@ -158,7 +161,7 @@ IAM Groupは複数のユーザーをまとめて管理するための機能で�
 
 通常はグループに権限を付与し、ユーザーはその権限を継承する。
 
-Root UserではなくIAM Userを利用することが推奨される。
+Root Userは必要な作業だけに使用する。人のアクセスには可能な限り一時的な認証情報を使用し、IAM Userが必要な場合はMFAと最小権限を適用する。
 
 ---
 
@@ -181,7 +184,7 @@ IAM Groups simplify permission management by assigning permissions to groups ins
 
 Users inherit permissions from the groups they belong to.
 
-AWS recommends using IAM Users instead of the Root User.
+Use the Root User only for tasks that require it. Prefer temporary credentials for human access, and apply MFA and least privilege when an IAM User is required.
 
 ---
 
