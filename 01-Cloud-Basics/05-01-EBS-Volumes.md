@@ -911,6 +911,395 @@ Additional EBS
 → Delete on Termination = OFF by default
 ```
 
+# EBS Hands-On
+
+## 1. Checking Attached EBS Volumes
+
+EC2 Instance에서 현재 연결된 EBS Volume을 확인할 수 있다.
+
+```text
+EC2 Console
+↓
+Instance
+↓
+Storage
+↓
+Block devices
+```
+
+예:
+
+```text
+EC2 Instance
+
+└─ Root EBS
+   └─ 8 GiB
+```
+
+Volume ID를 선택하면 EBS Volume 화면으로 이동할 수 있다.
+
+Volume 상태:
+
+```text
+In-use
+```
+
+이면 현재 EC2 Instance에 연결되어 있다는 의미이다.
+
+---
+
+## 2. Creating an Additional EBS Volume
+
+새로운 EBS Volume을 별도로 생성할 수 있다.
+
+예:
+
+```text
+Volume Type
+→ gp2 / gp3
+
+Size
+→ 2 GiB
+
+Availability Zone
+→ Same AZ as EC2
+```
+
+Volume 생성이 완료되면:
+
+```text
+State
+→ Available
+```
+
+상태가 된다.
+
+`Available`은:
+
+```text
+Volume exists
++
+Not currently attached
+```
+
+라는 의미이다.
+
+---
+
+## 3. Attaching the Volume
+
+생성한 EBS Volume을 EC2 Instance에 연결한다.
+
+```text
+EBS Volume
+↓
+Actions
+↓
+Attach Volume
+↓
+Select EC2 Instance
+```
+
+연결 후:
+
+```text
+EBS State
+Available
+↓
+In-use
+```
+
+로 변경된다.
+
+EC2의 Storage 탭에서는:
+
+```text
+EC2
+
+├─ Root EBS
+│  └─ 8 GiB
+│
+└─ Additional EBS
+   └─ 2 GiB
+```
+
+처럼 여러 Block Device를 확인할 수 있다.
+
+---
+
+## 4. Important: Same Availability Zone
+
+EBS Volume과 EC2 Instance는  
+**같은 Availability Zone에 있어야 Attach할 수 있다.**
+
+예:
+
+```text
+EC2
+→ eu-west-1b
+```
+
+```text
+EBS
+→ eu-west-1b
+
+Attach O
+```
+
+반면:
+
+```text
+EC2
+→ eu-west-1b
+
+EBS
+→ eu-west-1a
+
+Attach X
+```
+
+즉:
+
+```text
+Same AZ
+→ Attach possible
+
+Different AZ
+→ Attach not possible
+```
+
+---
+
+## 5. EBS Volume States
+
+실습에서 확인한 주요 상태:
+
+```text
+Available
+→ 생성되어 있지만 EC2에 연결되지 않음
+```
+
+```text
+In-use
+→ EC2 Instance에 연결되어 사용 중
+```
+
+간단한 상태 변화:
+
+```text
+Create Volume
+↓
+Available
+↓ Attach
+In-use
+↓ Detach
+Available
+```
+
+---
+
+## 6. Attaching Is Not the Same as Using the Disk
+
+EBS Volume을 EC2에 Attach했다고 해서  
+운영체제에서 즉시 파일 저장 공간으로 사용할 수 있는 것은 아니다.
+
+```text
+Create EBS
+↓
+Attach to EC2
+↓
+OS에서 Device 확인
+↓
+필요 시 Format
+↓
+Mount
+↓
+Use
+```
+
+강의에서는 Linux에서 실제 Format / Mount 과정까지는 다루지 않았다.
+
+현재 단계에서는:
+
+```text
+EBS Attach
+≠ Filesystem ready
+```
+
+정도로 이해하면 충분하다.
+
+---
+
+## 7. Delete on Termination Hands-On
+
+실습에서는 두 개의 EBS Volume이 연결되어 있었다.
+
+```text
+EC2
+
+├─ Root EBS
+│  ├─ 8 GiB
+│  └─ Delete on Termination = Yes
+│
+└─ Additional EBS
+   ├─ 2 GiB
+   └─ Delete on Termination = No
+```
+
+EC2 Instance를 Terminate하면:
+
+```text
+EC2
+↓
+Terminate
+```
+
+Root EBS:
+
+```text
+Delete on Termination = Yes
+↓
+Deleted
+```
+
+Additional EBS:
+
+```text
+Delete on Termination = No
+↓
+Detached
+↓
+Available
+```
+
+결과:
+
+```text
+EC2
+→ Deleted
+
+Root EBS
+→ Deleted
+
+Additional EBS
+→ Remains
+```
+
+---
+
+## 8. Preserving the Root EBS
+
+EC2 Instance가 Terminate된 후에도  
+Root EBS를 보존하고 싶다면:
+
+```text
+Delete on Termination
+→ No
+```
+
+로 설정할 수 있다.
+
+그러면:
+
+```text
+EC2 Terminate
+↓
+Root EBS remains
+```
+
+가 가능하다.
+
+---
+
+## 9. Hands-On Flow
+
+```text
+Check EC2 Storage
+↓
+Root EBS 확인
+↓
+Create additional EBS
+↓
+Match Availability Zone
+↓
+Volume becomes Available
+↓
+Attach Volume
+↓
+Volume becomes In-use
+↓
+EC2 now has multiple EBS volumes
+↓
+Create EBS in different AZ
+↓
+Cannot attach to EC2
+↓
+Terminate EC2
+↓
+Root EBS deleted
+↓
+Additional EBS remains
+```
+
+---
+
+## 10. Exam Notes
+
+이번 실습에서 시험에 연결되는 핵심:
+
+```text
+EBS + EC2
+→ Same Availability Zone required
+```
+
+```text
+Available
+→ Not attached
+
+In-use
+→ Attached
+```
+
+```text
+Root EBS
+→ Delete on Termination = Yes by default
+```
+
+```text
+Additional EBS
+→ Delete on Termination = No in the lecture example
+```
+
+```text
+Preserve Root Volume after EC2 termination
+↓
+Disable Delete on Termination
+```
+
+---
+
+## Quick Review
+
+```text
+EBS가 EC2에 Attach되려면?
+→ Same AZ
+```
+
+```text
+Available 상태란?
+→ 생성됐지만 연결되지 않은 Volume
+```
+
+```text
+In-use 상태란?
+→ EC2에 연결된 Volume
+```
+
+```text
+EC2 종료 후 Root EBS를 남기려면?
+→ Delete on Termination = No
+```
+
 ---
 
 # Japanese Summary
