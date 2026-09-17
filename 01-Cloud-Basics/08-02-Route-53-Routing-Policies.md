@@ -1,578 +1,345 @@
-# Amazon Route 53 - Routing Policies
+# Route 53 Routing Policies
 
-## Overview
+## 1. Routing Policy란?
 
-Route 53의 **Routing Policy**는 DNS Query가 들어왔을 때  
-**어떤 DNS Record를 응답할지 결정하는 방식**이다.
+Route 53의 Routing Policy는 DNS Query에 대해 **어떤 Resource의 주소를 응답할지 결정하는 규칙**이다.
 
-여기서 `Routing`은 Load Balancer의 Routing과 다르다.
-
-```text
-Client
-   │
-   │ DNS Query
-   │ "app.example.com의 주소는?"
-   ▼
-Route 53
-   │
-   │ DNS Response
-   │ "11.22.33.44"
-   ▼
-Client
-   │
-   │ HTTP Request
-   ▼
-Application
-```
-
-Route 53은 실제 HTTP Traffic을 전달하지 않는다.
-
-> **Route 53 Routing Policy = 실제 Traffic 경로가 아니라 DNS 응답을 결정하는 정책**
-
-Route 53은 다음 Routing Policies를 지원한다.
-
-- Simple
-- Weighted
-- Failover
-- Latency-based
-- Geolocation
-- Multi-Value Answer
-- Geoproximity
-
-현재까지 학습한 정책은 **Simple, Weighted, Latency-based**이다.
+> Route 53이 실제 네트워크 트래픽을 전달하는 것은 아니다.  
+> DNS Query에 어떤 값을 반환할지를 결정한다.
 
 ---
 
-# 1. Simple Routing Policy
+## 2. Simple Routing
 
-가장 기본적인 Routing Policy이다.
+가장 기본적인 Routing Policy.
 
-일반적으로 하나의 리소스로 연결할 때 사용하며,  
-**하나의 Record 안에 여러 Value를 지정하는 것도 가능하다.**
-
-## Single Value
-
-```text
-simple.example.com
-
-A Record
-└── 11.22.33.44
-```
-
-Client가 DNS Query를 보내면 Route 53은 해당 값을 반환한다.
-
-```text
-Client
-   │
-   │ simple.example.com?
-   ▼
-Route 53
-   │
-   └── 11.22.33.44
-```
-
----
-
-## Multiple Values
-
-하나의 Simple Record에 여러 IP를 지정할 수도 있다.
-
-```text
-simple.example.com
-
-A Record
-├── 11.22.33.44
-├── 55.66.77.88
-└── 99.11.22.33
-```
-
-이 경우 Route 53은 여러 값을 DNS Response로 반환할 수 있으며,  
-Client가 반환된 값 중 하나를 선택한다.
-
-### Hands-on
-
-실습에서는 처음에 Singapore EC2의 Public IP 하나를 등록했다.
-
-```text
-Name: simple.stephanetheteacher.com
-Type: A
-Routing Policy: Simple
-TTL: 20
-
-Value:
-Singapore EC2 Public IP
-```
-
-이후 같은 Record를 수정하여 Virginia EC2의 IP를 추가했다.
-
-```text
-simple.stephanetheteacher.com
-
-A Record
-├── Singapore EC2 IP
-└── Virginia EC2 IP
-```
-
-`dig` 명령으로 확인했을 때 두 IP가 DNS Response에 나타나는 것을 확인했다.
-
-TTL을 짧게 설정한 이유는 기존 DNS Cache가 빠르게 만료되어  
-Record 변경 결과를 실습에서 빠르게 확인하기 위해서이다.
-
----
-
-## Simple + Alias
-
-Simple Routing에서 Alias를 사용하는 경우  
-**하나의 지원되는 AWS Resource를 Alias Target으로 지정한다.**
-
-예:
+- 하나의 Record에 하나 이상의 값을 지정할 수 있다.
+- 여러 값이 있으면 Route 53은 여러 값을 반환할 수 있다.
+- Health Check를 연결할 수 없다.
+- 특별한 라우팅 조건이 필요하지 않을 때 사용한다.
 
 ```text
 example.com
-Type: A
-Alias: Yes
-Routing Policy: Simple
-
-        │
-        ▼
-Application Load Balancer
+├── 1.2.3.4
+├── 5.6.7.8
+└── 9.10.11.12
 ```
 
-여기서 "하나의 AWS Resource"는  
-ALB 내부에 IP가 하나만 존재한다는 의미가 아니다.
+### 핵심
 
-```text
-example.com
-    │
- A Alias
-    │
-    ▼
-   ALB
-  /   \
-IP A  IP B
-```
-
-Alias는 ALB뿐만 아니라 Route 53에서 지원하는 여러 AWS Resource를 대상으로 사용할 수 있다.
-
-예:
-
-- Elastic Load Balancer
-- CloudFront
-- API Gateway
-- Elastic Beanstalk
-- S3 Website
-- VPC Interface Endpoint
-- Global Accelerator
-- 같은 Hosted Zone의 Route 53 Record
-
-> **Alias = 지원되는 AWS Resource를 DNS Target으로 지정하는 Route 53 기능**
-
-Simple Routing은 **Health Check와 연결할 수 없다.**
+> **Simple = 특별한 조건 없이 DNS 응답**
 
 ---
 
-# 2. Weighted Routing Policy
+## 3. Weighted Routing
 
-Weighted Routing Policy는  
-**같은 DNS Name과 Record Type을 가진 여러 Record 중 어떤 Record를 응답할지 Weight를 이용해 결정한다.**
+각 Resource에 **Weight(가중치)**를 설정하여 트래픽 비율을 조절한다.
 
-Simple과 달리 Record 자체를 여러 개 만든다.
-
-```text
-weighted.example.com
-
-A Record ①
-├── Value: Singapore IP
-└── Weight: 10
-
-A Record ②
-├── Value: Frankfurt IP
-└── Weight: 20
-
-A Record ③
-├── Value: Virginia IP
-└── Weight: 70
-```
-
-모든 Record는 동일한 Name과 Type을 사용한다.
+실제 비율은 다음과 같이 결정된다.
 
 ```text
-Name: weighted.example.com
-Type: A
-```
-
----
-
-## Relative Weight
-
-Weight는 퍼센트 자체가 아니라 **상대적인 값**이다.
-
-선택 비율은 다음과 같다.
-
-```text
-Record Weight
-────────────────────
-Total Record Weights
+해당 Record Weight / 모든 Record Weight의 합
 ```
 
 예:
 
 ```text
-Singapore = 10
-Frankfurt = 20
-Virginia  = 70
-
-Total = 100
+US        Weight 70
+Europe    Weight 20
+Singapore Weight 10
 ```
 
-따라서 대략:
+대략 70 : 20 : 10 비율로 DNS 응답이 선택된다.
 
-```text
-Singapore → 10%
-Frankfurt → 20%
-Virginia  → 70%
-```
+- Weight의 합이 반드시 100일 필요는 없다.
+- Health Check 연결 가능
+- 신규 버전 테스트, 트래픽 분산 등에 활용
 
-하지만 Weight의 합이 반드시 100일 필요는 없다.
+### 핵심
 
-```text
-Singapore = 1
-Frankfurt = 2
-Virginia  = 7
-
-Total = 10
-```
-
-이 경우에도 비율은 동일하다.
-
-```text
-Singapore → 1 / 10 = 10%
-Frankfurt → 2 / 10 = 20%
-Virginia  → 7 / 10 = 70%
-```
+> **Weighted = 내가 비율을 정한다**
 
 ---
 
-## DNS Response Flow
+## 4. Latency-based Routing
 
-Weighted Routing도 실제 HTTP Traffic을 Route 53이 전달하는 것은 아니다.
+사용자에게 **가장 낮은 네트워크 Latency를 제공하는 AWS Region의 Resource**를 반환한다.
 
 ```text
-Client
+User
+ ↓
+Route 53
+ ↓
+Network Latency 비교
+ ↓
+가장 낮은 Latency의 Resource
+```
+
+- 물리적으로 가장 가까운 Region을 의미하는 것은 아니다.
+- AWS Region과 Record를 연결한다.
+- Health Check 연결 가능
+
+### 핵심
+
+> **Latency = 네트워크상 어디가 가장 빠른가?**
+
+---
+
+## 5. Failover Routing
+
+**Active-Passive 구조**를 구현한다.
+
+```text
+Primary
    │
-   │ weighted.example.com?
-   ▼
-Route 53
+Health Check
    │
-   │ Weight를 기준으로 Record 선택
-   ▼
-Virginia Record
+   ├── Healthy   → Primary 반환
    │
-   │ Virginia EC2 IP 반환
-   ▼
-Client
-   │
-   │ HTTP Request
-   ▼
-Virginia EC2
+   └── Unhealthy → Secondary 반환
 ```
 
-즉,
+Route 53 Record를 만들 때 직접 다음 역할을 지정한다.
 
-> **Weight는 실제 Packet을 분배하는 값이 아니라 Route 53이 DNS Record를 선택하는 비율이다.**
+```text
+Failover Record Type
+├── Primary
+└── Secondary
+```
+
+Primary/Secondary는 EC2 자체의 속성이 아니라 **Route 53 Record에 설정하는 역할**이다.
+
+주요 사용 사례:
+
+- Disaster Recovery
+- Primary 장애 시 자동 전환
+- Active-Passive Architecture
+
+### 핵심
+
+> **Failover = Primary 살아있냐?**
 
 ---
 
-## Record ID
+## 6. Geolocation Routing
 
-Weighted Record들은 동일한 Name과 Type을 사용하기 때문에  
-각 Record를 식별하기 위한 **Record ID**를 설정할 수 있다.
+**사용자의 실제 지리적 위치**를 기준으로 DNS 응답을 결정한다.
 
-실습에서는 다음과 같이 설정했다.
+설정 가능한 위치 예:
+
+- Continent
+- Country
+- US State
+
+여러 규칙이 동시에 일치하면 **더 구체적인 위치가 우선**된다.
 
 ```text
-Record ID: SOUTHEAST
-Record ID: EU
-Record ID: US EAST
+Asia        → Singapore
+United States → US
+Default     → Europe
 ```
 
-Record ID는 해당 Weighted Record를 구별하기 위한 식별자이다.
+어떤 위치 규칙에도 해당하지 않는 사용자를 위해 **Default Record**를 설정할 수 있다.
+
+사용 사례:
+
+- Website Localization
+- Content Distribution Restriction
+- 지역별 서비스 제공
+- Load Distribution
+
+Health Check 연결 가능.
+
+### Latency와 차이
+
+```text
+Latency
+→ 네트워크상 어디가 빠른가?
+
+Geolocation
+→ 사용자가 지리적으로 어디에 있는가?
+```
+
+### 핵심
+
+> **Geolocation = 사용자 위치**
 
 ---
 
-## Hands-on
+## 7. Geoproximity Routing
 
-실습에서는 같은 DNS Name에 A Record 세 개를 생성했다.
+사용자와 Resource의 **지리적 위치 및 거리**를 기반으로 Routing한다.
+
+Resource는 Route 53이 사용자를 보낼 대상 Endpoint를 의미한다.
+
+AWS Resource라면 Region을 지정하고, AWS 외부 Resource라면 위치를 판단할 수 있도록 Latitude/Longitude를 지정할 수 있다.
+
+### Bias
+
+Geoproximity의 핵심 기능.
 
 ```text
-weighted.stephanetheteacher.com
+Bias = 0
+→ 기본적인 지리적 근접성
 
-├── SOUTHEAST
-│   ├── Singapore EC2 IP
-│   └── Weight: 10
-│
-├── EU
-│   ├── Frankfurt EC2 IP
-│   └── Weight: 20
-│
-└── US EAST
-    ├── Virginia EC2 IP
-    └── Weight: 70
+Positive Bias
+→ 해당 Resource의 영향 영역 확대
+
+Negative Bias
+→ 해당 Resource의 영향 영역 축소
 ```
 
-TTL은 결과를 빠르게 확인하기 위해 `3 seconds`로 설정했다.
+Bias를 변경한다고 실제 서버 위치가 바뀌는 것은 아니다.
 
-`dig`를 반복 실행했을 때 대부분 Weight가 가장 높은  
-US EAST의 IP가 반환되었지만, 때때로 EU 등의 다른 IP도 반환되는 것을 확인했다.
+**해당 Resource로 Routing되는 지리적 영역의 크기를 조절하여 Resource 사이의 경계를 이동시키는 것**으로 이해하면 된다.
+
+```text
+West Resource      East Resource
+      \               /
+       \             /
+        ----경계----
+
+East Bias 증가
+→ 경계가 West 방향으로 이동
+→ East Resource가 더 넓은 지역의 사용자를 담당
+```
+
+### 핵심
+
+> **Geoproximity = 지리적으로 가까운 Resource + Bias로 영향 영역 조절**
 
 ---
 
-## Weight = 0
+## 8. IP-based Routing
 
-특정 Record의 Weight를 `0`으로 설정하면  
-해당 리소스로 DNS 응답을 보내는 것을 중단할 수 있다.
+**Client IP Address가 속한 CIDR 범위**를 기준으로 Routing한다.
+
+먼저 Route 53에 알고 있는 Client IP 범위를 정의한다.
 
 ```text
-Resource A → Weight 70
-Resource B → Weight 30
-Resource C → Weight 0
+CIDR A → Endpoint A
+CIDR B → Endpoint B
 ```
 
-단, **모든 Record의 Weight가 0이면 모든 Record가 동일하게 반환된다.**
+예:
+
+```text
+203.0.113.0/24
+→ 1.2.3.4
+
+200.5.4.0/24
+→ 5.6.7.8
+```
+
+Client의 IP가 첫 번째 CIDR에 속하면 `1.2.3.4`, 두 번째 CIDR에 속하면 `5.6.7.8`을 DNS 응답으로 반환한다.
+
+특정 ISP나 네트워크의 IP 범위를 이미 알고 있을 때 유용하다.
+
+사용 사례:
+
+- 특정 ISP별 Routing
+- 성능 최적화
+- 네트워크 비용 최적화
+
+### Geolocation과 차이
+
+```text
+Geolocation
+→ 사용자의 지리적 위치
+
+IP-based
+→ Client IP가 어느 CIDR에 포함되는가?
+```
+
+### 핵심
+
+> **IP-based = Client IP → CIDR Matching → 지정 Endpoint**
 
 ---
 
-## Use Cases
+## 9. Multi-Value Answer Routing
 
-Weighted Routing의 대표적인 사용 사례:
+하나의 DNS Query에 대해 **여러 Resource의 값을 반환**한다.
 
-### Multi-Region Traffic Distribution
-
-```text
-example.com
-├── us-east-1      Weight 70
-└── eu-central-1   Weight 30
-```
-
-### New Application Testing
+Health Check와 연결하면 **Healthy Resource만 DNS 응답에 포함**할 수 있다.
 
 ```text
-example.com
-├── Current Version   Weight 90
-└── New Version       Weight 10
+US     → Healthy
+Asia   → Healthy
+Europe → Unhealthy
+
+DNS Response
+→ US
+→ Asia
 ```
 
-새 버전에 일부 DNS 요청만 보내 테스트하는 방식으로 활용할 수 있다.
+한 Multi-Value Query에서 **최대 8개의 Healthy Record**를 반환할 수 있다.
 
-Weighted Routing은 **Health Check와 연결할 수 있다.**
+### Simple과 차이
 
----
-
-# 3. Latency-based Routing Policy
-
-Latency-based Routing Policy는  
-사용자에게 **가장 낮은 네트워크 Latency를 제공하는 AWS Region의 Record를 응답**한다.
-
-```text
-latency.example.com
-
-A Record ①
-├── Singapore EC2 IP
-└── Region: ap-southeast-1
-
-A Record ②
-├── Virginia EC2 IP
-└── Region: us-east-1
-
-A Record ③
-├── Frankfurt EC2 IP
-└── Region: eu-central-1
-```
-
-Route 53은 사용자와 AWS Region 사이의 Latency를 기준으로  
-적절한 Record를 선택한다.
-
----
-
-## Lowest Latency, Not Nearest Location
-
-Latency-based Routing은 단순히  
-**지리적으로 가장 가까운 Region을 선택하는 정책이 아니다.**
-
-예를 들어 독일 사용자의 경우에도:
-
-```text
-Germany User
-     │
-     ▼
-Route 53
-     │
-     ├── eu-central-1 → Higher Latency
-     │
-     └── us-east-1    → Lower Latency
-                         ▲
-                         │
-                      Selected
-```
-
-네트워크 상황에 따라 미국 Region이 더 낮은 Latency를 제공한다면  
-미국 Region의 Record가 반환될 수 있다.
-
-> **Latency-based = Geographic Distance가 아니라 Network Latency 기준**
-
----
-
-## Why Specify the Region?
-
-실습에서는 A Record의 Value로 EC2 Public IP를 직접 입력했다.
-
-```text
-Value: 13.x.x.x
-```
-
-IP 주소만으로는 Route 53이 해당 IP가 어느 AWS Region의 리소스인지 알 수 없다.
-
-따라서 각 Record에 Region을 지정했다.
-
-```text
-Singapore EC2 IP
-→ Region: ap-southeast-1
-
-Virginia EC2 IP
-→ Region: us-east-1
-
-Frankfurt EC2 IP
-→ Region: eu-central-1
-```
-
-Route 53은 이 Region 정보를 이용해  
-사용자에게 가장 낮은 Latency를 제공하는 Record를 선택한다.
-
----
-
-## Hands-on Concept
-
-강사가 유럽에서 접속했을 때:
-
-```text
-User in Europe
-      │
-      ▼
-Route 53
-      │
-      ▼
-eu-central-1 Record
-      │
-      ▼
-Frankfurt EC2
-```
-
-VPN을 이용해 캐나다에서 접속했을 때:
-
-```text
-User in Canada
-      │
-      ▼
-Route 53
-      │
-      ▼
-us-east-1 Record
-      │
-      ▼
-Virginia EC2
-```
-
-홍콩에서 접속했을 때:
-
-```text
-User in Hong Kong
-      │
-      ▼
-Route 53
-      │
-      ▼
-ap-southeast-1 Record
-      │
-      ▼
-Singapore EC2
-```
-
-이를 통해 사용자의 위치에 따라 네트워크 Latency가 달라지고  
-Route 53이 서로 다른 Region의 Record를 반환하는 것을 확인했다.
-
-Latency-based Routing은 **Health Check와 연결할 수 있다.**
-
----
-
-# 4. Simple vs Weighted vs Latency-based
-
-| Routing Policy | Record 구조 | 선택 기준 | Health Check |
-|---|---|---|---|
-| Simple | 하나의 Record에 여러 Value 가능 | 기본 DNS 응답 | ❌ |
-| Weighted | 같은 Name/Type의 Record 여러 개 | Relative Weight | ⭕ |
-| Latency-based | 여러 Region의 Record | Lowest Network Latency | ⭕ |
-
-### Mental Model
+Simple Routing도 여러 값을 반환할 수 있지만 Health Check를 연결하지 않는다.
 
 ```text
 Simple
-→ 그냥 답한다
+→ 여러 값 반환 가능
+→ 비정상 Resource가 포함될 가능성
 
-Weighted
-→ Weight를 보고 답을 고른다
-
-Latency-based
-→ 어느 Region이 더 빠른지 보고 답을 고른다
+Multi-Value
+→ 여러 값 반환
+→ Health Check 사용 가능
+→ Healthy Resource만 반환 가능
 ```
+
+### Multi-Value ≠ ELB
+
+Multi-Value는 Load Balancer 자체가 아니다.
+
+```text
+Multi-Value
+
+Client
+  ↓ DNS Query
+Route 53
+  ↓
+[IP A, IP B, IP C]
+  ↓
+Client가 반환된 값 중 하나 사용
+```
+
+반면 ELB는 실제 요청을 받아 Backend Resource로 전달한다.
+
+> Multi-Value는 DNS 기반의 Client-side Load Balancing과 비슷하지만 **ELB를 대체하지 않는다.**
+
+### 핵심
+
+> **Multi-Value = 여러 Healthy Resource를 DNS 응답으로 반환**
 
 ---
 
-# 5. Exam Notes
+# Routing Policy 비교
 
-### Simple
+| Policy | 판단 기준 | Health Check | 핵심 사용 사례 |
+|---|---|---|---|
+| Simple | 특별한 조건 없음 | ❌ | 기본 DNS |
+| Weighted | Weight / 비율 | ✅ | 트래픽 비율 조절 |
+| Latency | Network Latency | ✅ | 낮은 지연시간 |
+| Failover | Primary 상태 | ✅ | Active-Passive / DR |
+| Geolocation | 사용자 지리적 위치 | ✅ | 지역별 서비스 |
+| Geoproximity | 지리적 거리 + Bias | 가능 | 지리적 영향 영역 조절 |
+| IP-based | Client IP / CIDR | 가능 | 특정 네트워크별 Routing |
+| Multi-Value | 여러 Healthy Resource | ✅ | 여러 정상 Resource 반환 |
 
-```text
-Basic DNS Routing
-→ Simple
-
-Multiple Values in one Record
-→ Simple 가능
-
-Health Check
-→ Simple 불가
-```
-
-### Weighted
+## 시험용 암기
 
 ```text
-Traffic percentage / ratio
-→ Weighted
-
-90% old version + 10% new version
-→ Weighted
-
-Traffic distribution between Regions
-→ Weighted
-```
-
-### Latency-based
-
-```text
-Lowest latency for users
-→ Latency-based
-
-Latency-sensitive application
-→ Latency-based
-```
-
-주의:
-
-```text
-Latency-based
-≠ geographically nearest Region
-
-Latency-based
-= lowest network latency Region
+Simple       = 그냥
+Weighted     = 비율
+Latency      = 속도
+Failover     = 생존 여부
+Geolocation  = 사용자 위치
+Geoproximity = 거리 + Bias
+IP-based     = Client CIDR
+Multi-Value  = 여러 Healthy Resource
 ```
 
 ---
@@ -581,49 +348,26 @@ Latency-based
 
 ## Route 53 Routing Policies
 
-Route 53 の Routing Policy は、  
-DNS Query に対して **どの DNS Record を返すか**を決定する。
+- **Simple**: 特別な条件なしでDNS応答を返す
+- **Weighted**: Weightに基づいてトラフィックの割合を調整
+- **Latency**: ネットワークレイテンシーが最も低いリージョンへルーティング
+- **Failover**: Primaryが異常な場合、Secondaryへ切り替える
+- **Geolocation**: ユーザーの地理的位置に基づいてルーティング
+- **Geoproximity**: ユーザーとリソースの地理的距離を基準とし、Biasで対象地域を調整
+- **IP-based**: クライアントIPが属するCIDRに基づいてルーティング
+- **Multi-Value**: 複数の正常なリソースをDNS応答として返す
 
-Route 53 自体が HTTP Traffic を転送するわけではない。
-
-### Simple Routing
-
-最も基本的な Routing Policy。
-
-- 1つの Record に複数の Value を設定可能
-- 複数の値が返された場合、Client がその中から選択
-- Alias を使用する場合は1つの対応 AWS Resource を Target に指定
-- Health Check との関連付けは不可
-
-### Weighted Routing
-
-同じ Name と Type の複数 Record に Weight を設定する。
+### 覚え方
 
 ```text
-Record A → Weight 70
-Record B → Weight 20
-Record C → Weight 10
+Weighted     → 割合
+Latency      → 速度
+Failover     → 障害対応
+Geolocation  → ユーザーの場所
+Geoproximity → 距離 + Bias
+IP-based     → CIDR
+Multi-Value  → 複数の正常なリソース
 ```
-
-Weight は割合そのものではなく相対値であり、  
-合計が100である必要はない。
-
-主な用途:
-
-- Region 間のトラフィック分散
-- 新しい Application Version のテスト
-- Health Check と関連付け可能
-
-### Latency-based Routing
-
-ユーザーに対して最も低い Network Latency を提供する  
-AWS Region の Record を返す。
-
-地理的に最も近い Region とは限らない。
-
-- Latency-sensitive Application に有効
-- Region 情報を基準に Record を選択
-- Health Check と関連付け可能
 
 ---
 
@@ -631,43 +375,16 @@ AWS Region の Record を返す。
 
 ## Route 53 Routing Policies
 
-Route 53 Routing Policies determine **which DNS record is returned for a DNS query**.
+- **Simple**: Basic DNS routing without special conditions.
+- **Weighted**: Distributes DNS responses according to assigned weights.
+- **Latency**: Routes users to the resource associated with the lowest network latency.
+- **Failover**: Uses a Primary resource and switches to Secondary when the Primary becomes unhealthy.
+- **Geolocation**: Routes based on the user's geographic location.
+- **Geoproximity**: Routes based on geographic proximity and adjusts resource influence using Bias.
+- **IP-based**: Routes based on the CIDR range of the client IP address.
+- **Multi-Value**: Returns multiple healthy resources in a DNS response.
 
-Route 53 does not route the actual HTTP traffic.
-
-### Simple Routing
-
-- Basic DNS routing
-- Multiple values can exist in one record
-- The client selects a value when multiple values are returned
-- With Alias enabled, one supported AWS resource is specified as the target
-- Cannot be associated with Health Checks
-
-### Weighted Routing
-
-Multiple records with the same name and type can have different relative weights.
-
-```text
-Record A → Weight 70
-Record B → Weight 20
-Record C → Weight 10
-```
-
-Weights do not need to add up to 100.
-
-Common use cases include:
-
-- Traffic distribution across Regions
-- Testing new application versions
-- Health Check integration
-
-### Latency-based Routing
-
-Returns the record associated with the AWS Region that provides the lowest network latency for the user.
-
-The selected Region is not necessarily the geographically closest Region.
-
-Useful for latency-sensitive applications and can be associated with Health Checks.
+Multi-Value Answer Routing can return up to **8 healthy records per query** and is **not a replacement for an ELB**.
 
 ---
 
@@ -676,29 +393,98 @@ Useful for latency-sensitive applications and can be associated with Health Chec
 | English | 日本語 | 한국어 |
 |---|---|---|
 | Routing Policy | ルーティングポリシー | 라우팅 정책 |
-| DNS Query | DNSクエリ | DNS 쿼리 |
-| DNS Response | DNSレスポンス | DNS 응답 |
-| Simple Routing | シンプルルーティング | 단순 라우팅 |
 | Weighted Routing | 加重ルーティング | 가중치 기반 라우팅 |
-| Latency-based Routing | レイテンシーベースルーティング | 지연 시간 기반 라우팅 |
-| Weight | 重み | 가중치 |
-| Relative Weight | 相対的な重み | 상대적 가중치 |
-| Record ID | レコードID | 레코드 ID |
 | Latency | レイテンシー | 지연 시간 |
-| Region | リージョン | 리전 |
-| Alias Target | エイリアスターゲット | 별칭 대상 |
+| Failover | フェイルオーバー | 장애 조치 |
+| Primary | プライマリ | 주 리소스 |
+| Secondary | セカンダリ | 보조 리소스 |
+| Geolocation | 地理的位置 | 지리적 위치 |
+| Geoproximity | 地理的近接性 | 지리적 근접성 |
+| Bias | バイアス | 편향 / 영향 영역 조정값 |
+| Client IP | クライアントIP | 클라이언트 IP |
+| CIDR | CIDR | CIDR 주소 범위 |
+| Multi-Value Answer | 複数値回答 | 다중 값 응답 |
 | Health Check | ヘルスチェック | 상태 확인 |
+| Resource | リソース | 리소스 |
 | Endpoint | エンドポイント | 엔드포인트 |
-| Traffic Distribution | トラフィック分散 | 트래픽 분산 |
 
 ---
 
 # Review Questions
 
-1. Route 53의 Routing Policy가 결정하는 것은 실제 HTTP Traffic의 경로인가, DNS Response인가?
-2. Simple Routing에서 하나의 A Record에 여러 IP Value를 지정할 수 있는가?
-3. Simple Routing은 Health Check와 연결할 수 있는가?
-4. Weighted Routing에서 Weight의 합은 반드시 100이어야 하는가?
-5. Weighted Routing에서 여러 Record가 가져야 하는 공통 조건은 무엇인가?
-6. Latency-based Routing은 지리적으로 가장 가까운 Region을 선택하는가?
-7. 새로운 Application Version에 일부 사용자만 보내 테스트하려면 어떤 Routing Policy가 적합한가?
+### 1. 사용자의 네트워크 지연시간을 기준으로 Resource를 선택하려면 어떤 정책을 사용하는가?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: Latency-based Routing**
+
+사용자의 지리적 위치 자체가 아니라 AWS가 판단하는 **Network Latency**를 기준으로 Resource를 선택한다.
+
+</details>
+
+### 2. Primary가 장애 상태일 때 Secondary로 자동 전환하려면?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: Failover Routing**
+
+Primary Record에 Health Check를 연결하여 장애를 감지하고 Secondary Record로 DNS 응답을 전환한다.
+
+</details>
+
+### 3. 특정 국가의 사용자에게 특정 Resource를 제공하려면?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: Geolocation Routing**
+
+사용자의 실제 지리적 위치를 기준으로 Routing한다.
+
+</details>
+
+### 4. Bias라는 키워드가 등장하면 어떤 Routing Policy를 떠올려야 하는가?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: Geoproximity Routing**
+
+Bias를 사용하여 특정 Resource가 담당하는 지리적 영향 영역을 확대하거나 축소할 수 있다.
+
+</details>
+
+### 5. 특정 ISP의 Client IP 범위를 이미 알고 있으며 해당 사용자들을 특정 Endpoint로 보내고 싶다면?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: IP-based Routing**
+
+Client IP가 어느 CIDR 범위에 포함되는지 확인하여 지정된 Endpoint의 DNS 값을 반환한다.
+
+</details>
+
+### 6. 여러 정상 Resource를 한 DNS Query에서 반환하고 싶다면?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: Multi-Value Answer Routing**
+
+Health Check와 결합하여 정상 Resource만 반환할 수 있으며, 한 Query에서 최대 8개의 Healthy Record를 반환할 수 있다.
+
+</details>
+
+### 7. Multi-Value Answer Routing은 ELB를 대체할 수 있는가?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: 아니다.**
+
+Multi-Value는 DNS 응답으로 여러 Resource 주소를 제공하는 방식이다. ELB처럼 실제 Client Request를 받아 Backend로 분배하는 Load Balancer가 아니다.
+
+</details>
