@@ -1,75 +1,55 @@
 # AWS SAA-C03 Study Notes
 
-AWS Certified Solutions Architect – Associate(SAA-C03)를 준비하며 작성하는 학습 기록입니다.
+AWS Certified Solutions Architect – Associate(SAA-C03)를 준비하며 작성하는 학습 기록입니다. 강의 내용을 그대로 옮기기보다, 이해한 내용을 한국어로 정리하고 일본어·영어로 핵심을 다시 설명합니다.
 
-강의 내용을 그대로 옮기기보다, 직접 이해한 내용을 한국어로 정리하고 일본어와 영어로 핵심을 다시 설명합니다. 자격증 취득뿐 아니라 AWS 기초 지식, 실습 과정, 문제 해결 과정과 꾸준한 학습 흔적을 남기는 것이 목적입니다.
+> Status: AWS 글로벌 인프라부터 Classic Solutions Architecture까지 학습 노트 작성 중
 
-> Status: In progress — currently studying Amazon EC2 purchasing options and Spot capacity
+## 학습 목차
 
-## Objectives
+| 주제 | 문서 |
+|---|---|
+| AWS 글로벌 인프라 | [노트](./01-Cloud-Basics/01-AWS-Global-Infrastructure.md) |
+| IAM | [02 · IAM](./01-Cloud-Basics/02-IAM/README.md) |
+| 비용 관리 | [03 · AWS Billing and Budgets](./01-Cloud-Basics/03-AWS-Billing-and-Budgets/README.md) |
+| Amazon EC2 | [04 · Amazon EC2](./01-Cloud-Basics/04-Amazon-EC2/README.md) |
+| EC2 스토리지 | [05 · EC2 Storage](./01-Cloud-Basics/05-EC2-Storage/README.md) |
+| 고가용성과 확장성 | [06 · High Availability and Scalability](./01-Cloud-Basics/06-High-Availability-and-Scalability/README.md) |
+| 데이터베이스 | [07 · Databases](./01-Cloud-Basics/07-Databases/README.md) |
+| Amazon Route 53 | [08 · Amazon Route 53](./01-Cloud-Basics/08-Amazon-Route-53/README.md) |
+| 클래식 솔루션 아키텍처 | [09 · Classic Solutions Architecture](./01-Cloud-Basics/09-Classic-Solutions-Architecture/README.md) |
 
-- Understand the core services and architecture patterns covered by SAA-C03.
-- Record hands-on work, mistakes, and lessons learned.
-- Practice explaining cloud concepts in Korean, Japanese, and English.
-- Build a public learning portfolio while following AWS security best practices.
+[Cloud Basics 전체 목차](./01-Cloud-Basics/README.md) · [아키텍처 실습 프로젝트](./Architecture-Projects/README.md)
 
-## Study Progress
-
-| Section | Status | Notes |
-|---|---|---|
-| AWS global infrastructure | Completed | [Open notes](./01-Cloud-Basics/01-AWS-Global-Infrastructure.md) |
-| IAM | Completed | [Open IAM index](./01-Cloud-Basics/README.md#iam) |
-| AWS billing and budgets | Completed | [Open notes](./01-Cloud-Basics/03-AWS-Billing-and-Budgets.md) |
-| EC2 fundamentals | Completed | [Open notes](./01-Cloud-Basics/04-1-EC2-Overview.md) |
-| EC2 launch and configuration | Completed | [Open notes](./01-Cloud-Basics/04-2-Launching-an-EC2-Instance.md) |
-| EC2 instance types | Completed | [Open notes](./01-Cloud-Basics/04-3-EC2-Instance-Types.md) |
-| EC2 security groups | Completed | [Open notes](./01-Cloud-Basics/04-4-EC2-Security-Groups.md) |
-| EC2 IAM roles | Completed | [Open notes](./01-Cloud-Basics/04-5-EC2-IAM-Roles.md) |
-| EC2 purchasing options | Completed | [Open notes](./01-Cloud-Basics/04-6-EC2-Purchasing-Options.md) |
-| EC2 Spot Instances and Spot Fleet | Completed | [Open notes](./01-Cloud-Basics/04-7-EC2-Spot-Instances-and-Spot-Fleet.md) |
-| Remaining EC2 topics | In progress | [Open Cloud Basics index](./01-Cloud-Basics/README.md) |
-
-## Repository Structure
+## 저장소 구조
 
 ```text
 AWS-SAA-Study/
 ├─ README.md
-└─ 01-Cloud-Basics/
-   ├─ README.md
-   ├─ 01-AWS-Global-Infrastructure.md
-   ├─ 02-1 ... 02-7  IAM
-   ├─ 03-AWS-Billing-and-Budgets.md
-   └─ 04-1 ... 04-7  Amazon EC2
+├─ 01-Cloud-Basics/
+│  ├─ README.md
+│  ├─ 01-AWS-Global-Infrastructure.md
+│  └─ 02-IAM/ ... 09-Classic-Solutions-Architecture/
+│     ├─ README.md
+│     └─ 주제별 학습 노트
+└─ Architecture-Projects/
+   └─ 아키텍처 실습 기록
 ```
 
-## Documentation Format
+## 작성 방식
 
-Each note generally contains:
+각 노트는 한국어 개념 설명을 중심으로 시험 포인트와 실무 예시를 정리합니다. 일본어·영어 요약, 핵심 용어와 복습 문제를 덧붙여 기술 개념을 여러 언어로 설명하는 연습을 합니다. 문서는 이해가 깊어지면 계속 수정합니다.
 
-1. Korean explanation
-2. Exam notes
-3. Practical example or hands-on result
-4. Japanese summary
-5. English summary
-6. Vocabulary
-7. Review questions
+## 보안 원칙
 
-Japanese and English sections are intentionally concise. Their purpose is to practice explaining the key concept clearly rather than translating every sentence.
+- 비밀번호, 액세스 키, 세션 토큰, MFA 정보를 커밋하지 않습니다.
+- AWS 계정 ID, 개인 이메일, 불필요한 리소스 식별자를 공개하지 않습니다.
+- 정책 예시와 스크린샷에는 필요한 경우 자리표시자를 사용합니다.
+- 최신 운영 지침은 [AWS 공식 문서](https://docs.aws.amazon.com/)에서 확인합니다.
 
-## Security Rules
-
-- Never commit passwords, access keys, secret keys, session tokens, or MFA information.
-- Do not expose personal email addresses, AWS account IDs, or unnecessary resource identifiers.
-- Use placeholders in policy examples and screenshots.
-- Prefer temporary credentials, MFA, and least-privilege permissions.
-- Review files before every commit.
-
-## Learning Resources
+## 학습 자료
 
 - Stephane Maarek, *AWS Certified Solutions Architect Associate SAA-C03*
 - [AWS Documentation](https://docs.aws.amazon.com/)
 - [AWS Architecture Center](https://aws.amazon.com/architecture/)
 
-## Disclaimer
-
-This is a personal study repository. The notes may be revised as my understanding improves. For production decisions, refer to the latest official AWS documentation.
+이 저장소는 개인 학습 기록이며, 실제 운영 환경에 적용할 때는 최신 AWS 공식 문서를 확인해야 합니다.

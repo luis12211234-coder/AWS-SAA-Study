@@ -1,37 +1,17 @@
 # Cloud Basics
 
-이 폴더는 AWS 글로벌 인프라, IAM, 비용 관리, Amazon EC2의 기본 개념을 정리하는 공간입니다.
+AWS SAA-C03 강의에서 학습한 기본 개념을 주제별 폴더로 정리했습니다. 각 폴더의 README에서 해당 주제의 노트 목록을 볼 수 있습니다.
 
-## Contents
+## 목차
 
-### AWS Foundations
+1. [AWS Global Infrastructure](./01-AWS-Global-Infrastructure.md)
+2. [IAM](./02-IAM/README.md) — 사용자, 정책, MFA, CLI, 역할 및 보안 도구
+3. [AWS Billing and Budgets](./03-AWS-Billing-and-Budgets/README.md) — 비용과 예산
+4. [Amazon EC2](./04-Amazon-EC2/README.md) — 인스턴스, 보안 그룹, 구매 옵션 및 네트워킹 기초
+5. [EC2 Storage](./05-EC2-Storage/README.md) — EBS, AMI, Instance Store, EFS
+6. [High Availability and Scalability](./06-High-Availability-and-Scalability/README.md) — ELB와 Auto Scaling
+7. [Databases](./07-Databases/README.md) — RDS, Aurora, RDS Proxy, ElastiCache
+8. [Amazon Route 53](./08-Amazon-Route-53/README.md) — DNS, 라우팅 정책, 상태 확인
+9. [Classic Solutions Architecture](./09-Classic-Solutions-Architecture/README.md) — 배운 서비스를 조합한 설계
 
-- [AWS Global Infrastructure](./01-AWS-Global-Infrastructure.md)
-- [AWS Billing and Budgets](./03-AWS-Billing-and-Budgets.md)
-
-### IAM
-
-- [IAM Overview](./02-1-IAM-Overview.md)
-- [IAM Users and Groups](./02-2-IAM-Users-and-Groups.md)
-- [IAM Policies](./02-3-IAM-Policies.md)
-- [IAM Password Policy and MFA](./02-4-IAM-Password-Policy-and-MFA.md)
-- [IAM Access Keys, CLI, SDK, and CloudShell](./02-5-IAM-Access-Keys-CLI-SDK-and-CloudShell.md)
-- [IAM Roles](./02-6-IAM-Roles.md)
-- [IAM Security Tools and Best Practices](./02-7-IAM-Security-Tools-and-Best-Practices.md)
-
-### Amazon EC2
-
-- [EC2 Overview](./04-1-EC2-Overview.md)
-- [Launching an EC2 Instance](./04-2-Launching-an-EC2-Instance.md)
-- [EC2 Instance Types](./04-3-EC2-Instance-Types.md)
-- [EC2 Security Groups](./04-4-EC2-Security-Groups.md)
-- [EC2 IAM Roles](./04-5-EC2-IAM-Roles.md)
-- [EC2 Purchasing Options](./04-6-EC2-Purchasing-Options.md)
-- [EC2 Spot Instances and Spot Fleet](./04-7-EC2-Spot-Instances-and-Spot-Fleet.md)
-
-## Progress
-
-- AWS global infrastructure: Completed
-- IAM: Completed
-- AWS billing and budgets: Completed
-- Amazon EC2: In progress
+[저장소 홈으로 돌아가기](../README.md)

@@ -52,7 +52,7 @@ Scalability / Availability / Cost 검토
 
 자세한 내용:
 
-`09-01-Application-Instantiation.md`
+[Application Instantiation](./09-01-Application-Instantiation.md)
 
 ---
 
@@ -64,7 +64,7 @@ Elastic Beanstalk는 EC2, Auto Scaling Group, Elastic Load Balancing 등의 기�
 
 자세한 내용:
 
-`09-02-Elastic-Beanstalk.md`
+[Elastic Beanstalk](./09-02-Elastic-Beanstalk.md)
 
 ---
 
@@ -105,11 +105,7 @@ Elastic Beanstalk는 EC2, Auto Scaling Group, Elastic Load Balancing 등의 기�
 - Amazon Aurora
 - Multi-AZ
 
-프로젝트 문서:
-
-```text
-/Architecture-Projects/
-```
+프로젝트 문서: [Architecture Projects](../../Architecture-Projects/README.md)
 
 ---
 
@@ -198,3 +194,5 @@ Requirement
 ```
 
 The section also introduces application initialization patterns using Golden AMIs, User Data, and snapshots, as well as AWS Elastic Beanstalk for managed application deployment.
+
+[Cloud Basics 목차](../README.md)
