@@ -8,7 +8,7 @@ AWS Certified Solutions Architect – Associate(SAA-C03)를 준비하며 작성�
 
 | 주제 | 문서 |
 |---|---|
-| AWS 글로벌 인프라 | [노트](./01-Cloud-Basics/01-AWS-Global-Infrastructure.md) |
+| AWS 글로벌 인프라 | [01 · AWS Global Infrastructure](./01-Cloud-Basics/01-AWS-Global-Infrastructure/README.md) |
 | IAM | [02 · IAM](./01-Cloud-Basics/02-IAM/README.md) |
 | 비용 관리 | [03 · AWS Billing and Budgets](./01-Cloud-Basics/03-AWS-Billing-and-Budgets/README.md) |
 | Amazon EC2 | [04 · Amazon EC2](./01-Cloud-Basics/04-Amazon-EC2/README.md) |
@@ -27,8 +27,7 @@ AWS-SAA-Study/
 ├─ README.md
 ├─ 01-Cloud-Basics/
 │  ├─ README.md
-│  ├─ 01-AWS-Global-Infrastructure.md
-│  └─ 02-IAM/ ... 09-Classic-Solutions-Architecture/
+│  └─ 01-AWS-Global-Infrastructure/ ... 09-Classic-Solutions-Architecture/
 │     ├─ README.md
 │     └─ 주제별 학습 노트
 └─ Architecture-Projects/

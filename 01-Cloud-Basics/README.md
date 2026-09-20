@@ -4,7 +4,7 @@ AWS SAA-C03 강의에서 학습한 기본 개념을 주제별 폴더로 정리�
 
 ## 목차
 
-1. [AWS Global Infrastructure](./01-AWS-Global-Infrastructure.md)
+1. [AWS Global Infrastructure](./01-AWS-Global-Infrastructure/README.md) — 리전, 가용 영역과 글로벌 인프라
 2. [IAM](./02-IAM/README.md) — 사용자, 정책, MFA, CLI, 역할 및 보안 도구
 3. [AWS Billing and Budgets](./03-AWS-Billing-and-Budgets/README.md) — 비용과 예산
 4. [Amazon EC2](./04-Amazon-EC2/README.md) — 인스턴스, 보안 그룹, 구매 옵션 및 네트워킹 기초
