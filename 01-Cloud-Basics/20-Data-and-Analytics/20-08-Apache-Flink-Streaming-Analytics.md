@@ -1,6 +1,6 @@
 # 🌊 20-08. Apache Flink Streaming Analytics
 
-> Kinesis Data Analytics 개요 + 콘솔 실습  
+> Kinesis Data Analytics 개요 + 콘솔 실습
 > **Keyword: Real-time Analytics / Window / Checkpoint / Flink**
 
 ## 🇰🇷 1. Current Service Names

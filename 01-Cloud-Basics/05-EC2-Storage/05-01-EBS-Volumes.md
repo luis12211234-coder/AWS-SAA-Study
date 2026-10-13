@@ -1,8 +1,8 @@
-# Amazon EBS Volumes
+# 📘 05-01. Amazon EBS Volumes
 
-## Overview
+## 🇰🇷 1. Overview
 
-**EBS (Elastic Block Store)** 는  
+**EBS (Elastic Block Store)** 는
 EC2 Instance에 연결하여 사용하는 **Block Storage** 서비스이다.
 
 쉽게 생각하면:
@@ -13,7 +13,7 @@ EBS
 = Network USB Stick
 ```
 
-EC2 Instance와 물리적으로 직접 연결된 Disk가 아니라  
+EC2 Instance와 물리적으로 직접 연결된 Disk가 아니라
 **Network를 통해 EC2와 통신하는 Storage**이다.
 
 ```text
@@ -32,12 +32,10 @@ EC2와 Storage의 Lifecycle을 분리할 수 있다.
 
 는 것이다.
 
-즉, EC2 Instance가 없어지더라도  
+즉, EC2 Instance가 없어지더라도
 설정에 따라 EBS Volume과 데이터를 유지할 수 있다.
 
----
-
-# 1. Why Use EBS?
+## 🇰🇷 2. Why Use EBS?
 
 EC2 Instance 내부에서 중요한 데이터를 저장해야 한다고 하자.
 
@@ -61,7 +59,7 @@ EBS
  └─ Data
 ```
 
-EC2-A가 더 이상 필요하지 않을 때  
+EC2-A가 더 이상 필요하지 않을 때
 EBS를 보존하도록 구성할 수 있다.
 
 이후 다른 EC2에 EBS를 연결하면:
@@ -81,9 +79,7 @@ EC2-B
 
 따라서 EBS는 **Persistent Storage**로 사용할 수 있다.
 
----
-
-# 2. EBS Is a Network Drive
+## 🇰🇷 3. EBS Is a Network Drive
 
 EBS는 EC2에 물리적으로 붙어 있는 Disk가 아니다.
 
@@ -104,15 +100,13 @@ EBS
 
 이다.
 
-Network를 통해 EC2와 통신하기 때문에  
+Network를 통해 EC2와 통신하기 때문에
 Local Disk와 비교하면 Network Latency가 존재할 수 있다.
 
-하지만 Network Storage이기 때문에  
+하지만 Network Storage이기 때문에
 EC2 Instance와 Storage를 분리해서 관리할 수 있다는 장점이 있다.
 
----
-
-# 3. Network USB Stick Analogy
+## 🇰🇷 4. Network USB Stick Analogy
 
 EBS를 이해하는 가장 쉬운 비유는:
 
@@ -151,12 +145,10 @@ Attach
 EC2-B
 ```
 
-차이점은 EBS가 물리적인 USB가 아니라  
+차이점은 EBS가 물리적인 USB가 아니라
 **Network를 통해 연결되는 Virtual Block Storage**라는 것이다.
 
----
-
-# 4. EBS Can Be Detached and Attached
+## 🇰🇷 5. EBS Can Be Detached and Attached
 
 EBS Volume은 EC2 Instance에서 분리할 수 있다.
 
@@ -184,14 +176,12 @@ EC2-B
 EBS
 ```
 
-따라서 기존 Storage를 새로운 EC2 Instance에서  
+따라서 기존 Storage를 새로운 EC2 Instance에서
 빠르게 다시 사용할 수 있다.
 
----
+## 🇰🇷 6. One EC2 Can Have Multiple EBS Volumes
 
-# 5. One EC2 Can Have Multiple EBS Volumes
-
-하나의 EC2 Instance에는  
+하나의 EC2 Instance에는
 여러 EBS Volume을 연결할 수 있다.
 
 ```text
@@ -213,14 +203,12 @@ One EC2
 
 가 가능하다.
 
-필요에 따라 OS, Application Data, Database Data 등을  
+필요에 따라 OS, Application Data, Database Data 등을
 서로 다른 Volume으로 구성할 수 있다.
 
----
+## 🇰🇷 7. Can One EBS Be Attached to Multiple EC2 Instances?
 
-# 6. Can One EBS Be Attached to Multiple EC2 Instances?
-
-기본 개념에서는 하나의 EBS Volume을  
+기본 개념에서는 하나의 EBS Volume을
 한 번에 하나의 EC2 Instance에 연결한다고 이해한다.
 
 ```text
@@ -230,7 +218,7 @@ EC2-A
 EBS
 ```
 
-다음처럼 일반적인 EBS Volume 하나를 동시에 여러 EC2에서  
+다음처럼 일반적인 EBS Volume 하나를 동시에 여러 EC2에서
 사용한다고 생각하면 안 된다.
 
 ```text
@@ -249,7 +237,7 @@ io1 / io2
 Multi-Attach
 ```
 
-기능을 사용하여 하나의 EBS Volume을  
+기능을 사용하여 하나의 EBS Volume을
 여러 EC2 Instance에 연결할 수 있다.
 
 따라서 시험에서는 문맥을 확인해야 한다.
@@ -262,9 +250,7 @@ EBS Multi-Attach
 → 일부 Volume Type에서 여러 EC2 연결 가능
 ```
 
----
-
-# 7. EBS Is Bound to an Availability Zone
+## 🇰🇷 8. EBS Is Bound to an Availability Zone
 
 EBS Volume은 **특정 Availability Zone에 종속된다.**
 
@@ -308,11 +294,9 @@ EBS
 → AZ Scoped Resource
 ```
 
----
+## 🇰🇷 9. Moving EBS Across Availability Zones
 
-# 8. Moving EBS Across Availability Zones
-
-EBS Volume 자체를 다른 AZ의 EC2에  
+EBS Volume 자체를 다른 AZ의 EC2에
 바로 Attach할 수는 없다.
 
 예:
@@ -325,7 +309,7 @@ EBS
  └────X────→ us-east-1b
 ```
 
-다른 AZ로 데이터를 이동하려면  
+다른 AZ로 데이터를 이동하려면
 **EBS Snapshot**을 사용할 수 있다.
 
 ```text
@@ -355,9 +339,7 @@ EBS
 
 이 과정은 이후 EBS Snapshot 강의에서 자세히 다룬다.
 
----
-
-# 9. EBS and ENI Similarity
+## 🇰🇷 10. EBS and ENI Similarity
 
 앞에서 배운 ENI와 비슷한 부분이 있다.
 
@@ -369,7 +351,7 @@ EBS
 → 특정 AZ에 종속
 ```
 
-둘 다 같은 AZ 안에서는  
+둘 다 같은 AZ 안에서는
 다른 EC2 Instance로 연결 대상을 변경할 수 있다.
 
 하지만 역할은 완전히 다르다.
@@ -386,11 +368,9 @@ EBS
 
 시험에서는 둘을 구분한다.
 
----
+## 🇰🇷 11. EBS Provisioned Capacity
 
-# 10. EBS Provisioned Capacity
-
-EBS Volume을 생성할 때  
+EBS Volume을 생성할 때
 필요한 Storage 성능과 용량을 설정한다.
 
 주요 요소:
@@ -401,9 +381,7 @@ Throughput
 IOPS
 ```
 
----
-
-## Size
+### Size
 
 필요한 Storage 크기를 지정한다.
 
@@ -415,11 +393,9 @@ IOPS
 100 GB
 ```
 
----
+### IOPS
 
-## IOPS
-
-**IOPS (Input/Output Operations Per Second)** 는  
+**IOPS (Input/Output Operations Per Second)** 는
 초당 처리할 수 있는 I/O 작업 수를 의미한다.
 
 쉽게 말하면:
@@ -437,11 +413,9 @@ High-performance Application
 I/O intensive workload
 ```
 
----
+### Throughput
 
-## Throughput
-
-Throughput은 일정 시간 동안  
+Throughput은 일정 시간 동안
 얼마나 많은 데이터를 전송할 수 있는지를 나타낸다.
 
 ```text
@@ -452,14 +426,12 @@ Throughput
 → 초당 전송 가능한 데이터 양
 ```
 
-EBS Volume Type에 따라  
+EBS Volume Type에 따라
 Size, IOPS, Throughput의 특성이 달라진다.
 
----
+## 🇰🇷 12. EBS Capacity Can Be Increased
 
-# 11. EBS Capacity Can Be Increased
-
-EBS Volume은 처음 생성할 때 용량과 성능을 설정하지만  
+EBS Volume은 처음 생성할 때 용량과 성능을 설정하지만
 필요하면 이후 확장할 수 있다.
 
 ```text
@@ -485,14 +457,12 @@ EBS Capacity
 → Can be increased over time
 ```
 
-EBS는 Provision한 Storage 및 성능 특성에 따라  
+EBS는 Provision한 Storage 및 성능 특성에 따라
 비용이 발생할 수 있다.
 
----
+## 🇰🇷 13. EBS Volume Does Not Need to Be Attached
 
-# 12. EBS Volume Does Not Need to Be Attached
-
-EBS Volume을 생성했다고 해서  
+EBS Volume을 생성했다고 해서
 반드시 EC2 Instance에 연결해야 하는 것은 아니다.
 
 ```text
@@ -523,9 +493,7 @@ EBS
 
 EBS는 EC2와 별도로 관리할 수 있는 Resource이다.
 
----
-
-# 13. Delete on Termination
+## 🇰🇷 14. Delete on Termination
 
 시험에서 중요한 EBS 설정 중 하나가:
 
@@ -544,11 +512,9 @@ EC2 Instance가 Terminate될 때
 
 를 결정한다.
 
----
+## 🇰🇷 15. Root EBS Volume
 
-# 14. Root EBS Volume
-
-EC2 Instance를 생성하면  
+EC2 Instance를 생성하면
 운영체제가 저장된 Root Volume이 존재한다.
 
 예:
@@ -580,9 +546,7 @@ Root EBS Delete
 
 된다.
 
----
-
-# 15. Additional EBS Volumes
+## 🇰🇷 16. Additional EBS Volumes
 
 추가로 연결한 EBS Volume은 강의의 기본 설정에서:
 
@@ -614,11 +578,9 @@ Additional EBS
 → Delete on Termination = Disabled
 ```
 
----
+## 🇰🇷 17. Preserving the Root Volume
 
-# 16. Preserving the Root Volume
-
-EC2 Instance를 Terminate하더라도  
+EC2 Instance를 Terminate하더라도
 Root EBS의 데이터를 보존하고 싶을 수 있다.
 
 예:
@@ -665,11 +627,9 @@ Disable Delete on Termination
 
 시험에서 나올 수 있는 중요한 시나리오이다.
 
----
+## 🇰🇷 18. EBS vs Instance Store
 
-# 17. EBS vs Instance Store
-
-앞의 Hibernate에서 잠깐 등장했던  
+앞의 Hibernate에서 잠깐 등장했던
 Instance Store와 EBS를 구분해두면 좋다.
 
 ```text
@@ -699,14 +659,393 @@ Physical Host
  └─ Instance Store
 ```
 
-EBS는 Persistent Storage 용도로 사용할 수 있고  
+EBS는 Persistent Storage 용도로 사용할 수 있고
 EC2와 별도의 Lifecycle을 가질 수 있다.
 
 Instance Store는 이후 강의에서 자세히 다룬다.
 
----
+## 🇰🇷 19. Summary
 
-# 18. Practical Example
+EBS는:
+
+```text
+Elastic Block Store
+```
+
+이며 EC2에서 사용하는 **Network Block Storage**이다.
+
+핵심 특징:
+
+- EC2와 Network를 통해 연결
+- Persistent Storage
+- EC2에서 Detach 가능
+- 다른 EC2에 Attach 가능
+- 하나의 EC2에 여러 EBS 연결 가능
+- 일반적으로 하나의 EBS는 한 EC2에 연결
+- 일부 EBS는 Multi-Attach 지원
+- 특정 Availability Zone에 종속
+- 다른 AZ로 이동하려면 Snapshot 사용
+- Size / IOPS / Throughput 등의 성능 특성을 가짐
+- 용량을 이후 증가시킬 수 있음
+- EC2에 연결하지 않은 상태로 존재 가능
+- Delete on Termination으로 EC2 종료 시 삭제 여부 제어
+
+가장 중요한 암기:
+
+```text
+EBS
+= Network USB Stick
+= Persistent Block Storage
+= AZ Scoped
+```
+
+그리고:
+
+```text
+Root EBS
+→ Delete on Termination = ON by default
+
+Additional EBS
+→ Delete on Termination = OFF by default
+```
+
+## 🇰🇷 20. EBS Hands-On
+
+### 1. Checking Attached EBS Volumes
+
+EC2 Instance에서 현재 연결된 EBS Volume을 확인할 수 있다.
+
+```text
+EC2 Console
+↓
+Instance
+↓
+Storage
+↓
+Block devices
+```
+
+예:
+
+```text
+EC2 Instance
+
+└─ Root EBS
+   └─ 8 GiB
+```
+
+Volume ID를 선택하면 EBS Volume 화면으로 이동할 수 있다.
+
+Volume 상태:
+
+```text
+In-use
+```
+
+이면 현재 EC2 Instance에 연결되어 있다는 의미이다.
+
+### 2. Creating an Additional EBS Volume
+
+새로운 EBS Volume을 별도로 생성할 수 있다.
+
+예:
+
+```text
+Volume Type
+→ gp2 / gp3
+
+Size
+→ 2 GiB
+
+Availability Zone
+→ Same AZ as EC2
+```
+
+Volume 생성이 완료되면:
+
+```text
+State
+→ Available
+```
+
+상태가 된다.
+
+`Available`은:
+
+```text
+Volume exists
++
+Not currently attached
+```
+
+라는 의미이다.
+
+### 3. Attaching the Volume
+
+생성한 EBS Volume을 EC2 Instance에 연결한다.
+
+```text
+EBS Volume
+↓
+Actions
+↓
+Attach Volume
+↓
+Select EC2 Instance
+```
+
+연결 후:
+
+```text
+EBS State
+Available
+↓
+In-use
+```
+
+로 변경된다.
+
+EC2의 Storage 탭에서는:
+
+```text
+EC2
+
+├─ Root EBS
+│  └─ 8 GiB
+│
+└─ Additional EBS
+   └─ 2 GiB
+```
+
+처럼 여러 Block Device를 확인할 수 있다.
+
+### 4. Important: Same Availability Zone
+
+EBS Volume과 EC2 Instance는
+**같은 Availability Zone에 있어야 Attach할 수 있다.**
+
+예:
+
+```text
+EC2
+→ eu-west-1b
+```
+
+```text
+EBS
+→ eu-west-1b
+
+Attach O
+```
+
+반면:
+
+```text
+EC2
+→ eu-west-1b
+
+EBS
+→ eu-west-1a
+
+Attach X
+```
+
+즉:
+
+```text
+Same AZ
+→ Attach possible
+
+Different AZ
+→ Attach not possible
+```
+
+### 5. EBS Volume States
+
+실습에서 확인한 주요 상태:
+
+```text
+Available
+→ 생성되어 있지만 EC2에 연결되지 않음
+```
+
+```text
+In-use
+→ EC2 Instance에 연결되어 사용 중
+```
+
+간단한 상태 변화:
+
+```text
+Create Volume
+↓
+Available
+↓ Attach
+In-use
+↓ Detach
+Available
+```
+
+### 6. Attaching Is Not the Same as Using the Disk
+
+EBS Volume을 EC2에 Attach했다고 해서
+운영체제에서 즉시 파일 저장 공간으로 사용할 수 있는 것은 아니다.
+
+```text
+Create EBS
+↓
+Attach to EC2
+↓
+OS에서 Device 확인
+↓
+필요 시 Format
+↓
+Mount
+↓
+Use
+```
+
+강의에서는 Linux에서 실제 Format / Mount 과정까지는 다루지 않았다.
+
+현재 단계에서는:
+
+```text
+EBS Attach
+≠ Filesystem ready
+```
+
+정도로 이해하면 충분하다.
+
+### 7. Delete on Termination Hands-On
+
+실습에서는 두 개의 EBS Volume이 연결되어 있었다.
+
+```text
+EC2
+
+├─ Root EBS
+│  ├─ 8 GiB
+│  └─ Delete on Termination = Yes
+│
+└─ Additional EBS
+   ├─ 2 GiB
+   └─ Delete on Termination = No
+```
+
+EC2 Instance를 Terminate하면:
+
+```text
+EC2
+↓
+Terminate
+```
+
+Root EBS:
+
+```text
+Delete on Termination = Yes
+↓
+Deleted
+```
+
+Additional EBS:
+
+```text
+Delete on Termination = No
+↓
+Detached
+↓
+Available
+```
+
+결과:
+
+```text
+EC2
+→ Deleted
+
+Root EBS
+→ Deleted
+
+Additional EBS
+→ Remains
+```
+
+### 8. Preserving the Root EBS
+
+EC2 Instance가 Terminate된 후에도
+Root EBS를 보존하고 싶다면:
+
+```text
+Delete on Termination
+→ No
+```
+
+로 설정할 수 있다.
+
+그러면:
+
+```text
+EC2 Terminate
+↓
+Root EBS remains
+```
+
+가 가능하다.
+
+### 9. Hands-On Flow
+
+```text
+Check EC2 Storage
+↓
+Root EBS 확인
+↓
+Create additional EBS
+↓
+Match Availability Zone
+↓
+Volume becomes Available
+↓
+Attach Volume
+↓
+Volume becomes In-use
+↓
+EC2 now has multiple EBS volumes
+↓
+Create EBS in different AZ
+↓
+Cannot attach to EC2
+↓
+Terminate EC2
+↓
+Root EBS deleted
+↓
+Additional EBS remains
+```
+
+## 🇰🇷 21. Quick Review
+
+```text
+EBS가 EC2에 Attach되려면?
+→ Same AZ
+```
+
+```text
+Available 상태란?
+→ 생성됐지만 연결되지 않은 Volume
+```
+
+```text
+In-use 상태란?
+→ EC2에 연결된 Volume
+```
+
+```text
+EC2 종료 후 Root EBS를 남기려면?
+→ Delete on Termination = No
+```
+
+## 🎯 Exam Notes
 
 EC2에서 중요한 Application Data를 저장한다고 하자.
 
@@ -763,11 +1102,7 @@ Data EBS
 
 새로운 EC2에서 기존 데이터를 사용할 수 있다.
 
----
-
-# 19. Exam Notes
-
-## EBS Definition
+### EBS Definition
 
 ```text
 EBS
@@ -775,9 +1110,7 @@ EBS
 = Network Block Storage for EC2
 ```
 
----
-
-## Persistence
+### Persistence
 
 문제에서:
 
@@ -790,9 +1123,7 @@ Attach storage to another EC2
 
 등이 나오면 EBS를 생각한다.
 
----
-
-## Availability Zone
+### Availability Zone
 
 ```text
 EBS
@@ -820,9 +1151,7 @@ Snapshot
 → Restore/Create EBS in target AZ
 ```
 
----
-
-## Delete on Termination
+### Delete on Termination
 
 매우 중요한 시험 포인트:
 
@@ -845,9 +1174,7 @@ Disable
 Delete on Termination
 ```
 
----
-
-## EBS Attachment
+### EBS Attachment
 
 기본 개념:
 
@@ -863,387 +1190,6 @@ EBS Multi-Attach
 → Supported volume types
 → Multiple EC2 instances
 ```
-
----
-
-# 20. Summary
-
-EBS는:
-
-```text
-Elastic Block Store
-```
-
-이며 EC2에서 사용하는 **Network Block Storage**이다.
-
-핵심 특징:
-
-- EC2와 Network를 통해 연결
-- Persistent Storage
-- EC2에서 Detach 가능
-- 다른 EC2에 Attach 가능
-- 하나의 EC2에 여러 EBS 연결 가능
-- 일반적으로 하나의 EBS는 한 EC2에 연결
-- 일부 EBS는 Multi-Attach 지원
-- 특정 Availability Zone에 종속
-- 다른 AZ로 이동하려면 Snapshot 사용
-- Size / IOPS / Throughput 등의 성능 특성을 가짐
-- 용량을 이후 증가시킬 수 있음
-- EC2에 연결하지 않은 상태로 존재 가능
-- Delete on Termination으로 EC2 종료 시 삭제 여부 제어
-
-가장 중요한 암기:
-
-```text
-EBS
-= Network USB Stick
-= Persistent Block Storage
-= AZ Scoped
-```
-
-그리고:
-
-```text
-Root EBS
-→ Delete on Termination = ON by default
-
-Additional EBS
-→ Delete on Termination = OFF by default
-```
-
-# EBS Hands-On
-
-## 1. Checking Attached EBS Volumes
-
-EC2 Instance에서 현재 연결된 EBS Volume을 확인할 수 있다.
-
-```text
-EC2 Console
-↓
-Instance
-↓
-Storage
-↓
-Block devices
-```
-
-예:
-
-```text
-EC2 Instance
-
-└─ Root EBS
-   └─ 8 GiB
-```
-
-Volume ID를 선택하면 EBS Volume 화면으로 이동할 수 있다.
-
-Volume 상태:
-
-```text
-In-use
-```
-
-이면 현재 EC2 Instance에 연결되어 있다는 의미이다.
-
----
-
-## 2. Creating an Additional EBS Volume
-
-새로운 EBS Volume을 별도로 생성할 수 있다.
-
-예:
-
-```text
-Volume Type
-→ gp2 / gp3
-
-Size
-→ 2 GiB
-
-Availability Zone
-→ Same AZ as EC2
-```
-
-Volume 생성이 완료되면:
-
-```text
-State
-→ Available
-```
-
-상태가 된다.
-
-`Available`은:
-
-```text
-Volume exists
-+
-Not currently attached
-```
-
-라는 의미이다.
-
----
-
-## 3. Attaching the Volume
-
-생성한 EBS Volume을 EC2 Instance에 연결한다.
-
-```text
-EBS Volume
-↓
-Actions
-↓
-Attach Volume
-↓
-Select EC2 Instance
-```
-
-연결 후:
-
-```text
-EBS State
-Available
-↓
-In-use
-```
-
-로 변경된다.
-
-EC2의 Storage 탭에서는:
-
-```text
-EC2
-
-├─ Root EBS
-│  └─ 8 GiB
-│
-└─ Additional EBS
-   └─ 2 GiB
-```
-
-처럼 여러 Block Device를 확인할 수 있다.
-
----
-
-## 4. Important: Same Availability Zone
-
-EBS Volume과 EC2 Instance는  
-**같은 Availability Zone에 있어야 Attach할 수 있다.**
-
-예:
-
-```text
-EC2
-→ eu-west-1b
-```
-
-```text
-EBS
-→ eu-west-1b
-
-Attach O
-```
-
-반면:
-
-```text
-EC2
-→ eu-west-1b
-
-EBS
-→ eu-west-1a
-
-Attach X
-```
-
-즉:
-
-```text
-Same AZ
-→ Attach possible
-
-Different AZ
-→ Attach not possible
-```
-
----
-
-## 5. EBS Volume States
-
-실습에서 확인한 주요 상태:
-
-```text
-Available
-→ 생성되어 있지만 EC2에 연결되지 않음
-```
-
-```text
-In-use
-→ EC2 Instance에 연결되어 사용 중
-```
-
-간단한 상태 변화:
-
-```text
-Create Volume
-↓
-Available
-↓ Attach
-In-use
-↓ Detach
-Available
-```
-
----
-
-## 6. Attaching Is Not the Same as Using the Disk
-
-EBS Volume을 EC2에 Attach했다고 해서  
-운영체제에서 즉시 파일 저장 공간으로 사용할 수 있는 것은 아니다.
-
-```text
-Create EBS
-↓
-Attach to EC2
-↓
-OS에서 Device 확인
-↓
-필요 시 Format
-↓
-Mount
-↓
-Use
-```
-
-강의에서는 Linux에서 실제 Format / Mount 과정까지는 다루지 않았다.
-
-현재 단계에서는:
-
-```text
-EBS Attach
-≠ Filesystem ready
-```
-
-정도로 이해하면 충분하다.
-
----
-
-## 7. Delete on Termination Hands-On
-
-실습에서는 두 개의 EBS Volume이 연결되어 있었다.
-
-```text
-EC2
-
-├─ Root EBS
-│  ├─ 8 GiB
-│  └─ Delete on Termination = Yes
-│
-└─ Additional EBS
-   ├─ 2 GiB
-   └─ Delete on Termination = No
-```
-
-EC2 Instance를 Terminate하면:
-
-```text
-EC2
-↓
-Terminate
-```
-
-Root EBS:
-
-```text
-Delete on Termination = Yes
-↓
-Deleted
-```
-
-Additional EBS:
-
-```text
-Delete on Termination = No
-↓
-Detached
-↓
-Available
-```
-
-결과:
-
-```text
-EC2
-→ Deleted
-
-Root EBS
-→ Deleted
-
-Additional EBS
-→ Remains
-```
-
----
-
-## 8. Preserving the Root EBS
-
-EC2 Instance가 Terminate된 후에도  
-Root EBS를 보존하고 싶다면:
-
-```text
-Delete on Termination
-→ No
-```
-
-로 설정할 수 있다.
-
-그러면:
-
-```text
-EC2 Terminate
-↓
-Root EBS remains
-```
-
-가 가능하다.
-
----
-
-## 9. Hands-On Flow
-
-```text
-Check EC2 Storage
-↓
-Root EBS 확인
-↓
-Create additional EBS
-↓
-Match Availability Zone
-↓
-Volume becomes Available
-↓
-Attach Volume
-↓
-Volume becomes In-use
-↓
-EC2 now has multiple EBS volumes
-↓
-Create EBS in different AZ
-↓
-Cannot attach to EC2
-↓
-Terminate EC2
-↓
-Root EBS deleted
-↓
-Additional EBS remains
-```
-
----
-
-## 10. Exam Notes
 
 이번 실습에서 시험에 연결되는 핵심:
 
@@ -1276,37 +1222,93 @@ Preserve Root Volume after EC2 termination
 Disable Delete on Termination
 ```
 
----
+## 📝 Review Questions
 
-## Quick Review
+#### Q1. EBS란 무엇인가?
 
-```text
-EBS가 EC2에 Attach되려면?
-→ Same AZ
-```
+EC2 Instance에 Network를 통해 연결하는
+Persistent Block Storage이다.
 
-```text
-Available 상태란?
-→ 생성됐지만 연결되지 않은 Volume
-```
+#### Q2. EBS를 쉽게 비유하면?
 
 ```text
-In-use 상태란?
-→ EC2에 연결된 Volume
+Network USB Stick
 ```
+
+이라고 생각할 수 있다.
+
+#### Q3. EC2가 Terminate되면 EBS 데이터도 반드시 삭제되는가?
+
+아니다.
+
+`Delete on Termination` 설정에 따라 달라진다.
+
+#### Q4. 하나의 EC2에 여러 EBS Volume을 연결할 수 있는가?
+
+가능하다.
+
+#### Q5. 하나의 EBS를 여러 EC2에 동시에 연결할 수 있는가?
+
+일반적인 EBS 사용에서는 하나의 EC2에 연결한다.
+
+일부 지원되는 Volume Type에서는
+EBS Multi-Attach를 사용할 수 있다.
+
+#### Q6. EBS는 Availability Zone에 종속되는가?
+
+그렇다.
+
+#### Q7. AZ-A의 EBS를 AZ-B의 EC2에 바로 Attach할 수 있는가?
+
+불가능하다.
+
+#### Q8. EBS 데이터를 다른 AZ로 이동하려면?
+
+EBS Snapshot을 생성한 후
+대상 AZ에서 새로운 EBS Volume을 생성/복원한다.
+
+#### Q9. Root EBS의 Delete on Termination 기본값은?
 
 ```text
-EC2 종료 후 Root EBS를 남기려면?
-→ Delete on Termination = No
+Enabled
 ```
 
----
+이다.
 
-# Japanese Summary
+#### Q10. 추가 EBS Volume의 Delete on Termination 기본값은?
 
-## Amazon EBS
+강의에서 설명한 기본 설정에서는:
 
-**EBS (Elastic Block Store)** は、  
+```text
+Disabled
+```
+
+이다.
+
+#### Q11. EC2 Termination 후 Root EBS를 보존하려면?
+
+```text
+Delete on Termination
+→ Disable
+```
+
+하면 된다.
+
+#### Q12. EBS의 성능을 나타내는 주요 요소는?
+
+```text
+Size
+IOPS
+Throughput
+```
+
+이다.
+
+## 🇯🇵 日本語 Summary
+
+### Amazon EBS
+
+**EBS (Elastic Block Store)** は、
 EC2 Instanceで使用するNetwork Block Storageです。
 
 簡単に言えば：
@@ -1317,7 +1319,7 @@ EBS
 = Network USB Stick
 ```
 
-EBSはEC2とは独立して管理でき、  
+EBSはEC2とは独立して管理でき、
 EC2からDetachして別のEC2へAttachできます。
 
 重要な特徴：
@@ -1360,11 +1362,9 @@ Additional EBS
 → Disabled
 ```
 
----
+## 🇺🇸 English Summary
 
-# English Summary
-
-## Amazon EBS
+### Amazon EBS
 
 **Amazon EBS (Elastic Block Store)** provides network block storage for EC2 instances.
 
@@ -1406,9 +1406,7 @@ Additional EBS
 → Disabled by default
 ```
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | Term | Meaning |
 |---|---|
@@ -1426,87 +1424,3 @@ Additional EBS
 | Delete on Termination | EC2 종료 시 EBS 삭제 여부 |
 | Snapshot | EBS Volume의 Point-in-Time Backup |
 | Multi-Attach | 하나의 EBS Volume을 여러 EC2에 연결하는 기능 |
-
----
-
-# Review Questions
-
-### Q1. EBS란 무엇인가?
-
-EC2 Instance에 Network를 통해 연결하는  
-Persistent Block Storage이다.
-
-### Q2. EBS를 쉽게 비유하면?
-
-```text
-Network USB Stick
-```
-
-이라고 생각할 수 있다.
-
-### Q3. EC2가 Terminate되면 EBS 데이터도 반드시 삭제되는가?
-
-아니다.
-
-`Delete on Termination` 설정에 따라 달라진다.
-
-### Q4. 하나의 EC2에 여러 EBS Volume을 연결할 수 있는가?
-
-가능하다.
-
-### Q5. 하나의 EBS를 여러 EC2에 동시에 연결할 수 있는가?
-
-일반적인 EBS 사용에서는 하나의 EC2에 연결한다.
-
-일부 지원되는 Volume Type에서는  
-EBS Multi-Attach를 사용할 수 있다.
-
-### Q6. EBS는 Availability Zone에 종속되는가?
-
-그렇다.
-
-### Q7. AZ-A의 EBS를 AZ-B의 EC2에 바로 Attach할 수 있는가?
-
-불가능하다.
-
-### Q8. EBS 데이터를 다른 AZ로 이동하려면?
-
-EBS Snapshot을 생성한 후  
-대상 AZ에서 새로운 EBS Volume을 생성/복원한다.
-
-### Q9. Root EBS의 Delete on Termination 기본값은?
-
-```text
-Enabled
-```
-
-이다.
-
-### Q10. 추가 EBS Volume의 Delete on Termination 기본값은?
-
-강의에서 설명한 기본 설정에서는:
-
-```text
-Disabled
-```
-
-이다.
-
-### Q11. EC2 Termination 후 Root EBS를 보존하려면?
-
-```text
-Delete on Termination
-→ Disable
-```
-
-하면 된다.
-
-### Q12. EBS의 성능을 나타내는 주요 요소는?
-
-```text
-Size
-IOPS
-Throughput
-```
-
-이다.

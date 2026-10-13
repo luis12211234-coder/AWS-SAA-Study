@@ -1,6 +1,6 @@
-# Network Load Balancer (NLB)
+# 📘 06-03. Network Load Balancer (NLB)
 
-## Overview
+## 🇰🇷 1. Overview
 
 **Network Load Balancer (NLB)**는
 OSI **Layer 4**에서 동작하는 고성능 Load Balancer이다.
@@ -20,9 +20,7 @@ ALB → Layer 7 → HTTP / HTTPS
 NLB → Layer 4 → TCP / UDP
 ```
 
----
-
-# 1. NLB Characteristics
+## 🇰🇷 2. NLB Characteristics
 
 NLB는 대량의 Traffic을 매우 낮은 Latency로 처리하는 데 적합하다.
 
@@ -45,9 +43,7 @@ Static IP / Elastic IP
 IP Whitelisting
 ```
 
----
-
-# 2. Target Groups
+## 🇰🇷 3. Target Groups
 
 기본 구조는 ALB와 비슷하다.
 
@@ -96,9 +92,7 @@ ALB → HTTP Layer 7 Routing
 
 두 Load Balancer의 특징을 함께 사용할 수 있다.
 
----
-
-# 3. Health Checks
+## 🇰🇷 4. Health Checks
 
 NLB Target Group은 다음 Health Check Protocol을 지원한다.
 
@@ -120,9 +114,7 @@ Unhealthy Target
 → Traffic 제외
 ```
 
----
-
-# 4. Security Groups
+## 🇰🇷 5. Security Groups
 
 NLB에도 Security Group을 연결하여
 Traffic을 제어할 수 있다.
@@ -149,9 +141,7 @@ TCP/HTTP :80
 Source = NLB Security Group
 ```
 
----
-
-# 5. Hands-On Summary
+## 🇰🇷 6. Hands-On Summary
 
 실습에서는 다음 구조를 생성했다.
 
@@ -195,9 +185,7 @@ Healthy
 두 EC2가 Healthy 상태가 되었고,
 NLB를 통해 두 Instance로 Traffic이 분산되는 것을 확인했다.
 
----
-
-# Exam Notes
+## 🎯 Exam Notes
 
 ```text
 NLB
@@ -246,9 +234,51 @@ NLB
 → High Performance
 ```
 
----
+## 📝 Review Questions
 
-# Japanese Summary
+#### Q1. NLB는 OSI 몇 계층에서 동작하는가?
+
+```text
+Layer 4
+```
+
+#### Q2. NLB의 대표 Protocol은?
+
+```text
+TCP / UDP
+```
+
+#### Q3. 고정 IP가 필요한 Load Balancer는?
+
+```text
+NLB
+```
+
+NLB는 AZ별 Static IP를 가지며
+Elastic IP도 할당할 수 있다.
+
+#### Q4. NLB의 대표 Target은?
+
+```text
+EC2
+Private IP
+ALB
+```
+
+#### Q5. NLB Health Check가 지원하는 Protocol은?
+
+```text
+TCP
+HTTP
+HTTPS
+```
+
+#### Q6. NLB Target이 Unhealthy가 되는 원인 중 하나는?
+
+Backend EC2의 Security Group이
+NLB의 Traffic 또는 Health Check를 허용하지 않는 경우이다.
+
+## 🇯🇵 日本語 Summary
 
 **Network Load Balancer (NLB)**は、
 Layer 4で動作する高性能なLoad Balancerです。
@@ -266,9 +296,7 @@ EC2、Private IP、ALBを使用できます。
 Health Checkは
 TCP、HTTP、HTTPSをサポートします。
 
----
-
-# English Summary
+## 🇺🇸 English Summary
 
 **Network Load Balancer (NLB)** is
 a high-performance Layer 4 load balancer.
@@ -285,9 +313,7 @@ private IP addresses, and an ALB.
 
 Health checks support TCP, HTTP, and HTTPS.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -302,49 +328,3 @@ Health checks support TCP, HTTP, and HTTPS.
 | Health Check | ヘルスチェック | Target의 정상 상태 확인 |
 | Latency | レイテンシー | 통신 지연 시간 |
 | IP Whitelisting | IPホワイトリスト | 특정 IP만 접근하도록 허용 |
-
----
-
-# Review Questions
-
-### Q1. NLB는 OSI 몇 계층에서 동작하는가?
-
-```text
-Layer 4
-```
-
-### Q2. NLB의 대표 Protocol은?
-
-```text
-TCP / UDP
-```
-
-### Q3. 고정 IP가 필요한 Load Balancer는?
-
-```text
-NLB
-```
-
-NLB는 AZ별 Static IP를 가지며
-Elastic IP도 할당할 수 있다.
-
-### Q4. NLB의 대표 Target은?
-
-```text
-EC2
-Private IP
-ALB
-```
-
-### Q5. NLB Health Check가 지원하는 Protocol은?
-
-```text
-TCP
-HTTP
-HTTPS
-```
-
-### Q6. NLB Target이 Unhealthy가 되는 원인 중 하나는?
-
-Backend EC2의 Security Group이
-NLB의 Traffic 또는 Health Check를 허용하지 않는 경우이다.

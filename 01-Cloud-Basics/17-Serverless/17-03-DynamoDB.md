@@ -1,6 +1,6 @@
-# 17-03. Amazon DynamoDB
+# 📘 17-03. Amazon DynamoDB
 
-## 1. DynamoDB
+## 🇰🇷 1. DynamoDB
 
 Amazon DynamoDB는 AWS의 **Serverless Fully Managed NoSQL Database**이다.
 
@@ -16,9 +16,7 @@ Amazon DynamoDB는 AWS의 **Serverless Fully Managed NoSQL Database**이다.
 - Transaction 지원
 - 유지보수 및 Patch 관리 불필요
 
----
-
-# 2. Table Structure
+## 🇰🇷 2. Table Structure
 
 DynamoDB의 기본 구조:
 
@@ -38,15 +36,13 @@ Table
 
 하지만 DynamoDB는 Flexible Schema를 지원하기 때문에 각 Item의 일반 Attribute 구성이 서로 달라도 된다.
 
----
-
-# 3. Primary Key
+## 🇰🇷 3. Primary Key
 
 모든 DynamoDB Table에는 Primary Key가 필요하다.
 
 두 가지 구조가 있다.
 
-### Partition Key Only
+#### Partition Key Only
 
 ```text
 UserID (PK)
@@ -58,7 +54,7 @@ UserID (PK)
 
 Partition Key 값은 각 Item을 고유하게 식별해야 한다.
 
-### Partition Key + Sort Key
+#### Partition Key + Sort Key
 
 ```text
 UserID (PK) | GameID (SK) | Score
@@ -79,9 +75,7 @@ Partition Key가 같아도 Sort Key가 다르면 서로 다른 Item이다.
 
 Partition Key는 데이터의 내부 분산에도 중요한 역할을 한다.
 
----
-
-# 4. Item Size
+## 🇰🇷 4. Item Size
 
 DynamoDB의 한 Item 최대 크기는:
 
@@ -93,13 +87,11 @@ DynamoDB의 한 Item 최대 크기는:
 
 큰 이미지나 동영상 같은 Object는 일반적으로 S3에 저장하고 DynamoDB에는 Metadata나 S3 위치를 저장한다.
 
----
-
-# 5. Data Types
+## 🇰🇷 5. Data Types
 
 대표적인 데이터 타입:
 
-### Scalar
+#### Scalar
 
 - String
 - Number
@@ -107,22 +99,20 @@ DynamoDB의 한 Item 최대 크기는:
 - Boolean
 - Null
 
-### Document
+#### Document
 
 - List
 - Map
 
-### Set
+#### Set
 
 - String Set
 - Number Set
 - Binary Set
 
----
+## 🇰🇷 6. Capacity Modes
 
-# 6. Capacity Modes
-
-## Provisioned Capacity
+### Provisioned Capacity
 
 필요한 처리량을 미리 설정한다.
 
@@ -135,7 +125,7 @@ WCU = Write Capacity Unit
 
 Auto Scaling을 함께 사용할 수 있다.
 
-## On-Demand Capacity
+### On-Demand Capacity
 
 미리 RCU/WCU를 프로비저닝하지 않고 요청에 따라 처리한다.
 
@@ -147,8 +137,6 @@ Sudden Spike
 ```
 
 용량 계획이 필요하지 않으며 실제 요청량을 기반으로 비용이 발생한다.
-
----
 
 ## 🎯 Exam Notes
 
@@ -167,8 +155,6 @@ DynamoDB
 - Predictable Traffic → Provisioned
 - Unpredictable / Sudden Spike → On-Demand
 
-## 💡 Practical Example
-
 게임 기록:
 
 ```text
@@ -185,25 +171,6 @@ Sort Key = GameID
 ```
 
 동일한 사용자가 여러 게임 기록을 저장할 수 있다.
-
-## 🇯🇵 日本語 Summary
-
-Amazon DynamoDBは、AWSのフルマネージド・サーバーレスNoSQLデータベースです。Partition KeyとオプションのSort Keyを使用してデータを識別し、大規模なワークロードに自動的に対応できます。
-
-## 🇺🇸 English Summary
-
-Amazon DynamoDB is a fully managed serverless NoSQL database. Tables use a partition key and optionally a sort key as the primary key. DynamoDB provides scalable, highly available, low-latency storage.
-
-## 📚 Vocabulary
-
-| Term | Meaning |
-|---|---|
-| Item | DynamoDB의 데이터 한 건 |
-| Attribute | Item을 구성하는 데이터 |
-| Partition Key | Item 식별 및 데이터 분산에 사용되는 Key |
-| Sort Key | 동일 Partition Key 내 Item을 구별하는 Key |
-| RCU | Read Capacity Unit |
-| WCU | Write Capacity Unit |
 
 ## 📝 Review Questions
 
@@ -224,3 +191,22 @@ Amazon DynamoDB is a fully managed serverless NoSQL database. Tables use a parti
 On-Demand Capacity Mode
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+Amazon DynamoDBは、AWSのフルマネージド・サーバーレスNoSQLデータベースです。Partition KeyとオプションのSort Keyを使用してデータを識別し、大規模なワークロードに自動的に対応できます。
+
+## 🇺🇸 English Summary
+
+Amazon DynamoDB is a fully managed serverless NoSQL database. Tables use a partition key and optionally a sort key as the primary key. DynamoDB provides scalable, highly available, low-latency storage.
+
+## 📚 Vocabulary
+
+| Term | Meaning |
+|---|---|
+| Item | DynamoDB의 데이터 한 건 |
+| Attribute | Item을 구성하는 데이터 |
+| Partition Key | Item 식별 및 데이터 분산에 사용되는 Key |
+| Sort Key | 동일 Partition Key 내 Item을 구별하는 Key |
+| RCU | Read Capacity Unit |
+| WCU | Write Capacity Unit |

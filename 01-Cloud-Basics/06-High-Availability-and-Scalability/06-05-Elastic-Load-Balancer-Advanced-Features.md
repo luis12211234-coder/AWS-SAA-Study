@@ -1,6 +1,6 @@
-# Elastic Load Balancer Advanced Features
+# 📘 06-05. Elastic Load Balancer Advanced Features
 
-## Overview
+## 🇰🇷 1. Overview
 
 Elastic Load Balancer의 주요 고급 기능:
 
@@ -9,9 +9,7 @@ Elastic Load Balancer의 주요 고급 기능:
 - SSL/TLS Certificates & SNI
 - Deregistration Delay
 
----
-
-# 1. Sticky Sessions
+## 🇰🇷 2. Sticky Sessions
 
 **Sticky Session (Session Affinity)**은 동일한 Client의 요청을 일정 시간 동안 **같은 Backend Target**으로 전달하는 기능이다.
 
@@ -23,13 +21,13 @@ Load Balancer
 EC2 A ← 반복 요청도 같은 Target
 ```
 
-### How It Works
+#### How It Works
 
 - Cookie를 이용해 Client와 Target의 연결 관계를 유지
 - Cookie가 만료되면 다른 Target으로 전달될 수 있음
 - Session 정보를 특정 Backend에서 유지해야 할 때 유용
 
-### Cookie Types
+#### Cookie Types
 
 **Application-based Cookie**
 - 애플리케이션 또는 Load Balancer가 생성
@@ -39,11 +37,11 @@ EC2 A ← 반복 요청도 같은 Target
 - Load Balancer가 생성
 - 설정된 기간 동안 동일 Target 유지
 
-### Trade-off
+#### Trade-off
 
 Sticky Session은 특정 Target에 Traffic이 집중되어 **부하가 불균형해질 수 있다.**
 
-### Exam Point
+#### Exam Point
 
 ```text
 Same Client → Same Target
@@ -51,13 +49,11 @@ Same Client → Same Target
 Sticky Session
 ```
 
----
-
-# 2. Cross-Zone Load Balancing
+## 🇰🇷 3. Cross-Zone Load Balancing
 
 Cross-Zone Load Balancing은 Load Balancer Node가 **다른 AZ의 Target에도 Traffic을 전달할 수 있도록 하는 기능**이다.
 
-### Enabled
+#### Enabled
 
 ```text
 AZ-A LB ─┬→ AZ-A Targets
@@ -69,7 +65,7 @@ AZ-B LB ─┬→ AZ-A Targets
 
 모든 AZ의 Target을 대상으로 Traffic을 분산한다.
 
-### Disabled
+#### Disabled
 
 ```text
 AZ-A LB → AZ-A Targets only
@@ -80,7 +76,7 @@ AZ-B LB → AZ-B Targets only
 
 AZ별 Target 수가 다르면 Instance당 부하가 불균형해질 수 있다.
 
-### Defaults
+#### Defaults
 
 | Load Balancer | Cross-Zone Default |
 |---|---|
@@ -90,7 +86,7 @@ AZ별 Target 수가 다르면 Instance당 부하가 불균형해질 수 있다.
 
 ALB는 Target Group 수준에서 Cross-Zone 동작을 제어할 수 있다.
 
-### Exam Point
+#### Exam Point
 
 ```text
 Cross-Zone ON
@@ -100,9 +96,7 @@ Cross-Zone OFF
 → 각 AZ 내부 Target에 분산
 ```
 
----
-
-# 3. SSL/TLS Certificates
+## 🇰🇷 4. SSL/TLS Certificates
 
 SSL/TLS는 Client와 Load Balancer 사이의 Traffic을 **전송 중 암호화(In-flight Encryption)**한다.
 
@@ -116,13 +110,13 @@ Load Balancer
 
 현재는 TLS가 사용되지만 관습적으로 SSL이라는 표현도 사용한다.
 
-### ACM
+#### ACM
 
 **AWS Certificate Manager (ACM)**을 사용해 SSL/TLS Certificate을 관리할 수 있다.
 
 Certificate에는 만료 기간이 있으며 갱신이 필요하다.
 
-### TLS Termination
+#### TLS Termination
 
 Load Balancer에서 TLS 연결을 종료하고 Backend로 요청을 전달할 수 있다.
 
@@ -139,7 +133,7 @@ Backend EC2
 
 > Backend 연결이 반드시 HTTP여야 하는 것은 아니다. 위 구조는 강의의 TLS Termination 예시이다.
 
-### Listener
+#### Listener
 
 **ALB**
 
@@ -159,9 +153,7 @@ TLS :443
 
 HTTPS/TLS Listener에서는 Certificate와 Security Policy를 설정할 수 있다.
 
----
-
-# 4. SNI
+## 🇰🇷 5. SNI
 
 **SNI (Server Name Indication)**는 Client가 TLS 연결 과정에서 **접속하려는 Hostname을 서버에 알려주는 기능**이다.
 
@@ -195,7 +187,7 @@ SNI = b.com
 → Certificate B
 ```
 
-### SNI vs ALB Routing
+#### SNI vs ALB Routing
 
 두 기능의 역할을 구분한다.
 
@@ -207,7 +199,7 @@ ALB Listener Rule
 → 어떤 Target Group으로 보낼 것인가?
 ```
 
-### Exam Point
+#### Exam Point
 
 ```text
 Multiple Domains
@@ -219,9 +211,7 @@ Multiple Domains
 
 ALB와 NLB는 여러 SSL/TLS Certificate과 SNI를 지원한다.
 
----
-
-# 5. Deregistration Delay
+## 🇰🇷 6. Deregistration Delay
 
 ALB/NLB에서는 **Deregistration Delay**, Classic Load Balancer에서는 **Connection Draining**이라고 부른다.
 
@@ -244,7 +234,7 @@ New Request      → 다른 Target으로 전달
 Target 제거
 ```
 
-### Duration
+#### Duration
 
 강의 기준:
 
@@ -254,7 +244,7 @@ Target 제거
 
 짧은 Request가 대부분이면 짧게, Upload 등 오래 지속되는 Request가 있다면 길게 설정할 수 있다.
 
-### Exam Point
+#### Exam Point
 
 ```text
 Target 제거 예정
@@ -264,9 +254,7 @@ Target 제거 예정
 Deregistration Delay
 ```
 
----
-
-# Exam Notes
+## 🎯 Exam Notes
 
 | Requirement | Feature |
 |---|---|
@@ -277,7 +265,7 @@ Deregistration Delay
 | Multiple domains/certificates on one LB | SNI |
 | Finish existing requests before removing Target | Deregistration Delay |
 
-### Quick Memory
+#### Quick Memory
 
 ```text
 Sticky
@@ -296,9 +284,17 @@ Deregistration Delay
 → 기존 Request를 끝내고 Target을 뺀다
 ```
 
----
+## 📝 Review Questions
 
-# 日本語まとめ
+1. Sticky Session은 어떤 문제를 해결하는가?
+2. Cross-Zone Load Balancing이 비활성화되면 Traffic은 어떻게 분산되는가?
+3. ALB와 NLB의 Cross-Zone 기본 설정은 어떻게 다른가?
+4. ACM의 역할은 무엇인가?
+5. SNI와 ALB Host-based Routing의 역할 차이는 무엇인가?
+6. ALB와 NLB에서 TLS를 사용하는 Listener는 각각 어떤 프로토콜을 사용하는가?
+7. Deregistration Delay가 필요한 이유는 무엇인가?
+
+## 🇯🇵 日本語 Summary
 
 - **Sticky Session**: 同じクライアントのリクエストを同じターゲットに送る
 - **Cross-Zone Load Balancing**: AZをまたいでターゲットにトラフィックを分散する
@@ -307,9 +303,7 @@ Deregistration Delay
 - **SNI**: 接続先ホスト名に応じて適切な証明書を選択する
 - **Deregistration Delay**: ターゲット削除前に処理中のリクエストを完了させる
 
----
-
-# English Summary
+## 🇺🇸 English Summary
 
 - **Sticky Sessions** keep a client connected to the same target.
 - **Cross-Zone Load Balancing** distributes traffic across targets in multiple AZs.
@@ -318,9 +312,7 @@ Deregistration Delay
 - **SNI** allows a load balancer to select the appropriate certificate for a hostname.
 - **Deregistration Delay** allows in-flight requests to finish before a target is removed.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -334,15 +326,3 @@ Deregistration Delay
 | Security Policy | セキュリティポリシー | 보안 정책 |
 | Deregistration Delay | 登録解除の遅延 | 등록 취소 지연 |
 | Connection Draining | コネクションドレイニング | 연결 드레이닝 |
-
----
-
-# Review Questions
-
-1. Sticky Session은 어떤 문제를 해결하는가?
-2. Cross-Zone Load Balancing이 비활성화되면 Traffic은 어떻게 분산되는가?
-3. ALB와 NLB의 Cross-Zone 기본 설정은 어떻게 다른가?
-4. ACM의 역할은 무엇인가?
-5. SNI와 ALB Host-based Routing의 역할 차이는 무엇인가?
-6. ALB와 NLB에서 TLS를 사용하는 Listener는 각각 어떤 프로토콜을 사용하는가?
-7. Deregistration Delay가 필요한 이유는 무엇인가?

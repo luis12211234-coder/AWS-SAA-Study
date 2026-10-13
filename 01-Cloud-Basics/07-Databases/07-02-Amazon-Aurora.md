@@ -1,6 +1,6 @@
-# Amazon Aurora
+# 📘 07-02. Amazon Aurora
 
-## 1. 개요
+## 🇰🇷 1. 개요
 
 **Amazon Aurora**는 AWS가 자체 개발한 클라우드 네이티브 관계형 데이터베이스이다.
 
@@ -22,9 +22,7 @@ Aurora MySQL-Compatible
 
 Aurora는 일반적인 RDS보다 성능, 가용성, 확장성 측면에서 클라우드 환경에 최적화되어 있다.
 
----
-
-# 2. Aurora Architecture
+## 🇰🇷 2. Aurora Architecture
 
 Aurora의 가장 중요한 특징 중 하나는 **Compute와 Storage가 분리되어 있다는 것**이다.
 
@@ -54,9 +52,7 @@ Storage
 → Shared Distributed Storage
 ```
 
----
-
-# 3. Aurora Storage
+## 🇰🇷 3. Aurora Storage
 
 Aurora Storage는 자동으로 확장된다.
 
@@ -72,9 +68,7 @@ Up to 256 TB
 
 사용자가 Storage 크기를 지속적으로 수동 관리할 필요가 없다.
 
----
-
-## 3.1 Six Copies Across Three AZs
+### 3.1 Six Copies Across Three AZs
 
 Aurora는 데이터를 **3개의 Availability Zone에 걸쳐 6개의 복사본**으로 저장한다.
 
@@ -87,7 +81,7 @@ Copy        Copy        Copy
 Total = 6 Copies
 ```
 
-### Write
+#### Write
 
 Write 작업에는 6개 중 4개의 복사본이 필요하다.
 
@@ -96,7 +90,7 @@ Write
 → 4 / 6 Copies
 ```
 
-### Read
+#### Read
 
 Read 작업에는 6개 중 3개의 복사본이 필요하다.
 
@@ -107,9 +101,7 @@ Read
 
 이 구조를 통해 하나의 AZ에 장애가 발생해도 높은 가용성을 유지할 수 있다.
 
----
-
-## 3.2 Self-Healing Storage
+### 3.2 Self-Healing Storage
 
 Aurora Storage는 손상된 데이터 블록을 다른 정상 복사본을 이용해 자동 복구할 수 있다.
 
@@ -123,7 +115,7 @@ Self Healing
 
 Storage는 여러 볼륨에 분산되어 관리된다.
 
-### 시험 핵심
+#### 시험 핵심
 
 ```text
 Aurora Storage
@@ -135,9 +127,7 @@ Aurora Storage
 → Auto Scaling
 ```
 
----
-
-# 4. Writer and Reader Instances
+## 🇰🇷 4. Writer and Reader Instances
 
 Aurora Cluster에는 하나의 Writer Instance와 여러 Reader Instance가 존재할 수 있다.
 
@@ -151,7 +141,7 @@ Aurora Cluster에는 하나의 Writer Instance와 여러 Reader Instance가 존�
      Read    Read     Read
 ```
 
-### Writer
+#### Writer
 
 ```text
 Writer
@@ -161,7 +151,7 @@ Writer
 
 Storage에 Write를 수행하는 Instance이다.
 
-### Reader
+#### Reader
 
 ```text
 Reader
@@ -170,9 +160,7 @@ Reader
 
 강의/PDF 기준 최대 15개의 Aurora Read Replica를 사용할 수 있다.
 
----
-
-# 5. Automatic Failover
+## 🇰🇷 5. Automatic Failover
 
 Writer Instance에 장애가 발생하면 Reader 중 하나가 새로운 Writer로 승격될 수 있다.
 
@@ -192,7 +180,7 @@ New Writer
 
 강의에서는 Failover가 일반적으로 30초 이내에 이루어진다고 설명한다.
 
-### 핵심
+#### 핵심
 
 ```text
 Writer Failure
@@ -200,9 +188,7 @@ Writer Failure
 → Automatic Failover
 ```
 
----
-
-# 6. Aurora Endpoints
+## 🇰🇷 6. Aurora Endpoints
 
 Aurora Cluster에서는 Instance 주소를 직접 관리하는 대신 Endpoint를 사용할 수 있다.
 
@@ -212,9 +198,7 @@ Aurora Cluster에서는 Instance 주소를 직접 관리하는 대신 Endpoint�
 - Reader Endpoint
 - Custom Endpoint
 
----
-
-## 6.1 Writer Endpoint
+### 6.1 Writer Endpoint
 
 Writer Endpoint는 항상 현재 Writer Instance를 가리킨다.
 
@@ -234,9 +218,7 @@ Writer Endpoint
 → Read / Write
 ```
 
----
-
-## 6.2 Reader Endpoint
+### 6.2 Reader Endpoint
 
 Reader Endpoint는 Aurora Reader Instances에 대한 연결을 분산한다.
 
@@ -264,7 +246,7 @@ Connection 2
 → Reader 3
 ```
 
-### 시험 핵심
+#### 시험 핵심
 
 ```text
 Writer Endpoint
@@ -275,9 +257,7 @@ Reader Endpoint
 → Connection-level Load Balancing
 ```
 
----
-
-# 7. Aurora Replica Auto Scaling
+## 🇰🇷 7. Aurora Replica Auto Scaling
 
 읽기 요청이 증가하면 Reader Instance의 CPU와 Connection 사용량이 증가할 수 있다.
 
@@ -309,7 +289,7 @@ Auto Scaling Policy에서는 다음과 같은 Metric을 사용할 수 있다.
 - Average CPU Utilization
 - Average Database Connections
 
-### 시험 핵심
+#### 시험 핵심
 
 ```text
 High Read Load
@@ -319,9 +299,7 @@ Automatically add Aurora Readers
 → Aurora Replica Auto Scaling
 ```
 
----
-
-# 8. Custom Endpoint
+## 🇰🇷 8. Custom Endpoint
 
 Custom Endpoint는 Aurora Replica 중 **특정한 Instance들의 부분집합**을 하나의 Endpoint로 묶는 기능이다.
 
@@ -352,7 +330,7 @@ Analytics Custom Endpoint
 
 와 같이 구성할 수 있다.
 
-### 차이
+#### 차이
 
 ```text
 Reader Endpoint
@@ -362,7 +340,7 @@ Custom Endpoint
 → 선택한 Reader subset
 ```
 
-### 대표적인 사용 사례
+#### 대표적인 사용 사례
 
 ```text
 Heavy Analytics Query
@@ -370,9 +348,7 @@ Heavy Analytics Query
 → Custom Endpoint
 ```
 
----
-
-# 9. Aurora Serverless
+## 🇰🇷 9. Aurora Serverless
 
 Aurora Serverless는 실제 Database 사용량에 따라 Compute Capacity를 자동으로 조절한다.
 
@@ -393,7 +369,7 @@ Maximum ACU
 
 사용량에 따라 Database Capacity가 자동으로 증가하거나 감소한다.
 
-### 적합한 Workload
+#### 적합한 Workload
 
 - Infrequent
 - Intermittent
@@ -409,9 +385,7 @@ Aurora Serverless
 
 Capacity Planning이 필요하지 않으며 실제 사용량에 따라 비용을 지불한다.
 
----
-
-# 10. Replica Auto Scaling vs Aurora Serverless
+## 🇰🇷 10. Replica Auto Scaling vs Aurora Serverless
 
 두 기능은 서로 다른 대상을 Scale한다.
 
@@ -423,7 +397,7 @@ Aurora Serverless
 → Compute Capacity 조절
 ```
 
-### 기억하기
+#### 기억하기
 
 ```text
 Replica Auto Scaling
@@ -433,9 +407,7 @@ Serverless
 = 얼마나 강하게?
 ```
 
----
-
-# 11. Aurora Global Database
+## 🇰🇷 11. Aurora Global Database
 
 Aurora Global Database는 여러 AWS Region에 걸쳐 Aurora Database를 구성한다.
 
@@ -451,9 +423,7 @@ Read Only
 
 Primary Region에서 Write가 수행되고 Secondary Region에서는 Read workload를 처리할 수 있다.
 
----
-
-## 11.1 Global Database Architecture
+### 11.1 Global Database Architecture
 
 ```text
 us-east-1
@@ -477,11 +447,9 @@ PDF 기준:
 - Typical Cross-Region Replication < 1 second
 - Secondary Region Promotion RTO < 1 minute
 
----
+### 11.2 Global Aurora Use Cases
 
-## 11.2 Global Aurora Use Cases
-
-### Global Read Performance
+#### Global Read Performance
 
 전 세계 사용자들이 가까운 Secondary Region에서 데이터를 읽을 수 있다.
 
@@ -493,7 +461,7 @@ Nearest Aurora Region
 Lower Read Latency
 ```
 
-### Disaster Recovery
+#### Disaster Recovery
 
 Primary Region에 장애가 발생하면 Secondary Region을 새로운 Primary Region으로 Promote할 수 있다.
 
@@ -505,7 +473,7 @@ Promote Secondary Region
 New Read / Write Region
 ```
 
-### 시험 핵심
+#### 시험 핵심
 
 다음 표현이 나오면 Aurora Global Database를 고려한다.
 
@@ -518,9 +486,7 @@ Disaster Recovery
 Region Failover
 ```
 
----
-
-# 12. Aurora Machine Learning
+## 🇰🇷 12. Aurora Machine Learning
 
 Aurora는 AWS Machine Learning 서비스와 직접 통합할 수 있다.
 
@@ -549,28 +515,28 @@ Amazon Aurora
 Application
 ```
 
-### SageMaker
+#### SageMaker
 
 ```text
 SageMaker
 → General Machine Learning Models
 ```
 
-### Amazon Comprehend
+#### Amazon Comprehend
 
 ```text
 Comprehend
 → Sentiment Analysis
 ```
 
-### 대표 Use Cases
+#### 대표 Use Cases
 
 - Fraud Detection
 - Advertisement Targeting
 - Sentiment Analysis
 - Product Recommendations
 
-### 시험 핵심
+#### 시험 핵심
 
 ```text
 Aurora
@@ -582,9 +548,7 @@ SageMaker / Comprehend
 → Aurora Machine Learning
 ```
 
----
-
-# 13. Backtrack
+## 🇰🇷 13. Backtrack
 
 Aurora Backtrack을 사용하면 Backup Restore 없이 Database를 과거 시점으로 되돌릴 수 있다.
 
@@ -604,7 +568,7 @@ Current
 → Yesterday 5 PM
 ```
 
-### 핵심
+#### 핵심
 
 ```text
 Aurora Backtrack
@@ -612,9 +576,7 @@ Aurora Backtrack
 → Without restoring from backup
 ```
 
----
-
-# 14. Aurora Standard vs I/O-Optimized
+## 🇰🇷 14. Aurora Standard vs I/O-Optimized
 
 Aurora Cluster Storage Configuration에는 다음과 같은 옵션이 있다.
 
@@ -630,9 +592,7 @@ Read와 Write I/O가 많은 workload에서는 I/O-Optimized가 적합할 수 있
 
 시험에서는 세부 가격 구조보다 **I/O-intensive workload를 위한 별도 옵션이 존재한다**는 정도를 이해하면 된다.
 
----
-
-# 15. Aurora 실습에서 확인할 것
+## 🇰🇷 15. Aurora 실습에서 확인할 것
 
 실습에서 중요한 것은 콘솔 클릭 순서를 암기하는 것이 아니다.
 
@@ -665,9 +625,7 @@ Aurora Cluster
 
 Aurora 생성에는 비용이 발생할 수 있으므로 시험 학습을 위해 반드시 직접 생성할 필요는 없다.
 
----
-
-# 16. Aurora 전체 구조
+## 🇰🇷 16. Aurora 전체 구조
 
 ```text
                        Application
@@ -712,9 +670,7 @@ Other Regions
 Aurora Global Database
 ```
 
----
-
-# 17. 시험 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 Aurora
@@ -786,11 +742,31 @@ Aurora Machine Learning
 → ML Prediction through SQL
 ```
 
----
+## 📝 Review Questions
 
-# 日本語まとめ
+1. Aurora와 일반 RDS MySQL의 가장 중요한 구조적 차이는 무엇인가?
 
-## Amazon Aurora
+2. Aurora Storage가 3개의 AZ에 6개의 Copy를 저장하는 이유는 무엇인가?
+
+3. Aurora의 Write에는 6개 Copy 중 몇 개가 필요하고 Read에는 몇 개가 필요한가?
+
+4. Writer Endpoint와 Reader Endpoint의 역할 차이는 무엇인가?
+
+5. Reader Endpoint의 Load Balancing은 SQL Statement Level인가, Connection Level인가?
+
+6. Replica Auto Scaling과 Aurora Serverless의 차이는 무엇인가?
+
+7. 특정 고성능 Aurora Reader들만 Analytics workload에 사용하려면 어떤 기능을 사용할 수 있는가?
+
+8. 전 세계 사용자에게 낮은 Read Latency를 제공하고 Region 장애에 대비하려면 어떤 Aurora 기능이 적합한가?
+
+9. Aurora Global Database의 Cross-Region replication 지연시간이 1초 미만이라는 표현이 나오면 어떤 기능을 떠올려야 하는가?
+
+10. SQL을 통해 SageMaker 또는 Comprehend의 예측 결과를 사용하려면 어떤 기능을 사용할 수 있는가?
+
+## 🇯🇵 日本語 Summary
+
+### Amazon Aurora
 
 Amazon Aurora は AWS が独自に開発したクラウドネイティブなリレーショナルデータベースである。
 
@@ -803,9 +779,7 @@ Aurora
 → PostgreSQL Compatible
 ```
 
----
-
-## Storage Architecture
+### Storage Architecture
 
 Aurora は Compute と Storage を分離している。
 
@@ -821,9 +795,7 @@ Read
 
 Storage は自動拡張と Self-Healing を提供する。
 
----
-
-## Writer / Reader
+### Writer / Reader
 
 ```text
 Writer
@@ -835,9 +807,7 @@ Reader
 
 Writer に障害が発生すると Reader の1つが新しい Writer に昇格できる。
 
----
-
-## Endpoints
+### Endpoints
 
 ```text
 Writer Endpoint
@@ -852,9 +822,7 @@ Custom Endpoint
 
 Reader Endpoint の Load Balancing は Connection Level で行われる。
 
----
-
-## Replica Auto Scaling
+### Replica Auto Scaling
 
 読み取り負荷が増加すると Aurora Replica を自動的に追加できる。
 
@@ -864,9 +832,7 @@ Read Load ↑
 → Reader 増加
 ```
 
----
-
-## Aurora Serverless
+### Aurora Serverless
 
 Aurora Serverless は実際の利用量に基づいて Compute Capacity を自動調整する。
 
@@ -877,9 +843,7 @@ Unpredictable Workload
 
 Capacity Planning が不要である。
 
----
-
-## Aurora Global Database
+### Aurora Global Database
 
 Global Database は複数の AWS Region に Aurora を展開する。
 
@@ -893,9 +857,7 @@ Secondary Region
 
 PDF 기준으로 최대 10개의 Secondary Region을 사용할 수 있으며 일반적인 Cross-Region Replication은 1초 미만이다.
 
----
-
-## Aurora Machine Learning
+### Aurora Machine Learning
 
 Aurora는 다음 서비스와 통합할 수 있다.
 
@@ -904,19 +866,15 @@ Aurora는 다음 서비스와 통합할 수 있다.
 
 SQL을 통해 Machine Learning Prediction을 Application에 제공할 수 있다.
 
----
+## 🇺🇸 English Summary
 
-# English Summary
-
-## Amazon Aurora
+### Amazon Aurora
 
 Amazon Aurora is an AWS proprietary cloud-native relational database compatible with MySQL and PostgreSQL.
 
 Aurora separates compute and storage.
 
----
-
-## Storage
+### Storage
 
 Aurora stores six copies of data across three Availability Zones.
 
@@ -930,9 +888,7 @@ Reads
 
 The storage layer is self-healing and automatically scales.
 
----
-
-## Writer and Readers
+### Writer and Readers
 
 ```text
 Writer
@@ -944,9 +900,7 @@ Reader
 
 If the Writer fails, a Reader can be promoted to become the new Writer.
 
----
-
-## Endpoints
+### Endpoints
 
 ```text
 Writer Endpoint
@@ -961,9 +915,7 @@ Custom Endpoint
 
 Reader Endpoint load balancing works at the connection level.
 
----
-
-## Replica Auto Scaling
+### Replica Auto Scaling
 
 Aurora can automatically add or remove Read Replicas based on read workload.
 
@@ -972,17 +924,13 @@ High Read Load
 → Replica Auto Scaling
 ```
 
----
-
-## Aurora Serverless
+### Aurora Serverless
 
 Aurora Serverless automatically adjusts database compute capacity based on actual usage.
 
 It is useful for infrequent, intermittent, or unpredictable workloads where capacity planning is difficult.
 
----
-
-## Aurora Global Database
+### Aurora Global Database
 
 Aurora Global Database provides cross-region replication.
 
@@ -1001,9 +949,7 @@ According to the course PDF:
 - Typical replication below one second
 - Region promotion RTO below one minute
 
----
-
-## Aurora Machine Learning
+### Aurora Machine Learning
 
 Aurora integrates with:
 
@@ -1012,9 +958,7 @@ Aurora integrates with:
 
 Applications can request ML-based predictions through SQL queries.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -1044,27 +988,3 @@ Applications can request ML-based predictions through SQL queries.
 | Amazon Comprehend | Amazon Comprehend | 아마존 컴프리헨드 |
 | Backtrack | バックトラック | 백트랙 |
 | I/O-Optimized | I/O 最適化 | I/O 최적화 |
-
----
-
-# Review Questions
-
-1. Aurora와 일반 RDS MySQL의 가장 중요한 구조적 차이는 무엇인가?
-
-2. Aurora Storage가 3개의 AZ에 6개의 Copy를 저장하는 이유는 무엇인가?
-
-3. Aurora의 Write에는 6개 Copy 중 몇 개가 필요하고 Read에는 몇 개가 필요한가?
-
-4. Writer Endpoint와 Reader Endpoint의 역할 차이는 무엇인가?
-
-5. Reader Endpoint의 Load Balancing은 SQL Statement Level인가, Connection Level인가?
-
-6. Replica Auto Scaling과 Aurora Serverless의 차이는 무엇인가?
-
-7. 특정 고성능 Aurora Reader들만 Analytics workload에 사용하려면 어떤 기능을 사용할 수 있는가?
-
-8. 전 세계 사용자에게 낮은 Read Latency를 제공하고 Region 장애에 대비하려면 어떤 Aurora 기능이 적합한가?
-
-9. Aurora Global Database의 Cross-Region replication 지연시간이 1초 미만이라는 표현이 나오면 어떤 기능을 떠올려야 하는가?
-
-10. SQL을 통해 SageMaker 또는 Comprehend의 예측 결과를 사용하려면 어떤 기능을 사용할 수 있는가?

@@ -1,6 +1,6 @@
-# Amazon EFS (Elastic File System)
+# 📘 05-08. Amazon EFS (Elastic File System)
 
-## Overview
+## 🇰🇷 1. Overview
 
 **Amazon EFS (Elastic File System)**는
 AWS에서 제공하는 Managed NFS File System이다.
@@ -27,9 +27,7 @@ Automatic Scaling
 Pay per Use
 ```
 
----
-
-# 1. EFS Architecture
+## 🇰🇷 2. EFS Architecture
 
 EFS는 Network File System이며
 NFSv4.1 Protocol을 사용한다.
@@ -54,9 +52,7 @@ Data Sharing
 WordPress
 ```
 
----
-
-# 2. EFS vs EBS
+## 🇰🇷 3. EFS vs EBS
 
 EBS는 Block Storage이고
 일반적으로 EC2 Instance 중심으로 사용한다.
@@ -83,9 +79,7 @@ EFS
 → Shared Network File System
 ```
 
----
-
-# 3. Linux and POSIX
+## 🇰🇷 4. Linux and POSIX
 
 EFS는 Linux 기반 AMI와 호환되며
 POSIX File System을 제공한다.
@@ -101,9 +95,7 @@ Windows
 Windows Network File System이 필요하다면
 Amazon FSx for Windows File Server와 같은 서비스를 고려한다.
 
----
-
-# 4. Automatic Scaling
+## 🇰🇷 5. Automatic Scaling
 
 EFS는 File System의 용량을
 미리 Provision할 필요가 없다.
@@ -122,11 +114,9 @@ No Capacity Planning
 Pay per Use
 ```
 
----
+## 🇰🇷 6. Availability Options
 
-# 5. Availability Options
-
-## Regional
+### Regional
 
 여러 Availability Zone에 걸쳐
 EFS를 사용할 수 있다.
@@ -147,7 +137,7 @@ High Availability
 High Durability
 ```
 
-## One Zone
+### One Zone
 
 하나의 Availability Zone에만
 File System을 배치한다.
@@ -165,9 +155,7 @@ Development
 Cost-sensitive workloads
 ```
 
----
-
-# 6. Mount Targets
+## 🇰🇷 7. Mount Targets
 
 Regional EFS는 VPC 내부의
 Availability Zone마다 Mount Target을 구성할 수 있다.
@@ -184,9 +172,7 @@ EFS
 Mount Target은 EC2 Instance가
 EFS에 접근하기 위한 Network Endpoint 역할을 한다.
 
----
-
-# 7. Security Groups
+## 🇰🇷 8. Security Groups
 
 EFS 접근은 Security Group으로 제어한다.
 
@@ -220,9 +206,7 @@ Check Security Group
 TCP 2049
 ```
 
----
-
-# 8. Encryption
+## 🇰🇷 9. Encryption
 
 EFS는 AWS KMS를 이용하여
 Encryption at Rest를 활성화할 수 있다.
@@ -235,13 +219,11 @@ AWS KMS
 Encrypted Data at Rest
 ```
 
----
-
-# 9. Performance Modes
+## 🇰🇷 10. Performance Modes
 
 EFS의 Performance Mode에는 다음 옵션이 있다.
 
-## General Purpose
+### General Purpose
 
 Default Mode이다.
 
@@ -253,7 +235,7 @@ CMS
 General Applications
 ```
 
-## Max I/O
+### Max I/O
 
 더 높은 Parallelism과 Throughput을 제공하지만
 Latency가 증가할 수 있다.
@@ -267,11 +249,9 @@ Big Data
 Media Processing
 ```
 
----
+## 🇰🇷 11. Throughput Modes
 
-# 10. Throughput Modes
-
-## Bursting
+### Bursting
 
 Storage 사용량을 기준으로
 Throughput이 확장된다.
@@ -281,7 +261,7 @@ More Storage
 → More Throughput
 ```
 
-## Elastic
+### Elastic
 
 Workload에 따라 Throughput을
 자동으로 확장하거나 축소한다.
@@ -292,7 +272,7 @@ Unpredictable Workload
 Elastic Throughput
 ```
 
-## Provisioned
+### Provisioned
 
 필요한 Throughput을
 직접 지정한다.
@@ -316,14 +296,12 @@ Storage-based Throughput
 → Bursting
 ```
 
----
-
-# 11. Storage Classes
+## 🇰🇷 12. Storage Classes
 
 EFS는 Access Frequency에 따라
 여러 Storage Class를 제공한다.
 
-## Standard
+### Standard
 
 자주 접근하는 File.
 
@@ -332,7 +310,7 @@ Frequently Accessed
 → Standard
 ```
 
-## EFS-IA
+### EFS-IA
 
 자주 접근하지 않는 File.
 
@@ -342,7 +320,7 @@ Infrequent Access
 → Retrieval Cost
 ```
 
-## Archive
+### Archive
 
 거의 접근하지 않는 File.
 
@@ -351,9 +329,7 @@ Rarely Accessed
 → Archive
 ```
 
----
-
-# 12. Lifecycle Management
+## 🇰🇷 13. Lifecycle Management
 
 Lifecycle Policy를 이용하면
 파일의 Access Pattern에 따라 Storage Class를 자동 변경할 수 있다.
@@ -375,9 +351,7 @@ Archive
 필요한 경우 다시 접근했을 때
 Standard로 이동하도록 설정할 수도 있다.
 
----
-
-# 13. Hands-On
+## 🇰🇷 14. Hands-On
 
 이번 실습에서는 Regional EFS를 생성하고
 서로 다른 Availability Zone의 EC2 Instance 두 개에 Mount했다.
@@ -441,9 +415,34 @@ Instance B
 File Copy나 Synchronization이 아니라
 두 Instance가 동일한 Shared File System을 Mount하고 있는 것이다.
 
----
+## 🇰🇷 15. Summary
 
-# Exam Notes
+```text
+Amazon EFS
+= Managed NFS
+= Shared Linux File System
+= Multi-AZ
+= Multiple EC2
+```
+
+핵심 암기:
+
+```text
+EBS
+→ Block Storage
+
+EFS
+→ Shared File Storage
+```
+
+그리고:
+
+```text
+EFS
+→ NFS TCP 2049
+```
+
+## 🎯 Exam Notes
 
 가장 중요한 EFS 특징:
 
@@ -502,38 +501,49 @@ Rarely Accessed
 → Archive
 ```
 
----
+## 📝 Review Questions
 
-# Summary
+#### Q1. Amazon EFS란?
 
-```text
-Amazon EFS
-= Managed NFS
-= Shared Linux File System
-= Multi-AZ
-= Multiple EC2
-```
+AWS가 제공하는 Managed NFS File System이다.
 
-핵심 암기:
+#### Q2. 서로 다른 AZ의 여러 EC2가 같은 EFS를 사용할 수 있는가?
+
+가능하다.
+
+#### Q3. EFS는 어떤 OS 계열과 주로 호환되는가?
 
 ```text
-EBS
-→ Block Storage
-
-EFS
-→ Shared File Storage
+Linux
 ```
 
-그리고:
+#### Q4. EFS에서 사용하는 NFS Port는?
 
 ```text
-EFS
-→ NFS TCP 2049
+TCP 2049
 ```
 
----
+#### Q5. Production 환경에서 적합한 EFS 유형은?
 
-# Japanese Summary
+```text
+Regional
+```
+
+#### Q6. 예측하기 어려운 Workload에 적합한 Throughput Mode는?
+
+```text
+Elastic
+```
+
+#### Q7. 자주 접근하지 않는 파일의 비용을 줄이기 위해 사용하는 기능은?
+
+```text
+EFS Storage Classes
++
+Lifecycle Management
+```
+
+## 🇯🇵 日本語 Summary
 
 **Amazon EFS (Elastic File System)**は、
 AWSが提供するManaged NFS File Systemです。
@@ -564,9 +574,7 @@ Lifecycle Policyを利用して
 Standard、IA、ArchiveなどのStorage Class間で
 Fileを自動的に移動できます。
 
----
-
-# English Summary
+## 🇺🇸 English Summary
 
 **Amazon EFS (Elastic File System)** is a managed NFS file system.
 
@@ -590,9 +598,7 @@ while One Zone is a lower-cost option.
 Lifecycle policies can automatically move files
 between Standard, IA, and Archive storage classes.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -611,47 +617,3 @@ between Standard, IA, and Archive storage classes.
 | Elastic Throughput | エラスティックスループット | 워크로드에 따라 자동 조절되는 처리량 |
 | Provisioned Throughput | プロビジョンドスループット | 미리 지정한 처리량 |
 | Shared File System | 共有ファイルシステム | 여러 서버가 함께 사용하는 파일 시스템 |
-
----
-
-# Review Questions
-
-### Q1. Amazon EFS란?
-
-AWS가 제공하는 Managed NFS File System이다.
-
-### Q2. 서로 다른 AZ의 여러 EC2가 같은 EFS를 사용할 수 있는가?
-
-가능하다.
-
-### Q3. EFS는 어떤 OS 계열과 주로 호환되는가?
-
-```text
-Linux
-```
-
-### Q4. EFS에서 사용하는 NFS Port는?
-
-```text
-TCP 2049
-```
-
-### Q5. Production 환경에서 적합한 EFS 유형은?
-
-```text
-Regional
-```
-
-### Q6. 예측하기 어려운 Workload에 적합한 Throughput Mode는?
-
-```text
-Elastic
-```
-
-### Q7. 자주 접근하지 않는 파일의 비용을 줄이기 위해 사용하는 기능은?
-
-```text
-EFS Storage Classes
-+
-Lifecycle Management
-```

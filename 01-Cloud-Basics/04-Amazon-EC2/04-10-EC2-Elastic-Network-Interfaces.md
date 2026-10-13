@@ -1,8 +1,8 @@
-# EC2 Elastic Network Interfaces (ENI)
+# 📘 04-10. EC2 Elastic Network Interfaces (ENI)
 
-## Overview
+## 🇰🇷 1. Overview
 
-**ENI (Elastic Network Interface)** 는  
+**ENI (Elastic Network Interface)** 는
 VPC 내부에서 사용하는 **논리적인 네트워크 인터페이스**이다.
 
 쉽게 말하면:
@@ -15,7 +15,7 @@ ENI
 
 EC2 Instance가 네트워크와 통신하려면 ENI가 필요하다.
 
-일반적으로 EC2 Instance를 생성하면  
+일반적으로 EC2 Instance를 생성하면
 기본 네트워크 인터페이스인 **Primary ENI**가 함께 생성된다.
 
 ```text
@@ -30,9 +30,7 @@ Primary ENI (eth0)
      └─ MAC Address
 ```
 
----
-
-# 1. ENI Attributes
+## 🇰🇷 2. ENI Attributes
 
 ENI는 다음과 같은 네트워크 속성을 가질 수 있다.
 
@@ -47,12 +45,10 @@ ENI
 └─ MAC Address
 ```
 
-즉, ENI는 단순한 IP 주소 하나가 아니라  
+즉, ENI는 단순한 IP 주소 하나가 아니라
 **EC2의 네트워크 정체성을 구성하는 하나의 객체**라고 생각하면 된다.
 
----
-
-# 2. Primary Private IPv4
+## 🇰🇷 3. Primary Private IPv4
 
 ENI에는 기본적으로 하나의 **Primary Private IPv4**가 존재한다.
 
@@ -72,11 +68,9 @@ Primary ENI
 
 이 Private IP는 VPC 내부 통신에 사용된다.
 
----
+## 🇰🇷 4. Secondary Private IPv4
 
-# 3. Secondary Private IPv4
-
-ENI에는 Primary Private IPv4 외에도  
+ENI에는 Primary Private IPv4 외에도
 추가적인 **Secondary Private IPv4**를 할당할 수 있다.
 
 예:
@@ -94,11 +88,9 @@ Secondary Private IPv4
 
 하나의 Network Interface가 여러 Private IP를 사용할 수 있는 것이다.
 
----
+## 🇰🇷 5. ENI and Security Groups
 
-# 4. ENI and Security Groups
-
-Security Group은 EC2 자체에 직접 붙는다고 이해하기 쉽지만,  
+Security Group은 EC2 자체에 직접 붙는다고 이해하기 쉽지만,
 기술적으로는 **ENI에 연결된다.**
 
 ```text
@@ -120,12 +112,10 @@ ENI
 └─ SSH-SG
 ```
 
-결과적으로 해당 ENI를 통해 들어오고 나가는 트래픽에  
+결과적으로 해당 ENI를 통해 들어오고 나가는 트래픽에
 Security Group 규칙이 적용된다.
 
----
-
-# 5. ENI and Availability Zone
+## 🇰🇷 6. ENI and Availability Zone
 
 ENI는 **특정 Availability Zone에 종속된다.**
 
@@ -144,7 +134,7 @@ Availability Zone
 ENI
 ```
 
-Subnet은 하나의 AZ에 속하므로  
+Subnet은 하나의 AZ에 속하므로
 그 Subnet에 생성된 ENI 역시 해당 AZ에 속하게 된다.
 
 예:
@@ -171,16 +161,14 @@ DemoENI ───────X────▶
 → 다른 AZ로 직접 이동 불가
 ```
 
-따라서 ENI를 EC2 Instance 사이에서 이동시키려면  
+따라서 ENI를 EC2 Instance 사이에서 이동시키려면
 **같은 Availability Zone**이어야 한다.
 
----
-
-# 6. Primary ENI vs Secondary ENI
+## 🇰🇷 7. Primary ENI vs Secondary ENI
 
 EC2에는 기본 ENI와 추가 ENI가 존재할 수 있다.
 
-## Primary ENI
+### Primary ENI
 
 EC2 Instance를 생성할 때 기본적으로 생성되는 Network Interface이다.
 
@@ -204,12 +192,10 @@ Primary ENI
  └─ 10.0.1.10
 ```
 
-Primary ENI는 Instance의 기본 Network Interface이므로  
+Primary ENI는 Instance의 기본 Network Interface이므로
 Instance에서 일반적인 Secondary ENI처럼 Detach할 수 없다.
 
----
-
-## Secondary ENI
+### Secondary ENI
 
 사용자가 추가 ENI를 생성하여 EC2 Instance에 연결할 수도 있다.
 
@@ -240,9 +226,7 @@ Re-Attach
 
 이 특성을 이용하면 ENI를 다른 EC2 Instance로 이동시킬 수 있다.
 
----
-
-# 7. Creating an ENI
+## 🇰🇷 8. Creating an ENI
 
 EC2 Instance와 별도로 ENI를 직접 생성할 수 있다.
 
@@ -296,9 +280,7 @@ Available
 
 상태의 독립적인 Network Interface가 만들어진다.
 
----
-
-# 8. Attaching an ENI
+## 🇰🇷 9. Attaching an ENI
 
 생성한 ENI는 같은 Availability Zone의 EC2 Instance에 연결할 수 있다.
 
@@ -326,14 +308,12 @@ eth1
 
 처럼 여러 Network Interface를 가진 EC2가 된다.
 
-하나의 EC2에 연결할 수 있는 ENI 수는  
+하나의 EC2에 연결할 수 있는 ENI 수는
 **Instance Type에 따라 달라진다.**
 
----
+## 🇰🇷 10. Moving an ENI
 
-# 9. Moving an ENI
-
-Secondary ENI는 한 EC2에서 Detach한 후  
+Secondary ENI는 한 EC2에서 Detach한 후
 같은 AZ의 다른 EC2에 Attach할 수 있다.
 
 처음 상태:
@@ -343,7 +323,6 @@ EC2-A
  │
  └─ DemoENI
      └─ 10.0.1.50
-
 
 EC2-B
  │
@@ -385,12 +364,10 @@ EC2-B
     └─ 10.0.1.50
 ```
 
-즉, 단순히 설정을 다시 만드는 것이 아니라  
+즉, 단순히 설정을 다시 만드는 것이 아니라
 **Network Interface 자체를 이동시킬 수 있다.**
 
----
-
-# 10. ENI Failover
+## 🇰🇷 11. ENI Failover
 
 ENI의 중요한 활용 사례 중 하나가 **Failover**이다.
 
@@ -409,7 +386,7 @@ DemoENI
 EC2-A
 ```
 
-EC2-A에 장애가 발생하면  
+EC2-A에 장애가 발생하면
 Secondary ENI를 EC2-A에서 분리하고 EC2-B에 연결할 수 있다.
 
 ```text
@@ -423,7 +400,7 @@ DemoENI
 EC2-B
 ```
 
-이렇게 하면 DemoENI가 가지고 있던  
+이렇게 하면 DemoENI가 가지고 있던
 Private IP와 Network Interface 구성을 새로운 EC2에서 사용할 수 있다.
 
 핵심:
@@ -440,14 +417,12 @@ Private IP / Network Identity 이동
 Failover
 ```
 
----
+## 🇰🇷 12. ENI Lifecycle
 
-# 11. ENI Lifecycle
-
-ENI는 EC2와 별도로 생성할 수 있는  
+ENI는 EC2와 별도로 생성할 수 있는
 **독립적인 VPC Resource**이다.
 
-따라서 EC2 Instance와 ENI의 Lifecycle이  
+따라서 EC2 Instance와 ENI의 Lifecycle이
 항상 완전히 동일한 것은 아니다.
 
 강의 실습에서는:
@@ -484,7 +459,7 @@ DemoENI Remains
 Delete on termination
 ```
 
-이 설정은 EC2 Instance가 종료될 때  
+이 설정은 EC2 Instance가 종료될 때
 연결된 ENI를 함께 삭제할 것인지 결정한다.
 
 ```text
@@ -518,11 +493,9 @@ ENI는 EC2와 독립적인 Lifecycle을 가질 수 있다.
 
 라고 이해하는 것이 정확하다.
 
----
+## 🇰🇷 13. Force Detach
 
-# 12. Force Detach
-
-Secondary ENI가 정상적으로 Detach되지 않는 경우  
+Secondary ENI가 정상적으로 Detach되지 않는 경우
 Force Detach 기능을 사용할 수 있다.
 
 ```text
@@ -533,18 +506,16 @@ Force Detach
 → Last Resort
 ```
 
-Force Detach는 정상적인 분리가 실패했을 때 사용하는  
+Force Detach는 정상적인 분리가 실패했을 때 사용하는
 예외적인 방법으로 이해하면 된다.
 
 일반적인 상황에서는 정상적인 Detach를 우선 사용한다.
 
----
-
-# 13. ENI vs Elastic IP
+## 🇰🇷 14. ENI vs Elastic IP
 
 ENI와 Elastic IP는 서로 다른 개념이다.
 
-## ENI
+### ENI
 
 ```text
 ENI
@@ -561,9 +532,7 @@ MAC Address
 Public IPv4 / Elastic IP association
 ```
 
----
-
-## Elastic IP
+### Elastic IP
 
 ```text
 Elastic IP
@@ -608,9 +577,7 @@ Network Interface Failover
 ENI
 ```
 
----
-
-# 14. ENI Hands-On Flow
+## 🇰🇷 15. ENI Hands-On Flow
 
 이번 실습의 전체 흐름:
 
@@ -659,9 +626,50 @@ Network Resource이다.
 
 라는 점을 이해하는 것이다.
 
----
+## 🇰🇷 16. Summary
 
-# 15. Practical Example
+```text
+ENI
+= AWS Virtual Network Card
+```
+
+ENI는:
+
+- VPC 내부의 Logical Network Interface
+- Primary / Secondary Private IPv4를 가질 수 있음
+- Public IPv4 / Elastic IP와 연결될 수 있음
+- Security Group을 가질 수 있음
+- MAC Address를 가짐
+- EC2와 독립적으로 생성 가능
+- Secondary ENI는 Detach / Attach 가능
+- 같은 AZ의 다른 EC2로 이동 가능
+- Failover에 활용 가능
+- 특정 Availability Zone에 종속됨
+- Delete on termination에 따라 EC2 종료 시 삭제 여부가 달라질 수 있음
+
+가장 중요한 그림:
+
+```text
+EC2-A
+ │
+ └─ ENI
+     └─ Private IP
+
+       ↓ Move
+
+EC2-B
+ │
+ └─ ENI
+     └─ Same Private IP
+```
+
+한 줄 암기:
+
+```text
+ENI = 이동 가능한 AWS 가상 랜카드
+```
+
+## 🎯 Exam Notes
 
 두 개의 EC2가 같은 애플리케이션을 실행한다고 가정한다.
 
@@ -710,14 +718,10 @@ DemoENI
 EC2-B
 ```
 
-이렇게 하면 새로운 EC2에서도  
+이렇게 하면 새로운 EC2에서도
 동일한 ENI와 Private IP를 사용할 수 있다.
 
----
-
-# 16. Exam Notes
-
-## ENI Definition
+### ENI Definition
 
 ```text
 ENI
@@ -726,9 +730,7 @@ ENI
 = Virtual Network Card
 ```
 
----
-
-## ENI Attributes
+### ENI Attributes
 
 ```text
 Primary Private IPv4
@@ -739,9 +741,7 @@ Security Group(s)
 MAC Address
 ```
 
----
-
-## Availability Zone
+### Availability Zone
 
 ```text
 ENI
@@ -756,9 +756,7 @@ Different AZ
 → ENI 직접 이동 불가
 ```
 
----
-
-## Primary vs Secondary
+### Primary vs Secondary
 
 ```text
 Primary ENI
@@ -774,9 +772,7 @@ Secondary ENI
 → 같은 AZ의 다른 EC2에 Attach 가능
 ```
 
----
-
-## Failover
+### Failover
 
 문제에서 다음 표현이 나오면 ENI를 떠올린다.
 
@@ -794,9 +790,7 @@ Same Availability Zone
 Elastic Network Interface (ENI)
 ```
 
----
-
-## ENI vs Elastic IP
+### ENI vs Elastic IP
 
 ```text
 고정 Public IPv4
@@ -814,58 +808,68 @@ ENI
 = 랜카드
 ```
 
----
+## 📝 Review Questions
 
-# 17. Summary
+#### Q1. ENI란 무엇인가?
+
+VPC 내부에서 사용하는 논리적인 Network Interface이며,
+쉽게 말하면 AWS의 Virtual Network Card이다.
+
+#### Q2. ENI가 가질 수 있는 주요 속성은?
+
+Primary / Secondary Private IPv4, Public IPv4, Elastic IP association,
+Security Groups, MAC Address 등이 있다.
+
+#### Q3. ENI는 EC2와 별도로 생성할 수 있는가?
+
+가능하다.
+
+#### Q4. Secondary ENI를 다른 EC2로 이동할 수 있는가?
+
+가능하다.
+단, 대상 EC2가 **같은 Availability Zone**에 있어야 한다.
+
+#### Q5. Primary ENI도 다른 EC2로 이동할 수 있는가?
+
+Primary ENI는 일반적인 Secondary ENI처럼 Detach할 수 없다.
+
+#### Q6. ENI를 다른 EC2로 이동하면 Private IP도 같이 이동하는가?
+
+ENI에 할당된 Private IP가 ENI와 함께 사용되므로
+같은 Private IP 기반의 Network Identity를 다른 EC2에서 사용할 수 있다.
+
+#### Q7. ENI를 Failover에 사용할 수 있는 이유는?
+
+Secondary ENI를 장애가 발생한 EC2에서 분리하고
+같은 AZ의 다른 EC2에 연결할 수 있기 때문이다.
+
+#### Q8. ENI와 Elastic IP의 차이는?
 
 ```text
 ENI
-= AWS Virtual Network Card
+= Virtual Network Card
+
+Elastic IP
+= Static Public IPv4 Address
 ```
 
-ENI는:
+#### Q9. ENI는 Availability Zone과 어떤 관계가 있는가?
 
-- VPC 내부의 Logical Network Interface
-- Primary / Secondary Private IPv4를 가질 수 있음
-- Public IPv4 / Elastic IP와 연결될 수 있음
-- Security Group을 가질 수 있음
-- MAC Address를 가짐
-- EC2와 독립적으로 생성 가능
-- Secondary ENI는 Detach / Attach 가능
-- 같은 AZ의 다른 EC2로 이동 가능
-- Failover에 활용 가능
-- 특정 Availability Zone에 종속됨
-- Delete on termination에 따라 EC2 종료 시 삭제 여부가 달라질 수 있음
+ENI는 특정 Subnet에 생성되고,
+Subnet은 특정 AZ에 속하기 때문에 ENI 역시 특정 AZ에 종속된다.
 
-가장 중요한 그림:
+#### Q10. EC2가 종료되면 ENI도 반드시 삭제되는가?
 
-```text
-EC2-A
- │
- └─ ENI
-     └─ Private IP
+항상 그런 것은 아니다.
 
-       ↓ Move
+ENI의 연결 및 `Delete on termination` 설정에 따라
+EC2 종료 후 ENI를 유지하도록 구성할 수 있다.
 
-EC2-B
- │
- └─ ENI
-     └─ Same Private IP
-```
+## 🇯🇵 日本語 Summary
 
-한 줄 암기:
+### Elastic Network Interface (ENI)
 
-```text
-ENI = 이동 가능한 AWS 가상 랜카드
-```
-
----
-
-# Japanese Summary
-
-## Elastic Network Interface (ENI)
-
-ENI（Elastic Network Interface）は、  
+ENI（Elastic Network Interface）は、
 VPC内で使用される**仮想ネットワークインターフェース**です。
 
 簡単に言えば：
@@ -886,7 +890,7 @@ ENIは以下の情報を持つことができます。
 
 ENIはEC2とは別に作成することができます。
 
-Secondary ENIはEC2からDetachし、  
+Secondary ENIはEC2からDetachし、
 同じAvailability Zoneにある別のEC2へAttachできます。
 
 ```text
@@ -917,11 +921,9 @@ Elastic IP
 = 固定Public IPv4
 ```
 
----
+## 🇺🇸 English Summary
 
-# English Summary
-
-## Elastic Network Interface (ENI)
+### Elastic Network Interface (ENI)
 
 An **Elastic Network Interface (ENI)** is a logical networking component in a VPC.
 
@@ -972,9 +974,7 @@ Elastic IP
 = Static Public IPv4 Address
 ```
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | Term | Meaning |
 |---|---|
@@ -992,62 +992,3 @@ Elastic IP
 | Failover | 장애 발생 시 다른 시스템으로 전환 |
 | Delete on termination | EC2 종료 시 연결된 ENI 삭제 여부 설정 |
 | Availability Zone | Region 내부의 독립적인 인프라 영역 |
-
----
-
-# Review Questions
-
-### Q1. ENI란 무엇인가?
-
-VPC 내부에서 사용하는 논리적인 Network Interface이며,  
-쉽게 말하면 AWS의 Virtual Network Card이다.
-
-### Q2. ENI가 가질 수 있는 주요 속성은?
-
-Primary / Secondary Private IPv4, Public IPv4, Elastic IP association,  
-Security Groups, MAC Address 등이 있다.
-
-### Q3. ENI는 EC2와 별도로 생성할 수 있는가?
-
-가능하다.
-
-### Q4. Secondary ENI를 다른 EC2로 이동할 수 있는가?
-
-가능하다.  
-단, 대상 EC2가 **같은 Availability Zone**에 있어야 한다.
-
-### Q5. Primary ENI도 다른 EC2로 이동할 수 있는가?
-
-Primary ENI는 일반적인 Secondary ENI처럼 Detach할 수 없다.
-
-### Q6. ENI를 다른 EC2로 이동하면 Private IP도 같이 이동하는가?
-
-ENI에 할당된 Private IP가 ENI와 함께 사용되므로  
-같은 Private IP 기반의 Network Identity를 다른 EC2에서 사용할 수 있다.
-
-### Q7. ENI를 Failover에 사용할 수 있는 이유는?
-
-Secondary ENI를 장애가 발생한 EC2에서 분리하고  
-같은 AZ의 다른 EC2에 연결할 수 있기 때문이다.
-
-### Q8. ENI와 Elastic IP의 차이는?
-
-```text
-ENI
-= Virtual Network Card
-
-Elastic IP
-= Static Public IPv4 Address
-```
-
-### Q9. ENI는 Availability Zone과 어떤 관계가 있는가?
-
-ENI는 특정 Subnet에 생성되고,  
-Subnet은 특정 AZ에 속하기 때문에 ENI 역시 특정 AZ에 종속된다.
-
-### Q10. EC2가 종료되면 ENI도 반드시 삭제되는가?
-
-항상 그런 것은 아니다.
-
-ENI의 연결 및 `Delete on termination` 설정에 따라  
-EC2 종료 후 ENI를 유지하도록 구성할 수 있다.

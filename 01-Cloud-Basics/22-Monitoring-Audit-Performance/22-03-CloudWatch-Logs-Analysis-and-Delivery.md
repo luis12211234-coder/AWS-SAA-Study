@@ -145,7 +145,7 @@ DemoLogGroup → DemoLogStream → hello world 이벤트 수집
 - 많은 로그가 들어오면 Live Tail 화면 표시가 샘플링될 수 있으므로 전체 건수 감사에는 적합하지 않다.
 - 2026 AWS 요금표 예시: **월 1,800분 무료**, 초과 시 미국 요금 예시 **$0.01/분**. 불필요한 세션은 중지한다. 가격·Free Tier 적용 조건은 확인 필요.
 
-## 🎯 Exam Decision Table
+## 🎯 Exam Notes
 
 | 키워드 | 정답 |
 |---|---|
@@ -213,7 +213,19 @@ DemoLogGroup → DemoLogStream → hello world 이벤트 수집
 | Q12 | **D** | CreateExportTask는 지정 시간 범위의 과거 로그를 S3로 배치 내보내기 한다. 준실시간 전달에는 구독 필터가 적합하다. |
 | Q13 | **A** | Live Tail은 수집되는 새 로그를 거의 실시간으로 화면에 표시한다. 필요 없으면 세션을 종료해 사용 시간을 관리한다. |
 
-## 📚 Vocabulary — English · 한국어 · 日本語
+## 🇯🇵 日本語 Summary
+
+Logs Insights は過去のログを検索・集計するクエリエンジン。Metric Filter はログの一致件数などを数値指標に変換し、CloudWatch Alarm と組み合わせる。Subscription Filter はログイベントそのものを Lambda、Kinesis、Firehose などに送る。Live Tail は新着ログをリアルタイムに近い形で画面に表示する。S3 Export はバッチ処理であり、リアルタイム転送ではない。
+
+**試験の注意点:** フィルターを作る前のログは Metric Filter によって遡及集計されない。S3 Export はバッチ処理、Subscription は継続配信である。
+
+## 🇺🇸 English Summary
+
+Use Logs Insights to query stored log data. A metric filter converts matching new log events into numerical metrics; a subscription filter forwards matching log events to other services. Live Tail displays incoming logs for interactive debugging. `CreateExportTask` exports historical logs to S3 in batches, not in real time. Cross-account subscriptions can centralize logs using a destination, permissions, and a Kinesis stream.
+
+**Exam tip:** Metric filters count newly ingested matching events; subscriptions forward raw events; Insights queries stored events; Live Tail watches incoming events; Export Task sends historical batches to S3.
+
+## 📚 Vocabulary
 
 > GitHub 검색 시 영어 표제어 그대로 검색하면 관련 설명으로 이동하기 쉽다.
 
@@ -231,20 +243,7 @@ DemoLogGroup → DemoLogStream → hello world 이벤트 수집
 | Subscription Destination | 구독 목적지 | サブスクリプション宛先 |
 | Cross-Account Aggregation | 계정 간 통합 | クロスアカウント集約 |
 
-
-## 🇯🇵 日本語 Summary
-
-Logs Insights は過去のログを検索・集計するクエリエンジン。Metric Filter はログの一致件数などを数値指標に変換し、CloudWatch Alarm と組み合わせる。Subscription Filter はログイベントそのものを Lambda、Kinesis、Firehose などに送る。Live Tail は新着ログをリアルタイムに近い形で画面に表示する。S3 Export はバッチ処理であり、リアルタイム転送ではない。
-
-**試験の注意点:** フィルターを作る前のログは Metric Filter によって遡及集計されない。S3 Export はバッチ処理、Subscription は継続配信である。
-
-## 🇺🇸 English Summary
-
-Use Logs Insights to query stored log data. A metric filter converts matching new log events into numerical metrics; a subscription filter forwards matching log events to other services. Live Tail displays incoming logs for interactive debugging. `CreateExportTask` exports historical logs to S3 in batches, not in real time. Cross-account subscriptions can centralize logs using a destination, permissions, and a Kinesis stream.
-
-**Exam tip:** Metric filters count newly ingested matching events; subscriptions forward raw events; Insights queries stored events; Live Tail watches incoming events; Export Task sends historical batches to S3.
-
-## 📚 References
+## 📚 Official References
 
 - [CloudWatch Logs subscription filters](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html)
 - [CloudWatch Logs quotas](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html)

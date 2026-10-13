@@ -1,15 +1,13 @@
-# Route 53 Routing Policies
+# 📘 08-02. Route 53 Routing Policies
 
-## 1. Routing Policy란?
+## 🇰🇷 1. Routing Policy란?
 
 Route 53의 Routing Policy는 DNS Query에 대해 **어떤 Resource의 주소를 응답할지 결정하는 규칙**이다.
 
-> Route 53이 실제 네트워크 트래픽을 전달하는 것은 아니다.  
+> Route 53이 실제 네트워크 트래픽을 전달하는 것은 아니다.
 > DNS Query에 어떤 값을 반환할지를 결정한다.
 
----
-
-## 2. Simple Routing
+## 🇰🇷 2. Simple Routing
 
 가장 기본적인 Routing Policy.
 
@@ -29,9 +27,7 @@ example.com
 
 > **Simple = 특별한 조건 없이 DNS 응답**
 
----
-
-## 3. Weighted Routing
+## 🇰🇷 3. Weighted Routing
 
 각 Resource에 **Weight(가중치)**를 설정하여 트래픽 비율을 조절한다.
 
@@ -59,9 +55,7 @@ Singapore Weight 10
 
 > **Weighted = 내가 비율을 정한다**
 
----
-
-## 4. Latency-based Routing
+## 🇰🇷 4. Latency-based Routing
 
 사용자에게 **가장 낮은 네트워크 Latency를 제공하는 AWS Region의 Resource**를 반환한다.
 
@@ -83,9 +77,7 @@ Network Latency 비교
 
 > **Latency = 네트워크상 어디가 가장 빠른가?**
 
----
-
-## 5. Failover Routing
+## 🇰🇷 5. Failover Routing
 
 **Active-Passive 구조**를 구현한다.
 
@@ -119,9 +111,7 @@ Primary/Secondary는 EC2 자체의 속성이 아니라 **Route 53 Record에 설�
 
 > **Failover = Primary 살아있냐?**
 
----
-
-## 6. Geolocation Routing
+## 🇰🇷 6. Geolocation Routing
 
 **사용자의 실제 지리적 위치**를 기준으로 DNS 응답을 결정한다.
 
@@ -164,9 +154,7 @@ Geolocation
 
 > **Geolocation = 사용자 위치**
 
----
-
-## 7. Geoproximity Routing
+## 🇰🇷 7. Geoproximity Routing
 
 사용자와 Resource의 **지리적 위치 및 거리**를 기반으로 Routing한다.
 
@@ -208,9 +196,7 @@ East Bias 증가
 
 > **Geoproximity = 지리적으로 가까운 Resource + Bias로 영향 영역 조절**
 
----
-
-## 8. IP-based Routing
+## 🇰🇷 8. IP-based Routing
 
 **Client IP Address가 속한 CIDR 범위**를 기준으로 Routing한다.
 
@@ -255,9 +241,7 @@ IP-based
 
 > **IP-based = Client IP → CIDR Matching → 지정 Endpoint**
 
----
-
-## 9. Multi-Value Answer Routing
+## 🇰🇷 9. Multi-Value Answer Routing
 
 하나의 DNS Query에 대해 **여러 Resource의 값을 반환**한다.
 
@@ -314,9 +298,7 @@ Client가 반환된 값 중 하나 사용
 
 > **Multi-Value = 여러 Healthy Resource를 DNS 응답으로 반환**
 
----
-
-# Routing Policy 비교
+## 🇰🇷 10. Routing Policy 비교
 
 | Policy | 판단 기준 | Health Check | 핵심 사용 사례 |
 |---|---|---|---|
@@ -329,7 +311,7 @@ Client가 반환된 값 중 하나 사용
 | IP-based | Client IP / CIDR | 가능 | 특정 네트워크별 Routing |
 | Multi-Value | 여러 Healthy Resource | ✅ | 여러 정상 Resource 반환 |
 
-## 시험용 암기
+### 시험용 암기
 
 ```text
 Simple       = 그냥
@@ -342,11 +324,88 @@ IP-based     = Client CIDR
 Multi-Value  = 여러 Healthy Resource
 ```
 
----
+## 📝 Review Questions
 
-# 日本語まとめ
+#### 1. 사용자의 네트워크 지연시간을 기준으로 Resource를 선택하려면 어떤 정책을 사용하는가?
 
-## Route 53 Routing Policies
+<details>
+<summary>정답 보기</summary>
+
+**정답: Latency-based Routing**
+
+사용자의 지리적 위치 자체가 아니라 AWS가 판단하는 **Network Latency**를 기준으로 Resource를 선택한다.
+
+</details>
+
+#### 2. Primary가 장애 상태일 때 Secondary로 자동 전환하려면?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: Failover Routing**
+
+Primary Record에 Health Check를 연결하여 장애를 감지하고 Secondary Record로 DNS 응답을 전환한다.
+
+</details>
+
+#### 3. 특정 국가의 사용자에게 특정 Resource를 제공하려면?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: Geolocation Routing**
+
+사용자의 실제 지리적 위치를 기준으로 Routing한다.
+
+</details>
+
+#### 4. Bias라는 키워드가 등장하면 어떤 Routing Policy를 떠올려야 하는가?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: Geoproximity Routing**
+
+Bias를 사용하여 특정 Resource가 담당하는 지리적 영향 영역을 확대하거나 축소할 수 있다.
+
+</details>
+
+#### 5. 특정 ISP의 Client IP 범위를 이미 알고 있으며 해당 사용자들을 특정 Endpoint로 보내고 싶다면?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: IP-based Routing**
+
+Client IP가 어느 CIDR 범위에 포함되는지 확인하여 지정된 Endpoint의 DNS 값을 반환한다.
+
+</details>
+
+#### 6. 여러 정상 Resource를 한 DNS Query에서 반환하고 싶다면?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: Multi-Value Answer Routing**
+
+Health Check와 결합하여 정상 Resource만 반환할 수 있으며, 한 Query에서 최대 8개의 Healthy Record를 반환할 수 있다.
+
+</details>
+
+#### 7. Multi-Value Answer Routing은 ELB를 대체할 수 있는가?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: 아니다.**
+
+Multi-Value는 DNS 응답으로 여러 Resource 주소를 제공하는 방식이다. ELB처럼 실제 Client Request를 받아 Backend로 분배하는 Load Balancer가 아니다.
+
+</details>
+
+## 🇯🇵 日本語 Summary
+
+### Route 53 Routing Policies
 
 - **Simple**: 特別な条件なしでDNS応答を返す
 - **Weighted**: Weightに基づいてトラフィックの割合を調整
@@ -357,7 +416,7 @@ Multi-Value  = 여러 Healthy Resource
 - **IP-based**: クライアントIPが属するCIDRに基づいてルーティング
 - **Multi-Value**: 複数の正常なリソースをDNS応答として返す
 
-### 覚え方
+#### 覚え方
 
 ```text
 Weighted     → 割合
@@ -369,11 +428,9 @@ IP-based     → CIDR
 Multi-Value  → 複数の正常なリソース
 ```
 
----
+## 🇺🇸 English Summary
 
-# English Summary
-
-## Route 53 Routing Policies
+### Route 53 Routing Policies
 
 - **Simple**: Basic DNS routing without special conditions.
 - **Weighted**: Distributes DNS responses according to assigned weights.
@@ -386,9 +443,7 @@ Multi-Value  → 複数の正常なリソース
 
 Multi-Value Answer Routing can return up to **8 healthy records per query** and is **not a replacement for an ELB**.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -407,84 +462,3 @@ Multi-Value Answer Routing can return up to **8 healthy records per query** and 
 | Health Check | ヘルスチェック | 상태 확인 |
 | Resource | リソース | 리소스 |
 | Endpoint | エンドポイント | 엔드포인트 |
-
----
-
-# Review Questions
-
-### 1. 사용자의 네트워크 지연시간을 기준으로 Resource를 선택하려면 어떤 정책을 사용하는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: Latency-based Routing**
-
-사용자의 지리적 위치 자체가 아니라 AWS가 판단하는 **Network Latency**를 기준으로 Resource를 선택한다.
-
-</details>
-
-### 2. Primary가 장애 상태일 때 Secondary로 자동 전환하려면?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: Failover Routing**
-
-Primary Record에 Health Check를 연결하여 장애를 감지하고 Secondary Record로 DNS 응답을 전환한다.
-
-</details>
-
-### 3. 특정 국가의 사용자에게 특정 Resource를 제공하려면?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: Geolocation Routing**
-
-사용자의 실제 지리적 위치를 기준으로 Routing한다.
-
-</details>
-
-### 4. Bias라는 키워드가 등장하면 어떤 Routing Policy를 떠올려야 하는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: Geoproximity Routing**
-
-Bias를 사용하여 특정 Resource가 담당하는 지리적 영향 영역을 확대하거나 축소할 수 있다.
-
-</details>
-
-### 5. 특정 ISP의 Client IP 범위를 이미 알고 있으며 해당 사용자들을 특정 Endpoint로 보내고 싶다면?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: IP-based Routing**
-
-Client IP가 어느 CIDR 범위에 포함되는지 확인하여 지정된 Endpoint의 DNS 값을 반환한다.
-
-</details>
-
-### 6. 여러 정상 Resource를 한 DNS Query에서 반환하고 싶다면?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: Multi-Value Answer Routing**
-
-Health Check와 결합하여 정상 Resource만 반환할 수 있으며, 한 Query에서 최대 8개의 Healthy Record를 반환할 수 있다.
-
-</details>
-
-### 7. Multi-Value Answer Routing은 ELB를 대체할 수 있는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: 아니다.**
-
-Multi-Value는 DNS 응답으로 여러 Resource 주소를 제공하는 방식이다. ELB처럼 실제 Client Request를 받아 Backend로 분배하는 Load Balancer가 아니다.
-
-</details>

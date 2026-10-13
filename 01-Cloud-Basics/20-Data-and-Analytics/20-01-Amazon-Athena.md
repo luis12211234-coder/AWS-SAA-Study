@@ -1,6 +1,6 @@
 # 🔎 20-01. Amazon Athena
 
-> Udemy: Athena 개요 + S3 Access Logs 실습  
+> Udemy: Athena 개요 + S3 Access Logs 실습
 > **Keyword: Serverless SQL on S3**
 
 ## 🇰🇷 1. Overview

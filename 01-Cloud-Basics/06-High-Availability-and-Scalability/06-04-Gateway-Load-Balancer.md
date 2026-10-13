@@ -1,6 +1,6 @@
-# Gateway Load Balancer (GWLB)
+# 📘 06-04. Gateway Load Balancer (GWLB)
 
-## Overview
+## 🇰🇷 1. Overview
 
 **Gateway Load Balancer (GWLB)**는
 Third-Party Network Virtual Appliance를
@@ -21,9 +21,7 @@ IDS / IPS
 Deep Packet Inspection
 ```
 
----
-
-# 1. How GWLB Works
+## 🇰🇷 2. How GWLB Works
 
 GWLB는 Application에 도달하기 전
 Network Traffic을 보안 Appliance로 전달한다.
@@ -50,13 +48,11 @@ Malicious Traffic
 → Drop
 ```
 
----
-
-# 2. Two Functions
+## 🇰🇷 3. Two Functions
 
 GWLB는 두 가지 역할을 결합한다.
 
-## Transparent Network Gateway
+### Transparent Network Gateway
 
 Network Traffic이
 GWLB를 통과하도록 구성한다.
@@ -69,7 +65,7 @@ GWLB
 Security Appliance
 ```
 
-## Load Balancer
+### Load Balancer
 
 여러 Virtual Appliance에
 Traffic을 분산한다.
@@ -91,9 +87,7 @@ Load Balancer
 GWLB
 ```
 
----
-
-# 3. Target Groups
+## 🇰🇷 4. Target Groups
 
 GWLB의 Target은
 주로 Third-Party Network Virtual Appliance이다.
@@ -119,9 +113,7 @@ Target Group
 Private IP를 이용하여
 연결 가능한 외부 Network의 Appliance도 등록할 수 있다.
 
----
-
-# 4. GENEVE
+## 🇰🇷 5. GENEVE
 
 GWLB는 다음 Protocol과 Port를 사용한다.
 
@@ -138,9 +130,26 @@ Port 6081
 → GWLB
 ```
 
----
+## 🇰🇷 6. Load Balancer Comparison
 
-# Exam Notes
+```text
+ALB
+→ Layer 7
+→ HTTP / HTTPS
+→ HTTP Routing
+
+NLB
+→ Layer 4
+→ TCP / UDP
+→ High Performance / Static IP
+
+GWLB
+→ Layer 3
+→ IP Packets
+→ Security Appliances
+```
+
+## 🎯 Exam Notes
 
 ```text
 GWLB
@@ -180,30 +189,44 @@ Port 6081
 → GWLB
 ```
 
----
+## 📝 Review Questions
 
-# Load Balancer Comparison
+#### Q1. GWLB는 OSI 몇 계층에서 동작하는가?
 
 ```text
-ALB
-→ Layer 7
-→ HTTP / HTTPS
-→ HTTP Routing
-
-NLB
-→ Layer 4
-→ TCP / UDP
-→ High Performance / Static IP
-
-GWLB
-→ Layer 3
-→ IP Packets
-→ Security Appliances
+Layer 3
+Network Layer
 ```
 
----
+#### Q2. GWLB의 주요 사용 사례는?
 
-# Japanese Summary
+```text
+Firewall
+IDS / IPS
+Deep Packet Inspection
+```
+
+#### Q3. GWLB가 결합한 두 가지 기능은?
+
+```text
+Transparent Network Gateway
++
+Load Balancer
+```
+
+#### Q4. GWLB의 Target은 무엇인가?
+
+주로 Network Virtual Appliance이며,
+EC2 Instance 또는 Private IP로 등록할 수 있다.
+
+#### Q5. GWLB가 사용하는 Protocol과 Port는?
+
+```text
+GENEVE
+Port 6081
+```
+
+## 🇯🇵 日本語 Summary
 
 **Gateway Load Balancer (GWLB)**は、
 Layer 3で動作するLoad Balancerです。
@@ -221,9 +244,7 @@ GWLB
 
 GWLBは**GENEVE Protocol / Port 6081**を使用します。
 
----
-
-# English Summary
+## 🇺🇸 English Summary
 
 **Gateway Load Balancer (GWLB)** operates at Layer 3
 and distributes network traffic across
@@ -247,9 +268,7 @@ Load Balancer
 
 It uses the **GENEVE protocol on port 6081**.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -262,42 +281,3 @@ It uses the **GENEVE protocol on port 6081**.
 | Transparent Network Gateway | 透過型ネットワークゲートウェイ | 트래픽이 통과하는 투명한 네트워크 관문 |
 | GENEVE | GENEVE | GWLB가 사용하는 네트워크 캡슐화 프로토콜 |
 | Target Group | ターゲットグループ | Traffic을 전달할 Target들의 그룹 |
-
----
-
-# Review Questions
-
-### Q1. GWLB는 OSI 몇 계층에서 동작하는가?
-
-```text
-Layer 3
-Network Layer
-```
-
-### Q2. GWLB의 주요 사용 사례는?
-
-```text
-Firewall
-IDS / IPS
-Deep Packet Inspection
-```
-
-### Q3. GWLB가 결합한 두 가지 기능은?
-
-```text
-Transparent Network Gateway
-+
-Load Balancer
-```
-
-### Q4. GWLB의 Target은 무엇인가?
-
-주로 Network Virtual Appliance이며,
-EC2 Instance 또는 Private IP로 등록할 수 있다.
-
-### Q5. GWLB가 사용하는 Protocol과 Port는?
-
-```text
-GENEVE
-Port 6081
-```

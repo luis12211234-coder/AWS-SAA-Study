@@ -1,6 +1,6 @@
 # 🧠 22-09. Final Comparison & Architecture Patterns
 
-> AWS SAA-C03 · **이번 섹션의 마지막 종합 비교 자료**  
+> AWS SAA-C03 · **이번 섹션의 마지막 종합 비교 자료**
 > 검색 키워드: **CloudWatch vs CloudTrail vs Config, EventBridge vs Alarm vs S3 Event, Metric Filter vs Subscription Filter, Logs Insights vs Live Tail, Agent vs Detailed Monitoring, Decision Tree, ALB, Security Group, S3, EC2**
 
 ## 🇰🇷 1. 가장 중요한 세 서비스 비교
@@ -168,7 +168,19 @@ CloudWatch는 지표·로그, CloudTrail은 API 호출자, AWS Config는 설정�
 | Q35 | **A** | Metric Filter는 숫자 지표, Subscription Filter는 로그 원문을 전달한다. |
 | Q36 | **D** | Config는 공개 설정을 검사하고, CloudTrail은 변경 API 호출자를 추적한다. |
 
-## 📚 Vocabulary — English · 한국어 · 日本語
+## 🇯🇵 日本語 Summary
+
+CloudWatch は性能・ログ、CloudTrail は API 操作の監査、AWS Config はリソース設定の履歴とコンプライアンスを担当する。EventBridge はイベントを条件に従ってルーティングする。CloudWatch Metric Filter はログから指標を生成し、Subscription Filter はログそのものを送信する。監視したい対象・判断条件・期待するアクションを区別してサービスを選ぶ。
+
+**使い分け:** 数字の異常は CloudWatch、API を実行した主体は CloudTrail、設定の準拠は AWS Config、イベントを起点とする処理は EventBridge。
+
+## 🇺🇸 English Summary
+
+CloudWatch monitors operational metrics and logs; CloudTrail audits account and API activity; AWS Config tracks configuration history and compliance. EventBridge routes events to targets. Metric filters turn logs into metrics, while subscription filters forward log events. Choose the right service by identifying the trigger, the underlying data, and the expected action.
+
+**Decision rule:** Identify the source (metric, log, API call, configuration, or event), then the trigger, then the required action. Similar-looking alerts can be built through different services.
+
+## 📚 Vocabulary
 
 > GitHub 검색 시 영어 표제어 그대로 검색하면 관련 설명으로 이동하기 쉽다.
 
@@ -182,16 +194,3 @@ CloudWatch는 지표·로그, CloudTrail은 API 호출자, AWS Config는 설정�
 | Replay vs Retry | 과거 이벤트 재전송 vs 실패 재시도 | リプレイとリトライ |
 | Stop vs Terminate | EC2 중지 후 재시작 가능 vs EC2 종료 | 停止と終了 |
 | Scale Out vs Scale Up | 인스턴스 수 증가 vs 단일 인스턴스 성능 향상 | スケールアウトとスケールアップ |
-
-
-## 🇯🇵 日本語 Summary
-
-CloudWatch は性能・ログ、CloudTrail は API 操作の監査、AWS Config はリソース設定の履歴とコンプライアンスを担当する。EventBridge はイベントを条件に従ってルーティングする。CloudWatch Metric Filter はログから指標を生成し、Subscription Filter はログそのものを送信する。監視したい対象・判断条件・期待するアクションを区別してサービスを選ぶ。
-
-**使い分け:** 数字の異常は CloudWatch、API を実行した主体は CloudTrail、設定の準拠は AWS Config、イベントを起点とする処理は EventBridge。
-
-## 🇺🇸 English Summary
-
-CloudWatch monitors operational metrics and logs; CloudTrail audits account and API activity; AWS Config tracks configuration history and compliance. EventBridge routes events to targets. Metric filters turn logs into metrics, while subscription filters forward log events. Choose the right service by identifying the trigger, the underlying data, and the expected action.
-
-**Decision rule:** Identify the source (metric, log, API call, configuration, or event), then the trigger, then the required action. Similar-looking alerts can be built through different services.

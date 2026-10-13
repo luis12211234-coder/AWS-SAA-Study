@@ -1,6 +1,6 @@
-# EBS Encryption
+# 📘 05-07. EBS Encryption
 
-## Overview
+## 🇰🇷 1. Overview
 
 Amazon EBS는 AWS KMS를 사용하여
 EBS Volume과 Snapshot을 암호화할 수 있다.
@@ -17,9 +17,7 @@ Volumes Created from Encrypted Snapshots
 Encryption / Decryption은 AWS가 백그라운드에서 처리하며
 사용자에게 거의 투명하게 동작한다.
 
----
-
-# 1. What Gets Encrypted
+## 🇰🇷 2. What Gets Encrypted
 
 Encrypted EBS Volume을 사용하면:
 
@@ -43,9 +41,7 @@ EBS
 Encrypted in Transit
 ```
 
----
-
-# 2. AWS KMS
+## 🇰🇷 3. AWS KMS
 
 EBS Encryption은 AWS KMS와 통합된다.
 
@@ -68,9 +64,7 @@ aws/ebs
 암호화 및 복호화 과정은
 AWS가 자동으로 처리한다.
 
----
-
-# 3. Encrypting an Unencrypted EBS Volume
+## 🇰🇷 4. Encrypting an Unencrypted EBS Volume
 
 강의에서 사용하는 기본 흐름:
 
@@ -95,9 +89,7 @@ Encrypted EBS
 즉 기존 데이터를 Snapshot을 이용하여
 암호화된 새 EBS Volume으로 변환할 수 있다.
 
----
-
-# 4. Creating an Encrypted Volume from a Snapshot
+## 🇰🇷 5. Creating an Encrypted Volume from a Snapshot
 
 강의에서는 다른 방법도 확인했다.
 
@@ -116,9 +108,7 @@ Encrypted EBS
 따라서 Snapshot에서 Volume을 생성할 때
 Encryption을 활성화할 수도 있다.
 
----
-
-# 5. Performance
+## 🇰🇷 6. Performance
 
 EBS Encryption은 Encryption / Decryption을
 백그라운드에서 처리한다.
@@ -130,9 +120,7 @@ Encryption
 → Minimal Performance / Latency Impact
 ```
 
----
-
-# 6. Hands-On Summary
+## 🇰🇷 7. Hands-On Summary
 
 이번 실습에서는 다음 흐름을 확인했다.
 
@@ -169,9 +157,31 @@ Encrypted EBS
 또한 Unencrypted Snapshot에서 Volume을 생성할 때
 직접 Encryption을 활성화할 수도 있음을 확인했다.
 
----
+## 🇰🇷 8. Summary
 
-# Exam Notes
+```text
+EBS Encryption
+= KMS-based Encryption
+```
+
+핵심:
+
+- EBS 저장 데이터 암호화
+- EC2와 EBS 사이 전송 데이터 암호화
+- Encrypted EBS의 Snapshot도 암호화
+- Encrypted Snapshot에서 만든 Volume도 암호화
+- KMS Key 사용
+- Encryption / Decryption은 AWS가 자동 처리
+
+한 줄 암기:
+
+```text
+Encrypted EBS
+→ Snapshot도 암호화
+→ 새 Volume도 암호화
+```
+
+## 🎯 Exam Notes
 
 Encrypted EBS를 사용하면:
 
@@ -219,35 +229,43 @@ EBS Encryption
 → AES-256
 ```
 
----
+## 📝 Review Questions
 
-# Summary
-
-```text
-EBS Encryption
-= KMS-based Encryption
-```
-
-핵심:
-
-- EBS 저장 데이터 암호화
-- EC2와 EBS 사이 전송 데이터 암호화
-- Encrypted EBS의 Snapshot도 암호화
-- Encrypted Snapshot에서 만든 Volume도 암호화
-- KMS Key 사용
-- Encryption / Decryption은 AWS가 자동 처리
-
-한 줄 암기:
+#### Q1. Encrypted EBS Volume에서 암호화되는 데이터는?
 
 ```text
-Encrypted EBS
-→ Snapshot도 암호화
-→ 새 Volume도 암호화
+Data at Rest
+EC2 ↔ EBS Data Transfer
+Snapshots
+Volumes Created from Encrypted Snapshots
 ```
 
----
+#### Q2. EBS Encryption에 사용되는 AWS 서비스는?
 
-# Japanese Summary
+```text
+AWS KMS
+```
+
+#### Q3. 암호화된 EBS에서 Snapshot을 생성하면?
+
+Snapshot도 암호화된다.
+
+#### Q4. 암호화된 Snapshot에서 Volume을 생성하면?
+
+새 Volume도 암호화된다.
+
+#### Q5. 암호화되지 않은 EBS를 암호화하려면?
+
+Snapshot을 생성한 뒤,
+암호화하여 새 EBS Volume을 생성한다.
+
+#### Q6. EBS Encryption이 애플리케이션에서 직접 Encryption / Decryption을 처리해야 하는가?
+
+아니다.
+
+AWS가 백그라운드에서 처리한다.
+
+## 🇯🇵 日本語 Summary
 
 **EBS Encryption**は、
 AWS KMSを利用してEBS Volumeを暗号化する機能です。
@@ -278,9 +296,7 @@ Encrypted EBS
 
 Encryption / DecryptionはAWSによって自動的に処理されます。
 
----
-
-# English Summary
+## 🇺🇸 English Summary
 
 **EBS Encryption** uses AWS KMS to encrypt EBS volumes.
 
@@ -310,9 +326,7 @@ Encrypted EBS
 
 Encryption and decryption are handled automatically by AWS.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -326,41 +340,3 @@ Encryption and decryption are handled automatically by AWS.
 | Encrypted Snapshot | 暗号化されたスナップショット | 암호화된 EBS 스냅샷 |
 | Unencrypted Volume | 暗号化されていないボリューム | 암호화되지 않은 EBS 볼륨 |
 | AWS Managed Key | AWS管理キー | AWS가 관리하는 KMS 키 |
-
----
-
-# Review Questions
-
-### Q1. Encrypted EBS Volume에서 암호화되는 데이터는?
-
-```text
-Data at Rest
-EC2 ↔ EBS Data Transfer
-Snapshots
-Volumes Created from Encrypted Snapshots
-```
-
-### Q2. EBS Encryption에 사용되는 AWS 서비스는?
-
-```text
-AWS KMS
-```
-
-### Q3. 암호화된 EBS에서 Snapshot을 생성하면?
-
-Snapshot도 암호화된다.
-
-### Q4. 암호화된 Snapshot에서 Volume을 생성하면?
-
-새 Volume도 암호화된다.
-
-### Q5. 암호화되지 않은 EBS를 암호화하려면?
-
-Snapshot을 생성한 뒤,
-암호화하여 새 EBS Volume을 생성한다.
-
-### Q6. EBS Encryption이 애플리케이션에서 직접 Encryption / Decryption을 처리해야 하는가?
-
-아니다.
-
-AWS가 백그라운드에서 처리한다.

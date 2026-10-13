@@ -1,6 +1,6 @@
-# EC2 Purchasing Options
+# 📘 04-06. EC2 Purchasing Options
 
-## Overview
+## 🇰🇷 1. Overview
 
 Amazon EC2는 Workload의 기간, 중단 가능 여부, 비용 최적화 요구사항에 따라 여러 Purchasing Option을 제공한다.
 
@@ -29,9 +29,7 @@ Instance가 중단되어도 괜찮은가?
 특정 AZ의 Capacity를 반드시 확보해야 하는가?
 ```
 
----
-
-## On-Demand Instances
+## 🇰🇷 2. On-Demand Instances
 
 On-Demand Instance는 장기적인 약정 없이 필요한 만큼 EC2 Instance를 실행하는 방식이다.
 
@@ -68,9 +66,7 @@ Must Not Be Interrupted
 On-Demand
 ```
 
----
-
-## Reserved Instances
+## 🇰🇷 3. Reserved Instances
 
 Reserved Instance는 장기간 EC2를 사용할 것을 약정하여 On-Demand보다 할인받는 방식이다.
 
@@ -123,9 +119,7 @@ Long-Term
 Reserved Instance
 ```
 
----
-
-## Convertible Reserved Instances
+## 🇰🇷 4. Convertible Reserved Instances
 
 Convertible Reserved Instance는 일반 Reserved Instance보다 더 많은 변경 유연성을 제공한다.
 
@@ -147,9 +141,7 @@ More Flexibility
 Convertible Reserved Instance
 ```
 
----
-
-## EC2 Savings Plans
+## 🇰🇷 5. EC2 Savings Plans
 
 Savings Plans는 장기간의 EC2 사용량을 약정하여 비용을 할인받는 방식이다.
 
@@ -193,9 +185,7 @@ m5.2xlarge
 
 등의 크기를 사용할 수 있다.
 
----
-
-## Reserved Instances vs Savings Plans
+## 🇰🇷 6. Reserved Instances vs Savings Plans
 
 둘 다 장기간 사용을 약정하여 비용을 최적화한다.
 
@@ -217,9 +207,7 @@ Savings Plans
 
 시험에서는 세부 가격보다 **Long-Term Commitment를 통한 비용 절감**이라는 공통점을 먼저 기억한다.
 
----
-
-## Spot Instances
+## 🇰🇷 7. Spot Instances
 
 Spot Instance는 AWS의 남는 EC2 Capacity를 매우 저렴하게 사용할 수 있는 방식이다.
 
@@ -260,9 +248,7 @@ Can tolerate interruption?
         └─ NO  → Spot 부적합
 ```
 
----
-
-## Dedicated Hosts
+## 🇰🇷 8. Dedicated Hosts
 
 Dedicated Host는 EC2 Instance를 실행하기 위한 **전체 Physical Server**를 한 고객에게 전용으로 제공한다.
 
@@ -294,9 +280,7 @@ Per-VM License
 - Hardware에 대한 높은 수준의 제어 및 가시성
 - 매우 비싼 Option
 
----
-
-## Dedicated Instances
+## 🇰🇷 9. Dedicated Instances
 
 Dedicated Instance는 다른 AWS 고객과 Hardware를 공유하지 않고 전용 Hardware에서 실행되는 EC2 Instance이다.
 
@@ -322,9 +306,7 @@ Physical Server 자체
 
 Hardware 및 Instance Placement에 대한 더 높은 수준의 제어를 제공한다.
 
----
-
-## Dedicated Host vs Dedicated Instance
+## 🇰🇷 10. Dedicated Host vs Dedicated Instance
 
 ```text
 Dedicated Host
@@ -339,9 +321,7 @@ Dedicated Instance
 
 시험에서는 **Physical Server 자체가 필요하다**는 조건이 나오면 Dedicated Host를 먼저 생각한다.
 
----
-
-## EC2 Capacity Reservations
+## 🇰🇷 11. EC2 Capacity Reservations
 
 Capacity Reservation은 특정 Availability Zone에서 EC2 Capacity를 확보하는 기능이다.
 
@@ -377,9 +357,7 @@ Capacity Reservation
 
 특정 AZ에서 반드시 실행되어야 하는 단기적이고 중단 없는 Workload에 적합하다.
 
----
-
-## Capacity Reservation and Discounts
+## 🇰🇷 12. Capacity Reservation and Discounts
 
 Capacity Reservation 자체에는 할인 효과가 없다.
 
@@ -411,9 +389,7 @@ Reserved / Savings Plans
 
 역할이 다르다.
 
----
-
-## Purchasing Options Comparison
+## 🇰🇷 13. Purchasing Options Comparison
 
 | Option | Main Purpose | Commitment | Interruption | Key Use Case |
 |---|---|---|---|---|
@@ -425,9 +401,7 @@ Reserved / Savings Plans
 | Dedicated Instance | Dedicated Hardware | - | 없음 | Hardware Isolation |
 | Capacity Reservation | Capacity Guarantee | 없음 | 없음 | Specific AZ Capacity |
 
----
-
-## Which Option Should I Choose?
+## 🇰🇷 14. Which Option Should I Choose?
 
 ```text
 갑자기 서버가 필요하다
@@ -472,9 +446,7 @@ Dedicated Instance
 Capacity Reservation
 ```
 
----
-
-## Resort Analogy
+## 🇰🇷 15. Resort Analogy
 
 강의에서는 EC2 Purchasing Options를 Resort에 비유한다.
 
@@ -524,9 +496,7 @@ Resort 건물 전체 예약
 객실 비용은 지불
 ```
 
----
-
-## Summary
+## 🇰🇷 16. Summary
 
 - On-Demand는 장기 약정 없이 필요한 만큼 사용하는 방식이다.
 - Reserved Instance는 장기간 사용을 약정하여 비용을 절감한다.
@@ -537,9 +507,7 @@ Resort 건물 전체 예약
 - Capacity Reservation은 특정 AZ의 EC2 Capacity를 확보한다.
 - Capacity Reservation 자체에는 비용 할인이 없다.
 
----
-
-## Exam Notes
+## 🎯 Exam Notes
 
 ### On-Demand
 
@@ -601,10 +569,6 @@ No Discount
 Pay Even If Not Used
 ```
 
----
-
-## Most Important Exam Distinctions
-
 ```text
 Reserved
 → Save Money
@@ -626,10 +590,6 @@ Dedicated Host
 Dedicated Instance
 → Dedicated Hardware Only
 ```
-
----
-
-## Practical Examples
 
 ### Example 1
 
@@ -677,55 +637,66 @@ Guaranteed Capacity
 Capacity Reservation
 ```
 
----
+## 📝 Review Questions
 
-# 🇯🇵 日本語
+1. 단기적이고 사용량을 예측하기 어려운 Workload에는 어떤 구매 옵션이 적합한가?
+2. 장기간 일정하게 실행되는 Database에는 어떤 옵션이 적합한가?
+3. Reserved Instance의 약정 기간은 무엇인가?
+4. Savings Plans는 무엇을 약정하여 할인을 받는 방식인가?
+5. Spot Instance가 저렴한 대신 가지는 가장 중요한 위험은 무엇인가?
+6. Spot Instance가 Batch Processing에 적합한 이유는 무엇인가?
+7. 중요한 Database에 Spot Instance가 부적합한 이유는 무엇인가?
+8. Dedicated Host와 Dedicated Instance의 핵심 차이는 무엇인가?
+9. BYOL 요구사항이 있을 때 어떤 옵션을 고려할 수 있는가?
+10. Capacity Reservation의 주요 목적은 비용 절감인가, Capacity 확보인가?
+11. Capacity Reservation은 Instance를 실행하지 않아도 비용이 발생하는가?
+12. 특정 AZ의 EC2 Capacity를 반드시 확보해야 한다면 어떤 옵션을 선택해야 하는가?
 
-## EC2 Purchasing Options
+## 🇯🇵 日本語 Summary
+
+### EC2 Purchasing Options
 
 EC2にはWorkloadに応じた複数の購入オプションがある。
 
-### On-Demand
+#### On-Demand
 
 長期契約なしで必要な分だけ利用する。
 
 短期的で予測できないWorkloadに適している。
 
-### Reserved Instances
+#### Reserved Instances
 
 1年または3年間の長期利用を約束することで料金を削減できる。
 
 予測可能で長期間実行するWorkloadに適している。
 
-### Savings Plans
+#### Savings Plans
 
 一定期間の利用量を約束することで料金を削減する。
 
-### Spot Instances
+#### Spot Instances
 
 非常に安いが、Instanceが中断される可能性がある。
 
 Batch ProcessingやData Analysisなど、障害に強いWorkloadに適している。
 
-### Dedicated Hosts
+#### Dedicated Hosts
 
 Physical Server全体を専用で利用する。
 
 BYOLやCompliance要件に適している。
 
-### Dedicated Instances
+#### Dedicated Instances
 
 他のAWS顧客とHardwareを共有しないInstanceである。
 
-### Capacity Reservations
+#### Capacity Reservations
 
 特定のAZでEC2 Capacityを確保する。
 
 料金割引はなく、使用していなくても料金が発生する。
 
----
-
-## Summary
+### Summary
 
 ```text
 Short-Term / Unpredictable
@@ -750,55 +721,51 @@ Specific AZ Capacity
 → Capacity Reservation
 ```
 
----
+## 🇺🇸 English Summary
 
-# 🇺🇸 English
-
-## EC2 Purchasing Options
+### EC2 Purchasing Options
 
 Amazon EC2 provides multiple purchasing options for different workload requirements.
 
-### On-Demand
+#### On-Demand
 
 No long-term commitment.
 
 Best for short-term and unpredictable workloads.
 
-### Reserved Instances
+#### Reserved Instances
 
 Commit for one or three years to receive discounted pricing.
 
 Best for predictable, long-running workloads.
 
-### Savings Plans
+#### Savings Plans
 
 Commit to a certain level of usage for one or three years.
 
-### Spot Instances
+#### Spot Instances
 
 Highly discounted but instances may be interrupted.
 
 Best for fault-tolerant workloads such as batch processing and analytics.
 
-### Dedicated Hosts
+#### Dedicated Hosts
 
 An entire physical server is dedicated to your use.
 
 Useful for BYOL and compliance requirements.
 
-### Dedicated Instances
+#### Dedicated Instances
 
 Instances run on hardware dedicated to your account without direct control of the physical server.
 
-### Capacity Reservations
+#### Capacity Reservations
 
 Reserve EC2 capacity in a specific Availability Zone.
 
 Capacity is guaranteed, but there is no billing discount.
 
----
-
-## Vocabulary
+## 📚 Vocabulary
 
 | English | 한국어 | 日本語 |
 |---|---|---|
@@ -818,20 +785,3 @@ Capacity is guaranteed, but there is no billing discount.
 | Compliance | 규정 준수 | コンプライアンス |
 | Fault-Tolerant | 장애 허용 | 耐障害性 |
 | Physical Server | 물리 서버 | 物理サーバー |
-
----
-
-## Review Questions
-
-1. 단기적이고 사용량을 예측하기 어려운 Workload에는 어떤 구매 옵션이 적합한가?
-2. 장기간 일정하게 실행되는 Database에는 어떤 옵션이 적합한가?
-3. Reserved Instance의 약정 기간은 무엇인가?
-4. Savings Plans는 무엇을 약정하여 할인을 받는 방식인가?
-5. Spot Instance가 저렴한 대신 가지는 가장 중요한 위험은 무엇인가?
-6. Spot Instance가 Batch Processing에 적합한 이유는 무엇인가?
-7. 중요한 Database에 Spot Instance가 부적합한 이유는 무엇인가?
-8. Dedicated Host와 Dedicated Instance의 핵심 차이는 무엇인가?
-9. BYOL 요구사항이 있을 때 어떤 옵션을 고려할 수 있는가?
-10. Capacity Reservation의 주요 목적은 비용 절감인가, Capacity 확보인가?
-11. Capacity Reservation은 Instance를 실행하지 않아도 비용이 발생하는가?
-12. 특정 AZ의 EC2 Capacity를 반드시 확보해야 한다면 어떤 옵션을 선택해야 하는가?

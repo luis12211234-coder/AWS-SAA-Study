@@ -1,6 +1,6 @@
-# 🐳 Docker & Amazon ECS
+# 🐳 16-01. Docker & Amazon ECS
 
-## 1. Docker
+## 🇰🇷 1. Docker
 
 Docker는 애플리케이션과 실행 환경을 **Container**로 패키징하여 실행하는 플랫폼이다.
 
@@ -36,9 +36,7 @@ Container
 - **Registry**: Image 저장소
 - AWS에서는 **Amazon ECR**을 사용할 수 있음
 
----
-
-## 2. Amazon ECS
+## 🇰🇷 2. Amazon ECS
 
 **Amazon ECS (Elastic Container Service)**는 AWS의 Container 관리 및 오케스트레이션 서비스이다.
 
@@ -67,9 +65,7 @@ Service         = Task 관리자
 
 Task를 한 번 실행하고 종료할 수도 있고, Service를 사용해 일정한 수의 Task를 계속 유지할 수도 있다.
 
----
-
-## 3. EC2 vs Fargate
+## 🇰🇷 3. EC2 vs Fargate
 
 ### EC2
 
@@ -102,9 +98,7 @@ Fargate에서는 EC2 인스턴스를 직접 관리하지 않는다.
 
 > Fargate = 서버 크기를 선택하는 것이 아니라 Task에 필요한 CPU / Memory를 지정한다.
 
----
-
-## 4. ECS IAM Roles
+## 🇰🇷 4. ECS IAM Roles
 
 ### Container Instance Role
 
@@ -130,9 +124,7 @@ Application
  └─ DynamoDB
 ```
 
----
-
-## 5. ECS + ALB / EFS
+## 🇰🇷 5. ECS + ALB / EFS
 
 ### Application Load Balancer
 
@@ -160,9 +152,7 @@ EFS는 여러 ECS Task가 함께 사용할 수 있는 **Persistent Shared File S
 
 EC2와 Fargate 모두에서 사용할 수 있다.
 
----
-
-## 6. ECS Service Auto Scaling
+## 🇰🇷 6. ECS Service Auto Scaling
 
 ECS Service Auto Scaling은 부하에 따라 **Desired Task 수를 자동으로 증가 또는 감소**시킨다.
 
@@ -191,9 +181,7 @@ Desired Tasks
 
 > ECS Service Auto Scaling = **Task 수 Scaling**
 
----
-
-## 7. Capacity Provider
+## 🇰🇷 7. Capacity Provider
 
 Capacity Provider는 **ECS Task를 실행할 Compute Capacity를 어디에서 공급받을지 연결하는 개념**이다.
 
@@ -232,9 +220,7 @@ EC2 Auto Scaling
 
 Fargate에서는 기반 Compute Capacity를 AWS가 관리한다.
 
----
-
-## 8. ECS Architecture Patterns
+## 🇰🇷 8. ECS Architecture Patterns
 
 ### EventBridge → ECS Task
 
@@ -295,8 +281,6 @@ Administrator
 
 ECS Task의 상태 변화를 EventBridge로 감지하고 SNS를 통해 관리자에게 알림을 보낼 수 있다.
 
----
-
 ## 🎯 Exam Notes
 
 - **Task Definition** = Container 실행 설계도
@@ -310,10 +294,6 @@ ECS Task의 상태 변화를 EventBridge로 감지하고 SNS를 통해 관리자
 - **ASG Capacity Provider** = ECS와 ASG를 연결하여 EC2 Capacity 확장
 - **EventBridge** = Event / Schedule 기반 ECS Task 실행 가능
 - **SQS + ECS Service** = Queue의 작업량에 따라 Worker Task 확장 가능
-
----
-
-## 💡 Practical Example
 
 이미지 처리 시스템을 예로 들 수 있다.
 
@@ -335,54 +315,6 @@ DynamoDB
 
 반대로 지속적으로 SQS 메시지를 처리해야 하는 Worker라면 **ECS Service**를 사용하여 Task를 계속 유지할 수 있다.
 
----
-
-## 🇯🇵 日本語 Summary
-
-Amazon ECSは、AWS上でコンテナを管理・実行するためのサービスです。
-
-**Task Definition**でコンテナの実行方法を定義し、それを基に**Task**が実際に実行されます。長時間稼働するアプリケーションでは、**ECS Service**を利用して必要な数のTaskを維持できます。
-
-ECSではEC2またはFargateを利用できます。EC2ではユーザーがインスタンスを管理しますが、Fargateでは基盤となるサーバーをAWSが管理します。
-
-ECS Service Auto Scalingを利用すると、CPUやメモリなどの負荷に応じてTask数を自動調整できます。また、EventBridge、SQS、SNSなどのAWSサービスと組み合わせることで、イベント処理やバッチ処理などのアーキテクチャを構築できます。
-
----
-
-## 🇺🇸 English Summary
-
-Amazon ECS is a container orchestration service for running and managing containers on AWS.
-
-A **Task Definition** defines how containers should run, while a **Task** is the actual running unit. An **ECS Service** maintains the desired number of Tasks for long-running applications.
-
-ECS can run workloads on EC2 or AWS Fargate. With EC2, users manage the underlying instances, while Fargate allows Tasks to run without managing the underlying servers.
-
-ECS Service Auto Scaling automatically adjusts the number of Tasks based on workload. ECS can also integrate with services such as EventBridge, SQS, and SNS to build event-driven and asynchronous architectures.
-
----
-
-## 📚 Vocabulary
-
-| Term | Meaning |
-|---|---|
-| Container | 애플리케이션과 실행 환경을 격리하여 실행하는 단위 |
-| Docker Image | Container 실행에 필요한 패키지 |
-| Registry | Container Image 저장소 |
-| Cluster | ECS 리소스를 관리하는 논리적 그룹 |
-| Task Definition | ECS Task 실행 방법을 정의하는 설계도 |
-| Task | ECS에서 Container가 실제로 실행되는 단위 |
-| Service | 원하는 수의 Task를 유지하고 관리하는 기능 |
-| Desired Count | Service가 유지하려는 Task 수 |
-| Fargate | 서버를 직접 관리하지 않고 Container를 실행하는 방식 |
-| Task Execution Role | Task 실행 준비에 필요한 IAM Role |
-| Task Role | Container Application이 사용하는 IAM Role |
-| Capacity Provider | ECS Task에 Compute Capacity를 공급하는 방식을 연결하는 기능 |
-| Auto Scaling | 부하에 따라 리소스 수를 자동 조절하는 기능 |
-| Batch Processing | 데이터를 일정 단위로 모아 처리하는 방식 |
-| Polling | 서비스에 새로운 데이터가 있는지 주기적으로 요청하는 방식 |
-
----
-
 ## 📝 Review Questions
 
 ### 1. Task Definition과 Task의 차이는 무엇인가?
@@ -390,7 +322,7 @@ ECS Service Auto Scaling automatically adjusts the number of Tasks based on work
 <details>
 <summary>정답 보기</summary>
 
-**Task Definition**은 Container를 어떻게 실행할지 정의하는 설계도이고,  
+**Task Definition**은 Container를 어떻게 실행할지 정의하는 설계도이고,
 **Task**는 Task Definition을 기반으로 실제 실행되는 단위이다.
 
 </details>
@@ -400,7 +332,7 @@ ECS Service Auto Scaling automatically adjusts the number of Tasks based on work
 <details>
 <summary>정답 보기</summary>
 
-**Task**가 실제 Container 실행 단위이고,  
+**Task**가 실제 Container 실행 단위이고,
 **Service**는 원하는 수의 Task가 계속 실행되도록 관리한다.
 
 </details>
@@ -490,3 +422,43 @@ SQS에 작업을 Queue로 저장하고 ECS Task들이 이를 Polling하여 처�
 메시지가 많이 쌓이면 **ECS Service Auto Scaling**을 통해 Task 수를 늘려 병렬 처리할 수 있다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+Amazon ECSは、AWS上でコンテナを管理・実行するためのサービスです。
+
+**Task Definition**でコンテナの実行方法を定義し、それを基に**Task**が実際に実行されます。長時間稼働するアプリケーションでは、**ECS Service**を利用して必要な数のTaskを維持できます。
+
+ECSではEC2またはFargateを利用できます。EC2ではユーザーがインスタンスを管理しますが、Fargateでは基盤となるサーバーをAWSが管理します。
+
+ECS Service Auto Scalingを利用すると、CPUやメモリなどの負荷に応じてTask数を自動調整できます。また、EventBridge、SQS、SNSなどのAWSサービスと組み合わせることで、イベント処理やバッチ処理などのアーキテクチャを構築できます。
+
+## 🇺🇸 English Summary
+
+Amazon ECS is a container orchestration service for running and managing containers on AWS.
+
+A **Task Definition** defines how containers should run, while a **Task** is the actual running unit. An **ECS Service** maintains the desired number of Tasks for long-running applications.
+
+ECS can run workloads on EC2 or AWS Fargate. With EC2, users manage the underlying instances, while Fargate allows Tasks to run without managing the underlying servers.
+
+ECS Service Auto Scaling automatically adjusts the number of Tasks based on workload. ECS can also integrate with services such as EventBridge, SQS, and SNS to build event-driven and asynchronous architectures.
+
+## 📚 Vocabulary
+
+| Term | Meaning |
+|---|---|
+| Container | 애플리케이션과 실행 환경을 격리하여 실행하는 단위 |
+| Docker Image | Container 실행에 필요한 패키지 |
+| Registry | Container Image 저장소 |
+| Cluster | ECS 리소스를 관리하는 논리적 그룹 |
+| Task Definition | ECS Task 실행 방법을 정의하는 설계도 |
+| Task | ECS에서 Container가 실제로 실행되는 단위 |
+| Service | 원하는 수의 Task를 유지하고 관리하는 기능 |
+| Desired Count | Service가 유지하려는 Task 수 |
+| Fargate | 서버를 직접 관리하지 않고 Container를 실행하는 방식 |
+| Task Execution Role | Task 실행 준비에 필요한 IAM Role |
+| Task Role | Container Application이 사용하는 IAM Role |
+| Capacity Provider | ECS Task에 Compute Capacity를 공급하는 방식을 연결하는 기능 |
+| Auto Scaling | 부하에 따라 리소스 수를 자동 조절하는 기능 |
+| Batch Processing | 데이터를 일정 단위로 모아 처리하는 방식 |
+| Polling | 서비스에 새로운 데이터가 있는지 주기적으로 요청하는 방식 |

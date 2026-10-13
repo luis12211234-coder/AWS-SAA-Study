@@ -1,14 +1,12 @@
-# AWS Global Infrastructure
+# 📘 01. AWS Global Infrastructure
 
-## Overview
+## 🇰🇷 1. Overview
 
 AWS(Amazon Web Services)는 Amazon에서 제공하는 세계 최대의 클라우드 컴퓨팅 플랫폼이다.
 
 2002년 Amazon 내부 IT 인프라에서 시작하여, 현재는 전 세계 수백만 명의 고객이 사용하는 클라우드 서비스로 성장했다.
 
----
-
-# AWS History
+## 🇰🇷 2. AWS History
 
 | Year | Event |
 |------|-------|
@@ -17,9 +15,7 @@ AWS(Amazon Web Services)는 Amazon에서 제공하는 세계 최대의 클라우
 | 2006 | Amazon S3, EC2 출시 |
 | Today | 세계 최대 클라우드 플랫폼 |
 
----
-
-# What can AWS do?
+## 🇰🇷 3. What can AWS do?
 
 AWS는 다양한 서비스를 제공한다.
 
@@ -38,9 +34,7 @@ AWS는 다양한 서비스를 제공한다.
 - Airbnb
 - NASA
 
----
-
-# Global Infrastructure
+## 🇰🇷 4. Global Infrastructure
 
 AWS는 전 세계에 인프라를 구축하여 서비스를 제공한다.
 
@@ -51,9 +45,7 @@ AWS는 전 세계에 인프라를 구축하여 서비스를 제공한다.
 - Data Center
 - Edge Location (Point of Presence)
 
----
-
-# Summary
+## 🇰🇷 5. Summary
 
 - AWS는 세계 최대 클라우드 플랫폼이다.
 - 2002년 Amazon 내부 프로젝트에서 시작했다.
@@ -61,9 +53,7 @@ AWS는 전 세계에 인프라를 구축하여 서비스를 제공한다.
 - 2006년 S3와 EC2를 출시했다.
 - 현재 전 세계 Region과 AZ를 통해 서비스를 제공한다.
 
----
-
-# Exam Notes
+## 🎯 Exam Notes
 
 - 대부분의 AWS 서비스는 Regional Service이다.
 - IAM은 대표적인 Global Service이다.
@@ -74,10 +64,6 @@ AWS는 전 세계에 인프라를 구축하여 서비스를 제공한다.
   - Latency
   - Service Availability
   - Pricing
-
----
- 
-# Practical Example
 
 서울 지역에 서비스를 운영한다고 가정한다.
 
@@ -99,19 +85,22 @@ EC2를 두 개의 AZ에 배포하면,
 
 → High Availability
 
----
+## 📝 Review Questions
 
-# 🇯🇵 日本語
+1. Region과 Availability Zone의 차이점은 무엇인가?
+2. Region을 선택할 때 고려해야 하는 요소는 무엇인가?
+3. 대부분의 AWS 서비스는 Global인가, Regional인가?
+4. 여러 AZ에 EC2를 배포하는 이유는 무엇인가?
 
-## AWSとは
+## 🇯🇵 日本語 Summary
+
+### AWSとは
 
 AWS（Amazon Web Services）は、Amazonが提供する世界最大のクラウドコンピューティングサービスである。
 
 2002年にAmazon社内のITインフラとして始まり、現在では世界中で利用されている。
 
----
-
-## AWSの歴史
+### AWSの歴史
 
 | Year | Event |
 |------|-------|
@@ -120,9 +109,7 @@ AWS（Amazon Web Services）は、Amazonが提供する世界最大のクラウ�
 | 2006 | Amazon S3・EC2公開 |
 | Today | 世界最大のクラウドサービス |
 
----
-
-## AWSでできること
+### AWSでできること
 
 - Webサイトのホスティング
 - モバイルバックエンド
@@ -131,27 +118,21 @@ AWS（Amazon Web Services）は、Amazonが提供する世界最大のクラウ�
 - ビッグデータ分析
 - AI / Machine Learning
 
----
-
-## Summary
+### Summary
 
 - AWSは世界最大のクラウドサービスである。
 - 各AWS Regionは最低3つのAvailability Zoneで構成される。
 - Availability Zoneは1つ以上の独立したData Centerで構成される。
 
----
+## 🇺🇸 English Summary
 
-# 🇺🇸 English
-
-## What is AWS?
+### What is AWS?
 
 AWS (Amazon Web Services) is the world's largest cloud computing platform.
 
 It started as Amazon's internal IT infrastructure in 2002 and has grown into the leading cloud service provider.
 
----
-
-## AWS History
+### AWS History
 
 | Year | Event |
 |------|-------|
@@ -160,9 +141,7 @@ It started as Amazon's internal IT infrastructure in 2002 and has grown into the
 | 2006 | Amazon S3 and EC2 released |
 | Today | World's leading cloud platform |
 
----
-
-## What can AWS do?
+### What can AWS do?
 
 - Website Hosting
 - Mobile Backend
@@ -171,9 +150,7 @@ It started as Amazon's internal IT infrastructure in 2002 and has grown into the
 - Big Data Analytics
 - AI / Machine Learning
 
----
-
-## Summary
+### Summary
 
 - AWS is the world's largest cloud platform.
 - It started in 2002.
@@ -182,9 +159,7 @@ It started as Amazon's internal IT infrastructure in 2002 and has grown into the
 - Each AWS Region contains at least three Availability Zones.
 - An Availability Zone consists of one or more discrete data centers.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 한국어 | 日本語 |
 |----------|---------|---------|
@@ -194,12 +169,3 @@ It started as Amazon's internal IT infrastructure in 2002 and has grown into the
 | Edge Location | 엣지 로케이션 | エッジロケーション |
 | High Availability | 고가용성 | 高可用性 |
 | Latency | 지연 시간 | レイテンシー |
-
----
-
-# Review Questions
-
-1. Region과 Availability Zone의 차이점은 무엇인가?
-2. Region을 선택할 때 고려해야 하는 요소는 무엇인가?
-3. 대부분의 AWS 서비스는 Global인가, Regional인가?
-4. 여러 AZ에 EC2를 배포하는 이유는 무엇인가?

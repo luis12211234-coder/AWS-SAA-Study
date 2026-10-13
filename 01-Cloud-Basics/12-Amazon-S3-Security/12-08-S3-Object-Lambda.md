@@ -1,4 +1,4 @@
-# S3 Object Lambda
+# 📘 12-08. S3 Object Lambda
 
 ## 🇰🇷 1. S3 Object Lambda란?
 
@@ -18,9 +18,7 @@ Application
 
 원본 Object의 여러 변형본을 별도의 Bucket에 저장하지 않고 요청 시점에 데이터를 변환할 수 있습니다.
 
----
-
-## 2. 왜 필요한가?
+## 🇰🇷 2. 왜 필요한가?
 
 하나의 Dataset을 여러 Application이 사용한다고 가정합니다.
 
@@ -49,9 +47,7 @@ Marketing
 
 Object Lambda는 원본 하나를 유지하면서 요청 시 필요한 형태로 변환할 수 있습니다.
 
----
-
-## 3. 기본 구조
+## 🇰🇷 3. 기본 구조
 
 Object Lambda는 S3 Access Point와 Lambda Function을 사용합니다.
 
@@ -69,9 +65,7 @@ S3 Bucket
 
 Lambda Function이 Object를 처리한 뒤 변환된 결과를 Application에 반환합니다.
 
----
-
-## 4. 원본 Object는 변경되지 않는다
+## 🇰🇷 4. 원본 Object는 변경되지 않는다
 
 Object Lambda의 핵심은 원본 Object를 직접 수정하는 것이 아닙니다.
 
@@ -87,9 +81,7 @@ Transformed Response
 
 S3에 저장된 원본은 그대로 유지됩니다.
 
----
-
-## 5. PII Redaction
+## 🇰🇷 5. PII Redaction
 
 대표적인 사용 사례는 개인식별정보 제거입니다.
 
@@ -110,9 +102,7 @@ Purchase Amount
 
 분석 Application에는 필요한 정보만 반환할 수 있습니다.
 
----
-
-## 6. Data Format 변환
+## 🇰🇷 6. Data Format 변환
 
 데이터 형식을 요청 시점에 변환할 수도 있습니다.
 
@@ -129,9 +119,7 @@ Application
 
 원본 XML Object를 별도의 JSON Object로 미리 저장할 필요가 없습니다.
 
----
-
-## 7. Image Transformation
+## 🇰🇷 7. Image Transformation
 
 이미지 크기 변경이나 Watermark 적용도 가능합니다.
 
@@ -147,9 +135,7 @@ User
 
 S3의 Original Image는 그대로 유지됩니다.
 
----
-
-## 8. Data Enrichment
+## 🇰🇷 8. Data Enrichment
 
 외부 Data Source의 정보를 추가하여 Object를 보강할 수도 있습니다.
 
@@ -166,9 +152,7 @@ Enriched Data
 Marketing App
 ```
 
----
-
-## 9. Access Point와의 관계
+## 🇰🇷 9. Access Point와의 관계
 
 일반 S3 Access Point는 접근 관리를 단순화하는 것이 주 목적입니다.
 
@@ -184,9 +168,7 @@ S3 Object Lambda
 = "Object를 어떤 형태로 바꿔서 반환할 것인가?"
 ```
 
----
-
-## ⚠️ Current AWS Note
+## 🇰🇷 10. Current AWS Note
 
 2025년 11월 7일부터 S3 Object Lambda는 신규 고객에게 일반적으로 제공되지 않습니다.
 
@@ -206,9 +188,7 @@ S3 Object Lambda
 
 따라서 강의와 SAA 학습에서는 개념을 이해하되 현재 신규 Architecture 설계에서는 이 Availability 변경을 알고 있어야 합니다.
 
----
-
-## 🎯 Exam Scenario
+## 🎯 Exam Notes
 
 강의 기준 다음과 같은 요구사항에서 S3 Object Lambda를 생각합니다.
 
@@ -231,10 +211,6 @@ Image Resize
 Watermark
 Data Enrichment
 ```
-
----
-
-## 🔑 핵심 정리
 
 ```text
 S3 Object Lambda
@@ -262,46 +238,6 @@ S3 Object Lambda
 한 줄 정리:
 
 > **S3 원본을 복제하지 않고 요청 시점에 데이터를 변환해서 반환한다 = S3 Object Lambda**
-
----
-
-## 🇯🇵 日本語 Summary
-
-S3 Object Lambdaは、S3 ObjectをApplicationへ返す前にAWS Lambdaを使用してデータを動的に変換する機能です。
-
-PIIの削除、データ形式の変換、画像のResize、Watermark、Data Enrichmentなどに利用できます。
-
-元のS3 Objectは変更されません。
-
-2025年11月7日以降、S3 Object Lambdaは原則として新規Customerには提供されていません。
-
----
-
-## 🇺🇸 English Summary
-
-S3 Object Lambda uses AWS Lambda to dynamically transform S3 data before it is returned to an application.
-
-Common use cases include PII redaction, format conversion, image resizing, watermarking, and data enrichment.
-
-The original S3 object remains unchanged.
-
-As of November 7, 2025, S3 Object Lambda is generally available only to existing customers and select APN partners.
-
----
-
-## 📚 Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Object Lambda | オブジェクトLambda | 객체 람다 |
-| Transformation | 変換 | 변환 |
-| Redaction | マスキング / 削除 | 민감정보 제거 |
-| PII | 個人識別情報 | 개인식별정보 |
-| Watermark | ウォーターマーク | 워터마크 |
-| Data Enrichment | データ拡張 | 데이터 보강 |
-| Supporting Access Point | サポートアクセスポイント | 지원 액세스 포인트 |
-
----
 
 ## 📝 Review Questions
 
@@ -339,3 +275,35 @@ PII Redaction, Format Conversion, Image Resize, Watermark, Data Enrichment 등�
 아닙니다. 제한되는 것은 S3 Object Lambda 기능이며 AWS Lambda 자체는 계속 사용할 수 있습니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+S3 Object Lambdaは、S3 ObjectをApplicationへ返す前にAWS Lambdaを使用してデータを動的に変換する機能です。
+
+PIIの削除、データ形式の変換、画像のResize、Watermark、Data Enrichmentなどに利用できます。
+
+元のS3 Objectは変更されません。
+
+2025年11月7日以降、S3 Object Lambdaは原則として新規Customerには提供されていません。
+
+## 🇺🇸 English Summary
+
+S3 Object Lambda uses AWS Lambda to dynamically transform S3 data before it is returned to an application.
+
+Common use cases include PII redaction, format conversion, image resizing, watermarking, and data enrichment.
+
+The original S3 object remains unchanged.
+
+As of November 7, 2025, S3 Object Lambda is generally available only to existing customers and select APN partners.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Object Lambda | オブジェクトLambda | 객체 람다 |
+| Transformation | 変換 | 변환 |
+| Redaction | マスキング / 削除 | 민감정보 제거 |
+| PII | 個人識別情報 | 개인식별정보 |
+| Watermark | ウォーターマーク | 워터마크 |
+| Data Enrichment | データ拡張 | 데이터 보강 |
+| Supporting Access Point | サポートアクセスポイント | 지원 액세스 포인트 |

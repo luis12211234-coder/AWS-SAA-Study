@@ -1,4 +1,4 @@
-# 14-05. AWS DataSync
+# 📘 14-05. AWS DataSync
 
 ## 🇰🇷 1. AWS DataSync란?
 
@@ -24,9 +24,7 @@ AWS ↔ AWS
 Other Storage Environment ↔ AWS
 ```
 
----
-
-# 2. On-Premises → AWS
+## 🇰🇷 2. On-Premises → AWS
 
 On-Premises의 NFS 또는 SMB File Server 데이터를 AWS Storage로 Migration할 수 있습니다.
 
@@ -49,9 +47,7 @@ AWS DataSync
 
 On-Premises Storage에 연결하기 위해 **DataSync Agent**가 필요합니다.
 
----
-
-# 3. AWS Storage 간 DataSync
+## 🇰🇷 3. AWS Storage 간 DataSync
 
 AWS Storage Service 간에도 데이터를 복사할 수 있습니다.
 
@@ -83,9 +79,7 @@ AWS ↔ AWS
 → Agent 필요 없음
 ```
 
----
-
-# 4. Supported AWS Storage
+## 🇰🇷 4. Supported AWS Storage
 
 강의에서 다룬 주요 Storage Destination:
 
@@ -97,9 +91,7 @@ Amazon FSx
 
 Amazon S3의 여러 Storage Class와 함께 사용할 수 있습니다.
 
----
-
-# 5. Scheduled Synchronization
+## 🇰🇷 5. Scheduled Synchronization
 
 DataSync는 지속적인 Real-Time Replication 서비스가 아닙니다.
 
@@ -126,9 +118,7 @@ Scheduled Data Synchronization
 
 이 핵심입니다.
 
----
-
-# 6. Metadata와 Permission 보존 ⭐
+## 🇰🇷 6. Metadata와 Permission 보존 ⭐
 
 DataSync의 중요한 시험 포인트입니다.
 
@@ -166,9 +156,7 @@ Preserve Permissions
 AWS DataSync
 ```
 
----
-
-# 7. Performance
+## 🇰🇷 7. Performance
 
 DataSync Agent의 Task는 높은 Network Throughput을 사용할 수 있습니다.
 
@@ -182,9 +170,7 @@ DataSync
     └─ Bandwidth Limit
 ```
 
----
-
-# 8. DataSync + Snowcone
+## 🇰🇷 8. DataSync + Snowcone
 
 Snowcone에는 DataSync Agent가 사전 설치되어 있습니다.
 
@@ -200,13 +186,11 @@ Remote Location
 
 따라서 Network 환경이 제한적인 Edge Location에서도 DataSync와 Snowcone을 함께 활용할 수 있습니다.
 
----
-
-# 9. DataSync vs Storage Gateway
+## 🇰🇷 9. DataSync vs Storage Gateway
 
 두 서비스의 목적은 다릅니다.
 
-### Storage Gateway
+#### Storage Gateway
 
 ```text
 On-Premises
@@ -218,7 +202,7 @@ AWS Storage
 
 **Hybrid Storage 연결**
 
-### DataSync
+#### DataSync
 
 ```text
 Storage A
@@ -241,9 +225,7 @@ DataSync
 = 데이터를 이동 / 동기화
 ```
 
----
-
-# 10. DataSync vs Snow Family
+## 🇰🇷 10. DataSync vs Snow Family
 
 ```text
 DataSync
@@ -257,9 +239,7 @@ Snow Family
 
 Network Capacity가 부족하여 대량 전송이 현실적으로 어렵다면 Snow Family를 고려합니다.
 
----
-
-## 🔑 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 AWS DataSync
@@ -298,36 +278,6 @@ Metadata / Permission Preservation
 → AWS DataSync
 ```
 
----
-
-## 🇯🇵 日本語 Summary
-
-AWS DataSyncは、大量のデータをストレージ間でコピー・同期するためのサービスです。
-
-オンプレミスとAWS間でデータを転送する場合、DataSync Agentを使用します。
-
-AWSストレージサービス間の転送ではAgentは必要ありません。
-
-DataSyncはAmazon S3、Amazon EFS、Amazon FSxなどと連携できます。
-
-また、ファイルのMetadataやPermissionを維持しながらデータを移行できる点が重要です。
-
-リアルタイムの継続的な同期ではなく、スケジュールに基づいて同期を実行できます。
-
----
-
-## 🇺🇸 English Summary
-
-AWS DataSync is a managed service for large-scale data transfer and synchronization.
-
-A DataSync Agent is required when connecting on-premises file systems to AWS. Transfers between supported AWS storage services do not require an agent.
-
-DataSync can preserve file metadata and permissions during migration.
-
-Synchronization is scheduled rather than continuous real-time replication.
-
----
-
 ## 📝 Review Questions
 
 <details>
@@ -364,3 +314,27 @@ AWS DataSync가 적합합니다.
 아닙니다. Schedule에 따라 Synchronization Task를 실행할 수 있습니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+AWS DataSyncは、大量のデータをストレージ間でコピー・同期するためのサービスです。
+
+オンプレミスとAWS間でデータを転送する場合、DataSync Agentを使用します。
+
+AWSストレージサービス間の転送ではAgentは必要ありません。
+
+DataSyncはAmazon S3、Amazon EFS、Amazon FSxなどと連携できます。
+
+また、ファイルのMetadataやPermissionを維持しながらデータを移行できる点が重要です。
+
+リアルタイムの継続的な同期ではなく、スケジュールに基づいて同期を実行できます。
+
+## 🇺🇸 English Summary
+
+AWS DataSync is a managed service for large-scale data transfer and synchronization.
+
+A DataSync Agent is required when connecting on-premises file systems to AWS. Transfers between supported AWS storage services do not require an agent.
+
+DataSync can preserve file metadata and permissions during migration.
+
+Synchronization is scheduled rather than continuous real-time replication.

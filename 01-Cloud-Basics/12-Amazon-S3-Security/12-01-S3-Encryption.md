@@ -1,4 +1,4 @@
-# S3 Encryption
+# 📘 12-01. S3 Encryption
 
 ## 🇰🇷 1. S3 암호화 방식
 
@@ -20,9 +20,7 @@ Server-Side Encryption은 S3에 데이터가 도착한 뒤 AWS 측에서 암호�
 
 Client-Side Encryption은 S3에 보내기 전에 Client가 직접 데이터를 암호화합니다.
 
----
-
-## 2. SSE-S3
+## 🇰🇷 2. SSE-S3
 
 ```text
 SSE-S3
@@ -57,9 +55,7 @@ Encryption
 
 현재 모든 S3 Bucket은 기본적으로 SSE-S3 기반 암호화가 적용됩니다.
 
----
-
-## 3. SSE-KMS
+## 🇰🇷 3. SSE-KMS
 
 SSE-KMS는 AWS Key Management Service의 KMS Key를 사용하는 Server-Side Encryption입니다.
 
@@ -93,9 +89,7 @@ KMS Permission
 Object Access
 ```
 
----
-
-## 4. SSE-KMS와 API Quota
+## 🇰🇷 4. SSE-KMS와 API Quota
 
 SSE-KMS를 사용하면 암호화 및 복호화 과정에서 AWS KMS API가 사용됩니다.
 
@@ -120,9 +114,7 @@ Possible Throttling
 
 SAA에서 SSE-KMS + 매우 높은 Request 처리량이 함께 등장하면 KMS Quota를 생각합니다.
 
----
-
-## 5. S3 Bucket Key
+## 🇰🇷 5. S3 Bucket Key
 
 SSE-KMS 사용 시 S3 Bucket Key를 사용할 수 있습니다.
 
@@ -140,9 +132,7 @@ KMS Request Cost 감소
 
 로 기억할 수 있습니다.
 
----
-
-## 6. SSE-C
+## 🇰🇷 6. SSE-C
 
 SSE-C는 Customer-Provided Key를 사용하는 Server-Side Encryption입니다.
 
@@ -176,9 +166,7 @@ Object를 다시 읽을 때도 올바른 Key를 제공해야 합니다.
 
 Key를 네트워크를 통해 S3로 전달하므로 HTTPS가 필요합니다.
 
----
-
-## 7. Client-Side Encryption
+## 🇰🇷 7. Client-Side Encryption
 
 Client가 S3에 업로드하기 전에 직접 암호화합니다.
 
@@ -210,9 +198,7 @@ Original File
 
 Key와 암호화 과정 전체를 Client가 관리합니다.
 
----
-
-## 8. Server-Side vs Client-Side
+## 🇰🇷 8. Server-Side vs Client-Side
 
 ```text
 SSE
@@ -224,9 +210,7 @@ Client가 암호화 → 암호화된 파일 전달 → S3 저장
 
 핵심 차이는 **암호화를 어디에서 수행하는가**입니다.
 
----
-
-## 9. Encryption in Transit
+## 🇰🇷 9. Encryption in Transit
 
 S3에 데이터를 전송하는 동안의 암호화는 HTTPS를 사용합니다.
 
@@ -241,9 +225,7 @@ Amazon S3
 
 SSE-C에서는 Encryption Key도 요청에 포함되므로 HTTPS 사용이 특히 중요합니다.
 
----
-
-## 10. HTTPS 강제
+## 🇰🇷 10. HTTPS 강제
 
 Bucket Policy에서 `aws:SecureTransport` Condition을 이용해 HTTP 요청을 거부할 수 있습니다.
 
@@ -257,9 +239,7 @@ aws:SecureTransport = false
 
 따라서 HTTPS 연결만 허용하도록 강제할 수 있습니다.
 
----
-
-## 11. Default Encryption vs Bucket Policy
+## 🇰🇷 11. Default Encryption vs Bucket Policy
 
 Default Encryption과 Bucket Policy는 역할이 다릅니다.
 
@@ -300,9 +280,7 @@ PUT Request
 
 Bucket Policy가 먼저 평가되므로 정책 조건을 만족하지 않는 PUT 요청은 Default Encryption이 적용되기 전에 거부될 수 있습니다.
 
----
-
-## 12. Object Encryption 변경과 Versioning
+## 🇰🇷 12. Object Encryption 변경과 Versioning
 
 Versioning이 활성화된 Bucket에서 Object의 Encryption 설정을 변경하면 새로운 Object Version이 생성될 수 있습니다.
 
@@ -318,9 +296,7 @@ SSE-S3
 
 기존 Version의 암호화 속성만 단순히 수정하는 개념이 아니라 새로운 Version으로 처리될 수 있다는 점을 기억합니다.
 
----
-
-## ⚠️ Current AWS Note
+## 🇰🇷 13. Current AWS Note
 
 현재 모든 S3 Bucket은 기본적으로 SSE-S3를 사용하여 새 Object를 암호화합니다.
 
@@ -330,9 +306,7 @@ SSE-C가 필요한 경우 명시적으로 활성화해야 합니다.
 
 이는 기존 강의 제작 시점 이후 변경된 현재 AWS 동작입니다.
 
----
-
-## 🎯 Exam Scenario
+## 🎯 Exam Notes
 
 ```text
 AWS가 Key 관리
@@ -353,10 +327,6 @@ HTTP 차단
 SSE-KMS 비용 감소
 → S3 Bucket Key
 ```
-
----
-
-## 🔑 핵심 정리
 
 ```text
 SSE-S3
@@ -382,47 +352,6 @@ Bucket Policy
 한 줄 정리:
 
 > **S3 암호화 문제는 누가 Key를 관리하고 어디에서 암호화하는지를 구분한다.**
-
----
-
-## 🇯🇵 日本語 Summary
-
-S3の暗号化方式にはSSE-S3、SSE-KMS、SSE-C、Client-Side Encryptionがあります。
-
-SSE-S3ではAmazon S3がKeyを管理し、SSE-KMSではAWS KMSを利用してKeyをより細かく制御できます。
-
-SSE-CではCustomerがKeyを提供しますが、暗号化処理はS3側で行われます。
-
-Client-Side EncryptionではClientがデータを暗号化してからS3へアップロードします。
-
----
-
-## 🇺🇸 English Summary
-
-Amazon S3 supports SSE-S3, SSE-KMS, SSE-C, and client-side encryption.
-
-SSE-S3 uses S3-managed keys, while SSE-KMS provides additional key control and auditing through AWS KMS.
-
-With SSE-C, the customer provides the encryption key but S3 performs the encryption.
-
-With client-side encryption, data is encrypted before it is uploaded to S3.
-
----
-
-## 📚 Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Encryption | 暗号化 | 암호화 |
-| Decryption | 復号化 | 복호화 |
-| Server-Side Encryption | サーバー側暗号化 | 서버 측 암호화 |
-| Client-Side Encryption | クライアント側暗号化 | 클라이언트 측 암호화 |
-| KMS Key | KMSキー | KMS 키 |
-| Bucket Key | バケットキー | 버킷 키 |
-| Encryption in Transit | 転送中の暗号化 | 전송 중 암호화 |
-| Throttling | スロットリング | 스로틀링 |
-
----
 
 ## 📝 Review Questions
 
@@ -460,3 +389,36 @@ S3 Bucket Key입니다.
 `aws:SecureTransport`입니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+S3の暗号化方式にはSSE-S3、SSE-KMS、SSE-C、Client-Side Encryptionがあります。
+
+SSE-S3ではAmazon S3がKeyを管理し、SSE-KMSではAWS KMSを利用してKeyをより細かく制御できます。
+
+SSE-CではCustomerがKeyを提供しますが、暗号化処理はS3側で行われます。
+
+Client-Side EncryptionではClientがデータを暗号化してからS3へアップロードします。
+
+## 🇺🇸 English Summary
+
+Amazon S3 supports SSE-S3, SSE-KMS, SSE-C, and client-side encryption.
+
+SSE-S3 uses S3-managed keys, while SSE-KMS provides additional key control and auditing through AWS KMS.
+
+With SSE-C, the customer provides the encryption key but S3 performs the encryption.
+
+With client-side encryption, data is encrypted before it is uploaded to S3.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Encryption | 暗号化 | 암호화 |
+| Decryption | 復号化 | 복호화 |
+| Server-Side Encryption | サーバー側暗号化 | 서버 측 암호화 |
+| Client-Side Encryption | クライアント側暗号化 | 클라이언트 측 암호화 |
+| KMS Key | KMSキー | KMS 키 |
+| Bucket Key | バケットキー | 버킷 키 |
+| Encryption in Transit | 転送中の暗号化 | 전송 중 암호화 |
+| Throttling | スロットリング | 스로틀링 |

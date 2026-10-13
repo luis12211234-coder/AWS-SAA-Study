@@ -116,7 +116,7 @@ DynamoDB DeleteTable API → CloudTrail Trail (Logging ON)
 
 EventBridge의 Rule 예시 및 추가 조건 → [22-05](./22-05-Amazon-EventBridge.md).
 
-## 🎯 Exam Triggers
+## 🎯 Exam Notes
 
 | 문제 키워드 | 답 |
 |---|---|
@@ -160,7 +160,19 @@ EventBridge의 Rule 예시 및 추가 조건 → [22-05](./22-05-Amazon-EventBri
 | Q28 | **B** | 객체 GetObject/PutObject/DeleteObject는 Data Events에 속하고 기본으로 기록되지 않으므로 별도 활성화한다. |
 | Q29 | **A** | Event History의 기본 범위는 리전별 최근 90일 Management Events이다. 모든 유형이 90일 저장된다는 뜻은 아니다. |
 
-## 📚 Vocabulary — English · 한국어 · 日本語
+## 🇯🇵 日本語 Summary
+
+CloudTrail は AWS アカウント内の API 操作を監査するサービス。「誰が・いつ・何をしたか」を追跡する。Event History はリージョンごとの直近 90 日間の管理イベントを表示する。S3 への長期保存には Trail を設定する。Management Events は設定操作、Data Events は S3 オブジェクトなどに対する操作、Insights Events は API 利用の異常、Network Activity Events は対応するネットワーク経路の API 活動を表す。EventBridge との API 連携にはログ記録中の Trail が必要である。
+
+**試験の注意点:** デフォルトの Event History は90日分の Management Events のみ。S3 GetObject の監査には Data Events を明示的に記録する。
+
+## 🇺🇸 English Summary
+
+CloudTrail provides AWS account activity and API auditing: who performed which action and when. Event History includes 90 days of regional management events, while a trail delivers chosen events to S3 for longer retention. Management, data, Insights, and network activity are distinct event types. Configure data-event logging separately. An active logging trail is required to receive `AWS API Call via CloudTrail` events in EventBridge.
+
+**Exam tip:** Do not confuse Event History with a trail. Event History is a regional 90-day management-event view; a trail can deliver selected event types to S3.
+
+## 📚 Vocabulary
 
 > GitHub 검색 시 영어 표제어 그대로 검색하면 관련 설명으로 이동하기 쉽다.
 
@@ -177,20 +189,7 @@ EventBridge의 Rule 예시 및 추가 조건 → [22-05](./22-05-Amazon-EventBri
 | Anomaly Detection | 이상 탐지 | 異常検知 |
 | Baseline | 기준선 | ベースライン |
 
-
-## 🇯🇵 日本語 Summary
-
-CloudTrail は AWS アカウント内の API 操作を監査するサービス。「誰が・いつ・何をしたか」を追跡する。Event History はリージョンごとの直近 90 日間の管理イベントを表示する。S3 への長期保存には Trail を設定する。Management Events は設定操作、Data Events は S3 オブジェクトなどに対する操作、Insights Events は API 利用の異常、Network Activity Events は対応するネットワーク経路の API 活動を表す。EventBridge との API 連携にはログ記録中の Trail が必要である。
-
-**試験の注意点:** デフォルトの Event History は90日分の Management Events のみ。S3 GetObject の監査には Data Events を明示的に記録する。
-
-## 🇺🇸 English Summary
-
-CloudTrail provides AWS account activity and API auditing: who performed which action and when. Event History includes 90 days of regional management events, while a trail delivers chosen events to S3 for longer retention. Management, data, Insights, and network activity are distinct event types. Configure data-event logging separately. An active logging trail is required to receive `AWS API Call via CloudTrail` events in EventBridge.
-
-**Exam tip:** Do not confuse Event History with a trail. Event History is a regional 90-day management-event view; a trail can deliver selected event types to S3.
-
-## 📚 References
+## 📚 Official References
 
 - [CloudTrail Event History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)
 - [CloudTrail event types](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-events.html)

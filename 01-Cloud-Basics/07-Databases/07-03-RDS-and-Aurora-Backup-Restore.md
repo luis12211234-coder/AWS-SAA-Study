@@ -1,16 +1,14 @@
-# RDS & Aurora Backup, Restore and Cloning
+# 📘 07-03. RDS & Aurora Backup, Restore and Cloning
 
 Amazon RDS와 Aurora는 **Automated Backup, Manual Snapshot, Point-in-Time Recovery(PITR)** 기능을 제공한다.
 
 또한 Aurora는 **Database Cloning**을 통해 기존 Cluster에서 빠르게 새로운 Cluster를 생성할 수 있다.
 
----
-
-# 1. RDS Automated Backups
+## 🇰🇷 1. RDS Automated Backups
 
 RDS는 자동으로 데이터베이스를 백업할 수 있다.
 
-### 동작
+#### 동작
 
 - 매일 데이터베이스 전체 백업 수행
 - Transaction Log를 약 5분마다 백업
@@ -27,7 +25,7 @@ RDS
        └─ 약 5분마다 Backup
 ```
 
-## Point-in-Time Recovery (PITR)
+### Point-in-Time Recovery (PITR)
 
 Automated Backup을 이용하면 보존 기간 내의 **특정 시점**으로 데이터베이스를 복구할 수 있다.
 
@@ -43,9 +41,7 @@ Point-in-Time Recovery
 
 > "데이터베이스를 특정 시간의 상태로 복구해야 한다."
 
----
-
-# 2. Manual DB Snapshots
+## 🇰🇷 2. Manual DB Snapshots
 
 Manual Snapshot은 사용자가 직접 생성하는 데이터베이스 백업이다.
 
@@ -61,7 +57,7 @@ Manual Snapshot
 
 장기간 보관해야 하는 백업에는 Manual Snapshot을 사용할 수 있다.
 
-## 장기간 사용하지 않는 RDS
+### 장기간 사용하지 않는 RDS
 
 RDS Instance를 중지해도 **Storage 비용은 계속 발생**한다.
 
@@ -83,13 +79,11 @@ Snapshot Restore
 새 RDS 생성
 ```
 
-### 시험 핵심
+#### 시험 핵심
 
 `장기간 사용하지 않는 RDS + 비용 절감 → Snapshot 생성 → DB 삭제 → 필요 시 Restore`
 
----
-
-# 3. Aurora Automated Backups
+## 🇰🇷 3. Aurora Automated Backups
 
 Aurora도 RDS와 유사하게 Automated Backup과 PITR을 지원한다.
 
@@ -108,13 +102,11 @@ Aurora Automated Backup
 → 비활성화 불가능
 ```
 
-### 시험 핵심
+#### 시험 핵심
 
 `Aurora Automated Backup → Cannot be disabled`
 
----
-
-# 4. Backup & Snapshot Restore
+## 🇰🇷 4. Backup & Snapshot Restore
 
 RDS 또는 Aurora의 Automated Backup이나 Manual Snapshot을 Restore하면 **새로운 Database가 생성된다.**
 
@@ -130,13 +122,11 @@ Existing DB
           New Database
 ```
 
-### 시험 핵심
+#### 시험 핵심
 
 `Restore Backup / Snapshot → New Database`
 
----
-
-# 5. MySQL Backup from Amazon S3
+## 🇰🇷 5. MySQL Backup from Amazon S3
 
 On-Premises MySQL의 백업을 Amazon S3에 저장한 뒤 새로운 RDS MySQL로 Restore할 수 있다.
 
@@ -152,9 +142,7 @@ On-Premises MySQL
    New RDS MySQL
 ```
 
----
-
-# 6. Aurora MySQL Restore from Amazon S3
+## 🇰🇷 6. Aurora MySQL Restore from Amazon S3
 
 On-Premises MySQL을 Aurora MySQL로 복원할 때는 **Percona XtraBackup**을 사용할 수 있다.
 
@@ -174,9 +162,7 @@ New Aurora MySQL Cluster
 
 `Percona XtraBackup + S3 → Aurora MySQL Restore`
 
----
-
-# 7. Aurora Database Cloning
+## 🇰🇷 7. Aurora Database Cloning
 
 Aurora는 기존 Aurora Cluster에서 새로운 Aurora Cluster를 빠르게 생성할 수 있는 **Database Cloning**을 지원한다.
 
@@ -192,9 +178,7 @@ Production Aurora
 
 Snapshot을 생성하고 Restore하는 방법보다 빠르고 비용 효율적이다.
 
----
-
-# 8. Copy-on-Write
+## 🇰🇷 8. Copy-on-Write
 
 Aurora Database Cloning이 빠른 이유는 **Copy-on-Write** 방식을 사용하기 때문이다.
 
@@ -232,19 +216,17 @@ Staging ────┘
 
 이것이 **Copy-on-Write**이다.
 
-### 장점
+#### 장점
 
 - Snapshot & Restore보다 빠른 Clone 생성
 - 전체 데이터를 처음부터 복사하지 않아 비용 효율적
 - Production Database에 영향을 최소화하면서 Test/Staging 환경 생성 가능
 
-### 시험 핵심
+#### 시험 핵심
 
 `Aurora Clone + Fast + Cost-efficient + Copy-on-Write → Aurora Database Cloning`
 
----
-
-# 9. 시험 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 RDS Automated Backup
@@ -279,15 +261,23 @@ Aurora Database Cloning
 → Production → Test / Staging
 ```
 
----
+## 📝 Review Questions
 
-# 日本語まとめ
+1. RDS Automated Backup의 Backup Retention Period는 얼마인가?
+2. Point-in-Time Recovery는 어떤 상황에서 사용하는가?
+3. RDS와 Aurora의 Automated Backup에서 중요한 차이점은 무엇인가?
+4. Manual Snapshot과 Automated Backup의 보존 방식에는 어떤 차이가 있는가?
+5. Backup 또는 Snapshot을 Restore하면 기존 Database를 덮어쓰는가?
+6. On-Premises MySQL을 Aurora MySQL로 Restore할 때 어떤 Backup 도구를 사용할 수 있는가?
+7. Aurora Database Cloning이 Snapshot & Restore보다 빠른 이유는 무엇인가?
 
-## RDS / Aurora Backup
+## 🇯🇵 日本語 Summary
+
+### RDS / Aurora Backup
 
 RDSとAuroraは、Automated Backup、Manual Snapshot、Point-in-Time Recoveryをサポートする。
 
-### RDS Automated Backup
+#### RDS Automated Backup
 
 - 毎日Full Backupを実行
 - Transaction Logを約5分ごとにバックアップ
@@ -295,21 +285,21 @@ RDSとAuroraは、Automated Backup、Manual Snapshot、Point-in-Time Recoveryを
 - Point-in-Time Recoveryをサポート
 - Automated Backupを無効化できる
 
-### Aurora Automated Backup
+#### Aurora Automated Backup
 
 Auroraも1〜35日のRetention PeriodとPITRをサポートする。
 
 ただし、AuroraのAutomated Backupは**無効化できない**。
 
-### Manual Snapshot
+#### Manual Snapshot
 
 ユーザーが手動で作成し、必要な期間保存できる。
 
-### Restore
+#### Restore
 
 BackupまたはSnapshotをRestoreすると、既存DBを上書きするのではなく**新しいDatabaseが作成される**。
 
-## Aurora Database Cloning
+### Aurora Database Cloning
 
 Aurora Database Cloningは、既存のAurora Clusterから新しいClusterを高速に作成する機能である。
 
@@ -317,15 +307,13 @@ Aurora Database Cloningは、既存のAurora Clusterから新しいClusterを高
 
 Production DatabaseからTest / Staging環境を作成する場合に有効である。
 
----
+## 🇺🇸 English Summary
 
-# English Summary
-
-## RDS / Aurora Backup
+### RDS / Aurora Backup
 
 RDS and Aurora support Automated Backups, Manual Snapshots, and Point-in-Time Recovery.
 
-### RDS Automated Backups
+#### RDS Automated Backups
 
 - Daily full backup
 - Transaction logs backed up approximately every 5 minutes
@@ -333,21 +321,21 @@ RDS and Aurora support Automated Backups, Manual Snapshots, and Point-in-Time Re
 - Supports Point-in-Time Recovery
 - Automated backups can be disabled
 
-### Aurora Automated Backups
+#### Aurora Automated Backups
 
 Aurora also supports a 1–35 day retention period and Point-in-Time Recovery.
 
 Unlike RDS, **Aurora automated backups cannot be disabled**.
 
-### Manual Snapshots
+#### Manual Snapshots
 
 Manual snapshots are triggered by the user and can be retained as long as needed.
 
-### Restore
+#### Restore
 
 Restoring a backup or snapshot creates a **new database** rather than overwriting the existing database.
 
-## Aurora Database Cloning
+### Aurora Database Cloning
 
 Aurora Database Cloning quickly creates a new Aurora Cluster from an existing cluster.
 
@@ -355,9 +343,7 @@ It uses **Copy-on-Write**, so the entire dataset does not need to be copied when
 
 A common use case is creating Test or Staging environments from Production data.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -371,15 +357,3 @@ A common use case is creating Test or Staging environments from Production data.
 | Copy-on-Write | コピーオンライト | 쓰기 시 복사 |
 | Production Environment | 本番環境 | 운영 환경 |
 | Staging Environment | ステージング環境 | 스테이징 환경 |
-
----
-
-# Review Questions
-
-1. RDS Automated Backup의 Backup Retention Period는 얼마인가?
-2. Point-in-Time Recovery는 어떤 상황에서 사용하는가?
-3. RDS와 Aurora의 Automated Backup에서 중요한 차이점은 무엇인가?
-4. Manual Snapshot과 Automated Backup의 보존 방식에는 어떤 차이가 있는가?
-5. Backup 또는 Snapshot을 Restore하면 기존 Database를 덮어쓰는가?
-6. On-Premises MySQL을 Aurora MySQL로 Restore할 때 어떤 Backup 도구를 사용할 수 있는가?
-7. Aurora Database Cloning이 Snapshot & Restore보다 빠른 이유는 무엇인가?

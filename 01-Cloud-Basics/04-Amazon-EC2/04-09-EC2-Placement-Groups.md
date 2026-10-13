@@ -1,6 +1,6 @@
-# EC2 Placement Groups
+# 📘 04-09. EC2 Placement Groups
 
-## Overview
+## 🇰🇷 1. Overview
 
 EC2 Placement Group은 EC2 Instance가 AWS의 물리적 Infrastructure에 어떻게 배치될지에 대한 전략을 정의하는 기능이다.
 
@@ -39,9 +39,7 @@ Precision Time
 > Cluster, Spread, Partition은 강의 및 제공된 PDF의 내용이다.
 > Precision Time은 강의 이후 AWS에 추가된 Placement Strategy이다.
 
----
-
-# Availability Zone Review
+## 🇰🇷 2. Availability Zone Review
 
 Placement Group을 이해하려면 Availability Zone(AZ)을 먼저 이해해야 한다.
 
@@ -73,11 +71,9 @@ Availability Zone은 Region 내부에서 서로 독립적으로 설계된 Infras
 Placement Group Strategy에 따라 하나의 AZ 안에서 Instance를 배치하거나,
 여러 AZ에 걸쳐 Instance를 분산할 수 있다.
 
----
+## 🇰🇷 3. Cluster Placement Group
 
-# Cluster Placement Group
-
-## Concept
+### Concept
 
 Cluster Placement Group은 EC2 Instance들을 **하나의 Availability Zone 안에서 서로 가까운 위치에 배치**한다.
 
@@ -96,9 +92,7 @@ Availability Zone
 └─────────────────────────────┘
 ```
 
----
-
-## Advantages
+### Advantages
 
 Cluster Placement Group의 핵심 장점은 Network Performance이다.
 
@@ -117,9 +111,7 @@ Instance 간 약 10 Gbps Network 성능을 예시로 설명한다.
 
 > 정확한 Network Performance는 사용하는 EC2 Instance Type과 Network Configuration에 따라 달라질 수 있다.
 
----
-
-## Disadvantages
+### Disadvantages
 
 Cluster Placement Group은 하나의 Availability Zone에 집중된다.
 
@@ -149,9 +141,7 @@ Failure Isolation ↓
 
 이라는 Trade-off가 존재한다.
 
----
-
-## Use Cases
+### Use Cases
 
 Cluster Placement Group은 다음과 같은 Workload에 적합하다.
 
@@ -161,11 +151,9 @@ Cluster Placement Group은 다음과 같은 Workload에 적합하다.
 - High-Throughput Applications
 - Instance 간 매우 빠른 Network Communication이 필요한 Application
 
----
+## 🇰🇷 4. Spread Placement Group
 
-# Spread Placement Group
-
-## Concept
+### Concept
 
 Spread Placement Group은 EC2 Instance들을 **서로 다른 물리 Hardware에 분산 배치**한다.
 
@@ -179,12 +167,10 @@ EC2-A
   ▼
 Hardware 1
 
-
 EC2-B
   │
   ▼
 Hardware 2
-
 
 EC2-C
   │
@@ -204,9 +190,7 @@ Another Instance
 
 와 같은 방식으로 Failure Risk를 분산한다.
 
----
-
-## Spread Does NOT Mean One Instance per AZ
+### Spread Does NOT Mean One Instance per AZ
 
 Spread Placement Group은 각 Instance를 반드시 서로 다른 Availability Zone에 하나씩 배치한다는 의미가 아니다.
 
@@ -244,9 +228,7 @@ Distinct Underlying Hardware
 
 이다.
 
----
-
-## Advantages
+### Advantages
 
 하나의 Hardware에 장애가 발생해도 다른 Instance가 영향을 받을 가능성을 낮춘다.
 
@@ -257,12 +239,10 @@ Hardware 1
     ▼
 EC2-A Failure
 
-
 Hardware 2
     │
     ▼
 EC2-B Running
-
 
 Hardware 3
     │
@@ -272,9 +252,7 @@ EC2-C Running
 
 따라서 중요한 Instance 간 Failure Isolation을 강화할 수 있다.
 
----
-
-## Limit
+### Limit
 
 Spread Placement Group에는 규모 제한이 있다.
 
@@ -290,20 +268,16 @@ per Placement Group
 따라서 수백 개 Instance를 사용하는 대규모 Distributed System보다는
 소수의 중요한 Instance를 서로 격리하는 경우에 적합하다.
 
----
-
-## Use Cases
+### Use Cases
 
 - Critical Applications
 - High Availability Workloads
 - Instance Failure Isolation이 중요한 Workload
 - 소수의 중요한 Server를 서로 다른 Hardware에 배치해야 하는 경우
 
----
+## 🇰🇷 5. Partition Placement Group
 
-# Partition Placement Group
-
-## Concept
+### Concept
 
 Partition Placement Group은 Instance 하나하나를 완전히 분리하는 Spread 방식과 달리,
 여러 EC2 Instance를 **Partition이라는 그룹 단위로 나누어 배치**한다.
@@ -335,11 +309,9 @@ Partition 1
 ↓
 Rack Set A
 
-
 Partition 2
 ↓
 Rack Set B
-
 
 Partition 3
 ↓
@@ -348,9 +320,7 @@ Rack Set C
 
 서로 다른 Partition은 동일한 Hardware Rack을 공유하지 않는다.
 
----
-
-## Failure Isolation
+### Failure Isolation
 
 Partition 하나에 Hardware Failure가 발생하더라도
 다른 Partition은 영향을 받지 않도록 설계된다.
@@ -362,14 +332,12 @@ Rack Set A
    ▼
 Running
 
-
 Partition 2
 Rack Set B
    X
    │
    ▼
 Failure
-
 
 Partition 3
 Rack Set C
@@ -381,9 +349,7 @@ Running
 따라서 Application이 데이터를 여러 Partition에 분산하여 저장하면
 하나의 Rack Failure가 전체 System Failure로 이어질 위험을 줄일 수 있다.
 
----
-
-## Multiple Availability Zones
+### Multiple Availability Zones
 
 Partition Placement Group 역시 하나의 AZ에만 제한되는 것은 아니다.
 
@@ -404,7 +370,6 @@ Partition 2
 ├─ EC2
 └─ EC2
 
-
 AZ-B
 
 Partition 3
@@ -422,9 +387,7 @@ Partition
 
 이다.
 
----
-
-## Scale
+### Scale
 
 강의 및 PDF 기준:
 
@@ -456,9 +419,7 @@ Partition 2
 따라서 Partition Placement Group은 수백 개의 EC2 Instance를 사용하는
 대규모 Distributed System에 사용할 수 있다.
 
----
-
-## Instance Metadata
+### Instance Metadata
 
 EC2 Instance는 Instance Metadata를 이용하여
 자신이 어떤 Partition에 배치되어 있는지 확인할 수 있다.
@@ -466,9 +427,7 @@ EC2 Instance는 Instance Metadata를 이용하여
 이를 통해 Partition-aware Application이
 자신의 물리적 Failure Domain을 인식하고 데이터를 적절하게 분산할 수 있다.
 
----
-
-## Use Cases
+### Use Cases
 
 Partition Placement Group은 Partition-aware Distributed Application에 적합하다.
 
@@ -484,14 +443,12 @@ Apache Kafka
 이러한 Application은 원래 여러 Node에 Data를 분산하여 저장하므로
 물리적인 Infrastructure 역시 Partition 단위로 분산하여 Failure Risk를 줄일 수 있다.
 
----
-
-# Spread vs Partition
+## 🇰🇷 6. Spread vs Partition
 
 Spread와 Partition 모두 Hardware Failure를 분산하는 것이 목적이지만,
 **격리 단위와 Scale이 다르다.**
 
-## Spread
+### Spread
 
 ```text
 EC2-1
@@ -517,9 +474,7 @@ Isolation Unit
 따라서 강력한 개별 Instance Failure Isolation을 제공하지만
 AZ당 Instance 수가 제한된다.
 
----
-
-## Partition
+### Partition
 
 ```text
 Partition 1
@@ -528,7 +483,6 @@ Partition 1
 └─ EC2
 ↓
 Rack Set A
-
 
 Partition 2
 ├─ EC2
@@ -548,9 +502,7 @@ Isolation Unit
 
 따라서 Spread보다 훨씬 많은 Instance를 사용할 수 있다.
 
----
-
-## Simple Comparison
+### Simple Comparison
 
 ```text
 Spread
@@ -577,11 +529,9 @@ EC2 여러 개
 → Rack Set B
 ```
 
----
+## 🇰🇷 7. Precision Time Placement Group
 
-# Precision Time Placement Group
-
-## Concept
+### Concept
 
 Precision Time Placement Group은
 EC2 Instance에서 **매우 정밀한 시간 동기화**가 필요한 Workload를 위한 Placement Strategy이다.
@@ -602,9 +552,7 @@ AWS의 Enhanced Amazon Time Sync Service와 함께 사용하여
 > Precision Time은 기존 강의 및 PDF에 포함되지 않은,
 > 이후 AWS에 추가된 Placement Strategy이다.
 
----
-
-## Why Precise Time Matters
+### Why Precise Time Matters
 
 일반적인 Application에서는 Server 간 시간이 약간 차이나도 큰 문제가 되지 않을 수 있다.
 
@@ -626,9 +574,7 @@ Transaction B
 Clock이 정확하게 동기화되어 있다면
 어떤 Event가 먼저 발생했는지를 보다 정확하게 판단할 수 있다.
 
----
-
-## Use Cases
+### Use Cases
 
 Precision Time Placement Group은 다음과 같이
 정확한 Timestamp와 Clock Synchronization이 중요한 Workload에 사용할 수 있다.
@@ -661,9 +607,7 @@ Accurate Clock Synchronization
 Precision Time
 ```
 
----
-
-# Placement Strategy Comparison
+## 🇰🇷 8. Placement Strategy Comparison
 
 | Strategy | Placement | Main Goal | Failure Isolation | Typical Use Case |
 |---|---|---|---|---|
@@ -672,9 +616,7 @@ Precision Time
 | Partition | Partition별 서로 다른 Rack Set | Large-Scale Failure Isolation | Partition 단위 | Kafka, Cassandra, Hadoop |
 | Precision Time | 정밀 시간 지원 Infrastructure | Clock Synchronization | 목적이 다름 | Distributed DB, Financial Systems |
 
----
-
-# Simple Mental Model
+## 🇰🇷 9. Simple Mental Model
 
 Placement Group은 다음 네 문장으로 기억할 수 있다.
 
@@ -702,9 +644,7 @@ Precision Time
 → Precise Time Synchronization
 ```
 
----
-
-# Placement Group Selection Flow
+## 🇰🇷 10. Placement Group Selection Flow
 
 ```text
 EC2 Placement Requirement
@@ -748,9 +688,7 @@ Clock Synchronization이 필요한가?
    Precision Time
 ```
 
----
-
-# Summary
+## 🇰🇷 11. Summary
 
 - Placement Group은 EC2 Instance의 물리적 배치 전략을 정의한다.
 - 현재 AWS에는 Cluster, Spread, Partition, Precision Time 전략이 있다.
@@ -768,11 +706,9 @@ Clock Synchronization이 필요한가?
 - Partition은 수백 개 Instance 규모의 Distributed System에 적합하다.
 - Precision Time은 매우 정밀한 Clock Synchronization이 필요한 Workload를 위한 전략이다.
 
----
+## 🎯 Exam Notes
 
-# Exam Notes
-
-## Cluster
+### Cluster
 
 문제에서 다음 Keyword가 나오면 Cluster를 생각한다.
 
@@ -790,9 +726,7 @@ Big Data Processing
 Cluster Placement Group
 ```
 
----
-
-## Spread
+### Spread
 
 다음 Keyword가 나오면 Spread를 생각한다.
 
@@ -817,9 +751,7 @@ Spread
 → AZ당 최대 7 Instances
 ```
 
----
-
-## Partition
+### Partition
 
 다음 Keyword가 나오면 Partition을 생각한다.
 
@@ -850,9 +782,7 @@ Partition
 → AZ당 최대 7 Partitions
 ```
 
----
-
-## Precision Time
+### Precision Time
 
 다음 Keyword가 나오면 Precision Time을 생각한다.
 
@@ -870,12 +800,6 @@ Financial Application
 Precision Time Placement Group
 ```
 
----
-
-# Practical Examples
-
-## Example 1: HPC
-
 여러 EC2 Instance가 동시에 복잡한 계산을 수행하고 있으며
 Instance 간 매우 빠른 Network Communication이 필요하다.
 
@@ -887,10 +811,6 @@ High Throughput
 Cluster Placement Group
 ```
 
----
-
-## Example 2: Critical Servers
-
 3개의 매우 중요한 EC2 Instance가 있고
 하나의 Physical Hardware Failure로 여러 Instance가 동시에 중단되어서는 안 된다.
 
@@ -899,10 +819,6 @@ Individual Hardware Failure Isolation
 ↓
 Spread Placement Group
 ```
-
----
-
-## Example 3: Kafka Cluster
 
 수백 개의 EC2 Instance로 Apache Kafka Cluster를 운영한다.
 
@@ -917,10 +833,6 @@ Rack Failure Isolation
 Partition Placement Group
 ```
 
----
-
-## Example 4: Financial Transactions
-
 여러 EC2 Instance에서 금융 Transaction을 처리하고 있으며
 각 Transaction의 Timestamp를 매우 정밀하게 기록해야 한다.
 
@@ -932,11 +844,29 @@ Clock Synchronization
 Precision Time Placement Group
 ```
 
----
+## 📝 Review Questions
 
-# 🇯🇵 日本語
+1. EC2 Placement Group의 목적은 무엇인가?
+2. Availability Zone은 Region과 어떤 관계인가?
+3. Cluster Placement Group은 Instance를 어떻게 배치하는가?
+4. Cluster Placement Group이 Low Latency Workload에 적합한 이유는 무엇인가?
+5. Cluster Placement Group의 주요 Failure Risk는 무엇인가?
+6. Spread Placement Group은 Instance를 어떻게 배치하는가?
+7. Spread Placement Group이 반드시 EC2 Instance 하나당 하나의 AZ를 의미하는가?
+8. Spread Placement Group의 강의 기준 Instance 수 제한은 무엇인가?
+9. Spread와 Partition의 가장 중요한 차이는 무엇인가?
+10. Partition Placement Group에서 Partition은 무엇을 의미하는가?
+11. 서로 다른 Partition은 물리 Infrastructure 측면에서 어떻게 격리되는가?
+12. Partition Placement Group이 수백 개 EC2 Instance를 지원할 수 있는 이유는 무엇인가?
+13. HDFS, HBase, Cassandra, Kafka에 적합한 Placement Strategy는 무엇인가?
+14. Precision Time Placement Group의 목적은 무엇인가?
+15. 정확한 Transaction Timestamp가 중요한 Application에는 어떤 Placement Strategy가 적합한가?
+16. HPC Application에서 Instance 간 Low Latency가 가장 중요하다면 어떤 Strategy를 선택해야 하는가?
+17. 소수의 Critical EC2 Instance를 서로 다른 Hardware에 배치하려면 어떤 Strategy를 선택해야 하는가?
 
-## EC2 Placement Groups
+## 🇯🇵 日本語 Summary
+
+### EC2 Placement Groups
 
 Placement Groupは、
 EC2 InstanceをAWSの物理Infrastructure上にどのように配置するかを指定する機能である。
@@ -950,9 +880,7 @@ Partition
 Precision Time
 ```
 
----
-
-## Cluster Placement Group
+### Cluster Placement Group
 
 Cluster Placement Groupは、
 EC2 Instanceを同じAvailability Zone内で近くに配置する。
@@ -970,9 +898,7 @@ HPCやBig Data Processingなどに適している。
 一方、同じAZにInstanceが集中するため、
 AZ Failureによって複数Instanceが同時に影響を受ける可能性がある。
 
----
-
-## Spread Placement Group
+### Spread Placement Group
 
 Spread Placement Groupは、
 EC2 Instanceをそれぞれ異なるPhysical Hardwareに配置する。
@@ -998,9 +924,7 @@ per Placement Group
 
 という制限がある。
 
----
-
-## Partition Placement Group
+### Partition Placement Group
 
 Partition Placement Groupは、
 複数のEC2 InstanceをPartition単位に分割する。
@@ -1021,9 +945,7 @@ Partition B
 HDFS、HBase、Cassandra、Kafkaなどの
 大規模Distributed Systemに適している。
 
----
-
-## Precision Time Placement Group
+### Precision Time Placement Group
 
 Precision Time Placement Groupは、
 非常に正確なClock Synchronizationが必要なWorkload向けのStrategyである。
@@ -1036,9 +958,7 @@ Transaction Ordering
 
 Distributed DatabaseやFinancial Applicationなどで利用できる。
 
----
-
-## Summary
+### Summary
 
 ```text
 Cluster
@@ -1058,11 +978,9 @@ Precision Time
 → Precise Clock
 ```
 
----
+## 🇺🇸 English Summary
 
-# 🇺🇸 English
-
-## EC2 Placement Groups
+### EC2 Placement Groups
 
 EC2 Placement Groups control how EC2 instances are placed on the underlying AWS physical infrastructure.
 
@@ -1075,9 +993,7 @@ Partition
 Precision Time
 ```
 
----
-
-## Cluster Placement Group
+### Cluster Placement Group
 
 Cluster places EC2 instances close together within a single Availability Zone.
 
@@ -1089,9 +1005,7 @@ It is designed for workloads requiring:
 
 Typical use cases include HPC and big data processing.
 
----
-
-## Spread Placement Group
+### Spread Placement Group
 
 Spread places individual EC2 instances on distinct underlying hardware.
 
@@ -1107,9 +1021,7 @@ per AZ
 per Placement Group
 ```
 
----
-
-## Partition Placement Group
+### Partition Placement Group
 
 Partition divides EC2 instances into logical partitions.
 
@@ -1130,9 +1042,7 @@ It is designed for large distributed applications such as:
 - Cassandra
 - Apache Kafka
 
----
-
-## Precision Time Placement Group
+### Precision Time Placement Group
 
 Precision Time is designed for workloads that require highly accurate clock synchronization.
 
@@ -1143,9 +1053,7 @@ Typical requirements include:
 - Distributed database synchronization
 - Financial transaction processing
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 한국어 | 日本語 |
 |---|---|---|
@@ -1164,25 +1072,3 @@ Typical requirements include:
 | Clock Synchronization | 시간 동기화 | 時刻同期 |
 | Timestamp | 타임스탬프 | タイムスタンプ |
 | Distributed System | 분산 시스템 | 分散システム |
-
----
-
-# Review Questions
-
-1. EC2 Placement Group의 목적은 무엇인가?
-2. Availability Zone은 Region과 어떤 관계인가?
-3. Cluster Placement Group은 Instance를 어떻게 배치하는가?
-4. Cluster Placement Group이 Low Latency Workload에 적합한 이유는 무엇인가?
-5. Cluster Placement Group의 주요 Failure Risk는 무엇인가?
-6. Spread Placement Group은 Instance를 어떻게 배치하는가?
-7. Spread Placement Group이 반드시 EC2 Instance 하나당 하나의 AZ를 의미하는가?
-8. Spread Placement Group의 강의 기준 Instance 수 제한은 무엇인가?
-9. Spread와 Partition의 가장 중요한 차이는 무엇인가?
-10. Partition Placement Group에서 Partition은 무엇을 의미하는가?
-11. 서로 다른 Partition은 물리 Infrastructure 측면에서 어떻게 격리되는가?
-12. Partition Placement Group이 수백 개 EC2 Instance를 지원할 수 있는 이유는 무엇인가?
-13. HDFS, HBase, Cassandra, Kafka에 적합한 Placement Strategy는 무엇인가?
-14. Precision Time Placement Group의 목적은 무엇인가?
-15. 정확한 Transaction Timestamp가 중요한 Application에는 어떤 Placement Strategy가 적합한가?
-16. HPC Application에서 Instance 간 Low Latency가 가장 중요하다면 어떤 Strategy를 선택해야 하는가?
-17. 소수의 Critical EC2 Instance를 서로 다른 Hardware에 배치하려면 어떤 Strategy를 선택해야 하는가?

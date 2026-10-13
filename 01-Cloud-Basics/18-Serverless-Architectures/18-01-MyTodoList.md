@@ -1,6 +1,6 @@
-# 18-01. MyTodoList Mobile Application
+# 📘 18-01. MyTodoList Mobile Application
 
-## 1. Requirements
+## 🇰🇷 1. Requirements
 
 모바일 Todo 애플리케이션을 AWS에 구축한다.
 
@@ -22,7 +22,7 @@
 - Low Operational Overhead
 - Read Performance Optimization
 
-## 2. Initial Serverless Architecture
+## 🇰🇷 2. Initial Serverless Architecture
 
 ```text
 Mobile Application
@@ -84,7 +84,7 @@ Todo 데이터를 저장하는 Serverless NoSQL Database다.
 
 단, 실제 Key Design은 Access Pattern에 따라 결정해야 한다.
 
-## 3. User Authentication
+## 🇰🇷 3. User Authentication
 
 사용자 인증을 위해 Amazon Cognito User Pool을 도입한다.
 
@@ -124,7 +124,7 @@ Lambda
 
 User Pool은 사용자 신원을 확인한다.
 
-## 4. Direct S3 Access
+## 🇰🇷 4. Direct S3 Access
 
 요구사항 중 하나는 사용자가 자신의 S3 저장 공간에 직접 접근하는 것이다.
 
@@ -177,7 +177,7 @@ S3 Bucket
 - 실제 S3 접근 제한은 IAM Policy로 강제
 - 클라이언트가 전달한 userId만 믿어서는 안 됨
 
-## 5. DynamoDB Read Optimization
+## 🇰🇷 5. DynamoDB Read Optimization
 
 Todo 데이터를 반복해서 읽는 요청이 많다면 DynamoDB Accelerator(DAX)를 고려할 수 있다.
 
@@ -229,7 +229,7 @@ Lambda
 - 강한 일관성이 필요한 읽기는 별도로 고려해야 한다.
 - DAX를 도입하려면 애플리케이션에서 DAX Client를 사용해야 한다.
 
-## 6. API Gateway Response Caching
+## 🇰🇷 6. API Gateway Response Caching
 
 API Gateway에서도 응답 캐싱을 적용할 수 있다.
 
@@ -269,7 +269,7 @@ Lambda는 실행되지만 DynamoDB 읽기 요청이 줄어든다.
 
 잘못된 Cache Key 설계는 다른 사용자의 데이터 노출로 이어질 수 있다.
 
-## 7. Final Architecture
+## 🇰🇷 7. Final Architecture
 
 ```text
                 Mobile Application
@@ -307,8 +307,6 @@ API Gateway Response Cache는 필요할 때 추가하는 선택적 계층이다.
 - API Response Caching: API Gateway Cache
 - User-Specific Data: Fine-Grained Authorization
 
-## 💡 Practical Example
-
 사용자가 Todo 목록을 조회한다.
 
 1. 사용자가 Cognito User Pool에 로그인한다.
@@ -319,27 +317,6 @@ API Gateway Response Cache는 필요할 때 추가하는 선택적 계층이다.
 6. 조회 결과가 사용자에게 반환된다.
 
 사용자가 첨부 파일을 업로드할 때는 Identity Pool을 통해 발급받은 임시 자격 증명으로 허용된 S3 경로에 직접 업로드할 수 있다.
-
-## 🇯🇵 日本語 Summary
-
-MyTodoList は、API Gateway、Lambda、DynamoDB を利用したサーバーレスモバイルアプリケーションの設計例である。Cognito User Pool はユーザー認証を担当し、Identity Pool は S3 などの AWS リソースにアクセスするための一時的な認証情報を提供する。読み取り負荷が高い場合は DAX によるキャッシュを検討できる。
-
-## 🇺🇸 English Summary
-
-MyTodoList demonstrates a serverless mobile backend built with API Gateway, Lambda, and DynamoDB. Cognito User Pools handle user authentication, while Identity Pools provide temporary AWS credentials for controlled access to resources such as S3. DAX can improve performance for read-heavy DynamoDB workloads.
-
-## 📚 Vocabulary
-
-| Term | Meaning |
-|---|---|
-| Authentication | 인증, 사용자 신원 확인 |
-| Authorization | 인가, 접근 권한 확인 |
-| Temporary Credentials | 임시 자격 증명 |
-| Cache Hit | 캐시에 요청 데이터가 존재하는 상태 |
-| Cache Miss | 캐시에 요청 데이터가 없는 상태 |
-| Read-Heavy Workload | 읽기 요청이 많은 작업 |
-| Fine-Grained Access | 세분화된 접근 제어 |
-| Serverless Backend | 서버 운영 부담을 줄인 백엔드 |
 
 ## 📝 Review Questions
 
@@ -373,3 +350,24 @@ API Gateway Cache는 API 응답을 캐싱하여 백엔드 호출 자체를 줄�
 Cognito Identity Pool과 IAM 정책을 이용하여 사용자별 S3 Prefix 접근 권한을 제한한다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+MyTodoList は、API Gateway、Lambda、DynamoDB を利用したサーバーレスモバイルアプリケーションの設計例である。Cognito User Pool はユーザー認証を担当し、Identity Pool は S3 などの AWS リソースにアクセスするための一時的な認証情報を提供する。読み取り負荷が高い場合は DAX によるキャッシュを検討できる。
+
+## 🇺🇸 English Summary
+
+MyTodoList demonstrates a serverless mobile backend built with API Gateway, Lambda, and DynamoDB. Cognito User Pools handle user authentication, while Identity Pools provide temporary AWS credentials for controlled access to resources such as S3. DAX can improve performance for read-heavy DynamoDB workloads.
+
+## 📚 Vocabulary
+
+| Term | Meaning |
+|---|---|
+| Authentication | 인증, 사용자 신원 확인 |
+| Authorization | 인가, 접근 권한 확인 |
+| Temporary Credentials | 임시 자격 증명 |
+| Cache Hit | 캐시에 요청 데이터가 존재하는 상태 |
+| Cache Miss | 캐시에 요청 데이터가 없는 상태 |
+| Read-Heavy Workload | 읽기 요청이 많은 작업 |
+| Fine-Grained Access | 세분화된 접근 제어 |
+| Serverless Backend | 서버 운영 부담을 줄인 백엔드 |

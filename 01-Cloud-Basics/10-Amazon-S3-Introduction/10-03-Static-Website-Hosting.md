@@ -1,6 +1,6 @@
-# 10-03. S3 Static Website Hosting
+# 📘 10-03. S3 Static Website Hosting
 
-## 1. Static Website Hosting
+## 🇰🇷 1. Static Website Hosting
 
 Amazon S3는 Object Storage이지만, Bucket에 저장된 HTML, CSS, JavaScript, Image 등의 파일을 이용하여 **Static Website**를 Hosting할 수도 있다.
 
@@ -27,9 +27,7 @@ S3 Website Endpoint
 index.html
 ```
 
----
-
-## 2. Static Website란?
+## 🇰🇷 2. Static Website란?
 
 Static Website는 미리 만들어진 파일을 그대로 Client에게 전달하는 Website이다.
 
@@ -67,9 +65,7 @@ Application Server
 
 이다.
 
----
-
-## 3. Website Endpoint
+## 🇰🇷 3. Website Endpoint
 
 Static Website Hosting을 활성화하면 일반적인 S3 Object 접근과 별도로 **Website Endpoint**를 사용할 수 있다.
 
@@ -88,9 +84,7 @@ Browser
 
 사용자는 Website Endpoint를 통해 Bucket을 하나의 Static Website처럼 이용할 수 있다.
 
----
-
-## 4. Index Document
+## 🇰🇷 4. Index Document
 
 Static Website Hosting을 설정할 때 **Index Document**를 지정한다.
 
@@ -129,9 +123,7 @@ index.html
 
 을 입력하지 않아도 Root URL에 접근하면 기본 페이지가 표시될 수 있다.
 
----
-
-## 5. Error Document
+## 🇰🇷 5. Error Document
 
 Static Website Hosting에서는 필요하다면 Error Document도 지정할 수 있다.
 
@@ -155,9 +147,7 @@ Request
        error.html
 ```
 
----
-
-## 6. HTML과 다른 Object의 관계
+## 🇰🇷 6. HTML과 다른 Object의 관계
 
 `index.html` 안에서 Image를 사용하는 경우를 생각해 보자.
 
@@ -197,9 +187,7 @@ Browser
 
 즉 HTML 파일 안에 Image 자체가 들어 있는 것이 아니라, Browser가 필요한 Object를 추가로 요청한다.
 
----
-
-## 7. URL Path와 Object Key
+## 🇰🇷 7. URL Path와 Object Key
 
 Website URL의 Path는 S3의 Object Key와 연결해서 이해할 수 있다.
 
@@ -250,9 +238,7 @@ Object Key
 
 로 연결해서 생각하면 된다.
 
----
-
-## 8. Object URL vs Website Endpoint
+## 🇰🇷 8. Object URL vs Website Endpoint
 
 S3에서는 **Object URL**과 **Website Endpoint**를 구분해야 한다.
 
@@ -295,9 +281,7 @@ Website Endpoint
 
 이라는 차이가 있다.
 
----
-
-## 9. Static Website와 Public Access
+## 🇰🇷 9. Static Website와 Public Access
 
 S3 Static Website Endpoint를 이용해 일반 Internet 사용자에게 Website를 공개하려면 사용자가 Website의 Object를 읽을 수 있어야 한다.
 
@@ -338,9 +322,7 @@ Access Denied
 
 이 경우 Block Public Access 설정 역시 함께 고려해야 한다.
 
----
-
-## 10. Block Public Access와 Static Website
+## 🇰🇷 10. Block Public Access와 Static Website
 
 Public Static Website를 구성한다고 가정하면 다음 두 개념을 구분해야 한다.
 
@@ -375,9 +357,7 @@ Static Website 표시
 
 이다.
 
----
-
-## 11. Access Denied
+## 🇰🇷 11. Access Denied
 
 Object URL이나 Website Endpoint를 알고 있더라도 Object를 읽을 Permission이 없다면 접근할 수 없다.
 
@@ -402,9 +382,7 @@ Access Denied
 
 S3 Security에서 중요한 것은 **URL의 존재와 Permission은 별개**라는 점이다.
 
----
-
-## 12. S3 Website Endpoint와 HTTPS
+## 🇰🇷 12. S3 Website Endpoint와 HTTPS
 
 S3의 **Static Website Endpoint 자체는 HTTPS를 지원하지 않는다.**
 
@@ -432,27 +410,22 @@ Amazon S3
 
 CloudFront는 이후 관련 섹션에서 자세히 학습한다.
 
----
-
-# 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 S3 Static Website Hosting
 → HTML / CSS / JS / Image 등
 → Static Content 제공
 
-
 Static Website Hosting ON
         ↓
 Website Endpoint 제공
-
 
 GET /
 ↓
 Index Document
 ↓
 index.html
-
 
 HTML에서 Image 참조
 
@@ -461,7 +434,6 @@ index.html
 Browser가 별도로 요청
    ↓
 beach.jpg
-
 
 URL Path
 → Object Key
@@ -472,22 +444,18 @@ URL Path
 /images/beach.jpg
 → images/beach.jpg
 
-
 Object URL
 → 특정 Object 직접 접근
 
 Website Endpoint
 → Bucket을 Website처럼 접근
 
-
 URL을 알고 있음
 ≠
 Object 접근 권한이 있음
 
-
 Public Static Website
 → Object Read Permission 필요
-
 
 S3 Website Endpoint
 → HTTPS 지원 X
@@ -496,87 +464,7 @@ HTTPS가 필요한 Architecture
 → CloudFront 등을 앞에 구성
 ```
 
----
-
-# 🇯🇵 日本語まとめ
-
-Amazon S3 では HTML、CSS、JavaScript、画像などを保存して **Static Website Hosting** を利用できます。
-
-Static Website Hosting を有効にすると、S3 は Website Endpoint を提供します。
-
-Index Document に `index.html` を設定した場合:
-
-```text
-GET /
-→ index.html
-```
-
-として基本ページが表示されます。
-
-HTML 内で画像を参照している場合、Browser はその Object を別の HTTP Request で取得します。
-
-```text
-GET /
-→ index.html
-
-GET /beach.jpg
-→ beach.jpg
-```
-
-Website URL の Path は S3 Object Key と対応します。
-
-また、URL を知っているだけでは Private Object にアクセスできません。Public Static Website として公開する場合は、Object に必要な Read Permission を設定する必要があります。
-
-S3 Website Endpoint 自体は HTTPS をサポートしていません。HTTPS が必要な構成では CloudFront などを利用できます。
-
----
-
-# 🇺🇸 English Summary
-
-Amazon S3 can host static websites containing HTML, CSS, JavaScript, images, and other static content.
-
-When Static Website Hosting is enabled, S3 provides a Website Endpoint.
-
-An Index Document such as `index.html` can be configured so that a request to the root path returns the website's main page.
-
-```text
-GET /
-→ index.html
-```
-
-If the HTML references another object, such as an image, the browser sends an additional request for that object.
-
-```text
-GET /beach.jpg
-→ beach.jpg
-```
-
-The URL path maps to an S3 object key.
-
-Knowing an object's URL does not automatically provide permission to access it. A public S3 website requires appropriate read permissions.
-
-S3 Website Endpoints do not support HTTPS directly. CloudFront can be used in architectures that require HTTPS delivery.
-
----
-
-# Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Static Website | 静的ウェブサイト | 정적 웹사이트 |
-| Static Website Hosting | 静的ウェブサイトホスティング | 정적 웹사이트 호스팅 |
-| Website Endpoint | ウェブサイトエンドポイント | 웹사이트 엔드포인트 |
-| Index Document | インデックスドキュメント | 인덱스 문서 |
-| Error Document | エラードキュメント | 오류 문서 |
-| Static Content | 静的コンテンツ | 정적 콘텐츠 |
-| Object URL | オブジェクトURL | 객체 URL |
-| Public Access | パブリックアクセス | 퍼블릭 액세스 |
-| Access Denied | アクセス拒否 | 접근 거부 |
-| HTTP Request | HTTPリクエスト | HTTP 요청 |
-
----
-
-# Review Questions
+## 📝 Review Questions
 
 <details>
 <summary>1. S3에서 Static Website를 Hosting할 수 있는가?</summary>
@@ -657,3 +545,75 @@ Block Public Access는 Public Access를 막는 안전장치이며, 실제 Public
 HTTPS가 필요한 Architecture에서는 CloudFront 등을 S3 앞에 구성할 수 있다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+Amazon S3 では HTML、CSS、JavaScript、画像などを保存して **Static Website Hosting** を利用できます。
+
+Static Website Hosting を有効にすると、S3 は Website Endpoint を提供します。
+
+Index Document に `index.html` を設定した場合:
+
+```text
+GET /
+→ index.html
+```
+
+として基本ページが表示されます。
+
+HTML 内で画像を参照している場合、Browser はその Object を別の HTTP Request で取得します。
+
+```text
+GET /
+→ index.html
+
+GET /beach.jpg
+→ beach.jpg
+```
+
+Website URL の Path は S3 Object Key と対応します。
+
+また、URL を知っているだけでは Private Object にアクセスできません。Public Static Website として公開する場合は、Object に必要な Read Permission を設定する必要があります。
+
+S3 Website Endpoint 自体は HTTPS をサポートしていません。HTTPS が必要な構成では CloudFront などを利用できます。
+
+## 🇺🇸 English Summary
+
+Amazon S3 can host static websites containing HTML, CSS, JavaScript, images, and other static content.
+
+When Static Website Hosting is enabled, S3 provides a Website Endpoint.
+
+An Index Document such as `index.html` can be configured so that a request to the root path returns the website's main page.
+
+```text
+GET /
+→ index.html
+```
+
+If the HTML references another object, such as an image, the browser sends an additional request for that object.
+
+```text
+GET /beach.jpg
+→ beach.jpg
+```
+
+The URL path maps to an S3 object key.
+
+Knowing an object's URL does not automatically provide permission to access it. A public S3 website requires appropriate read permissions.
+
+S3 Website Endpoints do not support HTTPS directly. CloudFront can be used in architectures that require HTTPS delivery.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Static Website | 静的ウェブサイト | 정적 웹사이트 |
+| Static Website Hosting | 静的ウェブサイトホスティング | 정적 웹사이트 호스팅 |
+| Website Endpoint | ウェブサイトエンドポイント | 웹사이트 엔드포인트 |
+| Index Document | インデックスドキュメント | 인덱스 문서 |
+| Error Document | エラードキュメント | 오류 문서 |
+| Static Content | 静的コンテンツ | 정적 콘텐츠 |
+| Object URL | オブジェクトURL | 객체 URL |
+| Public Access | パブリックアクセス | 퍼블릭 액세스 |
+| Access Denied | アクセス拒否 | 접근 거부 |
+| HTTP Request | HTTPリクエスト | HTTP 요청 |

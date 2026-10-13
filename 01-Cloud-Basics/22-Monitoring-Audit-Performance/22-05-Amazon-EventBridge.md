@@ -166,7 +166,7 @@ Account B ─ PutEvents ─┘
 
 기타 예시: `sts.amazonaws.com` / `AssumeRole`(STS API), `ec2.amazonaws.com` / `AuthorizeSecurityGroupIngress`(보안 그룹 인바운드 규칙 허용).
 
-## 🎯 Exam Triggers
+## 🎯 Exam Notes
 
 | 요구사항 | 선택 |
 |---|---|
@@ -228,7 +228,19 @@ Account B ─ PutEvents ─┘
 | Q22 | **D** | 중앙 Event Bus의 Resource-Based Policy가 외부 계정의 PutEvents를 허용해야 하며 송신 측 IAM 권한도 필요하다. |
 | Q23 | **B** | AWS 공식 안내에 따라 CloudTrail API 이벤트용 EventBridge 전달에는 로깅 중인 Trail이 필요하다. 모든 API의 완전 전달은 보장되지 않는다. |
 
-## 📚 Vocabulary — English · 한국어 · 日本語
+## 🇯🇵 日本語 Summary
+
+Amazon EventBridge はイベント駆動型アーキテクチャを実現するサービス。Event Bus でイベントを受信し、Rule が JSON の Event Pattern と照合して Target（Lambda、SNS、SQS など）へ送る。定期実行には EventBridge Scheduler を使用する。Default / Partner / Custom のイベントバスを区別する。Archive & Replay は過去のイベントを保存・再配信する。Schema Registry はイベント構造とバージョンを管理する。別アカウントからの受信にはリソースベースポリシーを使用する。
+
+**試験の注意点:** API 呼び出しの監視と EC2 の状態変更イベントは別物。時間指定の実行には Scheduler、過去のイベント再配信には Archive & Replay を使う。
+
+## 🇺🇸 English Summary
+
+EventBridge routes JSON events from AWS services, SaaS partners, and custom applications through event buses, rules, and targets. Use Scheduler for time-based invocations. Archive & Replay stores events for later reprocessing; Schema Registry describes event structures. Resource-based policies enable cross-account publishing. AWS API call events via CloudTrail require a logging trail and are not guaranteed to be delivered with perfect completeness.
+
+**Exam tip:** EventBridge routes matching events rather than storing audit history. Use Scheduler for time-based automation, Archive & Replay for historical events, and bus policies for cross-account publishing.
+
+## 📚 Vocabulary
 
 > GitHub 검색 시 영어 표제어 그대로 검색하면 관련 설명으로 이동하기 쉽다.
 
@@ -254,20 +266,7 @@ Account B ─ PutEvents ─┘
 | Loose Coupling | 느슨한 결합 | 疎結合（そけつごう） |
 | Idempotency | 멱등성 | 冪等性（べきとうせい） |
 
-
-## 🇯🇵 日本語 Summary
-
-Amazon EventBridge はイベント駆動型アーキテクチャを実現するサービス。Event Bus でイベントを受信し、Rule が JSON の Event Pattern と照合して Target（Lambda、SNS、SQS など）へ送る。定期実行には EventBridge Scheduler を使用する。Default / Partner / Custom のイベントバスを区別する。Archive & Replay は過去のイベントを保存・再配信する。Schema Registry はイベント構造とバージョンを管理する。別アカウントからの受信にはリソースベースポリシーを使用する。
-
-**試験の注意点:** API 呼び出しの監視と EC2 の状態変更イベントは別物。時間指定の実行には Scheduler、過去のイベント再配信には Archive & Replay を使う。
-
-## 🇺🇸 English Summary
-
-EventBridge routes JSON events from AWS services, SaaS partners, and custom applications through event buses, rules, and targets. Use Scheduler for time-based invocations. Archive & Replay stores events for later reprocessing; Schema Registry describes event structures. Resource-based policies enable cross-account publishing. AWS API call events via CloudTrail require a logging trail and are not guaranteed to be delivered with perfect completeness.
-
-**Exam tip:** EventBridge routes matching events rather than storing audit history. Use Scheduler for time-based automation, Archive & Replay for historical events, and bus policies for cross-account publishing.
-
-## 📚 References
+## 📚 Official References
 
 - [EventBridge Rules](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-rules.html)
 - [Scheduling legacy rules vs Scheduler](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html)

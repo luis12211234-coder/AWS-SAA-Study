@@ -1,4 +1,4 @@
-# 15-02. Amazon SQS
+# 📘 15-02. Amazon SQS
 
 ## 🇰🇷 1. Amazon SQS란?
 
@@ -22,9 +22,7 @@ Producer가 Message를 Queue에 넣고 Consumer가 가져가 처리합니다.
 
 처리가 완료되면 Consumer가 `DeleteMessage`를 호출합니다.
 
----
-
-# 2. Standard Queue
+## 🇰🇷 2. Standard Queue
 
 기본 SQS Queue입니다.
 
@@ -34,19 +32,17 @@ At-Least-Once Delivery
 Best-Effort Ordering
 ```
 
-### At-Least-Once
+#### At-Least-Once
 
 같은 Message가 중복 전달될 수 있습니다.
 
-### Best-Effort Ordering
+#### Best-Effort Ordering
 
 Message 순서를 최대한 유지하지만 보장하지 않습니다.
 
 엄격한 순서와 중복 제거가 필요하면 **FIFO Queue**를 사용합니다.
 
----
-
-# 3. Visibility Timeout ⭐
+## 🇰🇷 3. Visibility Timeout ⭐
 
 Consumer가 Message를 가져가면 일정 시간 동안 다른 Consumer에게 보이지 않습니다.
 
@@ -83,9 +79,7 @@ ChangeMessageVisibility
 
 API로 시간을 연장할 수 있습니다.
 
----
-
-# 4. Long Polling
+## 🇰🇷 4. Long Polling
 
 Queue가 비어 있을 때 즉시 빈 응답을 받는 대신 일정 시간 Message를 기다립니다.
 
@@ -111,9 +105,7 @@ API 호출 감소
 
 Long Polling의 Wait Time은 최대 **20초**입니다.
 
----
-
-# 5. FIFO Queue
+## 🇰🇷 5. FIFO Queue
 
 FIFO:
 
@@ -146,9 +138,7 @@ name.fifo
 
 형식을 사용합니다.
 
----
-
-# 6. SQS + Auto Scaling Group ⭐
+## 🇰🇷 6. SQS + Auto Scaling Group ⭐
 
 SQS Queue에 Message가 많이 쌓이면 Consumer를 늘릴 수 있습니다.
 
@@ -172,9 +162,7 @@ ApproximateNumberOfMessages
 
 Queue가 길어지면 Consumer를 Scale Out하여 처리량을 증가시킵니다.
 
----
-
-# 7. SQS as Buffer ⭐
+## 🇰🇷 7. SQS as Buffer ⭐
 
 Database가 갑작스러운 요청을 직접 받지 않도록 SQS를 Buffer로 사용할 수 있습니다.
 
@@ -190,9 +178,7 @@ Database
 
 Traffic Spike가 발생해도 요청을 Queue에 보관하고 Backend가 자신의 속도로 처리할 수 있습니다.
 
----
-
-# 8. Security
+## 🇰🇷 8. Security
 
 ```text
 In Transit
@@ -205,8 +191,6 @@ Access Control
 → IAM Policy
 → SQS Access Policy
 ```
-
----
 
 ## 🎯 Exam Notes
 
@@ -228,29 +212,7 @@ Queue Length에 따라 EC2 증가
 → SQS + CloudWatch + ASG
 ```
 
----
-
-## 🇯🇵 日本語 Summary
-
-Amazon SQSはMessage Queueを利用してApplicationを疎結合化するサービスです。
-
-ConsumerはQueueをPollingしてMessageを取得し、処理後に削除します。
-
-Visibility Timeout、Long Polling、FIFO Queueは重要な試験ポイントです。
-
----
-
-## 🇺🇸 English Summary
-
-Amazon SQS is a managed message queue used to decouple applications.
-
-Consumers poll messages from the queue and delete them after successful processing.
-
-Important concepts include Visibility Timeout, Long Polling, FIFO queues, and scaling consumers based on queue length.
-
----
-
-## 📝 Review
+## 📝 Review Questions
 
 **Q1. 처리 중인 Message를 다른 Consumer에게 숨기는 기능은?**
 
@@ -263,3 +225,19 @@ SQS FIFO
 **Q3. Queue가 길어질수록 EC2 Consumer를 증가시키려면?**
 
 CloudWatch의 Queue Length Metric과 Auto Scaling Group을 사용합니다.
+
+## 🇯🇵 日本語 Summary
+
+Amazon SQSはMessage Queueを利用してApplicationを疎結合化するサービスです。
+
+ConsumerはQueueをPollingしてMessageを取得し、処理後に削除します。
+
+Visibility Timeout、Long Polling、FIFO Queueは重要な試験ポイントです。
+
+## 🇺🇸 English Summary
+
+Amazon SQS is a managed message queue used to decouple applications.
+
+Consumers poll messages from the queue and delete them after successful processing.
+
+Important concepts include Visibility Timeout, Long Polling, FIFO queues, and scaling consumers based on queue length.

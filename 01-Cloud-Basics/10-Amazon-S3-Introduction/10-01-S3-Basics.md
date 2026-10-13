@@ -1,6 +1,6 @@
-# 10-01. Amazon S3 Basics
+# 📘 10-01. Amazon S3 Basics
 
-## 1. Amazon S3란?
+## 🇰🇷 1. Amazon S3란?
 
 Amazon S3(Simple Storage Service)는 AWS의 대표적인 **Object Storage Service**이다.
 
@@ -22,9 +22,7 @@ Amazon S3
     └── Object
 ```
 
----
-
-## 2. S3 Bucket
+## 🇰🇷 2. S3 Bucket
 
 **Bucket**은 S3 Object를 저장하는 최상위 Container이다.
 
@@ -58,9 +56,7 @@ S3 Console에서는 여러 Region에 존재하는 Bucket을 한 화면에서 관
 
 다른 Region으로 Object를 복제하려면 **S3 Replication** 등의 기능을 별도로 구성해야 한다.
 
----
-
-## 3. S3 Object
+## 🇰🇷 3. S3 Object
 
 S3에 실제로 저장되는 데이터 단위를 **Object**라고 한다.
 
@@ -105,9 +101,7 @@ S3 Versioning을 사용하는 경우 동일한 Key의 여러 Object Version을 �
 
 Versioning은 별도의 문서에서 자세히 다룬다.
 
----
-
-## 4. S3에는 실제 Folder가 없다
+## 🇰🇷 4. S3에는 실제 Folder가 없다
 
 S3는 일반적인 File System처럼 실제 Directory 계층 구조를 사용하지 않는다.
 
@@ -133,9 +127,7 @@ images/vacation/beach.jpg
 
 S3 Console이 `/` 문자를 기준으로 이를 Folder처럼 보여주는 것이다.
 
----
-
-## 5. Prefix
+## 🇰🇷 5. Prefix
 
 **Prefix**는 Object Key의 앞부분을 의미한다.
 
@@ -164,9 +156,7 @@ Object Key + Prefix
 O
 ```
 
----
-
-## 6. Object URL
+## 🇰🇷 6. Object URL
 
 S3 Object는 URL을 통해 특정 Object를 가리킬 수 있다.
 
@@ -199,9 +189,7 @@ Object가 Private이라면 적절한 Permission 없이 접근할 경우 `Access 
 
 S3 Permission은 다음 Security 문서에서 자세히 다룬다.
 
----
-
-## 7. S3 Object Size
+## 🇰🇷 7. S3 Object Size
 
 S3는 매우 큰 Object를 저장할 수 있다.
 
@@ -235,9 +223,7 @@ Upload할 수 있는 최대 크기
 
 문제는 25GB 전체를 **한 번의 PUT 요청으로 Upload할 수 없다는 것**이다.
 
----
-
-## 8. Multipart Upload
+## 🇰🇷 8. Multipart Upload
 
 큰 Object는 **Multipart Upload**를 사용하여 여러 Part로 나누어 Upload할 수 있다.
 
@@ -265,9 +251,7 @@ Amazon S3
 
 각 Part를 별도로 Upload한 후 모든 Part가 준비되면 S3에서 하나의 Object로 완성한다.
 
----
-
-## 9. Multipart Upload의 장점
+## 🇰🇷 9. Multipart Upload의 장점
 
 Multipart Upload는 단순히 큰 Object를 Upload하기 위한 기능만은 아니다.
 
@@ -293,9 +277,7 @@ Part 5
 
 또한 여러 Part를 병렬로 Upload하여 대용량 Object의 Upload 성능을 향상시킬 수도 있다.
 
----
-
-## 10. Multipart Upload 기준
+## 🇰🇷 10. Multipart Upload 기준
 
 시험에서 다음 두 기준을 구분하는 것이 중요하다.
 
@@ -324,9 +306,7 @@ O
 
 이다.
 
----
-
-# 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 Amazon S3
@@ -360,87 +340,7 @@ Multipart Upload
 → Multipart Upload 필요
 ```
 
----
-
-# 🇯🇵 日本語まとめ
-
-Amazon S3 は AWS の代表的な **オブジェクトストレージサービス**です。
-
-データは Bucket の中に Object として保存されます。
-
-各 Bucket は特定の AWS Region に作成されます。
-
-Object は Key、Value、Metadata、Tags、Version ID などの情報を持ちます。
-
-S3 には一般的なファイルシステムのような実際の Directory 構造はありません。
-
-```text
-images/vacation/beach.jpg
-```
-
-は一つの Object Key であり、S3 Console が Prefix を Folder のように表示しています。
-
-大きな Object を Upload する場合は **Multipart Upload** を利用できます。
-
-```text
-100 MB 以上
-→ Multipart Upload 推奨
-
-5 GB 超過
-→ Multipart Upload が必要
-```
-
----
-
-# 🇺🇸 English Summary
-
-Amazon S3 is AWS's **object storage service**.
-
-Objects are stored inside buckets, and each bucket is created in a specific AWS Region.
-
-An S3 object contains information such as its key, value, metadata, tags, and optionally a version ID.
-
-S3 does not use a traditional directory hierarchy. Paths such as:
-
-```text
-images/vacation/beach.jpg
-```
-
-are object keys, while prefixes are presented as folders in the S3 console.
-
-For large objects, S3 supports Multipart Upload.
-
-```text
-Around 100 MB or larger
-→ Multipart Upload is recommended
-
-Larger than 5 GB
-→ Multipart Upload is required
-```
-
-Multipart Upload divides a large object into multiple parts that can be uploaded independently and then assembled into a single S3 object.
-
----
-
-# Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Object Storage | オブジェクトストレージ | 객체 스토리지 |
-| Bucket | バケット | 버킷 |
-| Object | オブジェクト | 객체 |
-| Key | キー | 키 |
-| Value | 値 | 값 / 실제 데이터 |
-| Prefix | プレフィックス | 접두사 |
-| Metadata | メタデータ | 메타데이터 |
-| Tag | タグ | 태그 |
-| Version ID | バージョンID | 버전 ID |
-| Multipart Upload | マルチパートアップロード | 멀티파트 업로드 |
-| PUT Request | PUTリクエスト | PUT 요청 |
-
----
-
-# Review Questions
+## 📝 Review Questions
 
 <details>
 <summary>1. Amazon S3는 어떤 종류의 Storage Service인가?</summary>
@@ -503,3 +403,75 @@ S3는 전통적인 Directory 구조를 사용하지 않는다.
 또한 일부 Part의 Upload가 실패했을 때 전체 Object를 처음부터 다시 전송하지 않고 실패한 Part를 다시 Upload할 수 있으며, 병렬 Upload도 가능하다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+Amazon S3 は AWS の代表的な **オブジェクトストレージサービス**です。
+
+データは Bucket の中に Object として保存されます。
+
+各 Bucket は特定の AWS Region に作成されます。
+
+Object は Key、Value、Metadata、Tags、Version ID などの情報を持ちます。
+
+S3 には一般的なファイルシステムのような実際の Directory 構造はありません。
+
+```text
+images/vacation/beach.jpg
+```
+
+は一つの Object Key であり、S3 Console が Prefix を Folder のように表示しています。
+
+大きな Object を Upload する場合は **Multipart Upload** を利用できます。
+
+```text
+100 MB 以上
+→ Multipart Upload 推奨
+
+5 GB 超過
+→ Multipart Upload が必要
+```
+
+## 🇺🇸 English Summary
+
+Amazon S3 is AWS's **object storage service**.
+
+Objects are stored inside buckets, and each bucket is created in a specific AWS Region.
+
+An S3 object contains information such as its key, value, metadata, tags, and optionally a version ID.
+
+S3 does not use a traditional directory hierarchy. Paths such as:
+
+```text
+images/vacation/beach.jpg
+```
+
+are object keys, while prefixes are presented as folders in the S3 console.
+
+For large objects, S3 supports Multipart Upload.
+
+```text
+Around 100 MB or larger
+→ Multipart Upload is recommended
+
+Larger than 5 GB
+→ Multipart Upload is required
+```
+
+Multipart Upload divides a large object into multiple parts that can be uploaded independently and then assembled into a single S3 object.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Object Storage | オブジェクトストレージ | 객체 스토리지 |
+| Bucket | バケット | 버킷 |
+| Object | オブジェクト | 객체 |
+| Key | キー | 키 |
+| Value | 値 | 값 / 실제 데이터 |
+| Prefix | プレフィックス | 접두사 |
+| Metadata | メタデータ | 메타데이터 |
+| Tag | タグ | 태그 |
+| Version ID | バージョンID | 버전 ID |
+| Multipart Upload | マルチパートアップロード | 멀티파트 업로드 |
+| PUT Request | PUTリクエスト | PUT 요청 |

@@ -1,6 +1,6 @@
-# 17-02. AWS Lambda Advanced
+# 📘 17-02. AWS Lambda Advanced
 
-## 1. Lambda SnapStart
+## 🇰🇷 1. Lambda SnapStart
 
 Lambda의 초기화 과정에서 발생하는 Cold Start 시간을 줄이기 위한 기능이다.
 
@@ -13,7 +13,6 @@ Function Version 게시
         ↓
     Snapshot 저장
 
-
 Invocation
     ↓
 Snapshot 복원
@@ -23,9 +22,7 @@ Handler 실행
 
 핵심은 **매번 처음부터 초기화하는 대신 미리 초기화된 상태를 복원**하는 것이다.
 
----
-
-# 2. Lambda Networking
+## 🇰🇷 2. Lambda Networking
 
 기본 Lambda는 사용자의 VPC 내부에 직접 연결되어 있지 않다.
 
@@ -67,9 +64,7 @@ Internet Gateway
 Internet
 ```
 
----
-
-# 3. Lambda + RDS Proxy
+## 🇰🇷 3. Lambda + RDS Proxy
 
 Lambda가 RDS에 직접 대량으로 연결하면 많은 DB Connection이 생성될 수 있다.
 
@@ -98,9 +93,7 @@ RDS Proxy는 DB Connection을 Pooling하고 재사용한다.
 - Failover 대응 개선
 - IAM Authentication 지원 가능
 
----
-
-# 4. Invoking Lambda from RDS / Aurora
+## 🇰🇷 4. Invoking Lambda from RDS / Aurora
 
 일부 RDS/Aurora 엔진에서는 DB 내부 작업을 통해 Lambda를 호출할 수 있다.
 
@@ -128,9 +121,7 @@ Welcome Email
 
 단순히 모든 INSERT가 자동으로 Lambda를 호출하는 것은 아니며 DB 측에서 Lambda 호출 로직을 구성해야 한다.
 
----
-
-# 5. RDS Event Notification과의 차이
+## 🇰🇷 5. RDS Event Notification과의 차이
 
 ```text
 Database Data Event
@@ -151,9 +142,7 @@ Snapshot 생성
 → RDS Event Notification
 ```
 
----
-
-# 6. Edge Functions
+## 🇰🇷 6. Edge Functions
 
 CloudFront에서는 사용자 가까운 Edge Location에서 코드를 실행할 수 있다.
 
@@ -164,14 +153,14 @@ CloudFront Functions
 Lambda@Edge
 ```
 
-### CloudFront Functions
+#### CloudFront Functions
 
 - 매우 가벼운 작업
 - Viewer Request / Viewer Response
 - 매우 짧은 실행
 - JavaScript
 
-### Lambda@Edge
+#### Lambda@Edge
 
 보다 복잡한 Edge Logic에 사용한다.
 
@@ -197,8 +186,6 @@ Viewer
 
 Lambda@Edge는 위 네 Event 지점에서 실행할 수 있다.
 
----
-
 ## 🎯 Exam Notes
 
 - Lambda → Private RDS 접근 시 VPC Connectivity 필요
@@ -208,8 +195,6 @@ Lambda@Edge는 위 네 Event 지점에서 실행할 수 있다.
 - CloudFront Functions → 가벼운 Edge Logic
 - Lambda@Edge → 더 복잡한 Edge Logic
 - SnapStart → 초기화 상태 Snapshot으로 시작 지연 감소
-
-## 💡 Practical Example
 
 ```text
 API Gateway
@@ -222,25 +207,6 @@ RDS
 ```
 
 Lambda가 급격하게 Scaling되더라도 RDS Proxy가 DB Connection을 관리해 RDS에 직접 연결이 몰리는 것을 줄일 수 있다.
-
-## 🇯🇵 日本語 Summary
-
-LambdaはVPCに接続することでプライベートリソースへアクセスできます。多数のLambdaからRDSへ接続する場合は、RDS Proxyによってデータベース接続をプールできます。また、SnapStartやLambda@Edgeなど、性能やエッジ処理を支援する機能もあります。
-
-## 🇺🇸 English Summary
-
-Lambda can connect to a VPC to access private resources. RDS Proxy pools database connections for highly scalable Lambda workloads. SnapStart can reduce initialization latency, while Lambda@Edge and CloudFront Functions enable logic to run closer to users.
-
-## 📚 Vocabulary
-
-| Term | Meaning |
-|---|---|
-| Cold Start | 새로운 Lambda 실행 환경 초기화로 발생하는 지연 |
-| SnapStart | 초기화된 상태의 Snapshot을 활용하는 기능 |
-| RDS Proxy | DB Connection을 중계하고 Pooling하는 서비스 |
-| Connection Pooling | DB 연결을 재사용하는 방식 |
-| Edge Function | 사용자와 가까운 Edge에서 실행되는 코드 |
-| Failover | 장애 발생 시 다른 리소스로 전환하는 과정 |
 
 ## 📝 Review Questions
 
@@ -261,3 +227,22 @@ RDS Proxy를 사용한다.
 아니다. 일반적인 IPv4 인터넷 접근 구조에서는 Private Subnet에서 NAT Gateway 등을 통한 인터넷 경로를 구성해야 한다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+LambdaはVPCに接続することでプライベートリソースへアクセスできます。多数のLambdaからRDSへ接続する場合は、RDS Proxyによってデータベース接続をプールできます。また、SnapStartやLambda@Edgeなど、性能やエッジ処理を支援する機能もあります。
+
+## 🇺🇸 English Summary
+
+Lambda can connect to a VPC to access private resources. RDS Proxy pools database connections for highly scalable Lambda workloads. SnapStart can reduce initialization latency, while Lambda@Edge and CloudFront Functions enable logic to run closer to users.
+
+## 📚 Vocabulary
+
+| Term | Meaning |
+|---|---|
+| Cold Start | 새로운 Lambda 실행 환경 초기화로 발생하는 지연 |
+| SnapStart | 초기화된 상태의 Snapshot을 활용하는 기능 |
+| RDS Proxy | DB Connection을 중계하고 Pooling하는 서비스 |
+| Connection Pooling | DB 연결을 재사용하는 방식 |
+| Edge Function | 사용자와 가까운 Edge에서 실행되는 코드 |
+| Failover | 장애 발생 시 다른 리소스로 전환하는 과정 |

@@ -1,6 +1,6 @@
-# Domain Registrar vs DNS Service
+# 📘 08-04. Domain Registrar vs DNS Service
 
-## 1. Domain Registrar와 DNS Service
+## 🇰🇷 1. Domain Registrar와 DNS Service
 
 Domain Registrar와 DNS Service는 서로 다른 역할을 한다.
 
@@ -16,9 +16,7 @@ DNS Service
 
 > **도메인을 구매한 곳과 DNS를 관리하는 곳은 같을 필요가 없다.**
 
----
-
-## 2. Route 53의 역할
+## 🇰🇷 2. Route 53의 역할
 
 Amazon Route 53은 다음 기능을 모두 제공할 수 있다.
 
@@ -32,9 +30,7 @@ Route 53
 
 하지만 반드시 Route 53에서 Domain을 구매해야 Route 53 DNS를 사용할 수 있는 것은 아니다.
 
----
-
-## 3. Third-Party Registrar + Route 53
+## 🇰🇷 3. Third-Party Registrar + Route 53
 
 예를 들어 Domain을 외부 Registrar에서 구매하고 DNS는 Route 53으로 관리할 수 있다.
 
@@ -58,9 +54,7 @@ Public Hosted Zone
 
 핵심은 **Name Server(NS)를 Route 53으로 위임하는 것**이다.
 
----
-
-## 4. 설정 과정
+## 🇰🇷 4. 설정 과정
 
 ### Step 1. Route 53에서 Public Hosted Zone 생성
 
@@ -116,9 +110,7 @@ DNS Response
 
 이제 실제 DNS Records는 Route 53에서 관리한다.
 
----
-
-## 5. 핵심 구조
+## 🇰🇷 5. 핵심 구조
 
 ```text
 Domain 구매
@@ -149,18 +141,73 @@ Route 53 Name Servers로 변경
 
 > **Registrar는 도메인 등록, Route 53은 DNS 관리라는 식으로 분리할 수 있다.**
 
----
+## 📝 Review Questions
 
-# 日本語まとめ
+#### 1. Domain Registrar와 DNS Service는 반드시 같은 업체를 사용해야 하는가?
 
-## Domain Registrar と DNS Service
+<details>
+<summary>정답 보기</summary>
+
+**정답: 아니다.**
+
+Domain Registrar는 Domain을 등록하는 역할이고 DNS Service는 DNS Record를 관리하는 역할이므로 서로 다른 서비스를 사용할 수 있다.
+
+</details>
+
+#### 2. 외부 Registrar에서 구매한 Domain을 Route 53에서 관리할 수 있는가?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: 가능하다.**
+
+Route 53에서 해당 Domain의 Public Hosted Zone을 생성한 뒤 Registrar의 Name Server 설정을 Route 53 Name Servers로 변경한다.
+
+</details>
+
+#### 3. Third-Party Registrar에서 Route 53 DNS를 사용하기 위한 핵심 설정은?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: Registrar의 Name Server(NS)를 Route 53 Name Servers로 변경한다.**
+
+이를 통해 해당 Domain의 DNS Resolution이 Route 53의 Hosted Zone으로 위임된다.
+
+</details>
+
+#### 4. Route 53에서 Public Hosted Zone을 생성하면 무엇을 확인해야 하는가?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: Route 53이 할당한 Name Servers**
+
+이 Name Server 정보를 Domain Registrar의 NS 설정에 등록해야 한다.
+
+</details>
+
+#### 5. Route 53은 Domain Registrar와 DNS Service 중 어느 역할을 제공하는가?
+
+<details>
+<summary>정답 보기</summary>
+
+**정답: 둘 다 제공할 수 있다.**
+
+Route 53에서 Domain을 등록할 수도 있고 DNS Hosted Zone과 Records를 관리할 수도 있다.
+
+</details>
+
+## 🇯🇵 日本語 Summary
+
+### Domain Registrar と DNS Service
 
 - **Domain Registrar**: ドメイン名を登録・購入するサービス
 - **DNS Service**: DNSレコードを管理し、DNSクエリに応答するサービス
 - ドメインの登録先とDNSサービスは同じである必要はない
 - 外部Registrarで購入したドメインでもRoute 53をDNSサービスとして使用できる
 
-### Third-Party Registrar + Route 53
+#### Third-Party Registrar + Route 53
 
 ```text
 外部RegistrarでDomainを購入
@@ -174,11 +221,9 @@ Registrar側のNS設定を変更
 Route 53でDNS Recordを管理
 ```
 
----
+## 🇺🇸 English Summary
 
-# English Summary
-
-## Domain Registrar vs DNS Service
+### Domain Registrar vs DNS Service
 
 A **Domain Registrar** is used to register and purchase a domain name, while a **DNS Service** manages DNS records and answers DNS queries.
 
@@ -200,9 +245,7 @@ Route 53 DNS
 
 The key step is updating the registrar's **Name Server settings** to point to the Route 53 Name Servers.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -217,62 +260,3 @@ The key step is updating the registrar's **Name Server settings** to point to th
 | Domain Registration | ドメイン登録 | 도메인 등록 |
 | DNS Query | DNSクエリ | DNS 질의 |
 | Delegate | 委任する | 위임하다 |
-
----
-
-# Review Questions
-
-### 1. Domain Registrar와 DNS Service는 반드시 같은 업체를 사용해야 하는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: 아니다.**
-
-Domain Registrar는 Domain을 등록하는 역할이고 DNS Service는 DNS Record를 관리하는 역할이므로 서로 다른 서비스를 사용할 수 있다.
-
-</details>
-
-### 2. 외부 Registrar에서 구매한 Domain을 Route 53에서 관리할 수 있는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: 가능하다.**
-
-Route 53에서 해당 Domain의 Public Hosted Zone을 생성한 뒤 Registrar의 Name Server 설정을 Route 53 Name Servers로 변경한다.
-
-</details>
-
-### 3. Third-Party Registrar에서 Route 53 DNS를 사용하기 위한 핵심 설정은?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: Registrar의 Name Server(NS)를 Route 53 Name Servers로 변경한다.**
-
-이를 통해 해당 Domain의 DNS Resolution이 Route 53의 Hosted Zone으로 위임된다.
-
-</details>
-
-### 4. Route 53에서 Public Hosted Zone을 생성하면 무엇을 확인해야 하는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: Route 53이 할당한 Name Servers**
-
-이 Name Server 정보를 Domain Registrar의 NS 설정에 등록해야 한다.
-
-</details>
-
-### 5. Route 53은 Domain Registrar와 DNS Service 중 어느 역할을 제공하는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: 둘 다 제공할 수 있다.**
-
-Route 53에서 Domain을 등록할 수도 있고 DNS Hosted Zone과 Records를 관리할 수도 있다.
-
-</details>

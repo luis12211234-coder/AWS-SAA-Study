@@ -1,4 +1,4 @@
-# 14-03. AWS Storage Gateway
+# 📘 14-03. AWS Storage Gateway
 
 ## 🇰🇷 1. Hybrid Cloud
 
@@ -23,9 +23,7 @@ AWS Cloud ☁️
 
 이러한 환경에서 On-Premises Storage와 AWS Storage를 연결하기 위해 사용할 수 있는 서비스가 **AWS Storage Gateway**입니다.
 
----
-
-# 2. AWS Storage Gateway
+## 🇰🇷 2. AWS Storage Gateway
 
 AWS Storage Gateway는 On-Premises 환경과 AWS Cloud Storage를 연결하는 Hybrid Storage 서비스입니다.
 
@@ -49,9 +47,7 @@ Storage Extension
 Local Cache
 ```
 
----
-
-# 3. Storage Gateway 종류
+## 🇰🇷 3. Storage Gateway 종류
 
 ```text
 AWS Storage Gateway
@@ -64,9 +60,7 @@ AWS Storage Gateway
 
 각 Gateway는 서로 다른 Storage 방식과 Protocol을 지원합니다.
 
----
-
-# 4. S3 File Gateway
+## 🇰🇷 4. S3 File Gateway
 
 On-Premises Application이 NFS 또는 SMB를 사용하면서 실제 데이터를 Amazon S3에 저장할 수 있도록 합니다.
 
@@ -96,9 +90,7 @@ S3 File Gateway
 Amazon S3 Object Storage
 ```
 
----
-
-## 5. Local Cache
+### 5. Local Cache
 
 최근에 사용한 데이터는 File Gateway의 Local Cache에 저장할 수 있습니다.
 
@@ -116,9 +108,7 @@ S3 File Gateway
 
 이를 통해 자주 사용하는 데이터의 Access Latency를 줄일 수 있습니다.
 
----
-
-## 6. S3 File Gateway와 Glacier
+### 6. S3 File Gateway와 Glacier
 
 S3 File Gateway에서 Archive가 필요한 경우 S3 Lifecycle Policy를 이용할 수 있습니다.
 
@@ -132,9 +122,7 @@ Lifecycle Policy
 S3 Glacier
 ```
 
----
-
-## 7. Authentication
+### 7. Authentication
 
 S3 Bucket에 접근하기 위해 IAM Role을 사용합니다.
 
@@ -150,9 +138,7 @@ S3 File Gateway
 Amazon S3
 ```
 
----
-
-# 8. FSx File Gateway
+## 🇰🇷 5. FSx File Gateway
 
 FSx File Gateway는 On-Premises 환경에서 Amazon FSx for Windows File Server에 접근할 때 사용할 수 있습니다.
 
@@ -181,9 +167,7 @@ FSx File Gateway
 
 따라서 On-Premises 사용자의 File Access Latency를 줄일 수 있습니다.
 
----
-
-# 9. Volume Gateway
+## 🇰🇷 6. Volume Gateway
 
 Volume Gateway는 **Block Storage**를 제공하며 iSCSI Protocol을 사용합니다.
 
@@ -209,9 +193,7 @@ Volume Gateway
 └─ Stored Volumes
 ```
 
----
-
-## 10. Cached Volumes
+### 10. Cached Volumes
 
 주요 데이터는 AWS에 저장하고 자주 사용하는 데이터만 On-Premises에 Cache합니다.
 
@@ -231,9 +213,7 @@ Cached Volume
 → Local Cache
 ```
 
----
-
-## 11. Stored Volumes
+### 11. Stored Volumes
 
 전체 Dataset을 On-Premises에 저장하고 AWS에 Backup합니다.
 
@@ -253,7 +233,7 @@ Stored Volume
 → AWS Backup
 ```
 
-### Cached vs Stored
+#### Cached vs Stored
 
 | | Cached Volume | Stored Volume |
 |---|---|---|
@@ -261,9 +241,7 @@ Stored Volume
 | On-Prem 역할 | Local Cache | 전체 Dataset |
 | AWS 역할 | Main Storage | Backup |
 
----
-
-# 12. Tape Gateway
+## 🇰🇷 7. Tape Gateway
 
 기존 Physical Tape 기반 Backup System을 AWS Cloud Storage와 연결합니다.
 
@@ -291,9 +269,7 @@ Virtual Tape
 AWS Storage
 ```
 
----
-
-# 13. Storage Gateway Hardware Appliance
+## 🇰🇷 8. Storage Gateway Hardware Appliance
 
 Storage Gateway는 On-Premises 환경에서 실행되어야 합니다.
 
@@ -317,9 +293,7 @@ AWS
 
 Hardware Appliance는 새로운 Gateway 종류가 아니라 **Storage Gateway를 실행하기 위한 물리 장비**입니다.
 
----
-
-# 14. Storage Gateway 비교
+## 🇰🇷 9. Storage Gateway 비교
 
 | Gateway | Protocol | AWS Destination | 핵심 |
 |---|---|---|---|
@@ -328,9 +302,7 @@ Hardware Appliance는 새로운 Gateway 종류가 아니라 **Storage Gateway를
 | Volume Gateway | iSCSI | AWS Storage / Snapshot | Block Storage |
 | Tape Gateway | iSCSI / VTL | S3 / Glacier | Tape Backup |
 
----
-
-## 🔑 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 Storage Gateway
@@ -355,44 +327,6 @@ Tape Gateway
 Hardware Appliance
 → Gateway 실행용 물리 장비
 ```
-
----
-
-## 🇯🇵 日本語 Summary
-
-AWS Storage Gatewayは、オンプレミス環境とAWSクラウドストレージを接続するハイブリッドストレージサービスです。
-
-主な種類は以下の4つです。
-
-- S3 File Gateway：NFSまたはSMBを使用してAmazon S3へアクセス
-- FSx File Gateway：Amazon FSx for Windows File Serverへのアクセスとローカルキャッシュ
-- Volume Gateway：iSCSIを使用するブロックストレージ
-- Tape Gateway：既存のテープバックアップをAWSへ移行
-
-Volume GatewayにはCached VolumesとStored Volumesがあります。
-
-Cached Volumesでは主なデータをAWSに保存し、頻繁に使用するデータをローカルにキャッシュします。
-
-Stored Volumesでは全データをオンプレミスに保存し、AWSにバックアップします。
-
----
-
-## 🇺🇸 English Summary
-
-AWS Storage Gateway connects on-premises environments with AWS cloud storage.
-
-The four major gateway types are:
-
-- S3 File Gateway for NFS/SMB access to Amazon S3
-- FSx File Gateway for cached access to FSx for Windows File Server
-- Volume Gateway for iSCSI block storage
-- Tape Gateway for virtual tape backup using AWS storage
-
-Cached Volumes store primary data in AWS while keeping frequently accessed data locally.
-
-Stored Volumes keep the full dataset on-premises and use AWS for off-site backup.
-
----
 
 ## 📝 Review Questions
 
@@ -425,3 +359,35 @@ Stored Volume은 전체 데이터를 On-Premises에 저장하고 AWS를 Backup �
 Tape Gateway를 사용합니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+AWS Storage Gatewayは、オンプレミス環境とAWSクラウドストレージを接続するハイブリッドストレージサービスです。
+
+主な種類は以下の4つです。
+
+- S3 File Gateway：NFSまたはSMBを使用してAmazon S3へアクセス
+- FSx File Gateway：Amazon FSx for Windows File Serverへのアクセスとローカルキャッシュ
+- Volume Gateway：iSCSIを使用するブロックストレージ
+- Tape Gateway：既存のテープバックアップをAWSへ移行
+
+Volume GatewayにはCached VolumesとStored Volumesがあります。
+
+Cached Volumesでは主なデータをAWSに保存し、頻繁に使用するデータをローカルにキャッシュします。
+
+Stored Volumesでは全データをオンプレミスに保存し、AWSにバックアップします。
+
+## 🇺🇸 English Summary
+
+AWS Storage Gateway connects on-premises environments with AWS cloud storage.
+
+The four major gateway types are:
+
+- S3 File Gateway for NFS/SMB access to Amazon S3
+- FSx File Gateway for cached access to FSx for Windows File Server
+- Volume Gateway for iSCSI block storage
+- Tape Gateway for virtual tape backup using AWS storage
+
+Cached Volumes store primary data in AWS while keeping frequently accessed data locally.
+
+Stored Volumes keep the full dataset on-premises and use AWS for off-site backup.

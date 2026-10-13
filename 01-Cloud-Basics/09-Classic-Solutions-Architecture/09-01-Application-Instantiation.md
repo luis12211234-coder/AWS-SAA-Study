@@ -1,6 +1,6 @@
-# 09-01. 애플리케이션을 빠르게 생성하기
+# 📘 09-01. 애플리케이션을 빠르게 생성하기
 
-## Overview
+## 🇰🇷 1. Overview
 
 EC2, EBS, RDS 등을 포함한 전체 애플리케이션 스택을 새롭게 시작할 때는 여러 초기 작업 때문에 시간이 필요할 수 있다.
 
@@ -15,9 +15,7 @@ EC2, EBS, RDS 등을 포함한 전체 애플리케이션 스택을 새롭게 시
 
 AWS에서는 이러한 작업을 매번 처음부터 반복하지 않고, **이미 준비된 이미지나 Snapshot을 재사용하여 애플리케이션 시작 시간을 줄일 수 있다.**
 
----
-
-## 1. Golden AMI
+## 🇰🇷 2. Golden AMI
 
 ### AMI 복습
 
@@ -30,8 +28,6 @@ EC2 Instance
 ```
 
 운영체제와 필요한 설정 등을 포함하는 EC2 생성 Template 역할을 한다.
-
----
 
 ### Golden AMI란?
 
@@ -97,9 +93,7 @@ New EC2
 
 Golden AMI를 사용하면 이러한 공통 작업이 이미 완료되어 있기 때문에 시작 시간을 줄일 수 있다.
 
----
-
-## 2. EC2 User Data
+## 🇰🇷 3. EC2 User Data
 
 User Data는 EC2 Instance가 시작될 때 Bootstrap 작업을 수행하기 위해 사용할 수 있다.
 
@@ -129,9 +123,7 @@ User Data
 
 모든 애플리케이션 설치 작업을 User Data에서 수행할 수도 있지만, 설치 작업이 많을수록 Instance가 준비되기까지 시간이 길어질 수 있다.
 
----
-
-## 3. Golden AMI + User Data
+## 🇰🇷 4. Golden AMI + User Data
 
 두 방법은 서로 배타적인 것이 아니다.
 
@@ -165,9 +157,7 @@ Ready EC2 Instance
 
 Elastic Beanstalk에서도 이러한 접근 방식을 활용할 수 있다.
 
----
-
-## 4. RDS Snapshot Restore
+## 🇰🇷 5. RDS Snapshot Restore
 
 Database를 처음부터 생성하면 Database Engine만 준비되는 것으로 끝나지 않을 수 있다.
 
@@ -193,9 +183,7 @@ RDS Database
 
 즉 Database를 완전히 처음부터 구성하는 작업을 줄일 수 있다.
 
----
-
-## 5. EBS Snapshot Restore
+## 🇰🇷 6. EBS Snapshot Restore
 
 EBS도 같은 원리를 적용할 수 있다.
 
@@ -211,9 +199,7 @@ EBS Volume
 └── Data Ready
 ```
 
----
-
-## Summary
+## 🇰🇷 7. Summary
 
 빠른 애플리케이션 생성의 핵심은 다음 한 문장으로 정리할 수 있다.
 
@@ -227,9 +213,7 @@ EBS Volume
 | RDS | Snapshot Restore | 기존 Schema와 Data 복원 |
 | EBS | Snapshot Restore | 준비된 File System과 Data 복원 |
 
----
-
-## Exam Notes
+## 🎯 Exam Notes
 
 - Golden AMI는 별도의 AWS 서비스가 아니다.
 - Golden AMI는 Application과 Dependency 등을 미리 준비한 표준 AMI이다.
@@ -238,92 +222,7 @@ EBS Volume
 - RDS Snapshot을 Restore하면 기존 Schema와 Data를 가진 Database를 생성할 수 있다.
 - EBS Snapshot을 Restore하면 기존 File System과 Data를 가진 Volume을 생성할 수 있다.
 
----
-
-## 日本語まとめ
-
-AWSでは、アプリケーションを毎回最初から構築するのではなく、事前に準備されたイメージやSnapshotを再利用することで起動時間を短縮できます。
-
-### Golden AMI
-
-アプリケーション、OSの依存関係、共通設定などを事前に準備したAMIです。
-
-```text
-Golden AMI
-→ EC2
-→ Application Ready
-```
-
-### User Data
-
-EC2起動時にBootstrap処理や動的な設定を行うために使用できます。
-
-### Hybrid
-
-Golden AMIとUser Dataを組み合わせることができます。
-
-```text
-Golden AMI
-→ 静的・共通設定
-
-User Data
-→ 動的設定
-```
-
-### Snapshot
-
-- RDS Snapshot → SchemaとDataを含むDatabaseを復元
-- EBS Snapshot → File SystemとDataを含むVolumeを復元
-
----
-
-## English Summary
-
-AWS can reduce application initialization time by reusing prepared resources instead of rebuilding everything from scratch.
-
-### Golden AMI
-
-A Golden AMI is a preconfigured and tested AMI containing applications, dependencies, and common configuration.
-
-### User Data
-
-EC2 User Data can perform bootstrap operations and dynamic configuration when an instance starts.
-
-### Hybrid
-
-Golden AMIs and User Data can be combined.
-
-```text
-Golden AMI
-→ Preconfigured components
-
-User Data
-→ Dynamic configuration
-```
-
-### Snapshots
-
-- RDS snapshots can restore databases with existing schemas and data.
-- EBS snapshots can restore volumes with existing file systems and data.
-
----
-
-## Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Golden AMI | ゴールデンAMI | 사전 구성된 표준 AMI |
-| Bootstrap | ブートストラップ | 초기 구성 |
-| User Data | ユーザーデータ | 사용자 데이터 |
-| Dependency | 依存関係 | 의존성 |
-| Snapshot | スナップショット | 스냅샷 |
-| Restore | 復元 | 복원 |
-| Dynamic Configuration | 動的設定 | 동적 구성 |
-| Application Stack | アプリケーションスタック | 애플리케이션 스택 |
-
----
-
-## Review Questions
+## 📝 Review Questions
 
 ### 1. EC2가 생성될 때마다 Application과 Dependency를 설치하여 시작 시간이 오래 걸린다. 어떤 방법을 사용할 수 있는가?
 
@@ -377,3 +276,80 @@ Snapshot에 저장된 Database 상태를 기반으로 새로운 RDS Database를 
 **정답: EBS Snapshot에서 Restore한다.**
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+AWSでは、アプリケーションを毎回最初から構築するのではなく、事前に準備されたイメージやSnapshotを再利用することで起動時間を短縮できます。
+
+### Golden AMI
+
+アプリケーション、OSの依存関係、共通設定などを事前に準備したAMIです。
+
+```text
+Golden AMI
+→ EC2
+→ Application Ready
+```
+
+### User Data
+
+EC2起動時にBootstrap処理や動的な設定を行うために使用できます。
+
+### Hybrid
+
+Golden AMIとUser Dataを組み合わせることができます。
+
+```text
+Golden AMI
+→ 静的・共通設定
+
+User Data
+→ 動的設定
+```
+
+### Snapshot
+
+- RDS Snapshot → SchemaとDataを含むDatabaseを復元
+- EBS Snapshot → File SystemとDataを含むVolumeを復元
+
+## 🇺🇸 English Summary
+
+AWS can reduce application initialization time by reusing prepared resources instead of rebuilding everything from scratch.
+
+### Golden AMI
+
+A Golden AMI is a preconfigured and tested AMI containing applications, dependencies, and common configuration.
+
+### User Data
+
+EC2 User Data can perform bootstrap operations and dynamic configuration when an instance starts.
+
+### Hybrid
+
+Golden AMIs and User Data can be combined.
+
+```text
+Golden AMI
+→ Preconfigured components
+
+User Data
+→ Dynamic configuration
+```
+
+### Snapshots
+
+- RDS snapshots can restore databases with existing schemas and data.
+- EBS snapshots can restore volumes with existing file systems and data.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Golden AMI | ゴールデンAMI | 사전 구성된 표준 AMI |
+| Bootstrap | ブートストラップ | 초기 구성 |
+| User Data | ユーザーデータ | 사용자 데이터 |
+| Dependency | 依存関係 | 의존성 |
+| Snapshot | スナップショット | 스냅샷 |
+| Restore | 復元 | 복원 |
+| Dynamic Configuration | 動的設定 | 동적 구성 |
+| Application Stack | アプリケーションスタック | 애플리케이션 스택 |

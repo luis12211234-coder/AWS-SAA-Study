@@ -1,6 +1,6 @@
-# 10-06. S3 Storage Classes
+# 📘 10-06. S3 Storage Classes
 
-## 1. S3 Storage Classes란?
+## 🇰🇷 1. S3 Storage Classes란?
 
 Amazon S3에서는 데이터의 **Access Pattern, Availability 요구사항, 보관 기간, 비용**에 따라 여러 Storage Class를 선택할 수 있다.
 
@@ -36,9 +36,7 @@ Access Pattern을 예측할 수 있는가?
 
 를 보고 적절한 Storage Class를 선택한다.
 
----
-
-## 2. Durability vs Availability
+## 🇰🇷 2. Durability vs Availability
 
 Storage Class를 이해하려면 먼저 **Durability**와 **Availability**를 구분해야 한다.
 
@@ -79,9 +77,7 @@ Availability
 
 데이터가 안전하게 존재하는 것과 지금 즉시 서비스가 가능한 것은 서로 다른 개념이다.
 
----
-
-# 3. S3 Standard
+## 🇰🇷 3. S3 Standard
 
 가장 일반적인 S3 Storage Class이다.
 
@@ -110,9 +106,7 @@ Content Distribution
 
 특별한 Access Pattern이 없다면 가장 기본적으로 생각할 수 있는 Storage Class이다.
 
----
-
-# 4. S3 Standard-IA
+## 🇰🇷 4. S3 Standard-IA
 
 IA는 **Infrequent Access**의 약자이다.
 
@@ -142,9 +136,7 @@ Minimum Storage Duration: 30 days
 - 자주 사용하지 않는 데이터
 - 필요할 때 즉시 접근해야 하는 데이터
 
----
-
-# 5. S3 One Zone-IA
+## 🇰🇷 5. S3 One Zone-IA
 
 Standard-IA와 비슷하게 자주 접근하지 않는 데이터를 위한 Storage Class이다.
 
@@ -156,7 +148,6 @@ Standard-IA
 AZ A
 AZ B
 AZ C
-
 
 One Zone-IA
 
@@ -173,7 +164,7 @@ Secondary Backup
 다른 위치에 원본이 존재하는 데이터
 ```
 
-### 기억하기
+#### 기억하기
 
 ```text
 가끔 사용
@@ -183,7 +174,6 @@ Secondary Backup
 Multi-AZ 필요
 
 → Standard-IA
-
 
 가끔 사용
 +
@@ -196,9 +186,7 @@ Single AZ 허용
 → One Zone-IA
 ```
 
----
-
-# 6. S3 Glacier
+## 🇰🇷 6. S3 Glacier
 
 Glacier 계열은 **Archive Storage**를 위한 Storage Class이다.
 
@@ -222,9 +210,7 @@ S3 Glacier
 
 이다.
 
----
-
-# 7. S3 Glacier Instant Retrieval
+## 🇰🇷 7. S3 Glacier Instant Retrieval
 
 Archive 데이터이지만 필요할 때 **즉시 Retrieval**해야 하는 경우 사용한다.
 
@@ -247,9 +233,7 @@ Minimum Storage Duration: 90 days
 
 예를 들어 평소에는 거의 열어보지 않지만, 갑자기 필요할 경우 즉시 접근해야 하는 Archive 데이터에 적합하다.
 
----
-
-# 8. Standard-IA vs Glacier Instant Retrieval
+## 🇰🇷 8. Standard-IA vs Glacier Instant Retrieval
 
 둘 다 **Millisecond 단위로 빠르게 Retrieval할 수 있기 때문에** 헷갈리기 쉽다.
 
@@ -272,14 +256,13 @@ Standard-IA
 "가끔 쓰긴 하는 데이터야.
 하지만 필요하면 바로 줘."
 
-
 Glacier Instant Retrieval
 
 "거의 안 보는 Archive야.
 근데 정말 필요할 때는 바로 줘."
 ```
 
-### 시험용 기억법
+#### 시험용 기억법
 
 ```text
 가끔 사용 + 즉시 접근
@@ -289,9 +272,7 @@ Glacier Instant Retrieval
 → Glacier Instant Retrieval
 ```
 
----
-
-# 9. S3 Glacier Flexible Retrieval
+## 🇰🇷 9. S3 Glacier Flexible Retrieval
 
 Archive 데이터이며 즉시 Retrieval할 필요가 없는 경우 사용한다.
 
@@ -325,9 +306,7 @@ Flexible Retrieval
 
 으로 구분하면 쉽다.
 
----
-
-# 10. S3 Glacier Deep Archive
+## 🇰🇷 10. S3 Glacier Deep Archive
 
 Glacier 계열 중에서도 **매우 장기간 보관하고 거의 접근하지 않는 데이터**를 위한 Storage Class이다.
 
@@ -355,9 +334,7 @@ Glacier 계열 중에서도 **매우 장기간 보관하고 거의 접근하지 
 
 이다.
 
----
-
-# 11. Glacier 3종 비교
+## 🇰🇷 11. Glacier 3종 비교
 
 ```text
 Glacier Instant Retrieval
@@ -383,9 +360,7 @@ Glacier Deep Archive
 
 시험에서는 정확한 Retrieval 시간 숫자만 외우기보다 **상황의 차이**를 먼저 잡는 것이 중요하다.
 
----
-
-# 12. S3 Intelligent-Tiering
+## 🇰🇷 12. S3 Intelligent-Tiering
 
 데이터의 Access Pattern을 예측하기 어려운 경우 사용할 수 있다.
 
@@ -414,9 +389,7 @@ Access Pattern Monitoring
 적절한 Access Tier로 자동 이동
 ```
 
----
-
-# 13. Intelligent-Tiering의 Access Tiers
+## 🇰🇷 13. Intelligent-Tiering의 Access Tiers
 
 대표적인 자동 Access Tier는 다음과 같다.
 
@@ -454,9 +427,7 @@ Archive Access
 Deep Archive Access
 ```
 
----
-
-# 14. Storage Class와 Access Tier는 다르다
+## 🇰🇷 14. Storage Class와 Access Tier는 다르다
 
 여기서 중요한 함정이 있다.
 
@@ -507,9 +478,7 @@ Access Tier
 
 이다.
 
----
-
-# 15. Lifecycle Rule
+## 🇰🇷 15. Lifecycle Rule
 
 S3에서는 Object의 수명에 따라 Storage Class를 자동으로 변경하도록 **Lifecycle Rule**을 구성할 수도 있다.
 
@@ -534,13 +503,11 @@ Glacier
 
 Lifecycle을 사용하면 오래된 Object를 더 저렴한 Storage Class로 이동시켜 비용을 최적화할 수 있다.
 
----
-
-# 16. Lifecycle vs Intelligent-Tiering
+## 🇰🇷 16. Lifecycle vs Intelligent-Tiering
 
 둘 다 Storage 비용을 최적화할 수 있지만 방식이 다르다.
 
-### Lifecycle Rule
+#### Lifecycle Rule
 
 사용자가 규칙을 미리 정의한다.
 
@@ -559,7 +526,7 @@ Lifecycle을 사용하면 오래된 Object를 더 저렴한 Storage Class로 이
 → AWS가 규칙대로 이동
 ```
 
-### Intelligent-Tiering
+#### Intelligent-Tiering
 
 AWS가 Object의 Access Pattern을 확인하여 Access Tier를 자동으로 변경한다.
 
@@ -573,7 +540,7 @@ AWS Monitoring
 Automatic Tiering
 ```
 
-### 비교
+#### 비교
 
 ```text
 Lifecycle
@@ -584,9 +551,7 @@ Intelligent-Tiering
    접근 패턴 보고 알아서 관리해."
 ```
 
----
-
-# 17. Storage Class 선택 흐름
+## 🇰🇷 17. Storage Class 선택 흐름
 
 시험 문제에서는 다음처럼 상황을 읽으면 된다.
 
@@ -617,14 +582,11 @@ Intelligent-Tiering
           └── Intelligent-Tiering
 ```
 
----
-
-# 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 S3 Standard
 → 자주 사용
-
 
 Standard-IA
 → 가끔 사용
@@ -632,12 +594,10 @@ Standard-IA
 → Multi-AZ
 → 최소 30일
 
-
 One Zone-IA
 → 가끔 사용
 → Single AZ
 → 재생성 가능한 데이터
-
 
 Glacier Instant Retrieval
 → Archive
@@ -645,23 +605,19 @@ Glacier Instant Retrieval
 → 즉시 Retrieval
 → 최소 90일
 
-
 Glacier Flexible Retrieval
 → Archive
 → Retrieval을 기다릴 수 있음
 → 최소 90일
-
 
 Glacier Deep Archive
 → 초장기 Archive
 → Retrieval이 오래 걸려도 됨
 → 최소 180일
 
-
 Intelligent-Tiering
 → Access Pattern 예측 어려움
 → Access Tier 자동 이동
-
 
 Standard-IA vs Glacier Instant
 
@@ -673,7 +629,6 @@ Standard-IA
 Glacier Instant
 → "거의 안 보는 Archive"
 
-
 Lifecycle
 → 사용자가 이동 규칙 지정
 
@@ -681,101 +636,7 @@ Intelligent-Tiering
 → AWS가 Access Pattern을 보고 자동 관리
 ```
 
----
-
-# 🇯🇵 日本語まとめ
-
-Amazon S3 には、アクセス頻度や保存期間に応じた複数の Storage Class があります。
-
-```text
-S3 Standard
-→ 頻繁にアクセス
-
-Standard-IA
-→ 低頻度アクセス + 即時アクセス
-
-One Zone-IA
-→ 低頻度アクセス + Single AZ
-
-Glacier Instant Retrieval
-→ Archive + 即時アクセス
-
-Glacier Flexible Retrieval
-→ Retrieval を待てる Archive
-
-Glacier Deep Archive
-→ 長期 Archive
-
-Intelligent-Tiering
-→ Access Pattern に応じて自動管理
-```
-
-Standard-IA と Glacier Instant Retrieval はどちらも高速な Retrieval が可能ですが、Standard-IA は「たまに利用するデータ」、Glacier Instant Retrieval は「ほとんど利用しない Archive データ」に適しています。
-
-Lifecycle Rule ではユーザーが Storage Class の Transition Rule を設定します。
-
-Intelligent-Tiering では AWS が Access Pattern に応じて Access Tier を自動的に変更します。
-
----
-
-# 🇺🇸 English Summary
-
-Amazon S3 provides multiple storage classes designed for different access patterns and retention requirements.
-
-```text
-S3 Standard
-→ Frequently accessed data
-
-Standard-IA
-→ Infrequently accessed data requiring immediate retrieval
-
-One Zone-IA
-→ Infrequently accessed, recreatable data in a single AZ
-
-Glacier Instant Retrieval
-→ Archive data requiring millisecond retrieval
-
-Glacier Flexible Retrieval
-→ Archive data where retrieval can wait
-
-Glacier Deep Archive
-→ Long-term archival data
-
-Intelligent-Tiering
-→ Unpredictable access patterns
-```
-
-Standard-IA and Glacier Instant Retrieval both provide fast retrieval, but they target different access patterns.
-
-Standard-IA is designed for data that is accessed occasionally, while Glacier Instant Retrieval is designed for archive data that is accessed very rarely but still requires immediate retrieval.
-
-Lifecycle Rules transition objects according to predefined rules, while Intelligent-Tiering automatically adjusts access tiers based on access patterns.
-
----
-
-# Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Storage Class | ストレージクラス | 스토리지 클래스 |
-| Durability | 耐久性 | 내구성 |
-| Availability | 可用性 | 가용성 |
-| Infrequent Access | 低頻度アクセス | 낮은 빈도 접근 |
-| Retrieval | 取り出し | 데이터 인출 |
-| Archive | アーカイブ | 아카이브 |
-| Standard-IA | Standard-IA | Standard-IA |
-| One Zone-IA | One Zone-IA | One Zone-IA |
-| Glacier Instant Retrieval | Glacier Instant Retrieval | Glacier 즉시 검색 |
-| Glacier Flexible Retrieval | Glacier Flexible Retrieval | Glacier 유연한 검색 |
-| Glacier Deep Archive | Glacier Deep Archive | Glacier 딥 아카이브 |
-| Intelligent-Tiering | Intelligent-Tiering | 지능형 티어링 |
-| Access Tier | アクセスティア | 액세스 티어 |
-| Lifecycle Rule | ライフサイクルルール | 수명 주기 규칙 |
-| Lifecycle Transition | ライフサイクル移行 | 수명 주기 전환 |
-
----
-
-# Review Questions
+## 📝 Review Questions
 
 <details>
 <summary>1. 자주 사용하는 일반적인 데이터에는 어떤 Storage Class가 적합한가?</summary>
@@ -853,3 +714,89 @@ Lifecycle Rule은 사용자가 미리 정한 규칙에 따라 Storage Class를 T
 Intelligent-Tiering은 실제 Access Pattern을 기반으로 Access Tier를 자동으로 조정한다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+Amazon S3 には、アクセス頻度や保存期間に応じた複数の Storage Class があります。
+
+```text
+S3 Standard
+→ 頻繁にアクセス
+
+Standard-IA
+→ 低頻度アクセス + 即時アクセス
+
+One Zone-IA
+→ 低頻度アクセス + Single AZ
+
+Glacier Instant Retrieval
+→ Archive + 即時アクセス
+
+Glacier Flexible Retrieval
+→ Retrieval を待てる Archive
+
+Glacier Deep Archive
+→ 長期 Archive
+
+Intelligent-Tiering
+→ Access Pattern に応じて自動管理
+```
+
+Standard-IA と Glacier Instant Retrieval はどちらも高速な Retrieval が可能ですが、Standard-IA は「たまに利用するデータ」、Glacier Instant Retrieval は「ほとんど利用しない Archive データ」に適しています。
+
+Lifecycle Rule ではユーザーが Storage Class の Transition Rule を設定します。
+
+Intelligent-Tiering では AWS が Access Pattern に応じて Access Tier を自動的に変更します。
+
+## 🇺🇸 English Summary
+
+Amazon S3 provides multiple storage classes designed for different access patterns and retention requirements.
+
+```text
+S3 Standard
+→ Frequently accessed data
+
+Standard-IA
+→ Infrequently accessed data requiring immediate retrieval
+
+One Zone-IA
+→ Infrequently accessed, recreatable data in a single AZ
+
+Glacier Instant Retrieval
+→ Archive data requiring millisecond retrieval
+
+Glacier Flexible Retrieval
+→ Archive data where retrieval can wait
+
+Glacier Deep Archive
+→ Long-term archival data
+
+Intelligent-Tiering
+→ Unpredictable access patterns
+```
+
+Standard-IA and Glacier Instant Retrieval both provide fast retrieval, but they target different access patterns.
+
+Standard-IA is designed for data that is accessed occasionally, while Glacier Instant Retrieval is designed for archive data that is accessed very rarely but still requires immediate retrieval.
+
+Lifecycle Rules transition objects according to predefined rules, while Intelligent-Tiering automatically adjusts access tiers based on access patterns.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Storage Class | ストレージクラス | 스토리지 클래스 |
+| Durability | 耐久性 | 내구성 |
+| Availability | 可用性 | 가용성 |
+| Infrequent Access | 低頻度アクセス | 낮은 빈도 접근 |
+| Retrieval | 取り出し | 데이터 인출 |
+| Archive | アーカイブ | 아카이브 |
+| Standard-IA | Standard-IA | Standard-IA |
+| One Zone-IA | One Zone-IA | One Zone-IA |
+| Glacier Instant Retrieval | Glacier Instant Retrieval | Glacier 즉시 검색 |
+| Glacier Flexible Retrieval | Glacier Flexible Retrieval | Glacier 유연한 검색 |
+| Glacier Deep Archive | Glacier Deep Archive | Glacier 딥 아카이브 |
+| Intelligent-Tiering | Intelligent-Tiering | 지능형 티어링 |
+| Access Tier | アクセスティア | 액세스 티어 |
+| Lifecycle Rule | ライフサイクルルール | 수명 주기 규칙 |
+| Lifecycle Transition | ライフサイクル移行 | 수명 주기 전환 |

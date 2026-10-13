@@ -123,7 +123,7 @@ Config Rule 재평가
 - 여러 계정/리전 결과를 하나의 화면에 모으려면 **AWS Config Aggregator**.
 - S3에 전달된 이력·스냅샷은 장기 분석에 활용 가능하며 **Athena**로 SQL 분석할 수 있다.
 
-## 🎯 Exam Triggers
+## 🎯 Exam Notes
 
 | 문제 키워드 | 선택 |
 |---|---|
@@ -168,7 +168,19 @@ Config Rule 재평가
 | Q31 | **B** | Config 자체는 변경을 막지 않지만 SSM Automation Runbook을 연결하면 사후 교정 조치를 수행할 수 있다. |
 | Q32 | **D** | Config Aggregator는 계정과 리전을 아우르는 설정·준수 결과 조회를 지원한다. |
 
-## 📚 Vocabulary — English · 한국어 · 日本語
+## 🇯🇵 日本語 Summary
+
+AWS Config はリソース設定の履歴を記録し、Config Rules を使ってコンプライアンスを評価する。`restricted-ssh` ルールは Security Group の SSH 22 番ポートがインターネット全体に公開されていないか確認する。Config は設定変更そのものをブロックしないが、NON_COMPLIANT なリソースを SSM Automation で修復できる。Resource Timeline は設定の変化、CloudTrail は変更した API 呼び出し元を調べる。複数アカウント・リージョンの集計には Aggregator を使用する。
+
+**試験の注意点:** Config Rule は設定違反を検知するが、変更そのものをブロックしない。修復には SSM Automation、API 操作の特定には CloudTrail を使う。
+
+## 🇺🇸 English Summary
+
+AWS Config records resource configurations and evaluates compliance with managed or custom rules. `restricted-ssh` flags security groups that allow unrestricted SSH ingress. Config is detective, not preventive: use SSM Automation for manual or automatic remediation. A resource timeline shows configuration changes, whereas CloudTrail identifies the API activity responsible. Aggregators provide cross-account and cross-Region compliance visibility.
+
+**Exam tip:** Config evaluates settings and history. It does not block an action; remediation happens afterward through Automation. CloudTrail identifies the API caller.
+
+## 📚 Vocabulary
 
 > GitHub 검색 시 영어 표제어 그대로 검색하면 관련 설명으로 이동하기 쉽다.
 
@@ -188,20 +200,7 @@ Config Rule 재평가
 | Runbook | 자동화 절차 문서 | ランブック |
 | Aggregator | 집계기 | アグリゲーター |
 
-
-## 🇯🇵 日本語 Summary
-
-AWS Config はリソース設定の履歴を記録し、Config Rules を使ってコンプライアンスを評価する。`restricted-ssh` ルールは Security Group の SSH 22 番ポートがインターネット全体に公開されていないか確認する。Config は設定変更そのものをブロックしないが、NON_COMPLIANT なリソースを SSM Automation で修復できる。Resource Timeline は設定の変化、CloudTrail は変更した API 呼び出し元を調べる。複数アカウント・リージョンの集計には Aggregator を使用する。
-
-**試験の注意点:** Config Rule は設定違反を検知するが、変更そのものをブロックしない。修復には SSM Automation、API 操作の特定には CloudTrail を使う。
-
-## 🇺🇸 English Summary
-
-AWS Config records resource configurations and evaluates compliance with managed or custom rules. `restricted-ssh` flags security groups that allow unrestricted SSH ingress. Config is detective, not preventive: use SSM Automation for manual or automatic remediation. A resource timeline shows configuration changes, whereas CloudTrail identifies the API activity responsible. Aggregators provide cross-account and cross-Region compliance visibility.
-
-**Exam tip:** Config evaluates settings and history. It does not block an action; remediation happens afterward through Automation. CloudTrail identifies the API caller.
-
-## 📚 References
+## 📚 Official References
 
 - [AWS Config resource recording](https://docs.aws.amazon.com/config/latest/developerguide/select-resources.html)
 - [AWS Config restricted-ssh](https://docs.aws.amazon.com/config/latest/developerguide/restricted-ssh.html)

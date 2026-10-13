@@ -1,6 +1,6 @@
-# 17-01. Serverless & AWS Lambda
+# 📘 17-01. Serverless & AWS Lambda
 
-## 1. Serverless
+## 🇰🇷 1. Serverless
 
 Serverless는 서버가 없는 것이 아니라 **개발자가 서버를 직접 프로비저닝하고 관리하지 않는 구조**이다.
 
@@ -13,7 +13,6 @@ OS 관리
    ↓
 Application 실행
 
-
 Serverless
 
 Code / Function 배포
@@ -21,9 +20,7 @@ Code / Function 배포
 AWS가 Infrastructure 관리
 ```
 
----
-
-# 2. AWS Lambda
+## 🇰🇷 2. AWS Lambda
 
 AWS Lambda는 서버를 직접 관리하지 않고 **필요할 때 코드를 실행하는 Serverless Compute 서비스**이다.
 
@@ -37,7 +34,7 @@ Code 실행
 Result
 ```
 
-### EC2 vs Lambda
+#### EC2 vs Lambda
 
 | EC2 | Lambda |
 |---|---|
@@ -49,9 +46,7 @@ Result
 
 Lambda의 최대 일반 실행 시간은 **15분**이다.
 
----
-
-# 3. Event-Driven Architecture
+## 🇰🇷 3. Event-Driven Architecture
 
 Lambda는 다양한 Event에 의해 실행될 수 있다.
 
@@ -79,9 +74,7 @@ S3에 이미지 업로드
 - EventBridge
 - Kinesis
 
----
-
-# 4. Lambda Function
+## 🇰🇷 4. Lambda Function
 
 Lambda의 기본 구조:
 
@@ -105,9 +98,7 @@ def lambda_handler(event, context):
 
 `event`에는 Lambda를 호출한 서비스가 전달한 데이터가 들어간다.
 
----
-
-# 5. Execution Role
+## 🇰🇷 5. Execution Role
 
 Lambda가 다른 AWS 서비스에 접근하려면 IAM 권한이 필요하다.
 
@@ -121,9 +112,7 @@ S3 / DynamoDB / CloudWatch ...
 
 예를 들어 Lambda가 CloudWatch Logs에 로그를 기록하려면 해당 작업을 허용하는 IAM 권한이 필요하다.
 
----
-
-# 6. Lambda Limits
+## 🇰🇷 6. Lambda Limits
 
 대표적인 제한:
 
@@ -137,8 +126,6 @@ S3 / DynamoDB / CloudWatch ...
 | Container Image | 최대 10 GB |
 
 Lambda의 동시 실행 수는 **Concurrency**로 관리된다.
-
----
 
 ## 🎯 Exam Notes
 
@@ -156,8 +143,6 @@ Lambda
 - AWS 서비스 접근 권한은 Execution Role로 부여
 - 장시간 실행되는 일반 서버 애플리케이션에는 EC2/ECS 등이 더 적합
 
-## 💡 Practical Example
-
 매시간 작업을 실행해야 한다면:
 
 ```text
@@ -169,25 +154,6 @@ EventBridge Schedule
 ```
 
 별도의 EC2 서버에서 Cron을 계속 실행할 필요 없이 Serverless 방식으로 구성할 수 있다.
-
-## 🇯🇵 日本語 Summary
-
-AWS Lambdaは、サーバーを直接管理せずにコードを実行できるサーバーレスコンピューティングサービスです。イベント駆動で実行され、自動的にスケーリングします。S3、API Gateway、SQS、EventBridgeなど多くのAWSサービスと連携できます。
-
-## 🇺🇸 English Summary
-
-AWS Lambda is a serverless compute service that executes code in response to events. It automatically scales and integrates with services such as S3, API Gateway, SQS, DynamoDB, and EventBridge.
-
-## 📚 Vocabulary
-
-| Term | Meaning |
-|---|---|
-| Function | Lambda에서 실행되는 코드 단위 |
-| Handler | Lambda 코드의 진입점 |
-| Event | Lambda에 전달되는 호출 데이터 |
-| Trigger | Lambda 실행을 유발하는 대상 |
-| Execution Role | Lambda가 AWS 서비스에 접근할 때 사용하는 IAM Role |
-| Concurrency | 동시에 실행되는 Lambda 실행 수 |
 
 ## 📝 Review Questions
 
@@ -208,3 +174,22 @@ Lambda는 서버를 직접 관리하지 않고 Event에 따라 코드를 실행�
 필요한 S3 권한이 포함된 Lambda Execution Role이 필요하다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+AWS Lambdaは、サーバーを直接管理せずにコードを実行できるサーバーレスコンピューティングサービスです。イベント駆動で実行され、自動的にスケーリングします。S3、API Gateway、SQS、EventBridgeなど多くのAWSサービスと連携できます。
+
+## 🇺🇸 English Summary
+
+AWS Lambda is a serverless compute service that executes code in response to events. It automatically scales and integrates with services such as S3, API Gateway, SQS, DynamoDB, and EventBridge.
+
+## 📚 Vocabulary
+
+| Term | Meaning |
+|---|---|
+| Function | Lambda에서 실행되는 코드 단위 |
+| Handler | Lambda 코드의 진입점 |
+| Event | Lambda에 전달되는 호출 데이터 |
+| Trigger | Lambda 실행을 유발하는 대상 |
+| Execution Role | Lambda가 AWS 서비스에 접근할 때 사용하는 IAM Role |
+| Concurrency | 동시에 실행되는 Lambda 실행 수 |

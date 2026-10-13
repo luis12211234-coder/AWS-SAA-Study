@@ -1,6 +1,6 @@
-# 18-02. MyBlog.com - Serverless Hosted Website
+# 📘 18-02. MyBlog.com - Serverless Hosted Website
 
-## 1. Requirements
+## 🇰🇷 1. Requirements
 
 전 세계 사용자가 접근하는 블로그 서비스를 구축한다.
 
@@ -21,7 +21,7 @@
 - Event-Driven Processing
 - Minimal Server Management
 
-## 2. Static Website Delivery
+## 🇰🇷 2. Static Website Delivery
 
 블로그의 HTML, CSS, JavaScript, 이미지 등 정적 파일은 S3에 저장할 수 있다.
 
@@ -55,7 +55,7 @@ Amazon S3
 - 글로벌 사용자에 대한 지연 시간 개선
 - 원본 서버의 트래픽 부담 감소
 
-## 3. Secure S3 Origin
+## 🇰🇷 3. Secure S3 Origin
 
 S3 버킷을 누구나 직접 접근할 수 있도록 공개할 필요는 없다.
 
@@ -88,7 +88,7 @@ Cognito Identity Pool과는 목적이 다르다.
 | CloudFront OAC | CloudFront의 S3 Origin 접근 제어 |
 | Cognito Identity Pool | 사용자에게 임시 AWS 자격 증명 제공 |
 
-## 4. Dynamic REST API
+## 🇰🇷 4. Dynamic REST API
 
 블로그 게시글, 댓글, 구독 정보와 같은 동적 데이터는 API를 통해 처리한다.
 
@@ -128,7 +128,7 @@ DAX는 모든 블로그에 필수인 서비스가 아니다.
 
 읽기 패턴과 비용을 분석한 후 도입한다.
 
-## 5. Global Database Architecture
+## 🇰🇷 5. Global Database Architecture
 
 전 세계 사용자에게 낮은 지연 시간으로 데이터 서비스를 제공하려면 DynamoDB Global Tables를 고려할 수 있다.
 
@@ -165,7 +165,7 @@ Global Tables만 도입한다고 전체 애플리케이션의 응답 속도가 �
 
 복제 지연과 동시 쓰기 충돌도 고려해야 한다.
 
-## 6. Welcome Email Automation
+## 🇰🇷 6. Welcome Email Automation
 
 신규 구독자가 등록되면 환영 이메일을 자동으로 전송한다.
 
@@ -226,7 +226,7 @@ Simple Email Service.
 
 이 구조의 핵심은 이메일 발송을 사용자 등록 API의 동기 처리 과정에서 분리한다는 점이다.
 
-## 7. Automatic Thumbnail Generation
+## 🇰🇷 7. Automatic Thumbnail Generation
 
 사용자가 이미지를 업로드하면 Lambda가 썸네일을 자동 생성한다.
 
@@ -274,7 +274,7 @@ S3 Bucket
 
 S3 Event Notification을 `originals/` Prefix에만 적용하면 썸네일 저장으로 Lambda가 다시 실행되는 문제를 줄일 수 있다.
 
-## 8. Upload Acceleration
+## 🇰🇷 8. Upload Acceleration
 
 글로벌 사용자의 대용량 파일 업로드 성능을 개선하려면 S3 Transfer Acceleration을 고려할 수 있다.
 
@@ -298,7 +298,7 @@ CloudFront와 S3 Transfer Acceleration은 동일한 기능이 아니다.
 | CloudFront | 콘텐츠 다운로드 및 전달 최적화 |
 | S3 Transfer Acceleration | 원거리 S3 업로드 가속 |
 
-## 9. Final Architecture
+## 🇰🇷 9. Final Architecture
 
 ```text
                      Global Users
@@ -355,8 +355,6 @@ Thumbnail in S3
 - S3 Upload Event Processing: S3 Event Notifications + Lambda
 - Accelerated Long-Distance S3 Upload: S3 Transfer Acceleration
 
-## 💡 Practical Example
-
 한국 사용자가 블로그에 접속하면 CloudFront가 캐싱된 정적 웹 콘텐츠를 전달한다.
 
 사용자가 게시글을 조회하면 API Gateway와 Lambda가 DynamoDB에서 데이터를 조회한다.
@@ -364,29 +362,6 @@ Thumbnail in S3
 새로운 사용자가 구독을 신청하면 DynamoDB Streams 이벤트를 통해 Lambda가 실행되고 SES가 환영 이메일을 전송한다.
 
 이미지를 업로드하면 S3 이벤트가 Lambda를 실행하여 썸네일을 자동 생성한다.
-
-## 🇯🇵 日本語 Summary
-
-MyBlog.com は、S3 と CloudFront による静的コンテンツ配信、API Gateway と Lambda による動的 API、DynamoDB によるデータ保存を組み合わせたサーバーレスアーキテクチャである。DynamoDB Streams と SES を利用したメール送信、S3 イベントと Lambda を利用したサムネイル生成など、イベント駆動型の処理も実現できる。
-
-## 🇺🇸 English Summary
-
-MyBlog.com combines S3 and CloudFront for global static content delivery with API Gateway, Lambda, and DynamoDB for dynamic operations. DynamoDB Streams and SES enable event-driven welcome emails, while S3 events trigger Lambda functions to generate image thumbnails. Global Tables can support multi-region data access.
-
-## 📚 Vocabulary
-
-| Term | Meaning |
-|---|---|
-| CDN | Content Delivery Network |
-| Origin | 원본 콘텐츠를 제공하는 서버 또는 저장소 |
-| Edge Location | 사용자와 가까운 콘텐츠 전달 거점 |
-| OAC | Origin Access Control |
-| Global Tables | DynamoDB 다중 리전 복제 기능 |
-| Event-Driven | 이벤트 기반 |
-| DynamoDB Streams | 데이터 변경 이벤트 스트림 |
-| Thumbnail | 축소된 미리보기 이미지 |
-| Transfer Acceleration | S3 전송 가속 |
-| Replication | 데이터 복제 |
 
 ## 📝 Review Questions
 
@@ -427,3 +402,26 @@ CloudFront는 콘텐츠 전달 및 캐싱을 위한 CDN이다.
 S3 Transfer Acceleration은 원거리에서 S3로 파일을 업로드할 때 전송 성능을 개선하는 기능이다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+MyBlog.com は、S3 と CloudFront による静的コンテンツ配信、API Gateway と Lambda による動的 API、DynamoDB によるデータ保存を組み合わせたサーバーレスアーキテクチャである。DynamoDB Streams と SES を利用したメール送信、S3 イベントと Lambda を利用したサムネイル生成など、イベント駆動型の処理も実現できる。
+
+## 🇺🇸 English Summary
+
+MyBlog.com combines S3 and CloudFront for global static content delivery with API Gateway, Lambda, and DynamoDB for dynamic operations. DynamoDB Streams and SES enable event-driven welcome emails, while S3 events trigger Lambda functions to generate image thumbnails. Global Tables can support multi-region data access.
+
+## 📚 Vocabulary
+
+| Term | Meaning |
+|---|---|
+| CDN | Content Delivery Network |
+| Origin | 원본 콘텐츠를 제공하는 서버 또는 저장소 |
+| Edge Location | 사용자와 가까운 콘텐츠 전달 거점 |
+| OAC | Origin Access Control |
+| Global Tables | DynamoDB 다중 리전 복제 기능 |
+| Event-Driven | 이벤트 기반 |
+| DynamoDB Streams | 데이터 변경 이벤트 스트림 |
+| Thumbnail | 축소된 미리보기 이미지 |
+| Transfer Acceleration | S3 전송 가속 |
+| Replication | 데이터 복제 |

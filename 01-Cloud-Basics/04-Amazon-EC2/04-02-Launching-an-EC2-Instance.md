@@ -1,6 +1,6 @@
-# Launching an EC2 Instance
+# 📘 04-02. Launching an EC2 Instance
 
-## Overview
+## 🇰🇷 1. Overview
 
 이번 실습에서는 AWS Management Console을 사용하여 Amazon Linux 기반의 첫 번째 EC2 Instance를 생성한다.
 
@@ -8,9 +8,7 @@ EC2 Instance를 생성하면서 AMI, Instance Type, Key Pair, Security Group, St
 
 마지막으로 EC2 Instance의 Start, Stop, Terminate 동작과 Public IP의 변화를 확인한다.
 
----
-
-## Launching an EC2 Instance
+## 🇰🇷 2. Launching an EC2 Instance
 
 EC2 Console에서 다음 경로를 통해 새로운 인스턴스를 생성할 수 있다.
 
@@ -30,9 +28,7 @@ My First Instance
 
 인스턴스 이름은 실제로 AWS Resource에 적용되는 Name Tag 역할을 한다.
 
----
-
-## Amazon Machine Image (AMI)
+## 🇰🇷 3. Amazon Machine Image (AMI)
 
 AMI(Amazon Machine Image)는 EC2 Instance를 생성할 때 사용하는 기본 이미지이다.
 
@@ -50,9 +46,7 @@ Amazon Linux
 
 추후에는 직접 Custom AMI를 생성하여 사용할 수도 있다.
 
----
-
-## Instance Type
+## 🇰🇷 4. Instance Type
 
 Instance Type은 EC2 Instance가 사용할 컴퓨팅 자원의 크기를 결정한다.
 
@@ -71,9 +65,7 @@ t2.micro
 
 > 강의에서는 `t2.micro`를 Free Tier 예제로 사용한다. Free Tier 대상과 조건은 계정 및 시점에 따라 달라질 수 있으므로 실제 실습 시 AWS Console의 표시를 확인한다.
 
----
-
-## Key Pair
+## 🇰🇷 5. Key Pair
 
 Key Pair는 SSH를 이용하여 EC2 Instance에 접속할 때 사용한다.
 
@@ -98,9 +90,7 @@ Older Windows + PuTTY
 
 Key Pair 파일은 EC2 Instance에 접근할 때 중요한 인증 정보이므로 안전하게 보관해야 한다.
 
----
-
-## Network Settings
+## 🇰🇷 6. Network Settings
 
 이번 실습에서는 기본 Network 설정을 사용한다.
 
@@ -108,9 +98,7 @@ EC2 Instance에는 Public IPv4 Address가 할당되며, 외부에서 인스턴�
 
 또한 EC2 Instance에는 Security Group이 연결된다.
 
----
-
-## Security Group
+## 🇰🇷 7. Security Group
 
 Security Group은 EC2 Instance의 네트워크 트래픽을 제어하는 방화벽 역할을 한다.
 
@@ -138,9 +126,7 @@ HTTP를 허용하는 이유는 EC2 Instance에 웹 서버를 실행하고 인터
 
 이번 실습에서는 HTTPS를 사용하지 않는다.
 
----
-
-## Storage
+## 🇰🇷 8. Storage
 
 실습에서는 EC2 Instance에 하나의 Root EBS Volume을 연결한다.
 
@@ -159,9 +145,7 @@ Delete on Termination: Yes
 
 즉, EC2 Instance를 Terminate하면 해당 Root EBS Volume도 함께 삭제된다.
 
----
-
-## EC2 User Data
+## 🇰🇷 9. EC2 User Data
 
 EC2 User Data는 인스턴스가 처음 생성될 때 실행할 명령 또는 Script를 전달하는 기능이다.
 
@@ -185,9 +169,7 @@ User Data Script는 인스턴스의 **최초 시작 시 한 번 실행**된다.
 
 이를 Bootstrapping이라고 한다.
 
----
-
-## Web Server with User Data
+## 🇰🇷 10. Web Server with User Data
 
 User Data Script에서는 다음과 같은 작업을 수행한다.
 
@@ -218,9 +200,7 @@ http://
 
 를 사용해야 한다.
 
----
-
-## Public IP vs Private IP
+## 🇰🇷 11. Public IP vs Private IP
 
 EC2 Instance에는 Public IPv4 Address와 Private IPv4 Address가 존재한다.
 
@@ -244,9 +224,7 @@ AWS 내부 네트워크에서 EC2 Instance를 식별하고 통신할 때 사용�
 
 실습에서 웹 페이지에 출력된 `172.31.x.x` 형태의 주소는 Private IPv4 Address이다.
 
----
-
-## Instance Information
+## 🇰🇷 12. Instance Information
 
 EC2 Console에서는 인스턴스의 다양한 정보를 확인할 수 있다.
 
@@ -269,9 +247,7 @@ EC2 Console에서는 인스턴스의 다양한 정보를 확인할 수 있다.
 
 Instance ID는 각 EC2 Instance를 식별하는 고유한 ID이다.
 
----
-
-## Security Group Rules
+## 🇰🇷 13. Security Group Rules
 
 실습에서 생성된 Security Group에는 다음 Inbound Rules가 존재한다.
 
@@ -287,9 +263,7 @@ Port 80
 
 Outbound Traffic은 인터넷 접근을 위해 허용되어 있다.
 
----
-
-## EC2 Instance States
+## 🇰🇷 14. EC2 Instance States
 
 EC2 Instance는 여러 상태로 전환할 수 있다.
 
@@ -337,9 +311,7 @@ Terminated
 
 Terminate는 Instance를 삭제하는 작업이므로 Stop과 다르다.
 
----
-
-## Stop vs Terminate
+## 🇰🇷 15. Stop vs Terminate
 
 ### Stop
 
@@ -361,9 +333,7 @@ Instance 삭제
 
 Terminate된 인스턴스는 다시 시작할 수 없다.
 
----
-
-## Public IP Changes After Stop / Start
+## 🇰🇷 16. Public IP Changes After Stop / Start
 
 이번 실습에서 매우 중요한 동작이다.
 
@@ -403,9 +373,7 @@ Private IPv4
 → 유지
 ```
 
----
-
-## EC2 Hands-On Flow
+## 🇰🇷 17. EC2 Hands-On Flow
 
 ```text
 Launch Instance
@@ -429,9 +397,7 @@ Running
 Access Web Server through Public IP
 ```
 
----
-
-## Summary
+## 🇰🇷 18. Summary
 
 - EC2 Console에서 가상 서버를 빠르게 생성할 수 있다.
 - AMI는 EC2 Instance의 기본 이미지를 정의한다.
@@ -446,9 +412,7 @@ Access Web Server through Public IP
 - Stop과 Terminate는 서로 다른 동작이다.
 - Stop 후 다시 Start하면 Public IPv4 Address가 변경될 수 있다.
 
----
-
-## Exam Notes
+## 🎯 Exam Notes
 
 - AMI = EC2 Instance를 생성하기 위한 이미지
 - Instance Type = CPU / RAM 등의 컴퓨팅 사양
@@ -462,10 +426,6 @@ Access Web Server through Public IP
 - Stop ≠ Terminate
 - Stop → Start 시 Public IPv4는 변경될 수 있음
 - Private IPv4는 실습에서 유지됨
-
----
-
-## Practical Example
 
 간단한 웹 서버를 AWS에 배포한다고 가정한다.
 
@@ -499,189 +459,7 @@ http://<EC2-Public-IP>
 
 EC2 Instance를 Stop하면 웹 서버에 접근할 수 없으며, 다시 Start했을 때 Public IPv4가 변경되었다면 새로운 IP를 사용해야 한다.
 
----
-
-# 🇯🇵 日本語
-
-## EC2インスタンスの起動
-
-AWS Management ConsoleからEC2 Instanceを作成できる。
-
-主な設定項目は以下のとおりである。
-
-- AMI
-- Instance Type
-- Key Pair
-- Security Group
-- Storage
-- User Data
-
----
-
-## AMI
-
-AMI（Amazon Machine Image）はEC2 Instanceを作成するための基本イメージである。
-
-今回の実習ではAmazon Linuxを使用する。
-
----
-
-## Security Group
-
-Security GroupはEC2 Instanceのファイアウォールとして動作する。
-
-今回の実習では以下の通信を許可する。
-
-```text
-SSH  → Port 22
-HTTP → Port 80
-```
-
----
-
-## EC2 User Data
-
-User Dataを利用すると、EC2 Instanceの初回起動時にスクリプトを実行できる。
-
-これをBootstrappingという。
-
-今回の実習ではWeb ServerのインストールとHTMLファイルの作成を自動化する。
-
----
-
-## EC2 Instance State
-
-主な状態変更は以下のとおりである。
-
-```text
-Start
-Stop
-Terminate
-```
-
-StopしたInstanceは再度Startできるが、TerminateしたInstanceは削除される。
-
-StopしてからStartするとPublic IPv4 Addressが変更される可能性がある。
-
----
-
-## Summary
-
-- AMIはEC2の基本イメージである。
-- Instance TypeはCPUやMemoryなどの性能を決める。
-- Key PairはSSH接続に利用する。
-- Security Groupはネットワークアクセスを制御する。
-- User Dataで初期設定を自動化できる。
-- SSHはPort 22、HTTPはPort 80を使用する。
-- StopとTerminateは異なる。
-- Stop / Start後にPublic IPが変更される可能性がある。
-
----
-
-# 🇺🇸 English
-
-## Launching an EC2 Instance
-
-An EC2 instance can be launched from the AWS Management Console.
-
-Important configuration options include:
-
-- AMI
-- Instance Type
-- Key Pair
-- Security Group
-- Storage
-- User Data
-
----
-
-## AMI
-
-An Amazon Machine Image (AMI) provides the base image used to launch an EC2 instance.
-
-Amazon Linux is used in this hands-on exercise.
-
----
-
-## Security Group
-
-A Security Group acts as a firewall for an EC2 instance.
-
-The exercise allows:
-
-```text
-SSH  → Port 22
-HTTP → Port 80
-```
-
----
-
-## EC2 User Data
-
-EC2 User Data allows a script to run when an instance is launched for the first time.
-
-This process is called bootstrapping.
-
-The script in this exercise installs and configures a simple HTTP web server.
-
----
-
-## EC2 Instance States
-
-Important instance actions include:
-
-- Start
-- Stop
-- Terminate
-
-A stopped instance can be started again.
-
-A terminated instance is deleted and cannot be restarted.
-
-Stopping and starting an instance may change its Public IPv4 Address.
-
----
-
-## Summary
-
-- AMIs define the base image of an EC2 instance.
-- Instance Types define compute resources.
-- Key Pairs are used for SSH authentication.
-- Security Groups control network traffic.
-- User Data automates initial configuration.
-- SSH uses port 22.
-- HTTP uses port 80.
-- Stop and Terminate have different meanings.
-- The Public IPv4 address may change after Stop / Start.
-
----
-
-## Vocabulary
-
-| English | 한국어 | 日本語 |
-|---|---|---|
-| Launch Instance | 인스턴스 시작/생성 | インスタンスを起動 |
-| Amazon Machine Image (AMI) | 아마존 머신 이미지 | Amazon Machine Image |
-| Instance Type | 인스턴스 유형 | インスタンスタイプ |
-| Key Pair | 키 페어 | キーペア |
-| SSH | 보안 원격 접속 | SSH |
-| Security Group | 보안 그룹 | セキュリティグループ |
-| Inbound Rule | 인바운드 규칙 | インバウンドルール |
-| Outbound Rule | 아웃바운드 규칙 | アウトバウンドルール |
-| Public IPv4 | 공인 IPv4 | パブリックIPv4 |
-| Private IPv4 | 사설 IPv4 | プライベートIPv4 |
-| Root Volume | 루트 볼륨 | ルートボリューム |
-| Delete on Termination | 종료 시 삭제 | 終了時に削除 |
-| User Data | 사용자 데이터 | ユーザーデータ |
-| Bootstrapping | 초기 설정 자동화 | ブートストラッピング |
-| Pending | 시작 대기 상태 | 保留中 |
-| Running | 실행 상태 | 実行中 |
-| Stopped | 중지 상태 | 停止中 |
-| Terminated | 종료/삭제 상태 | 終了済み |
-
----
-
-## Review Questions
+## 📝 Review Questions
 
 1. AMI는 EC2 Instance 생성 과정에서 어떤 역할을 하는가?
 
@@ -706,3 +484,157 @@ Stopping and starting an instance may change its Public IPv4 Address.
 11. Public IPv4와 Private IPv4는 각각 어떤 용도로 사용되는가?
 
 12. 이번 실습에서 웹 서버에 접근할 때 `https://`가 아닌 `http://`를 사용한 이유는 무엇인가?
+
+## 🇯🇵 日本語 Summary
+
+### EC2インスタンスの起動
+
+AWS Management ConsoleからEC2 Instanceを作成できる。
+
+主な設定項目は以下のとおりである。
+
+- AMI
+- Instance Type
+- Key Pair
+- Security Group
+- Storage
+- User Data
+
+### AMI
+
+AMI（Amazon Machine Image）はEC2 Instanceを作成するための基本イメージである。
+
+今回の実習ではAmazon Linuxを使用する。
+
+### Security Group
+
+Security GroupはEC2 Instanceのファイアウォールとして動作する。
+
+今回の実習では以下の通信を許可する。
+
+```text
+SSH  → Port 22
+HTTP → Port 80
+```
+
+### EC2 User Data
+
+User Dataを利用すると、EC2 Instanceの初回起動時にスクリプトを実行できる。
+
+これをBootstrappingという。
+
+今回の実習ではWeb ServerのインストールとHTMLファイルの作成を自動化する。
+
+### EC2 Instance State
+
+主な状態変更は以下のとおりである。
+
+```text
+Start
+Stop
+Terminate
+```
+
+StopしたInstanceは再度Startできるが、TerminateしたInstanceは削除される。
+
+StopしてからStartするとPublic IPv4 Addressが変更される可能性がある。
+
+### Summary
+
+- AMIはEC2の基本イメージである。
+- Instance TypeはCPUやMemoryなどの性能を決める。
+- Key PairはSSH接続に利用する。
+- Security Groupはネットワークアクセスを制御する。
+- User Dataで初期設定を自動化できる。
+- SSHはPort 22、HTTPはPort 80を使用する。
+- StopとTerminateは異なる。
+- Stop / Start後にPublic IPが変更される可能性がある。
+
+## 🇺🇸 English Summary
+
+### Launching an EC2 Instance
+
+An EC2 instance can be launched from the AWS Management Console.
+
+Important configuration options include:
+
+- AMI
+- Instance Type
+- Key Pair
+- Security Group
+- Storage
+- User Data
+
+### AMI
+
+An Amazon Machine Image (AMI) provides the base image used to launch an EC2 instance.
+
+Amazon Linux is used in this hands-on exercise.
+
+### Security Group
+
+A Security Group acts as a firewall for an EC2 instance.
+
+The exercise allows:
+
+```text
+SSH  → Port 22
+HTTP → Port 80
+```
+
+### EC2 User Data
+
+EC2 User Data allows a script to run when an instance is launched for the first time.
+
+This process is called bootstrapping.
+
+The script in this exercise installs and configures a simple HTTP web server.
+
+### EC2 Instance States
+
+Important instance actions include:
+
+- Start
+- Stop
+- Terminate
+
+A stopped instance can be started again.
+
+A terminated instance is deleted and cannot be restarted.
+
+Stopping and starting an instance may change its Public IPv4 Address.
+
+### Summary
+
+- AMIs define the base image of an EC2 instance.
+- Instance Types define compute resources.
+- Key Pairs are used for SSH authentication.
+- Security Groups control network traffic.
+- User Data automates initial configuration.
+- SSH uses port 22.
+- HTTP uses port 80.
+- Stop and Terminate have different meanings.
+- The Public IPv4 address may change after Stop / Start.
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| Launch Instance | 인스턴스 시작/생성 | インスタンスを起動 |
+| Amazon Machine Image (AMI) | 아마존 머신 이미지 | Amazon Machine Image |
+| Instance Type | 인스턴스 유형 | インスタンスタイプ |
+| Key Pair | 키 페어 | キーペア |
+| SSH | 보안 원격 접속 | SSH |
+| Security Group | 보안 그룹 | セキュリティグループ |
+| Inbound Rule | 인바운드 규칙 | インバウンドルール |
+| Outbound Rule | 아웃바운드 규칙 | アウトバウンドルール |
+| Public IPv4 | 공인 IPv4 | パブリックIPv4 |
+| Private IPv4 | 사설 IPv4 | プライベートIPv4 |
+| Root Volume | 루트 볼륨 | ルートボリューム |
+| Delete on Termination | 종료 시 삭제 | 終了時に削除 |
+| User Data | 사용자 데이터 | ユーザーデータ |
+| Bootstrapping | 초기 설정 자동화 | ブートストラッピング |
+| Pending | 시작 대기 상태 | 保留中 |
+| Running | 실행 상태 | 実行中 |
+| Stopped | 중지 상태 | 停止中 |
+| Terminated | 종료/삭제 상태 | 終了済み |

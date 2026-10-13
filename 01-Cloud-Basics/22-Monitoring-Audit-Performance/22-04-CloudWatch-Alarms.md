@@ -105,7 +105,7 @@ aws cloudwatch set-alarm-state \
 - Alarm History에서 상태 변경 및 동작 기록을 확인한다.
 - 반드시 **SNS-only 테스트 Alarm**부터 사용하고, Terminate 같은 파괴적 Action에는 함부로 사용하지 않는다.
 
-## 🎯 Exam Triggers
+## 🎯 Exam Notes
 
 - CPU 80% 초과 시 이메일 → CloudWatch Alarm → SNS.
 - 2 out of 3 데이터 포인트 → `Datapoints to Alarm=2`, `EvaluationPeriods=3`.
@@ -163,7 +163,19 @@ aws cloudwatch set-alarm-state \
 | Q17 | **B** | System Status Check는 AWS 호스트 인프라를 감시한다. 지원되는 인스턴스에서 Recovery가 가능하며 일부 임시 데이터 손실에 주의한다. |
 | Q18 | **C** | SetAlarmState는 지표를 조작하지 않고 경보 상태만 바꾼다. 연결된 실제 EC2 Terminate 같은 Action이 실행될 수 있으므로 주의한다. |
 
-## 📚 Vocabulary — English · 한국어 · 日本語
+## 🇯🇵 日本語 Summary
+
+CloudWatch Alarm は Metric をしきい値と評価期間に基づいて監視し、OK / ALARM / INSUFFICIENT_DATA のいずれかの状態を取る。Composite Alarm は複数の Alarm の状態を AND/OR/NOT で組み合わせる。EC2 の System Status Check の失敗には、対応するインスタンスで Recovery を利用できる。`SetAlarmState` はテスト用だが、実際のアクションが実行される可能性がある。
+
+**試験の注意点:** 「5分 × 3期間、3/3」は3回連続でしきい値を超える判定。Composite Alarm は他のアラームの状態を組み合わせる。
+
+## 🇺🇸 English Summary
+
+CloudWatch Alarms evaluate metrics using statistics, thresholds, periods, and M-out-of-N data points. Alarm states are OK, ALARM, and INSUFFICIENT_DATA. Composite Alarms combine the states of other alarms. EC2 system status failures may trigger recovery on eligible instances. `SetAlarmState` simulates a state transition and may execute real alarm actions; never test destructive actions carelessly.
+
+**Exam tip:** Distinguish a metric alarm from a composite alarm. Test SetAlarmState carefully because the configured EC2 actions can execute for real.
+
+## 📚 Vocabulary
 
 > GitHub 검색 시 영어 표제어 그대로 검색하면 관련 설명으로 이동하기 쉽다.
 
@@ -183,20 +195,7 @@ aws cloudwatch set-alarm-state \
 | Scale Out | 수평 확장 | スケールアウト |
 | Scale In | 수평 축소 | スケールイン |
 
-
-## 🇯🇵 日本語 Summary
-
-CloudWatch Alarm は Metric をしきい値と評価期間に基づいて監視し、OK / ALARM / INSUFFICIENT_DATA のいずれかの状態を取る。Composite Alarm は複数の Alarm の状態を AND/OR/NOT で組み合わせる。EC2 の System Status Check の失敗には、対応するインスタンスで Recovery を利用できる。`SetAlarmState` はテスト用だが、実際のアクションが実行される可能性がある。
-
-**試験の注意点:** 「5分 × 3期間、3/3」は3回連続でしきい値を超える判定。Composite Alarm は他のアラームの状態を組み合わせる。
-
-## 🇺🇸 English Summary
-
-CloudWatch Alarms evaluate metrics using statistics, thresholds, periods, and M-out-of-N data points. Alarm states are OK, ALARM, and INSUFFICIENT_DATA. Composite Alarms combine the states of other alarms. EC2 system status failures may trigger recovery on eligible instances. `SetAlarmState` simulates a state transition and may execute real alarm actions; never test destructive actions carelessly.
-
-**Exam tip:** Distinguish a metric alarm from a composite alarm. Test SetAlarmState carefully because the configured EC2 actions can execute for real.
-
-## 📚 References
+## 📚 Official References
 
 - [Using Amazon CloudWatch alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)
 - [CloudWatch alarm concepts](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)

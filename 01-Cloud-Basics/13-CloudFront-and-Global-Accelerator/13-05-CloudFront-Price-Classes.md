@@ -1,4 +1,4 @@
-# 13-05. CloudFront Price Classes
+# 📘 13-05. CloudFront Price Classes
 
 ## 🇰🇷 1. Price Class란?
 
@@ -6,9 +6,7 @@ CloudFront Edge Location은 전 세계에 분산되어 있으며 지역에 따�
 
 Price Class를 사용하면 CloudFront가 사용할 Edge Location의 범위를 조절하여 비용과 Global Coverage 사이의 균형을 맞출 수 있습니다.
 
----
-
-## 2. Price Class 종류
+## 🇰🇷 2. Price Class 종류
 
 ```text
 Price Class 100
@@ -23,9 +21,7 @@ Price Class All
 → 가장 넓은 Global Coverage
 ```
 
----
-
-## 3. Cost vs Performance
+## 🇰🇷 3. Cost vs Performance
 
 가장 저렴한 Price Class가 항상 가장 좋은 것은 아닙니다.
 
@@ -43,9 +39,7 @@ Latency
 Global Coverage
 ```
 
----
-
-## 4. Exam Scenario
+## 🎯 Exam Notes
 
 다음과 같은 키워드가 나오면 Price Class를 생각합니다.
 
@@ -56,10 +50,6 @@ Reduce Cost
 +
 Limit Expensive Edge Locations
 ```
-
----
-
-## 🔑 핵심 정리
 
 ```text
 Price Class
@@ -78,40 +68,6 @@ Class All
 한 줄 정리:
 
 > **CloudFront의 Edge Coverage와 비용 사이의 균형을 조절한다 = Price Class**
-
----
-
-## 🇯🇵 日本語 Summary
-
-CloudFront Price Classを利用すると、使用するEdge Locationの範囲を制限してコストを調整できます。
-
-Price Class 100、200、Allがあり、利用範囲が広いほどGlobal Coverageも広くなります。
-
-コストだけでなく、ユーザーのLocationやLatencyも考慮する必要があります。
-
----
-
-## 🇺🇸 English Summary
-
-CloudFront Price Classes control the range of Edge Locations used by a distribution.
-
-Price Class 100 uses a more limited set of locations, Price Class 200 provides broader coverage, and Price Class All uses all available locations.
-
-The choice balances cost, latency, and global coverage.
-
----
-
-## 📚 Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Price Class | 料金クラス | 가격 등급 |
-| Edge Location | エッジロケーション | 엣지 로케이션 |
-| Coverage | カバレッジ | 서비스 범위 |
-| Cost | コスト | 비용 |
-| Latency | レイテンシー | 지연 시간 |
-
----
 
 ## 📝 Review Questions
 
@@ -135,3 +91,29 @@ Price Class All입니다.
 아닙니다. 비용뿐 아니라 사용자 위치, Latency, 필요한 Global Coverage도 함께 고려해야 합니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+CloudFront Price Classを利用すると、使用するEdge Locationの範囲を制限してコストを調整できます。
+
+Price Class 100、200、Allがあり、利用範囲が広いほどGlobal Coverageも広くなります。
+
+コストだけでなく、ユーザーのLocationやLatencyも考慮する必要があります。
+
+## 🇺🇸 English Summary
+
+CloudFront Price Classes control the range of Edge Locations used by a distribution.
+
+Price Class 100 uses a more limited set of locations, Price Class 200 provides broader coverage, and Price Class All uses all available locations.
+
+The choice balances cost, latency, and global coverage.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Price Class | 料金クラス | 가격 등급 |
+| Edge Location | エッジロケーション | 엣지 로케이션 |
+| Coverage | カバレッジ | 서비스 범위 |
+| Cost | コスト | 비용 |
+| Latency | レイテンシー | 지연 시간 |

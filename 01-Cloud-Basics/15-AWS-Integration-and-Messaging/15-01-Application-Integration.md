@@ -1,6 +1,6 @@
-# 15-01. Application Integration
+# 📘 15-01. Application Integration
 
-## 🇰🇷 Application Communication
+## 🇰🇷 1. Application Communication
 
 Application 간 통신에는 크게 두 가지 방식이 있습니다.
 
@@ -35,7 +35,7 @@ Shipping Service
 
 이를 **Decoupling**이라고 합니다.
 
-## 🔑 AWS Integration
+## 🇰🇷 2. AWS Integration
 
 ```text
 SQS
@@ -59,6 +59,12 @@ Asynchronous Processing
 → SQS를 우선 고려
 ```
 
+## 📝 Review Questions
+
+**Q. Decoupling이란?**
+
+Service 사이의 직접적인 의존성을 줄여 각각 독립적으로 동작하고 Scaling할 수 있도록 하는 것입니다.
+
 ## 🇯🇵 日本語 Summary
 
 Application間にMessaging Layerを配置することで、サービスを疎結合化（Decoupling）できます。
@@ -70,9 +76,3 @@ SQSはQueue、SNSはPub/Sub、KinesisはReal-Time Streamingに使用されます
 A messaging layer can decouple application components and allow them to scale independently.
 
 SQS provides queues, SNS provides pub/sub messaging, and Kinesis handles real-time streaming.
-
-## 📝 Review
-
-**Q. Decoupling이란?**
-
-Service 사이의 직접적인 의존성을 줄여 각각 독립적으로 동작하고 Scaling할 수 있도록 하는 것입니다.

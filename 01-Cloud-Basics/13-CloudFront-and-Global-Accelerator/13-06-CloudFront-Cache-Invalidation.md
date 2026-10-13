@@ -1,4 +1,4 @@
-# 13-06. CloudFront Cache Invalidation
+# 📘 13-06. CloudFront Cache Invalidation
 
 ## 🇰🇷 1. Cache와 TTL
 
@@ -18,9 +18,7 @@ Expiration
 Origin에서 다시 가져오기
 ```
 
----
-
-## 2. Origin을 수정하면?
+## 🇰🇷 2. Origin을 수정하면?
 
 S3 Origin의 `index.html`을 수정했다고 가정합니다.
 
@@ -43,9 +41,7 @@ Version 1
 
 따라서 TTL이 남아 있다면 사용자에게 기존 콘텐츠가 제공될 수 있습니다.
 
----
-
-## 3. Cache Invalidation
+## 🇰🇷 3. Cache Invalidation
 
 변경 사항을 즉시 반영하고 싶다면 Cache Invalidation을 실행합니다.
 
@@ -73,9 +69,7 @@ New Cache
 
 가 됩니다.
 
----
-
-## 4. Path 지정
+## 🇰🇷 4. Path 지정
 
 특정 Object만 무효화할 수 있습니다.
 
@@ -89,9 +83,7 @@ New Cache
 /images/*
 ```
 
----
-
-## 5. S3 Update와 Invalidation은 별개
+## 🇰🇷 5. S3 Update와 Invalidation은 별개
 
 중요한 점:
 
@@ -105,9 +97,7 @@ S3 파일을 수정한다고 CloudFront Cache가 자동으로 제거되는 것�
 
 필요하다면 관리자가 직접 Invalidation을 실행하거나 배포 Pipeline에서 자동화할 수 있습니다.
 
----
-
-## 🔑 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 TTL
@@ -132,44 +122,6 @@ Invalidation
 
 > **TTL을 기다리지 않고 CloudFront Cache를 즉시 제거한다 = Cache Invalidation**
 
----
-
-## 🇯🇵 日本語 Summary
-
-CloudFrontのCacheにはTTLがあります。
-
-Originのファイルを更新しても、TTLが残っている場合は古いCacheが配信される可能性があります。
-
-更新内容をすぐに反映したい場合はCache Invalidationを実行します。
-
-特定のファイルや `/images/*` のようなPathを指定できます。
-
----
-
-## 🇺🇸 English Summary
-
-CloudFront cached objects have a TTL.
-
-Updating the origin does not immediately remove existing cached content.
-
-Cache Invalidation can remove selected cached objects before their TTL expires.
-
-Paths such as `/index.html` or `/images/*` can be invalidated.
-
----
-
-## 📚 Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Invalidation | 無効化 | 무효화 |
-| TTL | 有効期限 | 캐시 유효 시간 |
-| Cache | キャッシュ | 캐시 |
-| Path | パス | 경로 |
-| Expiration | 有効期限切れ | 만료 |
-
----
-
 ## 📝 Review Questions
 
 <details>
@@ -192,3 +144,33 @@ CloudFront Cache Invalidation입니다.
 `/images/*`와 같은 Path를 사용할 수 있습니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+CloudFrontのCacheにはTTLがあります。
+
+Originのファイルを更新しても、TTLが残っている場合は古いCacheが配信される可能性があります。
+
+更新内容をすぐに反映したい場合はCache Invalidationを実行します。
+
+特定のファイルや `/images/*` のようなPathを指定できます。
+
+## 🇺🇸 English Summary
+
+CloudFront cached objects have a TTL.
+
+Updating the origin does not immediately remove existing cached content.
+
+Cache Invalidation can remove selected cached objects before their TTL expires.
+
+Paths such as `/index.html` or `/images/*` can be invalidated.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Invalidation | 無効化 | 무효화 |
+| TTL | 有効期限 | 캐시 유효 시간 |
+| Cache | キャッシュ | 캐시 |
+| Path | パス | 경로 |
+| Expiration | 有効期限切れ | 만료 |

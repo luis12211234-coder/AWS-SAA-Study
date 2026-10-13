@@ -1,4 +1,4 @@
-# 11-06. S3 Storage Lens
+# 📘 11-06. S3 Storage Lens
 
 ## 🇰🇷 1. S3 Storage Lens란?
 
@@ -20,9 +20,7 @@ Optimize
 
 라고 이해할 수 있습니다.
 
----
-
-## 2. Organization 전체 분석
+## 🇰🇷 2. Organization 전체 분석
 
 AWS 환경이 커지면 S3 Bucket도 여러 Account와 Region에 분산될 수 있습니다.
 
@@ -61,9 +59,7 @@ S3 Storage Lens
 Dashboard
 ```
 
----
-
-## 3. 무엇을 분석하는가?
+## 🇰🇷 3. 무엇을 분석하는가?
 
 Storage Lens를 통해 크게 다음과 같은 관점에서 S3를 분석할 수 있습니다.
 
@@ -80,9 +76,7 @@ S3 Storage Lens
 
 모든 Metric 이름을 외우는 것보다 **Storage Lens가 S3 환경을 여러 관점에서 분석한다**는 개념이 중요합니다.
 
----
-
-## 4. Usage Metrics
+## 🇰🇷 4. Usage Metrics
 
 S3 Storage 사용 현황을 파악할 수 있습니다.
 
@@ -105,9 +99,7 @@ Bucket Count
 "Object가 가장 많은 Bucket은 어디인가?"
 ```
 
----
-
-## 5. Cost Optimization
+## 🇰🇷 5. Cost Optimization
 
 Storage 비용을 줄일 수 있는 부분을 찾는 데 도움을 줍니다.
 
@@ -131,9 +123,7 @@ Lifecycle Rule 검토
 
 Storage Lens는 문제를 **분석하고 발견**하는 역할이며 Lifecycle이 실제 자동 관리 작업을 수행합니다.
 
----
-
-## 6. Data Protection
+## 🇰🇷 6. Data Protection
 
 Storage Lens는 S3의 Data Protection 관련 설정 상태도 분석할 수 있습니다.
 
@@ -148,9 +138,7 @@ MFA Delete 관련 상태
 
 이를 통해 조직에서 Data Protection Best Practice를 따르지 않는 Bucket을 찾는 데 도움을 받을 수 있습니다.
 
----
-
-## 7. Default Dashboard
+## 🇰🇷 7. Default Dashboard
 
 S3 Storage Lens에는 기본 Dashboard가 제공됩니다.
 
@@ -174,9 +162,7 @@ Default Dashboard는 삭제할 수 없지만 비활성화할 수 있습니다.
 
 필요한 경우 Custom Dashboard를 구성할 수도 있습니다.
 
----
-
-## 8. Filtering / Aggregation
+## 🇰🇷 8. Filtering / Aggregation
 
 Storage Lens 데이터는 다양한 범위로 집계하거나 분석할 수 있습니다.
 
@@ -190,9 +176,7 @@ Prefix
 
 즉 조직 전체를 볼 수도 있고 특정 Bucket이나 Prefix 수준으로 내려가 분석할 수도 있습니다.
 
----
-
-## 9. Metrics Export
+## 🇰🇷 9. Metrics Export
 
 Storage Lens의 Metric과 Report는 S3 Bucket으로 Export하도록 구성할 수 있습니다.
 
@@ -205,9 +189,7 @@ Parquet
 
 이를 통해 Storage Lens의 분석 데이터를 추가적인 데이터 분석 Workflow에서 활용할 수 있습니다.
 
----
-
-## 10. Free Metrics와 Advanced Metrics
+## 🇰🇷 10. Free Metrics와 Advanced Metrics
 
 Storage Lens에는 기본적으로 제공되는 Metric과 추가적인 Advanced Metric 및 Recommendation 기능이 존재합니다.
 
@@ -223,9 +205,7 @@ Advanced Metrics / Recommendations
 → 더 상세한 분석과 최적화 Insight
 ```
 
----
-
-## 11. Storage Lens는 직접 수정하는 서비스가 아니다
+## 🇰🇷 11. Storage Lens는 직접 수정하는 서비스가 아니다
 
 이 구분이 중요합니다.
 
@@ -255,9 +235,7 @@ Lifecycle Rule 구성
 
 Storage Lens 자체가 Object를 자동으로 Glacier로 이동하거나 삭제하는 기능은 아닙니다.
 
----
-
-## 12. Exam Scenario
+## 🎯 Exam Notes
 
 다음과 같은 문제가 나오면 Storage Lens를 생각합니다.
 
@@ -280,10 +258,6 @@ Storage Usage / Cost Optimization / Data Protection
 ```text
 S3 Storage Lens
 ```
-
----
-
-## 🔑 핵심 정리
 
 ```text
 S3 Storage Lens
@@ -313,56 +287,6 @@ Lifecycle / Batch Operations
 한 줄 정리:
 
 > **여러 Account와 Region에 흩어진 S3를 중앙에서 분석하고 최적화 포인트를 찾는다 = S3 Storage Lens**
-
----
-
-## 🇯🇵 日本語 Summary
-
-S3 Storage Lensは、AWS Organization全体のS3ストレージを中央で分析・可視化する機能です。
-
-Account、Region、Bucket、Prefixなどのデータを集約し、ストレージ使用量、コスト効率、データ保護などのInsightを提供します。
-
-Default DashboardではMulti-Account、Multi-Regionのデータを確認できます。
-
-Storage Lensは分析・可視化を行う機能であり、オブジェクトを直接移行・削除する機能ではありません。
-
----
-
-## 🇺🇸 English Summary
-
-S3 Storage Lens provides centralized visibility into S3 storage usage across an AWS Organization.
-
-It can aggregate information across:
-
-- accounts
-- Regions
-- buckets
-- prefixes
-
-Storage Lens provides insights into storage usage, cost efficiency, data protection, and other S3 characteristics.
-
-The default dashboard provides multi-account and multi-Region visibility.
-
-Storage Lens analyzes and visualizes the environment; it does not directly perform lifecycle transitions or bulk object modifications.
-
----
-
-## 📚 Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Storage Lens | ストレージレンズ | 스토리지 렌즈 |
-| Dashboard | ダッシュボード | 대시보드 |
-| Organization | 組織 | 조직 |
-| Aggregate | 集約 | 집계 |
-| Insight | インサイト | 인사이트 |
-| Usage Metric | 使用量メトリクス | 사용량 지표 |
-| Cost Efficiency | コスト効率 | 비용 효율성 |
-| Data Protection | データ保護 | 데이터 보호 |
-| Activity Metric | アクティビティメトリクス | 활동 지표 |
-| Optimization | 最適化 | 최적화 |
-
----
 
 ## 📝 Review Questions
 
@@ -400,3 +324,45 @@ Multi-Account와 Multi-Region 데이터를 중앙에서 확인할 수 있습니�
 Storage Lens는 S3 환경을 분석하고 시각화하며, Batch Operations는 기존 Object에 실제 대량 작업을 수행합니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+S3 Storage Lensは、AWS Organization全体のS3ストレージを中央で分析・可視化する機能です。
+
+Account、Region、Bucket、Prefixなどのデータを集約し、ストレージ使用量、コスト効率、データ保護などのInsightを提供します。
+
+Default DashboardではMulti-Account、Multi-Regionのデータを確認できます。
+
+Storage Lensは分析・可視化を行う機能であり、オブジェクトを直接移行・削除する機能ではありません。
+
+## 🇺🇸 English Summary
+
+S3 Storage Lens provides centralized visibility into S3 storage usage across an AWS Organization.
+
+It can aggregate information across:
+
+- accounts
+- Regions
+- buckets
+- prefixes
+
+Storage Lens provides insights into storage usage, cost efficiency, data protection, and other S3 characteristics.
+
+The default dashboard provides multi-account and multi-Region visibility.
+
+Storage Lens analyzes and visualizes the environment; it does not directly perform lifecycle transitions or bulk object modifications.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Storage Lens | ストレージレンズ | 스토리지 렌즈 |
+| Dashboard | ダッシュボード | 대시보드 |
+| Organization | 組織 | 조직 |
+| Aggregate | 集約 | 집계 |
+| Insight | インサイト | 인사이트 |
+| Usage Metric | 使用量メトリクス | 사용량 지표 |
+| Cost Efficiency | コスト効率 | 비용 효율성 |
+| Data Protection | データ保護 | 데이터 보호 |
+| Activity Metric | アクティビティメトリクス | 활동 지표 |
+| Optimization | 最適化 | 최적화 |

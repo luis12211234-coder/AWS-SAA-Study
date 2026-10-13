@@ -1,6 +1,6 @@
-# IAM Access Keys, CLI, SDK, and CloudShell
+# 📘 02-05. IAM Access Keys, CLI, SDK, and CloudShell
 
-## Overview
+## 🇰🇷 1. Overview
 
 AWS에 접근하는 방법에는 Management Console, CLI, SDK가 있으며, 각 방식은 IAM 자격 증명과 권한을 사용하여 보호된다.
 
@@ -10,9 +10,7 @@ AWS에 접근하는 방법에는 Management Console, CLI, SDK가 있으며, 각 
 | AWS CLI | 명령줄 | Access Keys |
 | AWS SDK | 애플리케이션 코드 | Access Keys 또는 AWS 자격 증명 |
 
----
-
-## Access Keys
+## 🇰🇷 2. Access Keys
 
 Access Key는 CLI 또는 SDK를 통해 AWS에 프로그래밍 방식으로 접근하기 위한 자격 증명이다.
 
@@ -22,9 +20,7 @@ Access Key는 CLI 또는 SDK를 통해 AWS에 프로그래밍 방식으로 접�
 - 다른 사람과 공유하거나 공개 GitHub 저장소에 올리면 안 된다.
 - Secret Access Key는 생성 시점에만 확인할 수 있다.
 
----
-
-## AWS CLI
+## 🇰🇷 3. AWS CLI
 
 AWS CLI(Command Line Interface)는 명령줄에서 AWS 서비스를 관리하는 도구이다.
 
@@ -44,9 +40,7 @@ AWS CLI(Command Line Interface)는 명령줄에서 AWS 서비스를 관리하는
 
 CLI에서 수행할 수 있는 작업은 해당 IAM User에게 부여된 권한에 따라 결정된다. 콘솔과 CLI에는 동일한 IAM Policy가 적용된다.
 
----
-
-## AWS SDK
+## 🇰🇷 4. AWS SDK
 
 AWS SDK(Software Development Kit)는 애플리케이션 코드에서 AWS 서비스를 사용할 수 있게 해주는 언어별 라이브러리 모음이다.
 
@@ -65,9 +59,7 @@ AWS SDK(Software Development Kit)는 애플리케이션 코드에서 AWS 서비�
 
 CLI는 터미널에서 사용하지만 SDK는 애플리케이션 코드 안에서 사용한다. 예를 들어 Python에서는 Boto3를 사용하여 AWS API를 호출할 수 있다.
 
----
-
-## AWS CloudShell
+## 🇰🇷 5. AWS CloudShell
 
 AWS CloudShell은 AWS Management Console에서 사용할 수 있는 브라우저 기반 터미널이다.
 
@@ -81,9 +73,7 @@ AWS CloudShell은 AWS Management Console에서 사용할 수 있는 브라우저
 - 파일 업로드와 다운로드를 지원한다.
 - 모든 Region에서 제공되는 것은 아니다.
 
----
-
-## Summary
+## 🇰🇷 6. Summary
 
 - Console, CLI, SDK는 AWS에 접근하는 주요 방법이다.
 - Console은 Password와 MFA로 보호한다.
@@ -93,9 +83,7 @@ AWS CloudShell은 AWS Management Console에서 사용할 수 있는 브라우저
 - SDK는 애플리케이션 코드에서 사용한다.
 - CloudShell은 브라우저에서 사용할 수 있는 AWS 터미널이다.
 
----
-
-## Exam Notes
+## 🎯 Exam Notes
 
 - Management Console은 Password와 MFA를 사용한다.
 - CLI와 SDK는 Access Key를 이용한 프로그래밍 방식 접근을 지원한다.
@@ -107,37 +95,37 @@ AWS CloudShell은 AWS Management Console에서 사용할 수 있는 브라우저
 - CloudShell은 로그인한 사용자의 권한을 사용한다.
 - CloudShell은 모든 Region에서 지원되는 것은 아니다.
 
----
-
-## Practical Example
-
 IAM User에게 `iam:GetUser`와 `iam:ListUsers` 권한만 부여했다고 가정한다.
 
 이 사용자는 콘솔과 CLI에서 IAM 사용자 정보를 조회할 수 있지만 사용자나 그룹을 생성할 수는 없다.
 
 즉, Management Console과 CLI는 서로 다른 권한 체계를 사용하는 것이 아니라 동일한 IAM Policy를 따른다.
 
----
+## 📝 Review Questions
 
-# 🇯🇵 日本語
+1. AWS에 접근하는 세 가지 주요 방법은 무엇인가?
+2. Management Console은 어떤 인증 방식으로 보호되는가?
+3. Access Key ID와 Secret Access Key는 각각 무엇에 비유할 수 있는가?
+4. AWS CLI와 AWS SDK의 차이점은 무엇인가?
+5. IAM User의 권한을 제거하면 CLI 호출에는 어떤 영향이 있는가?
+6. CloudShell의 장점은 무엇인가?
+7. Secret Access Key를 GitHub에 올리면 안 되는 이유는 무엇인가?
 
-## AWSへのアクセス方法
+## 🇯🇵 日本語 Summary
+
+### AWSへのアクセス方法
 
 AWSへアクセスする主な方法は、Management Console、CLI、SDKの三つである。
 
 Management ConsoleはパスワードとMFAで保護される。CLIとSDKでは、AWS APIへプログラムからアクセスできる。
 
----
-
-## Access Key
+### Access Key
 
 Access KeyはCLIやSDKからAWSへアクセスするための認証情報である。
 
 Secret Access Keyはパスワードと同様に管理し、他人と共有してはいけない。
 
----
-
-## CLI、SDK、CloudShell
+### CLI、SDK、CloudShell
 
 AWS CLIはコマンドラインからAWSサービスを操作するツールである。
 
@@ -145,42 +133,32 @@ AWS SDKはアプリケーションコードからAWSサービスを操作する�
 
 CloudShellを利用すると、ブラウザ上でAWS CLIを実行できる。
 
----
-
-## Summary
+### Summary
 
 - ConsoleはパスワードとMFAを使用する。
 - CLIとSDKではAccess Keyを利用できる。
 - Access Keyは秘密情報として管理する。
 - CloudShellにはAWS CLIがあらかじめ用意されている。
 
----
+## 🇺🇸 English Summary
 
-# 🇺🇸 English
-
-## Accessing AWS
+### Accessing AWS
 
 There are three main ways to access AWS: the Management Console, AWS CLI, and AWS SDK.
 
 The Management Console is protected by a password and MFA. The CLI and SDK provide programmatic access to AWS services.
 
----
-
-## Access Keys
+### Access Keys
 
 Access Keys consist of an Access Key ID and a Secret Access Key. The Secret Access Key must be protected like a password and must never be shared.
 
----
-
-## CLI, SDK, and CloudShell
+### CLI, SDK, and CloudShell
 
 The AWS CLI manages AWS services through command-line commands. AWS SDKs allow applications to call AWS APIs programmatically.
 
 AWS CloudShell is a browser-based shell with the AWS CLI already installed.
 
----
-
-## Summary
+### Summary
 
 - The Console uses a password and MFA.
 - The CLI and SDK support programmatic access.
@@ -188,9 +166,7 @@ AWS CloudShell is a browser-based shell with the AWS CLI already installed.
 - IAM permissions apply equally to the Console and CLI.
 - CloudShell provides a preconfigured AWS CLI environment.
 
----
-
-## Vocabulary
+## 📚 Vocabulary
 
 | English | 한국어 | 日本語 |
 |---|---|---|
@@ -205,15 +181,3 @@ AWS CloudShell is a browser-based shell with the AWS CLI already installed.
 | Automation | 자동화 | 自動化 |
 | CloudShell | 클라우드셸 | CloudShell |
 | Default Region | 기본 리전 | デフォルトリージョン |
-
----
-
-## Review Questions
-
-1. AWS에 접근하는 세 가지 주요 방법은 무엇인가?
-2. Management Console은 어떤 인증 방식으로 보호되는가?
-3. Access Key ID와 Secret Access Key는 각각 무엇에 비유할 수 있는가?
-4. AWS CLI와 AWS SDK의 차이점은 무엇인가?
-5. IAM User의 권한을 제거하면 CLI 호출에는 어떤 영향이 있는가?
-6. CloudShell의 장점은 무엇인가?
-7. Secret Access Key를 GitHub에 올리면 안 되는 이유는 무엇인가?

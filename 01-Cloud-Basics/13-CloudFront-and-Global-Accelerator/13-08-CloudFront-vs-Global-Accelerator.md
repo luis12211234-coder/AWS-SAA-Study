@@ -1,4 +1,4 @@
-# 13-08. CloudFront vs Global Accelerator
+# 📘 13-08. CloudFront vs Global Accelerator
 
 ## 🇰🇷 1. 공통점
 
@@ -16,9 +16,7 @@ AWS Services
 
 하지만 두 서비스의 핵심 목적은 완전히 다릅니다.
 
----
-
-## 2. CloudFront
+## 🇰🇷 2. CloudFront
 
 CloudFront의 핵심은 CDN과 Cache입니다.
 
@@ -51,9 +49,7 @@ CloudFront
 = Content Delivery
 ```
 
----
-
-## 3. Global Accelerator
+## 🇰🇷 3. Global Accelerator
 
 Global Accelerator는 콘텐츠를 Edge에 저장하지 않습니다.
 
@@ -91,9 +87,7 @@ Global Accelerator
 = Network Acceleration
 ```
 
----
-
-## 4. 핵심 비교
+## 🇰🇷 4. 핵심 비교
 
 | Feature | CloudFront | Global Accelerator |
 |---|---|---|
@@ -105,9 +99,7 @@ Global Accelerator
 | Endpoint Health Check / Failover | 핵심 목적 아님 | O |
 | 대표 사용 사례 | Website, Image, Video | Gaming, VoIP, IoT |
 
----
-
-## 5. 그림으로 구분
+## 🇰🇷 5. 그림으로 구분
 
 ### CloudFront
 
@@ -137,9 +129,7 @@ Application
 
 Edge가 콘텐츠를 Cache하는 것이 아니라 Traffic을 실제 Application으로 전달합니다.
 
----
-
-## 6. Exam Scenario
+## 🎯 Exam Notes
 
 다음 키워드가 나오면 CloudFront를 생각합니다.
 
@@ -164,10 +154,6 @@ Multi-Region Failover
 Network Acceleration
 ```
 
----
-
-## 🔑 핵심 정리
-
 ```text
 CloudFront
 = 콘텐츠를 사용자 가까이에 가져온다
@@ -191,58 +177,6 @@ User → Edge → Application
 한 줄 정리:
 
 > **콘텐츠를 Edge에 캐싱한다 = CloudFront / Traffic을 Edge를 통해 Application으로 가속한다 = Global Accelerator**
-
----
-
-## 🇯🇵 日本語 Summary
-
-CloudFrontとGlobal Acceleratorは、どちらもAWSのGlobal Infrastructureを利用しますが、目的が異なります。
-
-CloudFrontはCDNであり、コンテンツをEdge Locationにキャッシュしてユーザーへ配信します。
-
-Global Acceleratorはコンテンツをキャッシュせず、Static Anycast IPとAWS Global Networkを利用してTrafficをApplication EndpointへRoutingします。
-
-```text
-CloudFront
-= Content Delivery + Cache
-
-Global Accelerator
-= Network Acceleration + No Cache
-```
-
----
-
-## 🇺🇸 English Summary
-
-CloudFront and Global Accelerator both use AWS global infrastructure, but they solve different problems.
-
-CloudFront is a CDN that caches content at Edge Locations and serves that content to users.
-
-Global Accelerator does not cache content. It uses static Anycast IP addresses and the AWS Global Network to route traffic to application endpoints.
-
-```text
-CloudFront
-= Content Delivery + Cache
-
-Global Accelerator
-= Network Acceleration + No Cache
-```
-
----
-
-## 📚 Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Content Delivery | コンテンツ配信 | 콘텐츠 전송 |
-| Network Acceleration | ネットワーク高速化 | 네트워크 가속 |
-| Cache | キャッシュ | 캐시 |
-| Anycast IP | エニーキャストIP | 애니캐스트 IP |
-| Global Network | グローバルネットワーク | 글로벌 네트워크 |
-| Failover | フェイルオーバー | 장애 조치 |
-| DDoS Protection | DDoS保護 | DDoS 보호 |
-
----
 
 ## 📝 Review Questions
 
@@ -280,3 +214,47 @@ CloudFront는 Edge에 콘텐츠를 Cache하여 제공하고, Global Accelerator�
 AWS Global Accelerator를 사용할 수 있습니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+CloudFrontとGlobal Acceleratorは、どちらもAWSのGlobal Infrastructureを利用しますが、目的が異なります。
+
+CloudFrontはCDNであり、コンテンツをEdge Locationにキャッシュしてユーザーへ配信します。
+
+Global Acceleratorはコンテンツをキャッシュせず、Static Anycast IPとAWS Global Networkを利用してTrafficをApplication EndpointへRoutingします。
+
+```text
+CloudFront
+= Content Delivery + Cache
+
+Global Accelerator
+= Network Acceleration + No Cache
+```
+
+## 🇺🇸 English Summary
+
+CloudFront and Global Accelerator both use AWS global infrastructure, but they solve different problems.
+
+CloudFront is a CDN that caches content at Edge Locations and serves that content to users.
+
+Global Accelerator does not cache content. It uses static Anycast IP addresses and the AWS Global Network to route traffic to application endpoints.
+
+```text
+CloudFront
+= Content Delivery + Cache
+
+Global Accelerator
+= Network Acceleration + No Cache
+```
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Content Delivery | コンテンツ配信 | 콘텐츠 전송 |
+| Network Acceleration | ネットワーク高速化 | 네트워크 가속 |
+| Cache | キャッシュ | 캐시 |
+| Anycast IP | エニーキャストIP | 애니캐스트 IP |
+| Global Network | グローバルネットワーク | 글로벌 네트워크 |
+| Failover | フェイルオーバー | 장애 조치 |
+| DDoS Protection | DDoS保護 | DDoS 보호 |

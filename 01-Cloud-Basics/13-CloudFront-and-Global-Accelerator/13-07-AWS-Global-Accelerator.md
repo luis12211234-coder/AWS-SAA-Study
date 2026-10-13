@@ -1,4 +1,4 @@
-# 13-07. AWS Global Accelerator
+# 📘 13-07. AWS Global Accelerator
 
 ## 🇰🇷 1. Global Accelerator란?
 
@@ -16,9 +16,7 @@ Application
 
 핵심은 사용자의 Traffic을 가능한 빨리 AWS Network에 진입시키는 것입니다.
 
----
-
-## 2. 해결하려는 문제
+## 🇰🇷 2. 해결하려는 문제
 
 Application은 특정 AWS Region에 있지만 사용자는 전 세계에 있을 수 있습니다.
 
@@ -44,9 +42,7 @@ Application
 
 구조를 사용할 수 있습니다.
 
----
-
-## 3. Unicast vs Anycast
+## 🇰🇷 3. Unicast vs Anycast
 
 ### Unicast
 
@@ -76,9 +72,7 @@ Global Accelerator는 Anycast를 사용합니다.
 
 여기서 Edge는 우리가 만든 EC2가 아니라 AWS가 운영하는 글로벌 Edge Infrastructure입니다.
 
----
-
-## 4. Static Anycast IP × 2
+## 🇰🇷 4. Static Anycast IP × 2
 
 Global Accelerator는 두 개의 Static Anycast IPv4 주소를 제공합니다.
 
@@ -100,9 +94,7 @@ Global Accelerator
 
 입니다.
 
----
-
-## 5. 전체 구조
+## 🇰🇷 5. 전체 구조
 
 ```text
 User
@@ -120,9 +112,7 @@ Endpoint Group
 Endpoint
 ```
 
----
-
-## 6. Listener
+## 🇰🇷 6. Listener
 
 Listener는 Global Accelerator가 받을 Traffic의 Port와 Protocol을 정의합니다.
 
@@ -141,9 +131,7 @@ Port = 80
 
 라는 설정입니다.
 
----
-
-## 7. Endpoint Group
+## 🇰🇷 7. Endpoint Group
 
 Endpoint Group은 특정 AWS Region에 있는 Endpoint들을 묶는 단위입니다.
 
@@ -179,9 +167,7 @@ ap-south-1
 
 를 각각 하나의 Endpoint Group으로 구성했습니다.
 
----
-
-## 8. Endpoint
+## 🇰🇷 8. Endpoint
 
 Endpoint는 실제 Application Traffic이 최종적으로 전달되는 Resource입니다.
 
@@ -205,9 +191,7 @@ Region = us-east-1
 EC2 Endpoint
 ```
 
----
-
-## 9. Traffic Dial과 Endpoint Weight
+## 🇰🇷 9. Traffic Dial과 Endpoint Weight
 
 Traffic Dial은 Endpoint Group, 즉 Region으로 보낼 Traffic의 비율을 조절합니다.
 
@@ -233,9 +217,7 @@ Endpoint Weight
 = 같은 Region 내부 Resource 단위 조절
 ```
 
----
-
-## 10. Health Check와 Failover
+## 🇰🇷 10. Health Check와 Failover
 
 Global Accelerator는 Endpoint의 상태를 확인합니다.
 
@@ -258,9 +240,7 @@ Healthy Endpoint
 
 따라서 Disaster Recovery와 Multi-Region Failover에 활용할 수 있습니다.
 
----
-
-## 11. Global Accelerator가 하지 않는 것
+## 🇰🇷 11. Global Accelerator가 하지 않는 것
 
 이 부분도 중요합니다.
 
@@ -284,9 +264,7 @@ X Data Synchronization
 
 Global Accelerator는 그 Application으로 가는 **Traffic 경로**를 담당합니다.
 
----
-
-## 12. 대표 사용 사례
+## 🇰🇷 12. 대표 사용 사례
 
 Cache가 아니라 Network Acceleration이 필요한 Application에 적합합니다.
 
@@ -299,9 +277,7 @@ Global Static IP Requirement
 Multi-Region Failover
 ```
 
----
-
-## 🔑 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 Global Accelerator
@@ -333,52 +309,6 @@ Cache
 한 줄 정리:
 
 > **고정 Anycast IP를 통해 사용자를 가까운 AWS Edge로 진입시키고 AWS Global Network로 Application까지 전달한다 = Global Accelerator**
-
----
-
-## 🇯🇵 日本語 Summary
-
-AWS Global Acceleratorは、Static Anycast IPとAWS Global Networkを利用して、世界中のユーザーTrafficをApplication Endpointへ高速かつ安定してRoutingするサービスです。
-
-Endpoint GroupはRegion単位で構成され、その中にEC2、ALB、NLB、Elastic IPなどのEndpointを配置できます。
-
-Health Checkによって異常なEndpointを検出し、正常なEndpointへFailoverできます。
-
-Global AcceleratorはApplicationやDataを同期するサービスではありません。
-
----
-
-## 🇺🇸 English Summary
-
-AWS Global Accelerator improves global application network performance using static Anycast IP addresses and the AWS Global Network.
-
-Traffic enters AWS through a nearby Edge Location and is routed to application endpoints.
-
-Endpoint groups are Region-based and can contain endpoints such as EC2 instances, ALBs, NLBs, and Elastic IP addresses.
-
-Health checks enable failover to healthy endpoints.
-
-Global Accelerator does not synchronize applications or data across Regions.
-
----
-
-## 📚 Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Global Accelerator | グローバルアクセラレーター | 글로벌 액셀러레이터 |
-| Anycast | エニーキャスト | 애니캐스트 |
-| Unicast | ユニキャスト | 유니캐스트 |
-| Static IP | 固定IP | 고정 IP |
-| Listener | リスナー | 리스너 |
-| Endpoint Group | エンドポイントグループ | 엔드포인트 그룹 |
-| Endpoint | エンドポイント | 엔드포인트 |
-| Traffic Dial | トラフィックダイヤル | 트래픽 다이얼 |
-| Weight | 重み | 가중치 |
-| Health Check | ヘルスチェック | 상태 확인 |
-| Failover | フェイルオーバー | 장애 조치 |
-
----
 
 ## 📝 Review Questions
 
@@ -423,3 +353,41 @@ Health Check를 기반으로 정상 Endpoint로 Traffic을 Failover할 수 있�
 아닙니다. Global Accelerator는 Network Routing과 Acceleration을 담당합니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+AWS Global Acceleratorは、Static Anycast IPとAWS Global Networkを利用して、世界中のユーザーTrafficをApplication Endpointへ高速かつ安定してRoutingするサービスです。
+
+Endpoint GroupはRegion単位で構成され、その中にEC2、ALB、NLB、Elastic IPなどのEndpointを配置できます。
+
+Health Checkによって異常なEndpointを検出し、正常なEndpointへFailoverできます。
+
+Global AcceleratorはApplicationやDataを同期するサービスではありません。
+
+## 🇺🇸 English Summary
+
+AWS Global Accelerator improves global application network performance using static Anycast IP addresses and the AWS Global Network.
+
+Traffic enters AWS through a nearby Edge Location and is routed to application endpoints.
+
+Endpoint groups are Region-based and can contain endpoints such as EC2 instances, ALBs, NLBs, and Elastic IP addresses.
+
+Health checks enable failover to healthy endpoints.
+
+Global Accelerator does not synchronize applications or data across Regions.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Global Accelerator | グローバルアクセラレーター | 글로벌 액셀러레이터 |
+| Anycast | エニーキャスト | 애니캐스트 |
+| Unicast | ユニキャスト | 유니캐스트 |
+| Static IP | 固定IP | 고정 IP |
+| Listener | リスナー | 리스너 |
+| Endpoint Group | エンドポイントグループ | 엔드포인트 그룹 |
+| Endpoint | エンドポイント | 엔드포인트 |
+| Traffic Dial | トラフィックダイヤル | 트래픽 다이얼 |
+| Weight | 重み | 가중치 |
+| Health Check | ヘルスチェック | 상태 확인 |
+| Failover | フェイルオーバー | 장애 조치 |

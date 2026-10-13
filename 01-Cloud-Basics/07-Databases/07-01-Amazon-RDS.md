@@ -1,6 +1,6 @@
-# Amazon RDS
+# 📘 07-01. Amazon RDS
 
-## 1. 개요
+## 🇰🇷 1. 개요
 
 **Amazon RDS (Relational Database Service)** 는 AWS에서 제공하는 **관리형 관계형 데이터베이스 서비스**이다.
 
@@ -14,12 +14,10 @@
 - IBM Db2
 - Amazon Aurora
 
-> RDS 자체가 데이터베이스 엔진인 것은 아니다.  
+> RDS 자체가 데이터베이스 엔진인 것은 아니다.
 > MySQL, PostgreSQL 같은 데이터베이스 엔진을 AWS가 관리형 형태로 제공하는 서비스이다.
 
----
-
-## 2. EC2에 DB를 직접 설치하는 것과 RDS의 차이
+## 🇰🇷 2. EC2에 DB를 직접 설치하는 것과 RDS의 차이
 
 EC2 인스턴스에 직접 MySQL 또는 PostgreSQL을 설치해서 데이터베이스 서버를 만들 수도 있다.
 
@@ -81,9 +79,7 @@ Standard RDS
 
 RDS가 관리형 서비스이기 때문에 운영체제와 내부 인프라를 AWS가 관리한다.
 
----
-
-# 3. RDS Compute와 Storage
+## 🇰🇷 3. RDS Compute와 Storage
 
 RDS 데이터베이스도 결국 CPU와 Memory가 필요하다.
 
@@ -129,9 +125,7 @@ EBS
 
 라고 이해하면 된다.
 
----
-
-# 4. RDS Storage Auto Scaling
+## 🇰🇷 4. RDS Storage Auto Scaling
 
 데이터베이스의 데이터가 계속 증가하면 기존에 할당한 Storage가 부족할 수 있다.
 
@@ -161,7 +155,7 @@ Maximum Storage Threshold
 
 이 경우 RDS가 필요에 따라 Storage를 늘릴 수 있지만 최대 1000 GB를 넘지는 않는다.
 
-### 적합한 경우
+#### 적합한 경우
 
 ```text
 데이터 증가량 예측 어려움
@@ -169,7 +163,7 @@ Maximum Storage Threshold
 Storage Auto Scaling
 ```
 
-### 시험 포인트
+#### 시험 포인트
 
 ```text
 RDS Storage 부족
@@ -179,9 +173,7 @@ Storage 크기를 자동으로 증가
 → Storage Auto Scaling
 ```
 
----
-
-# 5. RDS Read Replica
+## 🇰🇷 5. RDS Read Replica
 
 **Read Replica**는 데이터베이스의 **읽기 성능을 확장하기 위한 기능**이다.
 
@@ -216,9 +208,7 @@ Read Replica를 추가하면:
 
 읽기 요청을 Replica로 분산할 수 있다.
 
----
-
-## 5.1 Read Replica의 목적
+### 5.1 Read Replica의 목적
 
 ```text
 Read Replica
@@ -248,9 +238,7 @@ Reporting System
 
 Reporting System이 Primary DB를 계속 읽는 대신 Read Replica를 사용하면 Primary의 부하를 줄일 수 있다.
 
----
-
-## 5.2 Read Replica Replication
+### 5.2 Read Replica Replication
 
 Primary DB와 Read Replica 사이의 복제는 **비동기 방식(ASYNC)** 이다.
 
@@ -276,7 +264,7 @@ Data = 잠시 이전 상태일 수 있음
 조금 후 동기화
 ```
 
-### 핵심
+#### 핵심
 
 ```text
 Read Replica
@@ -284,9 +272,7 @@ Read Replica
 → Eventually Consistent
 ```
 
----
-
-## 5.3 Read Replica 위치
+### 5.3 Read Replica 위치
 
 Read Replica는 다음 위치에 생성할 수 있다.
 
@@ -296,9 +282,7 @@ Read Replica는 다음 위치에 생성할 수 있다.
 
 강의 기준 최대 **15개의 Read Replica**를 생성할 수 있다.
 
----
-
-## 5.4 Read Replica Promotion
+### 5.4 Read Replica Promotion
 
 Read Replica를 독립적인 데이터베이스로 **Promote**할 수도 있다.
 
@@ -318,9 +302,7 @@ Promote된 이후에는 기존 Primary의 Read Replica가 아니라 별도의 �
 
 즉 기존 복제 관계는 끊어진다.
 
----
-
-## 5.5 Application에서 Read Replica 사용
+### 5.5 Application에서 Read Replica 사용
 
 Read Replica를 만들었다고 해서 AWS가 자동으로 모든 읽기 요청을 Replica로 보내주는 것은 아니다.
 
@@ -338,9 +320,7 @@ READ
 Read Replica Endpoint
 ```
 
----
-
-# 6. RDS Multi-AZ
+## 🇰🇷 6. RDS Multi-AZ
 
 **Multi-AZ**는 읽기 확장이 아니라 **High Availability와 Disaster Recovery**를 위한 기능이다.
 
@@ -360,9 +340,7 @@ Standby DB
 
 Primary DB의 데이터를 다른 AZ에 있는 Standby DB로 동기식으로 복제한다.
 
----
-
-## 6.1 Multi-AZ의 목적
+### 6.1 Multi-AZ의 목적
 
 ```text
 Multi-AZ
@@ -384,9 +362,7 @@ Application은 기존 RDS Endpoint를 계속 사용한다.
 
 즉 Application에서 DB 주소를 직접 변경할 필요가 없다.
 
----
-
-## 6.2 Standby는 Read Replica가 아니다
+### 6.2 Standby는 Read Replica가 아니다
 
 Multi-AZ의 Standby는 평소 읽기 요청을 처리하기 위한 DB가 아니다.
 
@@ -411,9 +387,7 @@ High Availability
 
 로 구분해야 한다.
 
----
-
-# 7. Read Replica vs Multi-AZ
+## 🇰🇷 7. Read Replica vs Multi-AZ
 
 | 항목 | Read Replica | Multi-AZ |
 |---|---|---|
@@ -424,7 +398,7 @@ High Availability
 | Consistency | Eventually Consistent | Synchronous |
 | 대표 키워드 | Reporting, Analytics, SELECT | Failure, HA, Disaster Recovery |
 
-### 시험용 핵심
+#### 시험용 핵심
 
 ```text
 Read Replica
@@ -436,9 +410,7 @@ Multi-AZ
 = SYNC
 ```
 
----
-
-# 8. Read Replica도 Multi-AZ로 구성할 수 있다
+## 🇰🇷 8. Read Replica도 Multi-AZ로 구성할 수 있다
 
 Read Replica와 Multi-AZ는 서로 배타적인 기능이 아니다.
 
@@ -476,7 +448,7 @@ Replica Standby
 = High Availability
 ```
 
-### 장애 시 역할
+#### 장애 시 역할
 
 ```text
 Original Primary의 Standby
@@ -497,16 +469,14 @@ Replica Standby
 
 Replica Standby는 자신이 붙어 있는 Read Replica의 장애를 대비한다.
 
-### 기억하기
+#### 기억하기
 
 ```text
 Multi-AZ Standby
 → 자기가 붙어 있는 DB의 장애 대비
 ```
 
----
-
-# 9. Single-AZ → Multi-AZ
+## 🇰🇷 9. Single-AZ → Multi-AZ
 
 기존 Single-AZ RDS를 Multi-AZ로 변경할 수 있다.
 
@@ -526,9 +496,7 @@ Multi-AZ
 
 사용자가 DB를 직접 중지하고 새로 만들 필요는 없다.
 
----
-
-# 10. RDS 생성 시 주요 설정
+## 🇰🇷 10. RDS 생성 시 주요 설정
 
 RDS 데이터베이스를 만들 때 여러 설정을 선택한다.
 
@@ -571,9 +539,7 @@ Port
 
 중요한 것은 각 설정이 무슨 역할을 하는지 이해하는 것이다.
 
----
-
-# 11. RDS Endpoint + Port + Security Group
+## 🇰🇷 11. RDS Endpoint + Port + Security Group
 
 Application이 RDS에 접속하려면 크게 다음 흐름을 거친다.
 
@@ -591,9 +557,7 @@ Authentication
 → 사용자가 누구인가?
 ```
 
----
-
-## 11.1 Endpoint
+### 11.1 Endpoint
 
 RDS를 생성하면 AWS가 접속 주소를 제공한다.
 
@@ -613,9 +577,7 @@ Application 입장에서는:
 → Endpoint
 ```
 
----
-
-## 11.2 Port
+### 11.2 Port
 
 Database Engine마다 사용하는 Port가 있다.
 
@@ -641,9 +603,7 @@ Port
 → DB 서비스의 문
 ```
 
----
-
-## 11.3 Security Group
+### 11.3 Security Group
 
 Endpoint와 Port를 알고 있어도 RDS Security Group이 접근을 허용하지 않으면 접속할 수 없다.
 
@@ -664,7 +624,7 @@ Source = Web-SG
 
 이 경우 Web-SG를 가진 EC2에서 RDS MySQL에 접근할 수 있다.
 
-### 연결 실패 예
+#### 연결 실패 예
 
 ```text
 Endpoint 맞음 ⭕
@@ -676,9 +636,7 @@ Security Group 차단 ❌
 → Connection 실패
 ```
 
----
-
-## 11.4 Authentication
+### 11.4 Authentication
 
 Security Group을 통과한 다음 실제 Database 인증이 이루어진다.
 
@@ -690,7 +648,7 @@ Security Group을 통과한 다음 실제 Database 인증이 이루어진다.
 
 실습에서는 Username / Password 방식을 사용했다.
 
-### 전체 흐름
+#### 전체 흐름
 
 ```text
 Application
@@ -706,9 +664,7 @@ Database Authentication
 RDS 접속 성공
 ```
 
----
-
-# 12. Public Access
+## 🇰🇷 12. Public Access
 
 RDS 데이터베이스를 Publicly Accessible로 설정하면 외부 네트워크에서 접근 가능한 형태로 구성할 수 있다.
 
@@ -741,13 +697,11 @@ TCP 3306
 Source = Application SG
 ```
 
----
-
-# 13. RDS Backup
+## 🇰🇷 13. RDS Backup
 
 RDS에서는 자동 백업과 Snapshot을 사용할 수 있다.
 
-## Automated Backup
+### Automated Backup
 
 RDS가 자동으로 Backup을 수행한다.
 
@@ -769,9 +723,7 @@ Point-in-Time Restore
 
 특정 시점의 데이터베이스 상태로 복원할 수 있다.
 
----
-
-## Manual Snapshot
+### Manual Snapshot
 
 사용자가 직접 DB Snapshot을 생성할 수 있다.
 
@@ -785,7 +737,7 @@ DB Snapshot
 
 Snapshot은 필요할 때 새로운 DB로 복원할 수 있다.
 
-### 기본 구분
+#### 기본 구분
 
 ```text
 Automated Backup
@@ -797,9 +749,7 @@ Manual Snapshot
 → 장기 보관 가능
 ```
 
----
-
-# 14. Monitoring
+## 🇰🇷 14. Monitoring
 
 RDS에서 다양한 DB Metric을 모니터링할 수 있다.
 
@@ -821,9 +771,7 @@ CPU / Connections / Metrics
 
 일부 로그는 CloudWatch Logs로 내보낼 수도 있다.
 
----
-
-# 15. Maintenance
+## 🇰🇷 15. Maintenance
 
 RDS에서는 Database Maintenance Window를 지정할 수 있다.
 
@@ -837,9 +785,7 @@ Maintenance Window
 
 AWS가 관리형 서비스로서 유지보수 작업을 수행할 시간을 지정하는 개념이다.
 
----
-
-# 16. Deletion Protection
+## 🇰🇷 16. Deletion Protection
 
 Deletion Protection은 실수로 RDS Database를 삭제하는 것을 방지한다.
 
@@ -851,9 +797,7 @@ Delete Database ❌
 
 DB를 의도적으로 삭제하려면 먼저 Deletion Protection을 비활성화해야 한다.
 
----
-
-# 17. RDS Custom
+## 🇰🇷 17. RDS Custom
 
 일반 RDS에서는 기저 Operating System과 Database 내부 환경에 직접 접근할 수 없다.
 
@@ -874,9 +818,7 @@ Underlying EC2
 
 이때 사용하는 것이 **RDS Custom**이다.
 
----
-
-## 17.1 지원 Database
+### 17.1 지원 Database
 
 강의에서 설명하는 RDS Custom 대상은 다음 두 가지이다.
 
@@ -889,9 +831,7 @@ RDS Custom
 → Microsoft SQL Server
 ```
 
----
-
-## 17.2 RDS Custom에서 가능한 것
+### 17.2 RDS Custom에서 가능한 것
 
 RDS Custom에서는 기저 Operating System과 Database에 접근할 수 있다.
 
@@ -919,9 +859,7 @@ SSH 또는 SSM Session Manager를 이용해 기저 EC2 인스턴스에 접근할
 
 즉 일반 RDS보다 훨씬 높은 수준의 제어가 가능하다.
 
----
-
-## 17.3 RDS와 RDS Custom의 차이
+### 17.3 RDS와 RDS Custom의 차이
 
 ```text
 RDS
@@ -933,7 +871,7 @@ RDS Custom
 → Customization 가능
 ```
 
-### 핵심 구조
+#### 핵심 구조
 
 ```text
 RDS
@@ -946,9 +884,7 @@ RDS Custom
 OS / DB Customization
 ```
 
----
-
-## 17.4 Automation과 Snapshot
+### 17.4 Automation과 Snapshot
 
 RDS Custom에서 직접 OS나 DB를 변경하는 동안 RDS의 자동 관리 작업이 동시에 실행되면 문제가 발생할 수 있다.
 
@@ -970,7 +906,7 @@ Customization
 문제 발생 시 복구
 ```
 
-### 시험 포인트
+#### 시험 포인트
 
 문제에서 다음과 같은 키워드가 보이면 RDS Custom을 생각한다.
 
@@ -985,9 +921,7 @@ Need Native Features
 → RDS Custom
 ```
 
----
-
-# 18. RDS 전체 구조 정리
+## 🇰🇷 18. RDS 전체 구조 정리
 
 ```text
 Application
@@ -1034,9 +968,7 @@ Storage Auto Scaling
 → Storage Capacity Scaling
 ```
 
----
-
-# 19. 시험 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 RDS
@@ -1100,11 +1032,31 @@ RDS Custom
 → Customization
 ```
 
----
+## 📝 Review Questions
 
-# 日本語まとめ
+1. Amazon RDS와 EC2에 직접 Database Engine을 설치하는 방식의 가장 큰 차이는 무엇인가?
 
-## Amazon RDS
+2. Primary DB의 SELECT 요청이 너무 많아 성능 문제가 발생하고 있다. 어떤 RDS 기능이 적합한가?
+
+3. Read Replica가 Eventually Consistent한 이유는 무엇인가?
+
+4. Read Replica와 Multi-AZ의 가장 중요한 목적 차이는 무엇인가?
+
+5. Multi-AZ Standby가 일반적인 읽기 요청을 처리하지 않는 이유는 무엇인가?
+
+6. Read Replica 자체를 Multi-AZ로 구성했을 때 Replica의 Standby는 어떤 DB를 보호하는가?
+
+7. Application이 RDS에 접속할 때 Endpoint, Port, Security Group, Authentication은 각각 어떤 역할을 하는가?
+
+8. 데이터베이스 Storage 사용량을 예측하기 어려운 경우 어떤 기능을 사용할 수 있는가?
+
+9. Automated Backup과 Manual Snapshot의 차이는 무엇인가?
+
+10. Oracle 또는 Microsoft SQL Server에서 기저 OS에 접근해 Custom Patch를 적용해야 한다면 어떤 서비스를 사용해야 하는가?
+
+## 🇯🇵 日本語 Summary
+
+### Amazon RDS
 
 Amazon RDS は AWS が提供する **マネージド型リレーショナルデータベースサービス**である。
 
@@ -1121,9 +1073,7 @@ AWS が以下のような運用作業を管理する。
 
 通常の RDS では、基盤となる EC2 インスタンスへ SSH 接続することはできない。
 
----
-
-## Read Replica
+### Read Replica
 
 Read Replica は **読み取り性能をスケールするための機能**である。
 
@@ -1146,9 +1096,7 @@ Read Replica
 
 レポートや分析など、読み取り負荷が大きい処理に適している。
 
----
-
-## Multi-AZ
+### Multi-AZ
 
 Multi-AZ は **高可用性と災害復旧**を目的とする。
 
@@ -1172,9 +1120,7 @@ Multi-AZ
 
 Standby は通常の読み取りスケーリングには使用しない。
 
----
-
-## Read Replica + Multi-AZ
+### Read Replica + Multi-AZ
 
 Read Replica 自体を Multi-AZ 構成にすることもできる。
 
@@ -1192,9 +1138,7 @@ Replica Standby
 
 Replica Standby は Original Primary ではなく、Read Replica を保護する。
 
----
-
-## RDS Connection
+### RDS Connection
 
 RDS への接続では以下を理解する。
 
@@ -1212,9 +1156,7 @@ Authentication
 → DB ユーザー認証
 ```
 
----
-
-## Backup
+### Backup
 
 ```text
 Automated Backup
@@ -1224,9 +1166,7 @@ Manual Snapshot
 → 手動で作成するバックアップ
 ```
 
----
-
-## RDS Custom
+### RDS Custom
 
 RDS Custom は Oracle と Microsoft SQL Server を対象に、基盤 OS と Database をカスタマイズできる。
 
@@ -1240,11 +1180,9 @@ RDS Custom
 
 通常の RDS より高いレベルの管理権限が必要な場合に使用する。
 
----
+## 🇺🇸 English Summary
 
-# English Summary
-
-## Amazon RDS
+### Amazon RDS
 
 Amazon RDS is a **managed relational database service** provided by AWS.
 
@@ -1261,9 +1199,7 @@ AWS manages many operational tasks such as:
 
 Standard RDS does not provide SSH access to the underlying EC2 instance.
 
----
-
-## Read Replica
+### Read Replica
 
 Read Replicas are used for **read scalability**.
 
@@ -1286,9 +1222,7 @@ Read Replica
 
 Typical use cases include reporting, analytics, and read-heavy workloads.
 
----
-
-## Multi-AZ
+### Multi-AZ
 
 Multi-AZ is used for **high availability and disaster recovery**.
 
@@ -1312,9 +1246,7 @@ Multi-AZ
 
 The Standby is not used for normal read scaling.
 
----
-
-## Read Replica with Multi-AZ
+### Read Replica with Multi-AZ
 
 A Read Replica can itself be configured as Multi-AZ.
 
@@ -1332,9 +1264,7 @@ Replica Standby
 
 The Replica Standby protects the Read Replica, not the Original Primary.
 
----
-
-## RDS Connection
+### RDS Connection
 
 Applications connect to RDS using:
 
@@ -1352,9 +1282,7 @@ Authentication
 → Database user authentication
 ```
 
----
-
-## Backup
+### Backup
 
 ```text
 Automated Backup
@@ -1364,9 +1292,7 @@ Manual Snapshot
 → User-created database backup
 ```
 
----
-
-## RDS Custom
+### RDS Custom
 
 RDS Custom provides deeper operating system and database access for Oracle and Microsoft SQL Server.
 
@@ -1380,9 +1306,7 @@ RDS Custom
 
 It is used when applications require customization that is not possible with standard RDS.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -1418,27 +1342,3 @@ It is used when applications require customization that is not possible with sta
 | Operating System | オペレーティングシステム | 운영체제 |
 | Native Feature | ネイティブ機能 | 네이티브 기능 |
 | SSM Session Manager | SSM セッションマネージャー | SSM 세션 관리자 |
-
----
-
-# Review Questions
-
-1. Amazon RDS와 EC2에 직접 Database Engine을 설치하는 방식의 가장 큰 차이는 무엇인가?
-
-2. Primary DB의 SELECT 요청이 너무 많아 성능 문제가 발생하고 있다. 어떤 RDS 기능이 적합한가?
-
-3. Read Replica가 Eventually Consistent한 이유는 무엇인가?
-
-4. Read Replica와 Multi-AZ의 가장 중요한 목적 차이는 무엇인가?
-
-5. Multi-AZ Standby가 일반적인 읽기 요청을 처리하지 않는 이유는 무엇인가?
-
-6. Read Replica 자체를 Multi-AZ로 구성했을 때 Replica의 Standby는 어떤 DB를 보호하는가?
-
-7. Application이 RDS에 접속할 때 Endpoint, Port, Security Group, Authentication은 각각 어떤 역할을 하는가?
-
-8. 데이터베이스 Storage 사용량을 예측하기 어려운 경우 어떤 기능을 사용할 수 있는가?
-
-9. Automated Backup과 Manual Snapshot의 차이는 무엇인가?
-
-10. Oracle 또는 Microsoft SQL Server에서 기저 OS에 접근해 Custom Patch를 적용해야 한다면 어떤 서비스를 사용해야 하는가?

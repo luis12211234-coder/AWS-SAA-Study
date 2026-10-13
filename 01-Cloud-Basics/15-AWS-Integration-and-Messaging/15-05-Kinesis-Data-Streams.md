@@ -1,4 +1,4 @@
-# 15-05. Kinesis Data Streams
+# 📘 15-05. Kinesis Data Streams
 
 ## 🇰🇷 1. Kinesis Data Streams란?
 
@@ -26,9 +26,7 @@ Consumers
 
 Consumer는 Application, Lambda, Firehose, Managed Service for Apache Flink 등이 될 수 있습니다.
 
----
-
-# 2. 핵심은 Real-Time
+## 🇰🇷 2. 핵심은 Real-Time
 
 SQS가:
 
@@ -51,9 +49,7 @@ Data
 
 처럼 **계속 발생하는 Data Stream**을 다루는 것이 핵심입니다.
 
----
-
-# 3. Shard ⭐
+## 🇰🇷 3. Shard ⭐
 
 Shard는 Kinesis Data Stream을 구성하는 **처리량 단위**입니다.
 
@@ -78,9 +74,7 @@ READ
 
 Shard를 증가시키면 Stream 전체 처리량도 증가합니다.
 
----
-
-# 4. Partition Key
+## 🇰🇷 4. Partition Key
 
 Producer는 Record를 보낼 때 Partition Key를 지정합니다.
 
@@ -96,9 +90,7 @@ Shard
 
 같은 Partition Key를 사용하는 Record는 같은 Shard로 전달되어 순서를 유지할 수 있습니다.
 
----
-
-# 5. Retention & Replay ⭐
+## 🇰🇷 5. Retention & Replay ⭐
 
 Kinesis Data Streams는 데이터를 저장합니다.
 
@@ -119,33 +111,27 @@ Replay
 → Kinesis 핵심 특징
 ```
 
----
+## 🇰🇷 6. Capacity Mode
 
-# 6. Capacity Mode
-
-### Provisioned
+#### Provisioned
 
 ```text
 Shard 수를 직접 지정
 → 처리량 직접 관리
 ```
 
-### On-Demand
+#### On-Demand
 
 ```text
 Capacity 자동 관리
 → Traffic에 따라 자동 Scaling
 ```
 
----
-
-# 7. Consumer
+## 🇰🇷 7. Consumer
 
 기본 Consumer는 Kinesis에서 데이터를 읽어오는 **Pull Model**입니다.
 
 Enhanced Fan-Out을 사용하면 각 등록 Consumer에게 전용 Read Throughput을 제공할 수 있습니다.
-
----
 
 ## 🎯 Exam Notes
 
@@ -171,29 +157,7 @@ Record 분배
 → Replay
 ```
 
----
-
-## 🇯🇵 日本語 Summary
-
-Kinesis Data StreamsはリアルタイムのStreaming Dataを収集・保存するサービスです。
-
-StreamはShardで構成され、Partition KeyによってRecordがShardに分配されます。
-
-Dataは一定期間保存されるためReplayが可能です。
-
----
-
-## 🇺🇸 English Summary
-
-Kinesis Data Streams collects and stores real-time streaming data.
-
-A stream consists of shards, and partition keys determine how records are distributed.
-
-Stored records can be replayed during the retention period.
-
----
-
-## 📝 Review
+## 📝 Review Questions
 
 **Q1. Kinesis의 처리량 단위는?**
 
@@ -206,3 +170,19 @@ Partition Key
 **Q3. 이미 처리한 과거 Data를 다시 읽을 수 있는 특징은?**
 
 Replay
+
+## 🇯🇵 日本語 Summary
+
+Kinesis Data StreamsはリアルタイムのStreaming Dataを収集・保存するサービスです。
+
+StreamはShardで構成され、Partition KeyによってRecordがShardに分配されます。
+
+Dataは一定期間保存されるためReplayが可能です。
+
+## 🇺🇸 English Summary
+
+Kinesis Data Streams collects and stores real-time streaming data.
+
+A stream consists of shards, and partition keys determine how records are distributed.
+
+Stored records can be replayed during the retention period.

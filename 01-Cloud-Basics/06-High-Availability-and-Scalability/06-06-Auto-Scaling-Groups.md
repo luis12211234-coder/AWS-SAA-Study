@@ -1,6 +1,6 @@
-# Auto Scaling Groups (ASG)
+# 📘 06-06. Auto Scaling Groups (ASG)
 
-## Overview
+## 🇰🇷 1. Overview
 
 **Auto Scaling Group (ASG)**은 애플리케이션의 부하와 설정에 따라 **EC2 Instance 수를 자동으로 관리**하는 기능이다.
 
@@ -25,11 +25,9 @@ ASG의 주요 역할:
 
 ASG 자체에는 추가 비용이 없으며, 생성된 EC2 등의 Resource에 대해서만 비용을 지불한다.
 
----
+## 🇰🇷 2. Scale Out / Scale In
 
-# 1. Scale Out / Scale In
-
-## Scale Out
+### Scale Out
 
 부하가 증가했을 때 EC2 Instance를 추가한다.
 
@@ -41,7 +39,7 @@ ASG
 EC2 추가
 ```
 
-## Scale In
+### Scale In
 
 부하가 감소했을 때 불필요한 EC2 Instance를 제거한다.
 
@@ -53,16 +51,14 @@ ASG
 EC2 제거
 ```
 
-### Key Point
+#### Key Point
 
 ```text
 Scale Out = EC2 추가
 Scale In  = EC2 제거
 ```
 
----
-
-# 2. Minimum / Desired / Maximum Capacity
+## 🇰🇷 3. Minimum / Desired / Maximum Capacity
 
 ASG는 세 가지 Capacity 값을 이용해 Instance 수를 관리한다.
 
@@ -118,9 +114,7 @@ Desired: 2 → 1
 → EC2 제거
 ```
 
----
-
-# 3. Launch Template
+## 🇰🇷 4. Launch Template
 
 ASG가 새로운 EC2 Instance를 생성하려면 **어떤 설정으로 EC2를 만들 것인지** 알아야 한다.
 
@@ -158,9 +152,7 @@ ASG
 
 > 기존의 **Launch Configuration**은 이전 방식이며, 현재는 Launch Template을 사용한다.
 
----
-
-# 4. Multi-AZ Deployment
+## 🇰🇷 5. Multi-AZ Deployment
 
 ASG는 여러 Subnet을 이용해 여러 Availability Zone에 EC2 Instance를 배치할 수 있다.
 
@@ -177,9 +169,7 @@ ASG는 여러 Subnet을 이용해 여러 Availability Zone에 EC2 Instance를 �
 
 이를 Load Balancer와 함께 사용하면 여러 AZ에 걸쳐 확장 가능한 애플리케이션을 구성할 수 있다.
 
----
-
-# 5. ASG + Load Balancer
+## 🇰🇷 6. ASG + Load Balancer
 
 ASG는 Load Balancer의 **Target Group**과 연동할 수 있다.
 
@@ -223,13 +213,11 @@ ALB가 Traffic 전달
 
 따라서 **ALB + ASG**는 확장성과 가용성을 높이는 대표적인 조합이다.
 
----
-
-# 6. Health Checks
+## 🇰🇷 7. Health Checks
 
 ASG는 Instance의 상태를 확인하여 비정상 Instance를 교체할 수 있다.
 
-## EC2 Health Check
+### EC2 Health Check
 
 EC2 자체의 상태가 비정상이라면 ASG가 해당 Instance를 종료하고 새로운 Instance를 생성할 수 있다.
 
@@ -243,7 +231,7 @@ Terminate
 Launch New EC2
 ```
 
-## ELB Health Check
+### ELB Health Check
 
 ASG를 Load Balancer와 연동하면 ELB Health Check도 사용할 수 있다.
 
@@ -261,7 +249,7 @@ Instance 교체
 Desired Capacity 복구
 ```
 
-### Troubleshooting
+#### Troubleshooting
 
 새로운 Instance가 계속 Unhealthy 상태가 되어 반복적으로 교체된다면 다음 항목을 확인한다.
 
@@ -270,9 +258,7 @@ Desired Capacity 복구
 - Application / Web Server
 - Health Check 설정
 
----
-
-# 7. Auto Scaling Policies
+## 🇰🇷 8. Auto Scaling Policies
 
 ASG는 **Scaling Policy**를 사용해 EC2 Capacity를 자동으로 조절할 수 있다.
 
@@ -291,9 +277,7 @@ Scaling Policies
 └─ Predictive Scaling
 ```
 
----
-
-## 7.1 Target Tracking Scaling
+### 7.1 Target Tracking Scaling
 
 **Target Tracking Scaling**은 지정한 Metric을 목표값 근처로 유지하도록 ASG가 자동으로 Scale Out / Scale In하는 방식이다.
 
@@ -341,7 +325,7 @@ Scale Out / Scale In
 
 Target Tracking에서는 사용자가 목표값을 정의하고 ASG가 필요한 Capacity를 자동으로 조절한다.
 
-### Hands-On Verification
+#### Hands-On Verification
 
 실습에서는 Average CPU Utilization을 Target Metric으로 사용했다.
 
@@ -377,9 +361,7 @@ EC2 제거
 
 Target Tracking Policy를 생성하면 Scaling에 필요한 CloudWatch Alarm이 자동으로 생성될 수 있다.
 
----
-
-## 7.2 Simple Scaling
+### 7.2 Simple Scaling
 
 **Simple Scaling**은 CloudWatch Alarm이 발생하면 지정된 Scaling Action을 수행한다.
 
@@ -401,9 +383,7 @@ Remove
 Set Capacity
 ```
 
----
-
-## 7.3 Step Scaling
+### 7.3 Step Scaling
 
 **Step Scaling**은 Metric 값의 정도에 따라 Scaling 크기를 다르게 설정한다.
 
@@ -422,7 +402,7 @@ CPU 매우 높음
 
 즉 부하의 심각도에 따라 단계적으로 대응할 수 있다.
 
-### Target Tracking vs Step Scaling
+#### Target Tracking vs Step Scaling
 
 ```text
 Target Tracking
@@ -432,9 +412,7 @@ Step Scaling
 → "CPU가 이 구간이면 이만큼 늘려줘"
 ```
 
----
-
-## 7.4 Scheduled Scaling
+### 7.4 Scheduled Scaling
 
 **Scheduled Scaling**은 미리 알고 있는 Traffic 패턴이나 이벤트에 맞춰 Capacity 변경을 예약한다.
 
@@ -457,7 +435,7 @@ Minimum Capacity 증가
 
 Desired / Minimum / Maximum Capacity를 특정 시간이나 반복 일정에 맞춰 변경할 수 있다.
 
-### Exam Point
+#### Exam Point
 
 ```text
 Known Future Traffic / Event
@@ -465,9 +443,7 @@ Known Future Traffic / Event
      Scheduled Scaling
 ```
 
----
-
-## 7.5 Predictive Scaling
+### 7.5 Predictive Scaling
 
 **Predictive Scaling**은 과거 Load 패턴을 분석하여 미래 Capacity 요구량을 예측하고 Scaling을 준비한다.
 
@@ -483,7 +459,7 @@ Scaling
 
 반복적인 Traffic 패턴이 있는 환경에서 유용하다.
 
-### Scheduled vs Predictive
+#### Scheduled vs Predictive
 
 ```text
 Scheduled Scaling
@@ -493,9 +469,7 @@ Predictive Scaling
 → 과거 Load를 분석해 미래 Capacity를 예측
 ```
 
----
-
-# 8. Scaling Metrics
+## 🇰🇷 9. Scaling Metrics
 
 어떤 Metric을 Scaling 기준으로 사용할지는 애플리케이션의 특성에 따라 달라진다.
 
@@ -508,7 +482,7 @@ Predictive Scaling
 | Network In / Out | Upload / Download가 많은 Application |
 | Custom Metric | Application 고유의 Scaling 기준 |
 
-## CPU Utilization
+### CPU Utilization
 
 ASG 전체 Instance의 평균 CPU 사용률을 기준으로 Scaling할 수 있다.
 
@@ -518,7 +492,7 @@ Average CPU ↑
 → Scale Out
 ```
 
-## Request Count Per Target
+### Request Count Per Target
 
 Load Balancer가 Target 하나당 처리하는 Request 수를 기준으로 Scaling할 수 있다.
 
@@ -530,24 +504,22 @@ Instance당 부하 ↑
 Scale Out
 ```
 
-## Network In / Out
+### Network In / Out
 
 Upload / Download가 많고 Network가 병목이 되는 Application에서는 Network 사용량을 기준으로 Scaling할 수 있다.
 
-## Custom Metric
+### Custom Metric
 
 CloudWatch의 Custom Metric을 이용해 Application에 특화된 Scaling 기준을 만들 수도 있다.
 
-### Key Point
+#### Key Point
 
 ```text
 좋은 Scaling Metric
 = 실제 Application Load와 병목을 잘 나타내는 Metric
 ```
 
----
-
-# 9. Scaling Cooldown
+## 🇰🇷 10. Scaling Cooldown
 
 Scaling Action 직후에는 새로운 Instance의 효과가 Metric에 반영될 시간이 필요하다.
 
@@ -580,9 +552,7 @@ Cooldown은 새로운 Capacity의 효과가 나타날 시간을 제공한다.
 
 EC2 Instance가 빠르게 Application을 실행할 수 있도록 미리 구성된 AMI 등을 사용하면 Scaling 반응 속도를 높이는 데 도움이 된다.
 
----
-
-# 10. Hands-On Summary
+## 🇰🇷 11. Hands-On Summary
 
 실습에서는 다음 구조를 구성했다.
 
@@ -600,7 +570,7 @@ Target Group
 
 Launch Template을 이용해 ASG가 EC2 Instance를 자동으로 생성하는 것을 확인했다.
 
-### Desired Capacity 변경
+#### Desired Capacity 변경
 
 ```text
 Desired: 1 → 2
@@ -624,7 +594,7 @@ Target Group 등록 해제
 Instance 수 감소
 ```
 
-### Target Tracking
+#### Target Tracking
 
 CPU Load를 증가시키자:
 
@@ -652,11 +622,9 @@ Scale In
 
 이를 통해 ASG가 **Desired Capacity와 Application Load에 맞춰 EC2 Instance 수를 자동으로 관리**하는 것을 확인했다.
 
----
+## 🎯 Exam Notes
 
-# Exam Notes
-
-## ASG Core
+### ASG Core
 
 ```text
 ASG
@@ -684,7 +652,7 @@ Unhealthy Instance
 → ASG가 교체 가능
 ```
 
-## ALB + ASG
+### ALB + ASG
 
 ```text
 ALB
@@ -699,7 +667,7 @@ ASG
 → Traffic 수신
 ```
 
-## Scaling Policies
+### Scaling Policies
 
 ```text
 Target Tracking
@@ -718,7 +686,7 @@ Predictive Scaling
 → 과거 Load를 분석하여 미래 Capacity 예측
 ```
 
-## Scaling Metrics
+### Scaling Metrics
 
 ```text
 CPU Utilization
@@ -727,7 +695,7 @@ Network In / Out
 Custom Metric
 ```
 
-## Quick Architecture
+### Quick Architecture
 
 ```text
                     Users
@@ -742,7 +710,6 @@ Custom Metric
                       ↑
                Launch Template
 
-
 CloudWatch Metric
        ↓
 CloudWatch Alarm
@@ -754,9 +721,20 @@ Scaling Policy
 Scale Out / Scale In
 ```
 
----
+## 📝 Review Questions
 
-# 日本語まとめ
+1. Scale Out과 Scale In의 차이는 무엇인가?
+2. Minimum, Desired, Maximum Capacity는 각각 무엇을 의미하는가?
+3. Launch Template은 ASG에서 어떤 역할을 하는가?
+4. ASG와 Load Balancer를 함께 사용하면 각각 어떤 역할을 담당하는가?
+5. EC2 또는 ELB Health Check에서 Instance가 Unhealthy로 판단되면 ASG는 어떻게 동작할 수 있는가?
+6. Target Tracking Scaling은 어떤 방식으로 Capacity를 조절하는가?
+7. Target Tracking과 Step Scaling의 차이는 무엇인가?
+8. Scheduled Scaling과 Predictive Scaling의 차이는 무엇인가?
+9. ASG Scaling에 사용할 수 있는 대표적인 Metric에는 무엇이 있는가?
+10. Scaling Cooldown이 필요한 이유는 무엇인가?
+
+## 🇯🇵 日本語 Summary
 
 - **Auto Scaling Group (ASG)** はEC2インスタンス数を自動的に管理する
 - **Scale Out** はEC2インスタンスを追加する
@@ -772,9 +750,7 @@ Scale Out / Scale In
 - CloudWatch MetricとAlarmを利用して自動Scalingを実行できる
 - **Scaling Cooldown** はScaling後にMetricが安定するための時間を与える
 
----
-
-# English Summary
+## 🇺🇸 English Summary
 
 - **Auto Scaling Groups (ASG)** automatically manage EC2 capacity.
 - **Scale Out** adds instances and **Scale In** removes instances.
@@ -790,9 +766,7 @@ Scale Out / Scale In
 - CloudWatch metrics and alarms can trigger scaling activities.
 - **Scaling Cooldown** gives metrics time to stabilize after a scaling activity.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -814,18 +788,3 @@ Scale Out / Scale In
 | CloudWatch Alarm | CloudWatchアラーム | CloudWatch 경보 |
 | Health Check | ヘルスチェック | 상태 확인 |
 | Target Group | ターゲットグループ | 대상 그룹 |
-
----
-
-# Review Questions
-
-1. Scale Out과 Scale In의 차이는 무엇인가?
-2. Minimum, Desired, Maximum Capacity는 각각 무엇을 의미하는가?
-3. Launch Template은 ASG에서 어떤 역할을 하는가?
-4. ASG와 Load Balancer를 함께 사용하면 각각 어떤 역할을 담당하는가?
-5. EC2 또는 ELB Health Check에서 Instance가 Unhealthy로 판단되면 ASG는 어떻게 동작할 수 있는가?
-6. Target Tracking Scaling은 어떤 방식으로 Capacity를 조절하는가?
-7. Target Tracking과 Step Scaling의 차이는 무엇인가?
-8. Scheduled Scaling과 Predictive Scaling의 차이는 무엇인가?
-9. ASG Scaling에 사용할 수 있는 대표적인 Metric에는 무엇이 있는가?
-10. Scaling Cooldown이 필요한 이유는 무엇인가?

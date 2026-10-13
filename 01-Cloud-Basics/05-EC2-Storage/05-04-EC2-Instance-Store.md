@@ -1,6 +1,6 @@
-# EC2 Instance Store
+# 📘 05-04. EC2 Instance Store
 
-## Overview
+## 🇰🇷 1. Overview
 
 **EC2 Instance Store**는 EC2가 실행되는 물리 서버에 직접 연결된 **Local Storage**이다.
 
@@ -23,9 +23,7 @@ Instance Store
 → Very High I/O Performance
 ```
 
----
-
-# 1. High Performance Local Storage
+## 🇰🇷 2. High Performance Local Storage
 
 Instance Store는 물리 서버에 직접 연결된 Storage를 사용한다.
 
@@ -40,9 +38,7 @@ EC2 Instance Store
 강의의 구체적인 IOPS 수치는 Instance Type에 따라 달라질 수 있으므로
 핵심은 **Instance Store = Very High I/O Performance**로 기억한다.
 
----
-
-# 2. Ephemeral Storage
+## 🇰🇷 3. Ephemeral Storage
 
 Instance Store의 가장 중요한 특징은 **Ephemeral Storage**라는 것이다.
 
@@ -60,9 +56,7 @@ Instance Store
 → Data Loss Risk
 ```
 
----
-
-# 3. Use Cases
+## 🇰🇷 4. Use Cases
 
 Instance Store는 데이터가 사라져도
 다시 생성할 수 있는 임시 데이터에 적합하다.
@@ -89,9 +83,7 @@ EBS
 Instance Store의 데이터가 중요하다면
 Backup 또는 Replication은 사용자가 구성해야 한다.
 
----
-
-# 4. EBS vs Instance Store
+## 🇰🇷 5. EBS vs Instance Store
 
 | | EBS | Instance Store |
 |---|---|---|
@@ -111,9 +103,25 @@ Very High Local I/O
 → Instance Store
 ```
 
----
+## 🇰🇷 6. Summary
 
-# Exam Notes
+```text
+EC2 Instance Store
+= High-performance Local Storage
+= Ephemeral Storage
+```
+
+한 줄 암기:
+
+```text
+EBS            = 느려도(?) 오래 보관하는 Network Storage
+Instance Store = 빠르지만 임시인 Local Storage
+```
+
+※ EBS가 느리다는 의미가 아니라,
+Instance Store와의 상대적인 개념 구분이다.
+
+## 🎯 Exam Notes
 
 ```text
 High-performance local disk
@@ -133,29 +141,36 @@ Instance Store는 기반 Hardware 장애 시에도
 데이터 손실 위험이 있으므로 중요한 데이터는
 Backup 또는 Replication이 필요하다.
 
----
+## 📝 Review Questions
 
-# Summary
+#### Q1. EC2 Instance Store란?
+
+EC2가 실행되는 Physical Host에 연결된
+고성능 Local Storage이다.
+
+#### Q2. Instance Store의 가장 큰 장점은?
+
+매우 높은 I/O 성능이다.
+
+#### Q3. 장기적인 데이터 저장에 적합한가?
+
+아니다. Ephemeral Storage이므로
+장기 데이터에는 EBS가 더 적합하다.
+
+#### Q4. 대표적인 사용 사례는?
 
 ```text
-EC2 Instance Store
-= High-performance Local Storage
-= Ephemeral Storage
+Buffer
+Cache
+Scratch Data
+Temporary Content
 ```
 
-한 줄 암기:
+#### Q5. Instance Store에서 중요한 데이터를 사용한다면?
 
-```text
-EBS            = 느려도(?) 오래 보관하는 Network Storage
-Instance Store = 빠르지만 임시인 Local Storage
-```
+데이터 손실에 대비해 Backup 또는 Replication을 구성해야 한다.
 
-※ EBS가 느리다는 의미가 아니라,
-Instance Store와의 상대적인 개념 구분이다.
-
----
-
-# Japanese Summary
+## 🇯🇵 日本語 Summary
 
 **EC2 Instance Store**は、
 EC2が動作する物理サーバーに接続されたLocal Storageです。
@@ -182,9 +197,7 @@ Temporary Data
 
 長期的なデータ保存にはEBSが適しています。
 
----
-
-# English Summary
+## 🇺🇸 English Summary
 
 **EC2 Instance Store** provides high-performance local storage
 physically attached to the host running the EC2 instance.
@@ -203,9 +216,7 @@ buffers, caches, and scratch data.
 
 For persistent data, EBS is more appropriate.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -218,34 +229,3 @@ For persistent data, EBS is more appropriate.
 | Scratch Data | スクラッチデータ | 작업 과정에서 사용하는 임시 데이터 |
 | Replication | レプリケーション | 데이터를 다른 위치에 복제하는 것 |
 | Hardware Failure | ハードウェア障害 | 물리 장비 장애 |
-
----
-
-# Review Questions
-
-### Q1. EC2 Instance Store란?
-
-EC2가 실행되는 Physical Host에 연결된
-고성능 Local Storage이다.
-
-### Q2. Instance Store의 가장 큰 장점은?
-
-매우 높은 I/O 성능이다.
-
-### Q3. 장기적인 데이터 저장에 적합한가?
-
-아니다. Ephemeral Storage이므로
-장기 데이터에는 EBS가 더 적합하다.
-
-### Q4. 대표적인 사용 사례는?
-
-```text
-Buffer
-Cache
-Scratch Data
-Temporary Content
-```
-
-### Q5. Instance Store에서 중요한 데이터를 사용한다면?
-
-데이터 손실에 대비해 Backup 또는 Replication을 구성해야 한다.

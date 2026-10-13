@@ -1,4 +1,4 @@
-# S3 Object Lock & Glacier Vault Lock
+# 📘 12-06. S3 Object Lock & Glacier Vault Lock
 
 ## 🇰🇷 1. WORM이란?
 
@@ -30,9 +30,7 @@ S3 Object Lock
 
 입니다.
 
----
-
-## 2. Glacier Vault Lock
+## 🇰🇷 2. Glacier Vault Lock
 
 Glacier Vault Lock은 Glacier Vault에 Vault Lock Policy를 적용하여 WORM 형태의 보존 정책을 강제하는 기능입니다.
 
@@ -58,9 +56,7 @@ Long-Term Data Retention
 
 하는 개념입니다.
 
----
-
-## 3. S3 Object Lock
+## 🇰🇷 3. S3 Object Lock
 
 S3 Object Lock은 특정 Object Version이 삭제되거나 덮어쓰이는 것을 일정 기간 보호합니다.
 
@@ -74,9 +70,7 @@ Object Lock
 
 보호 대상의 핵심은 **Object Version**입니다.
 
----
-
-## 4. Retention Mode
+## 🇰🇷 4. Retention Mode
 
 S3 Object Lock에는 두 가지 주요 Retention Mode가 있습니다.
 
@@ -87,9 +81,7 @@ Object Lock
 └─ Governance Mode
 ```
 
----
-
-## 5. Compliance Mode
+## 🇰🇷 5. Compliance Mode
 
 가장 강력한 보호 모드입니다.
 
@@ -109,9 +101,7 @@ Compliance
 = 매우 강력한 규정 준수 보호
 ```
 
----
-
-## 6. Governance Mode
+## 🇰🇷 6. Governance Mode
 
 Governance Mode에서는 일반 사용자는 Object Version을 삭제하거나 Retention 설정을 우회할 수 없습니다.
 
@@ -127,9 +117,7 @@ Authorized Admin
 
 따라서 Compliance Mode보다 유연합니다.
 
----
-
-## 7. Compliance vs Governance
+## 🇰🇷 7. Compliance vs Governance
 
 ```text
 Compliance
@@ -143,9 +131,7 @@ Governance
 
 SAA에서는 이 차이를 확실히 구분합니다.
 
----
-
-## 8. Retention Period
+## 🇰🇷 8. Retention Period
 
 Retention Mode에는 Object를 보호할 기간을 지정할 수 있습니다.
 
@@ -159,9 +145,7 @@ Protected
 
 필요한 경우 Retention 기간을 연장할 수 있습니다.
 
----
-
-## 9. Legal Hold
+## 🇰🇷 9. Legal Hold
 
 Legal Hold는 Retention Period와 별개로 Object Version을 보호할 수 있는 기능입니다.
 
@@ -197,9 +181,7 @@ Legal Hold
 
 로 구분합니다.
 
----
-
-## 10. Vault Lock vs Object Lock
+## 🇰🇷 10. Vault Lock vs Object Lock
 
 ```text
 Glacier Vault Lock
@@ -211,9 +193,7 @@ S3 Object Lock
 → Compliance / Governance / Legal Hold
 ```
 
----
-
-## 🎯 Exam Scenario
+## 🎯 Exam Notes
 
 ```text
 WORM + Glacier Vault
@@ -228,10 +208,6 @@ S3 Object Version + 관리자도 삭제 불가
 법적 조사 종료 시까지 무기한 보호
 → Legal Hold
 ```
-
----
-
-## 🔑 핵심 정리
 
 ```text
 WORM
@@ -256,46 +232,6 @@ Legal Hold
 한 줄 정리:
 
 > **Vault 전체의 WORM 정책은 Glacier Vault Lock, S3 Object Version 보호는 Object Lock**
-
----
-
-## 🇯🇵 日本語 Summary
-
-Glacier Vault LockとS3 Object Lockは、WORMモデルによるデータ保護に使用されます。
-
-Glacier Vault LockはVaultレベルのRetention Policyを強制します。
-
-S3 Object LockはObject Versionを保護し、Compliance ModeとGovernance Modeがあります。
-
-Legal Holdを使用すると、Retention Periodとは別にObject Versionを保護できます。
-
----
-
-## 🇺🇸 English Summary
-
-Glacier Vault Lock and S3 Object Lock provide WORM-style data protection.
-
-Glacier Vault Lock enforces a retention policy at the vault level.
-
-S3 Object Lock protects individual object versions using Compliance or Governance retention modes.
-
-Legal Hold protects an object version independently of a retention period.
-
----
-
-## 📚 Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| WORM | Write Once Read Many | 한 번 쓰고 여러 번 읽기 |
-| Vault Lock | ボールトロック | 볼트 잠금 |
-| Object Lock | オブジェクトロック | 객체 잠금 |
-| Compliance Mode | コンプライアンスモード | 규정 준수 모드 |
-| Governance Mode | ガバナンスモード | 거버넌스 모드 |
-| Retention Period | 保持期間 | 보존 기간 |
-| Legal Hold | リーガルホールド | 법적 보존 |
-
----
 
 ## 📝 Review Questions
 
@@ -333,3 +269,35 @@ Legal Hold를 사용합니다.
 Glacier Vault Lock을 사용합니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+Glacier Vault LockとS3 Object Lockは、WORMモデルによるデータ保護に使用されます。
+
+Glacier Vault LockはVaultレベルのRetention Policyを強制します。
+
+S3 Object LockはObject Versionを保護し、Compliance ModeとGovernance Modeがあります。
+
+Legal Holdを使用すると、Retention Periodとは別にObject Versionを保護できます。
+
+## 🇺🇸 English Summary
+
+Glacier Vault Lock and S3 Object Lock provide WORM-style data protection.
+
+Glacier Vault Lock enforces a retention policy at the vault level.
+
+S3 Object Lock protects individual object versions using Compliance or Governance retention modes.
+
+Legal Hold protects an object version independently of a retention period.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| WORM | Write Once Read Many | 한 번 쓰고 여러 번 읽기 |
+| Vault Lock | ボールトロック | 볼트 잠금 |
+| Object Lock | オブジェクトロック | 객체 잠금 |
+| Compliance Mode | コンプライアンスモード | 규정 준수 모드 |
+| Governance Mode | ガバナンスモード | 거버넌스 모드 |
+| Retention Period | 保持期間 | 보존 기간 |
+| Legal Hold | リーガルホールド | 법적 보존 |

@@ -68,7 +68,8 @@ flowchart TD
 - **Timestream:** 시간 기준 집계와 분석이 중요.
 - **IoT라는 단어만으로 정답이 확정되지 않는다.**
 
-## 🇰🇷 5. Architecture Examples
+## 🎯 Exam Notes
+
 ### A. 단순 IoT 시계열 분석
 ```mermaid
 flowchart TD
@@ -114,7 +115,6 @@ flowchart TD
 - S3: 상품 이미지.
 - 캐시는 병목이나 명확한 요구사항이 있을 때 도입한다.
 
-## 🎯 Exam Notes
 | 키워드 | 서비스 |
 |---|---|
 | SQL / Relational | RDS, Aurora |
@@ -132,6 +132,7 @@ flowchart TD
 | Object Storage | S3 |
 
 ## 📝 Review Questions
+
 ### Q1. Read Replica와 Multi-AZ의 주요 목적은?
 <details><summary>정답</summary>
 Read Replica는 읽기 확장, Multi-AZ는 장애 조치 및 가용성.
@@ -158,12 +159,15 @@ Cassandra/CQL → Keyspaces. 시간별 집계/분석 → Timestream.
 </details>
 
 ## 🇯🇵 日本語 Summary
+
 データモデル、クエリパターン、整合性、可用性、コストから DB を選択します。RDS/Aurora はリレーショナル、DynamoDB は NoSQL、DocumentDB は MongoDB 互換、Neptune はグラフ、Keyspaces は Cassandra、Timestream は時系列分析、S3 はオブジェクトストレージ。Kinesis と Lambda は必要な場合だけ追加します。
 
 ## 🇺🇸 English Summary
+
 Select databases by data model, access pattern, consistency, availability, and cost. RDS/Aurora support relational workloads; DynamoDB handles key-based NoSQL; DocumentDB provides MongoDB compatibility; Neptune handles graphs; Keyspaces supports Cassandra/CQL; Timestream handles time-series analytics. Kinesis streams events and Lambda processes them. Avoid unnecessary components.
 
 ## 📚 Vocabulary
+
 | English | 한국어 | 日本語 |
 |---|---|---|
 | Access Pattern | 접근 패턴 | アクセスパターン |

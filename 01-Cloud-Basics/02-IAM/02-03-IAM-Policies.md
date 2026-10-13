@@ -1,14 +1,12 @@
-# IAM Policies
+# 📘 02-03. IAM Policies
 
-## Overview
+## 🇰🇷 1. Overview
 
 IAM Policy는 사용자(User), 그룹(Group), 또는 역할(Role)에 권한을 부여하는 JSON 형식의 정책 문서이다.
 
 IAM의 Identity-based Policy에는 AWS Managed Policy, Customer Managed Policy, Inline Policy가 있다.
 
----
-
-## Policy Types
+## 🇰🇷 2. Policy Types
 
 ### AWS Managed Policy
 
@@ -28,9 +26,7 @@ AWS가 생성하고 관리하는 독립형 정책이다.
 
 하나의 Identity와 1:1 관계를 유지하므로 다른 Identity에서 재사용할 수 없다.
 
----
-
-## Permission Inheritance
+## 🇰🇷 3. Permission Inheritance
 
 사용자는 여러 정책을 동시에 가질 수 있다.
 
@@ -44,9 +40,7 @@ AWS가 생성하고 관리하는 독립형 정책이다.
 
 기본적으로 요청은 암시적으로 거부되며, 관련 정책에 명시적 Allow가 있어야 허용된다. 명시적 Deny가 하나라도 있으면 Allow보다 우선한다.
 
----
-
-## IAM Policy Structure
+## 🇰🇷 4. IAM Policy Structure
 
 IAM Policy는 JSON 형식으로 작성된다.
 
@@ -71,18 +65,14 @@ Identity-based Policy에서 특히 중요한 요소는 다음과 같다.
 
 Principal은 Resource-based Policy와 IAM Role의 Trust Policy에서 사용한다. IAM User, Group, Role에 연결하는 Identity-based Policy에는 Principal을 사용하지 않는다. 정책이 연결된 Identity가 암시적으로 Principal이 된다.
 
----
-
-## Effect
+## 🇰🇷 5. Effect
 
 권한의 동작을 정의한다.
 
 - Allow
 - Deny
 
----
-
-## Principal
+## 🇰🇷 6. Principal
 
 정책이 적용될 인증 주체이다.
 
@@ -94,9 +84,7 @@ Principal은 Resource-based Policy와 IAM Role의 Trust Policy에서 사용한�
 
 Principal은 Resource-based Policy와 Trust Policy에서 사용하며 Identity-based Policy에서는 사용할 수 없다.
 
----
-
-## Action
+## 🇰🇷 7. Action
 
 허용하거나 거부할 AWS API 호출이다.
 
@@ -106,9 +94,7 @@ Principal은 Resource-based Policy와 Trust Policy에서 사용하며 Identity-b
 - iam:ListUsers
 - ec2:DescribeInstances
 
----
-
-## Resource
+## 🇰🇷 8. Resource
 
 Action이 적용될 AWS 리소스이다.
 
@@ -118,9 +104,7 @@ Action이 적용될 AWS 리소스이다.
 - S3 Bucket
 - IAM User
 
----
-
-## Wildcards
+## 🇰🇷 9. Wildcards
 
 AWS는 * 문자를 사용할 수 있다.
 
@@ -150,9 +134,7 @@ List*
 
 List로 시작하는 모든 API 허용
 
----
-
-## ReadOnlyAccess
+## 🇰🇷 10. ReadOnlyAccess
 
 IAMReadOnlyAccess 정책은
 
@@ -160,17 +142,13 @@ IAMReadOnlyAccess 정책은
 
 생성(Create), 수정(Update), 삭제(Delete)는 불가능하다.
 
----
-
-## Custom Policy
+## 🇰🇷 11. Custom Policy
 
 사용자는 Visual Editor 또는 JSON Editor를 이용하여 직접 정책을 생성할 수 있다.
 
 필요한 API만 선택하여 최소 권한 정책을 만들 수 있다.
 
----
-
-## Summary
+## 🇰🇷 12. Summary
 
 - IAM Policy는 JSON 형식이다.
 - AWS Managed Policy, Customer Managed Policy, Inline Policy가 있다.
@@ -181,9 +159,7 @@ IAMReadOnlyAccess 정책은
 - ReadOnlyAccess는 조회만 가능하다.
 - Custom Policy를 생성할 수 있다.
 
----
-
-## Exam Notes
+## 🎯 Exam Notes
 
 - Policy는 JSON 문서이다.
 - Allow와 Deny를 사용한다.
@@ -196,10 +172,6 @@ IAMReadOnlyAccess 정책은
 - Identity-based Policy에는 Principal을 사용하지 않는다.
 - Principal은 Resource-based Policy와 Trust Policy에서 사용한다.
 
----
-
-## Practical Example
-
 AdministratorAccess
 
 ```
@@ -211,8 +183,6 @@ Resource: *
 ↓
 
 모든 AWS 서비스와 리소스에 대한 전체 권한
-
----
 
 IAMReadOnlyAccess
 
@@ -231,11 +201,20 @@ List*
 
 생성, 수정, 삭제 불가
 
----
+## 📝 Review Questions
 
-# 🇯🇵 日本語
+1. Managed Policy와 Inline Policy의 차이점은 무엇인가?
+2. IAM Policy는 어떤 형식으로 작성되는가?
+3. Identity-based Policy에서 주로 확인해야 할 요소는 무엇인가?
+4. Action과 Resource의 차이점은 무엇인가?
+5. `Action: "*"`의 의미는 무엇인가?
+6. IAMReadOnlyAccess의 특징은 무엇인가?
+7. Principal은 어떤 Policy에서 사용하며, Identity-based Policy에서 사용할 수 있는가?
+8. Allow와 명시적 Deny가 동시에 적용되면 어떤 결과가 발생하는가?
 
-## IAM Policy
+## 🇯🇵 日本語 Summary
+
+### IAM Policy
 
 IAM PolicyはJSON形式の権限設定ファイルである。
 
@@ -252,9 +231,7 @@ Identity-based Policyの主な要素
 
 PrincipalはResource-based PolicyとTrust Policyで使用し、Identity-based Policyでは使用しない。
 
----
-
-## Summary
+### Summary
 
 - IAM PolicyはJSON形式である。
 - AllowとDenyを使用する。
@@ -262,11 +239,9 @@ PrincipalはResource-based PolicyとTrust Policyで使用し、Identity-based Po
 - "*"はすべてを意味する。
 - ReadOnlyAccessは読み取り専用である。
 
----
+## 🇺🇸 English Summary
 
-# 🇺🇸 English
-
-## IAM Policies
+### IAM Policies
 
 IAM Policies are JSON documents that define permissions.
 
@@ -283,9 +258,7 @@ The main elements of an identity-based policy are:
 
 `Principal` is used in resource-based policies and role trust policies. It is not used in identity-based policies.
 
----
-
-## Summary
+### Summary
 
 - IAM Policies are written in JSON.
 - Use Allow or Deny.
@@ -293,9 +266,7 @@ The main elements of an identity-based policy are:
 - "*" means all.
 - ReadOnlyAccess allows read operations only.
 
----
-
-## Vocabulary
+## 📚 Vocabulary
 
 | English | 한국어 | 日本語 |
 |----------|---------|---------|
@@ -310,16 +281,3 @@ The main elements of an identity-based policy are:
 | Condition | 조건 | 条件 |
 | Wildcard | 와일드카드 | ワイルドカード |
 | ReadOnlyAccess | 읽기 전용 권한 | 読み取り専用権限 |
-
----
-
-## Review Questions
-
-1. Managed Policy와 Inline Policy의 차이점은 무엇인가?
-2. IAM Policy는 어떤 형식으로 작성되는가?
-3. Identity-based Policy에서 주로 확인해야 할 요소는 무엇인가?
-4. Action과 Resource의 차이점은 무엇인가?
-5. `Action: "*"`의 의미는 무엇인가?
-6. IAMReadOnlyAccess의 특징은 무엇인가?
-7. Principal은 어떤 Policy에서 사용하며, Identity-based Policy에서 사용할 수 있는가?
-8. Allow와 명시적 Deny가 동시에 적용되면 어떤 결과가 발생하는가?

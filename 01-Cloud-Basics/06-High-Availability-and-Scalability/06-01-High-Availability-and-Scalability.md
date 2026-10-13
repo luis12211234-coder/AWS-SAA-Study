@@ -1,6 +1,6 @@
-# High Availability and Scalability
+# 📘 06-01. High Availability and Scalability
 
-## Overview
+## 🇰🇷 1. Overview
 
 Scalability는 시스템이 증가하는 Load를 처리할 수 있도록
 확장하는 능력을 의미한다.
@@ -15,9 +15,7 @@ Horizontal Scaling
 High Availability는 Scalability와 관련되어 있지만
 목적이 다른 개념이다.
 
----
-
-# 1. Vertical Scaling
+## 🇰🇷 2. Vertical Scaling
 
 Vertical Scaling은
 하나의 Instance 자체의 성능을 높이거나 낮추는 방식이다.
@@ -54,9 +52,7 @@ ElastiCache
 Hardware Limit 존재
 ```
 
----
-
-# 2. Horizontal Scaling
+## 🇰🇷 3. Horizontal Scaling
 
 Horizontal Scaling은
 Instance의 개수를 늘리거나 줄이는 방식이다.
@@ -89,9 +85,7 @@ Load Balancer
 
 와 함께 자주 사용된다.
 
----
-
-# 3. High Availability
+## 🇰🇷 4. High Availability
 
 High Availability는
 Infrastructure 장애가 발생해도
@@ -117,9 +111,20 @@ AZ-B ✅
 
 서비스를 계속 제공할 수 있다.
 
----
+## 🇰🇷 5. Summary
 
-# Exam Notes
+```text
+Vertical
+→ Bigger Machine
+
+Horizontal
+→ More Machines
+
+High Availability
+→ Multiple AZs
+```
+
+## 🎯 Exam Notes
 
 ```text
 Vertical Scaling
@@ -150,24 +155,30 @@ High Availability
 Scalability는 Load 처리 능력,
 High Availability는 장애 상황에서도 서비스를 유지하는 능력이다.
 
----
+## 📝 Review Questions
 
-# Summary
+#### Q1. Vertical Scaling이란?
 
-```text
-Vertical
-→ Bigger Machine
+Instance 자체의 성능을 증가시키는 것이다.
 
-Horizontal
-→ More Machines
+#### Q2. Scale Out이란?
 
-High Availability
-→ Multiple AZs
-```
+Instance의 개수를 증가시키는 것이다.
 
----
+#### Q3. Scale In이란?
 
-# Japanese Summary
+Instance의 개수를 감소시키는 것이다.
+
+#### Q4. High Availability의 주요 목적은?
+
+Infrastructure 장애가 발생해도
+Application을 계속 사용할 수 있도록 하는 것이다.
+
+#### Q5. High Availability를 위해 AWS에서 주로 사용하는 구조는?
+
+여러 Availability Zone에 Application을 배치하는 것이다.
+
+## 🇯🇵 日本語 Summary
 
 ```text
 Vertical Scaling
@@ -180,9 +191,7 @@ High Availability
 → 複数のAZを利用して障害に備える
 ```
 
----
-
-# English Summary
+## 🇺🇸 English Summary
 
 ```text
 Vertical Scaling
@@ -195,9 +204,7 @@ High Availability
 → Run applications across multiple AZs
 ```
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -209,28 +216,3 @@ High Availability
 | Scale Out | スケールアウト | 인스턴스 수 증가 |
 | Scale In | スケールイン | 인스턴스 수 감소 |
 | High Availability | 高可用性 | 장애 상황에서도 서비스를 유지하는 능력 |
-
----
-
-# Review Questions
-
-### Q1. Vertical Scaling이란?
-
-Instance 자체의 성능을 증가시키는 것이다.
-
-### Q2. Scale Out이란?
-
-Instance의 개수를 증가시키는 것이다.
-
-### Q3. Scale In이란?
-
-Instance의 개수를 감소시키는 것이다.
-
-### Q4. High Availability의 주요 목적은?
-
-Infrastructure 장애가 발생해도
-Application을 계속 사용할 수 있도록 하는 것이다.
-
-### Q5. High Availability를 위해 AWS에서 주로 사용하는 구조는?
-
-여러 Availability Zone에 Application을 배치하는 것이다.

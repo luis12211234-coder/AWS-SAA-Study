@@ -1,6 +1,6 @@
-# Application Load Balancer (ALB)
+# 📘 06-02. Application Load Balancer (ALB)
 
-## Overview
+## 🇰🇷 1. Overview
 
 **Load Balancer**는 들어오는 Traffic을 여러 Backend Server에 분산한다.
 
@@ -23,9 +23,7 @@ EC2
 - **Target Group**: 요청을 전달할 Backend Target들의 그룹
 - **Target**: 실제 요청을 처리하는 EC2 등의 Resource
 
----
-
-# 1. ALB Routing
+## 🇰🇷 2. ALB Routing
 
 ALB는 HTTP Request의 내용을 확인하여
 서로 다른 Target Group으로 Routing할 수 있다.
@@ -53,9 +51,7 @@ HTTP Header
 ALB는 HTTP/2, WebSocket도 지원하며
 HTTP → HTTPS Redirect도 가능하다.
 
----
-
-# 2. Listener & Rules
+## 🇰🇷 3. Listener & Rules
 
 Listener는 ALB가 Traffic을 받는 Protocol과 Port를 정의한다.
 
@@ -95,9 +91,7 @@ IF Path = /error
 어떤 Rule에도 일치하지 않으면
 **Default Rule**이 적용된다.
 
----
-
-# 3. Target Group & Health Check
+## 🇰🇷 4. Target Group & Health Check
 
 Target Group은 ALB가 요청을 전달할 Target들의 그룹이다.
 
@@ -131,9 +125,7 @@ ALB
 └─ EC2 B ❌ → 제외
 ```
 
----
-
-# 4. Security Groups
+## 🇰🇷 5. Security Groups
 
 Backend EC2는 Internet에서 직접 접근시키기보다
 ALB를 통해서만 접근하도록 구성할 수 있다.
@@ -170,9 +162,7 @@ Internet → ALB → EC2
 ✅
 ```
 
----
-
-# 5. Hands-On Summary
+## 🇰🇷 6. Hands-On Summary
 
 실습에서는 Web Server가 실행되는
 EC2 Instance 두 개를 생성했다.
@@ -217,9 +207,7 @@ ALB에서 오는 HTTP Traffic만 허용했다.
 Listener Rule을 생성하여
 Path 기반 Rule 동작을 확인했다.
 
----
-
-# 6. Important Extras
+## 🇰🇷 7. Important Extras
 
 ALB는 Microservices와 Container 환경에 적합하며
 ECS의 Dynamic Port Mapping을 지원한다.
@@ -241,9 +229,7 @@ X-Forwarded-Proto
 → Original Protocol
 ```
 
----
-
-# Exam Notes
+## 🎯 Exam Notes
 
 ```text
 ALB
@@ -292,9 +278,51 @@ Client IP:
 X-Forwarded-For
 ```
 
----
+## 📝 Review Questions
 
-# Japanese Summary
+#### Q1. ALB는 OSI 몇 계층에서 동작하는가?
+
+```text
+Layer 7
+```
+
+#### Q2. Listener란?
+
+ALB가 요청을 받을
+Protocol과 Port를 정의하는 설정이다.
+
+#### Q3. Target Group이란?
+
+ALB가 Traffic을 전달할
+Backend Target들의 그룹이다.
+
+#### Q4. Target이 Unhealthy하면?
+
+ALB가 해당 Target으로 Traffic을 전달하지 않는다.
+
+#### Q5. ALB가 Routing에 사용할 수 있는 정보는?
+
+```text
+Path
+Host
+Query String
+HTTP Header
+```
+
+#### Q6. EC2를 ALB를 통해서만 접근하게 하려면?
+
+```text
+EC2 Security Group
+Source = ALB Security Group
+```
+
+#### Q7. 실제 Client IP를 확인할 때 사용하는 Header는?
+
+```text
+X-Forwarded-For
+```
+
+## 🇯🇵 日本語 Summary
 
 **Application Load Balancer (ALB)**は、
 Layer 7で動作するHTTP/HTTPS Load Balancerです。
@@ -317,9 +345,7 @@ HTTP RequestのPath、Host、Query String、Headerを利用して
 Health Checkにより、
 UnhealthyなTargetにはTrafficを送信しません。
 
----
-
-# English Summary
+## 🇺🇸 English Summary
 
 **Application Load Balancer (ALB)** is
 a Layer 7 HTTP/HTTPS load balancer.
@@ -342,9 +368,7 @@ Path, Host, Query String, and HTTP Headers.
 Health checks prevent traffic
 from being sent to unhealthy targets.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -359,49 +383,3 @@ from being sent to unhealthy targets.
 | Redirect | リダイレクト | 다른 URL 또는 프로토콜로 전환 |
 | Fixed Response | 固定レスポンス | ALB가 직접 반환하는 응답 |
 | Backend | バックエンド | 실제 요청을 처리하는 후단 시스템 |
-
----
-
-# Review Questions
-
-### Q1. ALB는 OSI 몇 계층에서 동작하는가?
-
-```text
-Layer 7
-```
-
-### Q2. Listener란?
-
-ALB가 요청을 받을
-Protocol과 Port를 정의하는 설정이다.
-
-### Q3. Target Group이란?
-
-ALB가 Traffic을 전달할
-Backend Target들의 그룹이다.
-
-### Q4. Target이 Unhealthy하면?
-
-ALB가 해당 Target으로 Traffic을 전달하지 않는다.
-
-### Q5. ALB가 Routing에 사용할 수 있는 정보는?
-
-```text
-Path
-Host
-Query String
-HTTP Header
-```
-
-### Q6. EC2를 ALB를 통해서만 접근하게 하려면?
-
-```text
-EC2 Security Group
-Source = ALB Security Group
-```
-
-### Q7. 실제 Client IP를 확인할 때 사용하는 Header는?
-
-```text
-X-Forwarded-For
-```

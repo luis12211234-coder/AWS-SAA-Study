@@ -72,6 +72,7 @@ flowchart LR
 - S3 Select는 신규 고객에게 제공되지 않는다.
 
 ## 🎯 Exam Notes
+
 | 요구사항 | 선택 |
 |---|---|
 | SQL 관계형 데이터 | RDS / Aurora |
@@ -85,6 +86,7 @@ flowchart LR
 | 객체 저장 | S3 |
 
 ## 🇯🇵 日本語 Summary
+
 - **RDS:** リレーショナル DB。Read Replica は読み取り拡張、Multi-AZ は高可用性。
 - **Aurora:** MySQL/PostgreSQL 互換。3 AZ に 6 コピーの共有ストレージ。
 - **ElastiCache:** インメモリキャッシュ。アプリ側のキャッシュ制御が必要。
@@ -92,9 +94,11 @@ flowchart LR
 - **S3:** オブジェクトストレージ。
 
 ## 🇺🇸 English Summary
+
 RDS and Aurora serve relational workloads. Read Replicas scale reads; Multi-AZ improves availability. ElastiCache caches frequently accessed data. DynamoDB offers serverless NoSQL with Streams, DAX, and Global Tables. S3 stores objects, not relational records.
 
 ## 📚 Vocabulary
+
 | English | 한국어 | 日本語 |
 |---|---|---|
 | Read Replica | 읽기 복제본 | リードレプリカ |

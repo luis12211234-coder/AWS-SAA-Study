@@ -1,6 +1,6 @@
-# EC2 Instance Types
+# 📘 04-03. EC2 Instance Types
 
-## Overview
+## 🇰🇷 1. Overview
 
 Amazon EC2는 다양한 작업 유형에 맞게 여러 종류의 Instance Type을 제공한다.
 
@@ -8,9 +8,7 @@ Amazon EC2는 다양한 작업 유형에 맞게 여러 종류의 Instance Type�
 
 이번 내용에서는 EC2 Instance Type의 Naming Convention과 대표적인 Instance Category를 정리한다.
 
----
-
-## EC2 Instance Naming Convention
+## 🇰🇷 2. EC2 Instance Naming Convention
 
 EC2 Instance Type에는 일정한 Naming Convention이 있다.
 
@@ -48,8 +46,6 @@ c → Compute Optimized
 r → Memory Optimized
 ```
 
----
-
 ### Generation
 
 숫자는 Instance Family의 Generation을 나타낸다.
@@ -62,8 +58,6 @@ m6
 ```
 
 AWS가 새로운 하드웨어와 기능을 제공하면서 세대가 증가한다.
-
----
 
 ### Instance Size
 
@@ -85,9 +79,7 @@ xlarge
 - Memory
 - Network Performance
 
----
-
-## General Purpose Instances
+## 🇰🇷 3. General Purpose Instances
 
 General Purpose Instance는 다양한 Workload에서 사용할 수 있도록 CPU, Memory, Network 성능의 균형을 제공한다.
 
@@ -111,9 +103,7 @@ Balanced
 
 강의에서는 General Purpose Instance인 `t2.micro`를 실습에 사용한다.
 
----
-
-## Compute Optimized Instances
+## 🇰🇷 4. Compute Optimized Instances
 
 Compute Optimized Instance는 높은 CPU 성능이 필요한 Workload에 적합하다.
 
@@ -145,9 +135,7 @@ CPU Performance
 
 즉, 많은 계산을 빠르게 처리해야 하는 Workload에 적합하다.
 
----
-
-## Memory Optimized Instances
+## 🇰🇷 5. Memory Optimized Instances
 
 Memory Optimized Instance는 대용량 데이터를 Memory에서 빠르게 처리해야 하는 Workload에 적합하다.
 
@@ -191,9 +179,7 @@ RAM
 ↑
 ```
 
----
-
-## Storage Optimized Instances
+## 🇰🇷 6. Storage Optimized Instances
 
 Storage Optimized Instance는 Local Storage에서 대규모 Dataset을 빠르게 읽고 쓰는 Workload에 적합하다.
 
@@ -224,9 +210,7 @@ High Sequential Read / Write
 
 Storage 처리 성능이 중요한 Workload에 적합하다.
 
----
-
-## Instance Type Comparison
+## 🇰🇷 7. Instance Type Comparison
 
 EC2 Instance Type에 따라 CPU, Memory, Storage, Network Performance 등이 크게 달라진다.
 
@@ -241,9 +225,7 @@ PDF의 예시 비교는 다음과 같다.
 
 이를 통해 Instance Family마다 CPU, Memory, Storage, Network 특성이 다르다는 것을 알 수 있다.
 
----
-
-## Choosing an Instance Type
+## 🇰🇷 8. Choosing an Instance Type
 
 EC2 Instance Type은 Application의 Workload 특성에 따라 선택한다.
 
@@ -261,9 +243,7 @@ Storage-intensive Workload
 → Storage Optimized
 ```
 
----
-
-## Instance Comparison Tools
+## 🇰🇷 9. Instance Comparison Tools
 
 AWS는 다양한 EC2 Instance Type을 제공하기 때문에 실제 환경에서는 Instance 정보를 비교할 필요가 있다.
 
@@ -283,9 +263,7 @@ instances.vantage.sh
 
 AWS 공식 Instance Type 페이지에서도 최신 Instance 종류와 특성을 확인할 수 있다.
 
----
-
-## Summary
+## 🇰🇷 10. Summary
 
 - EC2에는 Workload별로 최적화된 다양한 Instance Type이 있다.
 - Instance 이름은 Class, Generation, Size로 구성된다.
@@ -295,9 +273,7 @@ AWS 공식 Instance Type 페이지에서도 최신 Instance 종류와 특성을 
 - Storage Optimized는 Local Storage의 높은 Read / Write 성능이 필요한 작업에 적합하다.
 - Instance Type마다 vCPU, Memory, Storage, Network Performance가 다르다.
 
----
-
-## Exam Notes
+## 🎯 Exam Notes
 
 - `m5.2xlarge`
   - `m` = Instance Class
@@ -310,10 +286,6 @@ AWS 공식 Instance Type 페이지에서도 최신 Instance 종류와 특성을 
 - Memory Optimized Family의 대표적인 예는 `R`
 - Storage Optimized = High Sequential Read / Write on Local Storage
 - Workload의 특성에 따라 적절한 Instance Type을 선택한다.
-
----
-
-## Practical Example
 
 Application별 Instance 선택 예시
 
@@ -343,238 +315,7 @@ Video Transcoding처럼 CPU 사용량이 높은 작업은 Compute Optimized Inst
 
 반대로 대규모 데이터를 Memory에 올려 처리하는 Database는 Memory Optimized Instance가 적합하다.
 
----
-
-# 🇯🇵 日本語
-
-## EC2 Instance Types
-
-Amazon EC2には、Workloadに応じて最適化されたさまざまなInstance Typeが存在する。
-
-主な種類は以下のとおりである。
-
-- General Purpose
-- Compute Optimized
-- Memory Optimized
-- Storage Optimized
-
----
-
-## Naming Convention
-
-例
-
-```text
-m5.2xlarge
-```
-
-```text
-m
-→ Instance Class
-
-5
-→ Generation
-
-2xlarge
-→ Instance Size
-```
-
----
-
-## General Purpose
-
-Compute、Memory、Networkingのバランスが良い。
-
-主な用途
-
-- Web Server
-- Code Repository
-- Application Server
-
----
-
-## Compute Optimized
-
-CPU性能が重要なWorkloadに適している。
-
-主な用途
-
-- Batch Processing
-- Media Transcoding
-- HPC
-- Machine Learning
-- Gaming Server
-
-代表的なFamilyは `C` で始まる。
-
----
-
-## Memory Optimized
-
-大量のデータをMemory上で処理するWorkloadに適している。
-
-主な用途
-
-- Relational Database
-- NoSQL Database
-- In-Memory Database
-- Distributed Cache
-- Real-Time Processing
-
-代表的なFamilyは `R` である。
-
----
-
-## Storage Optimized
-
-Local Storageへの高速なRead / Writeが必要なWorkloadに適している。
-
-主な用途
-
-- OLTP
-- Database
-- Data Warehouse
-- Distributed File System
-
----
-
-## Summary
-
-- Instance TypeはWorkloadに応じて選択する。
-- General Purposeはバランス型。
-- Compute OptimizedはCPU重視。
-- Memory OptimizedはRAM重視。
-- Storage OptimizedはStorage I/O重視。
-
----
-
-# 🇺🇸 English
-
-## EC2 Instance Types
-
-Amazon EC2 provides multiple instance types optimized for different workloads.
-
-The main categories covered here are:
-
-- General Purpose
-- Compute Optimized
-- Memory Optimized
-- Storage Optimized
-
----
-
-## Naming Convention
-
-Example:
-
-```text
-m5.2xlarge
-```
-
-```text
-m
-→ Instance Class
-
-5
-→ Generation
-
-2xlarge
-→ Instance Size
-```
-
----
-
-## General Purpose
-
-General Purpose instances provide a balance of compute, memory, and networking.
-
-Typical use cases:
-
-- Web servers
-- Code repositories
-- Application servers
-
----
-
-## Compute Optimized
-
-Compute Optimized instances are designed for CPU-intensive workloads.
-
-Typical use cases:
-
-- Batch processing
-- Media transcoding
-- HPC
-- Machine learning
-- Dedicated gaming servers
-
-These instance families commonly start with `C`.
-
----
-
-## Memory Optimized
-
-Memory Optimized instances are designed for workloads that process large datasets in memory.
-
-Typical use cases:
-
-- Relational databases
-- NoSQL databases
-- Distributed caches
-- In-memory databases
-- Real-time processing
-
-A common family is `R`.
-
----
-
-## Storage Optimized
-
-Storage Optimized instances are designed for workloads requiring high sequential read and write access to local storage.
-
-Typical use cases:
-
-- OLTP
-- Databases
-- Data warehouses
-- Distributed file systems
-
----
-
-## Summary
-
-- Choose an EC2 Instance Type based on the workload.
-- General Purpose balances compute, memory, and networking.
-- Compute Optimized focuses on CPU performance.
-- Memory Optimized focuses on RAM.
-- Storage Optimized focuses on local storage performance.
-
----
-
-## Vocabulary
-
-| English | 한국어 | 日本語 |
-|---|---|---|
-| Instance Type | 인스턴스 유형 | インスタンスタイプ |
-| Instance Class | 인스턴스 클래스 | インスタンスクラス |
-| Generation | 세대 | 世代 |
-| Instance Size | 인스턴스 크기 | インスタンスサイズ |
-| General Purpose | 범용 | 汎用 |
-| Compute Optimized | 컴퓨팅 최적화 | コンピューティング最適化 |
-| Memory Optimized | 메모리 최적화 | メモリ最適化 |
-| Storage Optimized | 스토리지 최적화 | ストレージ最適化 |
-| Workload | 워크로드 | ワークロード |
-| Batch Processing | 일괄 처리 | バッチ処理 |
-| Media Transcoding | 미디어 트랜스코딩 | メディアトランスコーディング |
-| High Performance Computing | 고성능 컴퓨팅 | 高性能コンピューティング |
-| In-Memory Database | 인메모리 데이터베이스 | インメモリデータベース |
-| Data Warehouse | 데이터 웨어하우스 | データウェアハウス |
-| OLTP | 온라인 트랜잭션 처리 | オンライントランザクション処理 |
-| vCPU | 가상 CPU | 仮想CPU |
-
----
-
-## Review Questions
+## 📝 Review Questions
 
 1. `m5.2xlarge`에서 `m`, `5`, `2xlarge`는 각각 무엇을 의미하는가?
 
@@ -595,3 +336,202 @@ Typical use cases:
 9. In-Memory Database에는 어떤 Instance Category가 적합한가?
 
 10. EC2 Instance Type을 선택할 때 확인해야 하는 주요 자원은 무엇인가?
+
+## 🇯🇵 日本語 Summary
+
+### EC2 Instance Types
+
+Amazon EC2には、Workloadに応じて最適化されたさまざまなInstance Typeが存在する。
+
+主な種類は以下のとおりである。
+
+- General Purpose
+- Compute Optimized
+- Memory Optimized
+- Storage Optimized
+
+### Naming Convention
+
+例
+
+```text
+m5.2xlarge
+```
+
+```text
+m
+→ Instance Class
+
+5
+→ Generation
+
+2xlarge
+→ Instance Size
+```
+
+### General Purpose
+
+Compute、Memory、Networkingのバランスが良い。
+
+主な用途
+
+- Web Server
+- Code Repository
+- Application Server
+
+### Compute Optimized
+
+CPU性能が重要なWorkloadに適している。
+
+主な用途
+
+- Batch Processing
+- Media Transcoding
+- HPC
+- Machine Learning
+- Gaming Server
+
+代表的なFamilyは `C` で始まる。
+
+### Memory Optimized
+
+大量のデータをMemory上で処理するWorkloadに適している。
+
+主な用途
+
+- Relational Database
+- NoSQL Database
+- In-Memory Database
+- Distributed Cache
+- Real-Time Processing
+
+代表的なFamilyは `R` である。
+
+### Storage Optimized
+
+Local Storageへの高速なRead / Writeが必要なWorkloadに適している。
+
+主な用途
+
+- OLTP
+- Database
+- Data Warehouse
+- Distributed File System
+
+### Summary
+
+- Instance TypeはWorkloadに応じて選択する。
+- General Purposeはバランス型。
+- Compute OptimizedはCPU重視。
+- Memory OptimizedはRAM重視。
+- Storage OptimizedはStorage I/O重視。
+
+## 🇺🇸 English Summary
+
+### EC2 Instance Types
+
+Amazon EC2 provides multiple instance types optimized for different workloads.
+
+The main categories covered here are:
+
+- General Purpose
+- Compute Optimized
+- Memory Optimized
+- Storage Optimized
+
+### Naming Convention
+
+Example:
+
+```text
+m5.2xlarge
+```
+
+```text
+m
+→ Instance Class
+
+5
+→ Generation
+
+2xlarge
+→ Instance Size
+```
+
+### General Purpose
+
+General Purpose instances provide a balance of compute, memory, and networking.
+
+Typical use cases:
+
+- Web servers
+- Code repositories
+- Application servers
+
+### Compute Optimized
+
+Compute Optimized instances are designed for CPU-intensive workloads.
+
+Typical use cases:
+
+- Batch processing
+- Media transcoding
+- HPC
+- Machine learning
+- Dedicated gaming servers
+
+These instance families commonly start with `C`.
+
+### Memory Optimized
+
+Memory Optimized instances are designed for workloads that process large datasets in memory.
+
+Typical use cases:
+
+- Relational databases
+- NoSQL databases
+- Distributed caches
+- In-memory databases
+- Real-time processing
+
+A common family is `R`.
+
+### Storage Optimized
+
+Storage Optimized instances are designed for workloads requiring high sequential read and write access to local storage.
+
+Typical use cases:
+
+- OLTP
+- Databases
+- Data warehouses
+- Distributed file systems
+
+### Summary
+
+- Choose an EC2 Instance Type based on the workload.
+- General Purpose balances compute, memory, and networking.
+- Compute Optimized focuses on CPU performance.
+- Memory Optimized focuses on RAM.
+- Storage Optimized focuses on local storage performance.
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| Instance Type | 인스턴스 유형 | インスタンスタイプ |
+| Instance Class | 인스턴스 클래스 | インスタンスクラス |
+| Generation | 세대 | 世代 |
+| Instance Size | 인스턴스 크기 | インスタンスサイズ |
+| General Purpose | 범용 | 汎用 |
+| Compute Optimized | 컴퓨팅 최적화 | コンピューティング最適化 |
+| Memory Optimized | 메모리 최적화 | メモリ最適化 |
+| Storage Optimized | 스토리지 최적화 | ストレージ最適化 |
+| Workload | 워크로드 | ワークロード |
+| Batch Processing | 일괄 처리 | バッチ処理 |
+| Media Transcoding | 미디어 트랜스코딩 | メディアトランスコーディング |
+| High Performance Computing | 고성능 컴퓨팅 | 高性能コンピューティング |
+| In-Memory Database | 인메모리 데이터베이스 | インメモリデータベース |
+| Data Warehouse | 데이터 웨어하우스 | データウェアハウス |
+| OLTP | 온라인 트랜잭션 처리 | オンライントランザクション処理 |
+| vCPU | 가상 CPU | 仮想CPU |

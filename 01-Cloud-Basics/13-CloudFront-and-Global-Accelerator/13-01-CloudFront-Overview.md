@@ -1,4 +1,4 @@
-# 13-01. CloudFront Overview
+# 📘 13-01. CloudFront Overview
 
 ## 🇰🇷 1. CloudFront란?
 
@@ -26,9 +26,7 @@ Caching
 
 시험에서 `CDN`이 나오면 CloudFront를 우선 떠올립니다.
 
----
-
-## 2. Edge Location
+## 🇰🇷 2. Edge Location
 
 CloudFront는 Origin에서 모든 사용자에게 직접 콘텐츠를 보내는 대신 전 세계에 분산된 Edge Location을 사용합니다.
 
@@ -44,9 +42,7 @@ Nearby User
 
 한 번 가져온 콘텐츠는 Edge에 Cache될 수 있기 때문에 같은 지역의 다른 사용자가 동일한 콘텐츠를 요청할 때 Origin까지 다시 갈 필요가 없습니다.
 
----
-
-## 3. Cache Hit / Cache Miss
+## 🇰🇷 3. Cache Hit / Cache Miss
 
 ### Cache Hit
 
@@ -84,9 +80,7 @@ User
 
 가져온 콘텐츠는 Cache되어 이후 요청에 사용할 수 있습니다.
 
----
-
-## 4. Origin
+## 🇰🇷 4. Origin
 
 Origin은 CloudFront가 원본 데이터를 가져오는 Backend입니다.
 
@@ -104,9 +98,7 @@ CloudFront
 
 > **Origin = CloudFront가 원본 데이터를 가져오는 곳**
 
----
-
-## 5. CloudFront는 읽기 전용인가?
+## 🇰🇷 5. CloudFront는 읽기 전용인가?
 
 아닙니다.
 
@@ -121,9 +113,7 @@ CloudFront
 = Global Content Delivery
 ```
 
----
-
-## 6. CloudFront vs S3 CRR
+## 🇰🇷 6. CloudFront vs S3 CRR
 
 CloudFront와 S3 Cross-Region Replication은 목적이 다릅니다.
 
@@ -142,9 +132,7 @@ S3 CRR
 → 다른 Region에 실제 Object를 복제
 ```
 
----
-
-## 🔑 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 CloudFront
@@ -168,46 +156,6 @@ CloudFront ≠ S3 CRR
 한 줄 정리:
 
 > **전 세계 Edge Location에 콘텐츠를 캐싱하여 낮은 Latency로 제공한다 = CloudFront**
-
----
-
-## 🇯🇵 日本語 Summary
-
-Amazon CloudFrontはAWSのCDNサービスです。
-
-コンテンツを世界中のEdge Locationにキャッシュし、ユーザーに近い場所から配信することでLatencyを削減します。
-
-Cache Hitの場合はEdgeから直接配信し、Cache Missの場合はOriginからコンテンツを取得します。
-
-OriginにはS3、EC2、ALB、その他のHTTP Backendなどを利用できます。
-
----
-
-## 🇺🇸 English Summary
-
-Amazon CloudFront is AWS's Content Delivery Network service.
-
-It caches content at global Edge Locations to reduce latency.
-
-A cache hit serves content directly from the Edge, while a cache miss retrieves content from the origin.
-
-Origins can include S3, EC2, ALB, and other HTTP backends.
-
----
-
-## 📚 Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| CDN | コンテンツ配信ネットワーク | 콘텐츠 전송 네트워크 |
-| Edge Location | エッジロケーション | 엣지 로케이션 |
-| Origin | オリジン | 원본 |
-| Cache | キャッシュ | 캐시 |
-| Cache Hit | キャッシュヒット | 캐시 적중 |
-| Cache Miss | キャッシュミス | 캐시 미스 |
-| Latency | レイテンシー | 지연 시간 |
-
----
 
 ## 📝 Review Questions
 
@@ -238,3 +186,35 @@ CloudFront Edge에 이미 콘텐츠가 있으므로 Origin까지 가지 않고 E
 CloudFront는 Edge Cache를 이용한 콘텐츠 전송 서비스이고, CRR은 실제 S3 Object를 다른 Region으로 복제하는 기능입니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+Amazon CloudFrontはAWSのCDNサービスです。
+
+コンテンツを世界中のEdge Locationにキャッシュし、ユーザーに近い場所から配信することでLatencyを削減します。
+
+Cache Hitの場合はEdgeから直接配信し、Cache Missの場合はOriginからコンテンツを取得します。
+
+OriginにはS3、EC2、ALB、その他のHTTP Backendなどを利用できます。
+
+## 🇺🇸 English Summary
+
+Amazon CloudFront is AWS's Content Delivery Network service.
+
+It caches content at global Edge Locations to reduce latency.
+
+A cache hit serves content directly from the Edge, while a cache miss retrieves content from the origin.
+
+Origins can include S3, EC2, ALB, and other HTTP backends.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| CDN | コンテンツ配信ネットワーク | 콘텐츠 전송 네트워크 |
+| Edge Location | エッジロケーション | 엣지 로케이션 |
+| Origin | オリジン | 원본 |
+| Cache | キャッシュ | 캐시 |
+| Cache Hit | キャッシュヒット | 캐시 적중 |
+| Cache Miss | キャッシュミス | 캐시 미스 |
+| Latency | レイテンシー | 지연 시간 |

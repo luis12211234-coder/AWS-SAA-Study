@@ -1,6 +1,6 @@
-# Amazon Route 53
+# 📘 08-01. Amazon Route 53
 
-## 1. DNS Basics
+## 🇰🇷 1. DNS Basics
 
 DNS(Domain Name System)는 사람이 읽기 쉬운 **도메인 이름을 IP 주소로 변환**하는 시스템이다.
 
@@ -37,9 +37,7 @@ Web Server
 - **Authoritative DNS Server**: 실제 DNS Record를 가지고 최종 응답
 - **DNS Resolver**: DNS 조회를 수행하고 결과를 캐싱
 
----
-
-## 2. Amazon Route 53
+## 🇰🇷 2. Amazon Route 53
 
 Amazon Route 53은 AWS의 **고가용성, 확장 가능한 Fully Managed Authoritative DNS 서비스**이다.
 
@@ -77,9 +75,7 @@ Registrar의 NS Records를
 Route 53 Name Servers로 변경
 ```
 
----
-
-## 3. Hosted Zone
+## 🇰🇷 3. Hosted Zone
 
 Hosted Zone은 특정 Domain과 Subdomain의 **DNS Records를 관리하는 영역(Container)**이다.
 
@@ -146,9 +142,7 @@ Private Hosted Zone
 → VPC 내부
 ```
 
----
-
-## 4. Route 53 DNS Records
+## 🇰🇷 4. Route 53 DNS Records
 
 Route 53의 DNS Record에는 다음과 같은 정보가 포함된다.
 
@@ -167,9 +161,7 @@ SAA에서 반드시 알아야 할 주요 Record Type:
 | CNAME | Hostname → 다른 Hostname |
 | NS | Hosted Zone의 Name Server |
 
----
-
-## 5. A / AAAA Records
+## 🇰🇷 5. A / AAAA Records
 
 ### A Record
 
@@ -198,9 +190,7 @@ A    → IPv4
 AAAA → IPv6
 ```
 
----
-
-## 6. CNAME Record
+## 🇰🇷 6. CNAME Record
 
 CNAME은 Hostname을 **다른 Hostname에 매핑**한다.
 
@@ -226,7 +216,6 @@ CNAME 자체가 최종 IP를 지정하는 것이 아니다.
 app.hangbin.com
        ↓ CNAME
 myapp.service.com
-
 
 외부 서비스 DNS
 
@@ -274,9 +263,7 @@ api.hangbin.com
 → CNAME ⭕
 ```
 
----
-
-## 7. Route 53 Alias Record
+## 🇰🇷 7. Route 53 Alias Record
 
 Alias Record는 Route 53에서 제공하는 기능으로, Hostname을 **지원되는 AWS Resource에 매핑**할 수 있다.
 
@@ -338,9 +325,7 @@ EC2 DNS Name
 → Alias Target ❌
 ```
 
----
-
-## 8. CNAME vs Alias
+## 🇰🇷 8. CNAME vs Alias
 
 | 특징 | CNAME | Alias |
 |---|---|---|
@@ -366,9 +351,7 @@ hangbin.com → ALB
 
 **Zone Apex + AWS Resource → Alias**를 우선적으로 떠올린다.
 
----
-
-## 9. TTL (Time To Live)
+## 🇰🇷 9. TTL (Time To Live)
 
 TTL은 DNS Resolver가 **DNS 응답을 캐시에 유지하는 시간**이다.
 
@@ -461,9 +444,7 @@ Low TTL
 
 Alias Record는 TTL을 사용자가 직접 설정하지 않는다.
 
----
-
-## 10. TTL Hands-on
+## 🇰🇷 10. TTL Hands-on
 
 다음 A Record를 생성했다.
 
@@ -517,9 +498,7 @@ Singapore EC2 IP
 
 새로운 Record가 반영된다.
 
----
-
-## 11. Route 53 Hands-on Architecture
+## 🇰🇷 11. Route 53 Hands-on Architecture
 
 Route 53의 Routing 기능을 테스트하기 위해 서로 다른 세 Region에 EC2를 생성했다.
 
@@ -586,15 +565,121 @@ DNS Resolution 성공
 Application 접속 성공
 ```
 
----
+## 📝 Review Questions
 
-# 日本語まとめ
+#### Q1. Hosted Zone과 Zone Apex의 차이는?
 
-## Amazon Route 53
+<details>
+<summary>Answer</summary>
+
+Hosted Zone은 Domain과 Subdomain의 DNS Records를 관리하는 **영역 전체**이다.
+
+Zone Apex는 그 Hosted Zone의 **최상위 DNS 이름 자체**이다.
+
+```text
+Hosted Zone: example.com
+
+example.com
+↑
+Zone Apex
+```
+
+</details>
+
+#### Q2. A Record와 CNAME Record의 차이는?
+
+<details>
+<summary>Answer</summary>
+
+```text
+A
+Hostname → IPv4
+
+CNAME
+Hostname → Another Hostname
+```
+
+CNAME 대상 Hostname은 다시 DNS Resolution을 통해 최종 IP를 찾는다.
+
+</details>
+
+#### Q3. `example.com` 자체를 ALB에 연결해야 한다. CNAME과 Alias 중 무엇을 사용하는가?
+
+<details>
+<summary>Answer</summary>
+
+**Alias Record**
+
+`example.com`은 Zone Apex이므로 CNAME을 사용할 수 없다.
+
+Route 53 Alias는 Zone Apex에서 사용할 수 있으며 ALB를 Target으로 지정할 수 있다.
+
+</details>
+
+#### Q4. High TTL과 Low TTL의 차이는?
+
+<details>
+<summary>Answer</summary>
+
+```text
+High TTL
+→ Cache 오래 유지
+→ DNS Query 감소
+→ Record 변경 반영 느림
+
+Low TTL
+→ Cache 짧게 유지
+→ DNS Query 증가
+→ Record 변경 반영 빠름
+```
+
+</details>
+
+#### Q5. Public Hosted Zone과 Private Hosted Zone의 차이는?
+
+<details>
+<summary>Answer</summary>
+
+Public Hosted Zone은 Internet에서 조회 가능한 DNS Records를 관리한다.
+
+Private Hosted Zone은 연결된 VPC 내부에서 사용하는 Private DNS Records를 관리한다.
+
+</details>
+
+#### Q6. Route 53 Alias Record의 주요 특징은?
+
+<details>
+<summary>Answer</summary>
+
+- 지원되는 AWS Resource를 Target으로 지정
+- Zone Apex에서 사용 가능
+- Query 비용 없음
+- Native Health Check 지원
+- TTL을 직접 설정하지 않음
+- AWS Resource의 IP 변경을 자동으로 반영
+
+</details>
+
+#### Q7. Route 53에서 A Record의 IP를 변경했는데 사용자가 잠시 이전 서버에 계속 접속한다. 가장 먼저 확인할 것은?
+
+<details>
+<summary>Answer</summary>
+
+**TTL과 DNS Cache**
+
+기존 DNS 응답의 TTL이 아직 만료되지 않았다면 Resolver가 이전 IP를 Cache하고 있을 수 있다.
+
+TTL이 만료된 후 Route 53을 다시 조회하면 새로운 Record 값이 반영된다.
+
+</details>
+
+## 🇯🇵 日本語 Summary
+
+### Amazon Route 53
 
 Amazon Route 53 は、高可用性・スケーラビリティを持つ AWS のマネージド DNS サービスです。
 
-### Hosted Zone
+#### Hosted Zone
 
 Hosted Zone は、Domain と Subdomain の DNS Records を管理する領域です。
 
@@ -609,7 +694,7 @@ api.example.com   ← Subdomain
 - Public Hosted Zone: Internet 向け
 - Private Hosted Zone: VPC 内部向け
 
-### DNS Records
+#### DNS Records
 
 ```text
 A     → Hostname → IPv4
@@ -620,7 +705,7 @@ NS    → Name Server
 
 CNAME は Zone Apex では使用できません。
 
-### Alias
+#### Alias
 
 Alias は Route 53 の機能で、AWS Resource を Target にできます。
 
@@ -634,7 +719,7 @@ Zone Apex → ⭕
 
 ALB、CloudFront、API Gateway、S3 Website などを Target にできます。
 
-### TTL
+#### TTL
 
 TTL は DNS Record を Resolver が Cache する時間です。
 
@@ -648,15 +733,13 @@ Low TTL
 → 更新反映が速い
 ```
 
----
+## 🇺🇸 English Summary
 
-# English Summary
-
-## Amazon Route 53
+### Amazon Route 53
 
 Amazon Route 53 is a highly available and scalable managed authoritative DNS service.
 
-### Hosted Zone
+#### Hosted Zone
 
 A Hosted Zone is a container for DNS Records associated with a domain and its subdomains.
 
@@ -668,7 +751,7 @@ www.example.com   ← Subdomain
 api.example.com   ← Subdomain
 ```
 
-### Record Types
+#### Record Types
 
 ```text
 A     → Hostname to IPv4
@@ -679,13 +762,13 @@ NS    → Name Servers
 
 A CNAME cannot be created at the Zone Apex.
 
-### Alias Record
+#### Alias Record
 
 Route 53 Alias Records can route traffic to supported AWS resources and can be used at the Zone Apex.
 
 Common targets include ELB, CloudFront, API Gateway, S3 Website, and Global Accelerator.
 
-### TTL
+#### TTL
 
 TTL determines how long DNS Resolvers cache a DNS response.
 
@@ -699,9 +782,7 @@ Low TTL
 → Faster DNS changes
 ```
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -723,113 +804,3 @@ Low TTL
 | Public Hosted Zone | パブリックホストゾーン | 퍼블릭 호스팅 존 |
 | Private Hosted Zone | プライベートホストゾーン | 프라이빗 호스팅 존 |
 | DNS Cache | DNS キャッシュ | DNS 캐시 |
-
----
-
-# Review Questions
-
-### Q1. Hosted Zone과 Zone Apex의 차이는?
-
-<details>
-<summary>Answer</summary>
-
-Hosted Zone은 Domain과 Subdomain의 DNS Records를 관리하는 **영역 전체**이다.
-
-Zone Apex는 그 Hosted Zone의 **최상위 DNS 이름 자체**이다.
-
-```text
-Hosted Zone: example.com
-
-example.com
-↑
-Zone Apex
-```
-
-</details>
-
-### Q2. A Record와 CNAME Record의 차이는?
-
-<details>
-<summary>Answer</summary>
-
-```text
-A
-Hostname → IPv4
-
-CNAME
-Hostname → Another Hostname
-```
-
-CNAME 대상 Hostname은 다시 DNS Resolution을 통해 최종 IP를 찾는다.
-
-</details>
-
-### Q3. `example.com` 자체를 ALB에 연결해야 한다. CNAME과 Alias 중 무엇을 사용하는가?
-
-<details>
-<summary>Answer</summary>
-
-**Alias Record**
-
-`example.com`은 Zone Apex이므로 CNAME을 사용할 수 없다.
-
-Route 53 Alias는 Zone Apex에서 사용할 수 있으며 ALB를 Target으로 지정할 수 있다.
-
-</details>
-
-### Q4. High TTL과 Low TTL의 차이는?
-
-<details>
-<summary>Answer</summary>
-
-```text
-High TTL
-→ Cache 오래 유지
-→ DNS Query 감소
-→ Record 변경 반영 느림
-
-Low TTL
-→ Cache 짧게 유지
-→ DNS Query 증가
-→ Record 변경 반영 빠름
-```
-
-</details>
-
-### Q5. Public Hosted Zone과 Private Hosted Zone의 차이는?
-
-<details>
-<summary>Answer</summary>
-
-Public Hosted Zone은 Internet에서 조회 가능한 DNS Records를 관리한다.
-
-Private Hosted Zone은 연결된 VPC 내부에서 사용하는 Private DNS Records를 관리한다.
-
-</details>
-
-### Q6. Route 53 Alias Record의 주요 특징은?
-
-<details>
-<summary>Answer</summary>
-
-- 지원되는 AWS Resource를 Target으로 지정
-- Zone Apex에서 사용 가능
-- Query 비용 없음
-- Native Health Check 지원
-- TTL을 직접 설정하지 않음
-- AWS Resource의 IP 변경을 자동으로 반영
-
-</details>
-
-### Q7. Route 53에서 A Record의 IP를 변경했는데 사용자가 잠시 이전 서버에 계속 접속한다. 가장 먼저 확인할 것은?
-
-<details>
-<summary>Answer</summary>
-
-**TTL과 DNS Cache**
-
-기존 DNS 응답의 TTL이 아직 만료되지 않았다면 Resolver가 이전 IP를 Cache하고 있을 수 있다.
-
-TTL이 만료된 후 Route 53을 다시 조회하면 새로운 Record 값이 반영된다.
-
-</details>

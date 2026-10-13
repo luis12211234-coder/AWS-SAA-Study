@@ -1,4 +1,4 @@
-# 11-04. Amazon S3 Performance
+# 📘 11-04. Amazon S3 Performance
 
 ## 🇰🇷 1. S3 Baseline Performance
 
@@ -23,9 +23,7 @@ Write 계열 → 3,500
 Read 계열  → 5,500
 ```
 
----
-
-## 2. Prefix란?
+## 🇰🇷 2. Prefix란?
 
 S3에는 실제 Directory 구조가 존재하지 않습니다.
 
@@ -66,9 +64,7 @@ images/
 
 콘솔에서는 Folder처럼 보일 수 있지만 실제 S3 내부에서는 Key의 앞부분 문자열입니다.
 
----
-
-## 3. Prefix와 Performance
+## 🇰🇷 3. Prefix와 Performance
 
 다음 Object들이 있다고 가정합니다.
 
@@ -94,9 +90,7 @@ GET
 
 중요한 점은 **Object 하나당 5,500이 아니라 Prefix에 대한 Request Rate**라는 것입니다.
 
----
-
-## 4. Multiple Prefixes
+## 🇰🇷 4. Multiple Prefixes
 
 여러 Prefix에 Request를 분산하면 전체 Request Rate를 더 크게 확장할 수 있습니다.
 
@@ -147,9 +141,7 @@ Prefix D ← 0
 
 위와 같은 상황에서는 여러 Prefix를 활용한 병렬화의 이점을 얻지 못합니다.
 
----
-
-## 5. Multipart Upload
+## 🇰🇷 5. Multipart Upload
 
 대용량 Object를 효율적으로 업로드하기 위한 기능입니다.
 
@@ -184,9 +176,7 @@ Part1   Part2  Part3  Part4
 → Multipart Upload 필요
 ```
 
----
-
-## 6. S3 Transfer Acceleration
+## 🇰🇷 6. S3 Transfer Acceleration
 
 Transfer Acceleration은 사용자와 S3 Bucket 사이의 장거리 데이터 전송을 가속하기 위한 기능입니다.
 
@@ -230,9 +220,7 @@ Large File Transfer
 → S3 Transfer Acceleration
 ```
 
----
-
-## 7. Multipart Upload와 Transfer Acceleration
+## 🇰🇷 7. Multipart Upload와 Transfer Acceleration
 
 둘은 서로 다른 문제를 해결합니다.
 
@@ -259,9 +247,7 @@ Part 4 ─┘   Optimized Network
               S3 Bucket
 ```
 
----
-
-## 8. S3 Byte-Range Fetch
+## 🇰🇷 8. S3 Byte-Range Fetch
 
 Byte-Range Fetch는 Object 전체가 아니라 특정 Byte Range만 GET하는 방법입니다.
 
@@ -279,9 +265,7 @@ Large Object
 
 여러 Range를 병렬로 가져오면 Large Object의 Download Throughput을 높일 수 있습니다.
 
----
-
-## 9. Retry 효율
+## 🇰🇷 9. Retry 효율
 
 Object 전체를 하나의 Request로 다운로드하는 대신 여러 Range로 나누면 일부 Request가 실패했을 때 해당 Range만 다시 요청할 수 있습니다.
 
@@ -296,9 +280,7 @@ Range 4 ✅
 
 따라서 실패 시 복구 효율도 향상될 수 있습니다.
 
----
-
-## 10. Partial Object Retrieval
+## 🇰🇷 10. Partial Object Retrieval
 
 Byte-Range Fetch는 성능 향상뿐 아니라 Object의 일부만 필요한 경우에도 사용할 수 있습니다.
 
@@ -321,9 +303,7 @@ GET first 50 Bytes
 
 만 수행할 수 있습니다.
 
----
-
-## 11. Performance Mental Model
+## 🇰🇷 11. Performance Mental Model
 
 S3 Performance 문제는 어떤 병목을 해결하려는지 먼저 판단합니다.
 
@@ -343,9 +323,7 @@ S3 Performance 문제는 어떤 병목을 해결하려는지 먼저 판단합니
 
 이 네 기능은 서로 경쟁하는 기능이 아니라 **서로 다른 성능 문제를 해결하는 방법**입니다.
 
----
-
-## 🔑 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 Prefix
@@ -366,55 +344,6 @@ Transfer Acceleration
 Byte-Range Fetch
 → Parallel / Partial Download
 ```
-
----
-
-## 🇯🇵 日本語 Summary
-
-Amazon S3は高いリクエストレートに自動的にスケールします。
-
-主なパフォーマンス最適化方法：
-
-- Prefixごとにリクエストを分散
-- Multipart Uploadによる大容量ファイルの並列アップロード
-- Transfer Accelerationによる長距離転送の高速化
-- Byte-Range Fetchによる大容量オブジェクトの並列・部分ダウンロード
-
-Multipart UploadとTransfer Accelerationは異なる問題を解決する機能であり、必要に応じて併用できます。
-
----
-
-## 🇺🇸 English Summary
-
-Amazon S3 automatically scales to high request rates.
-
-Important performance concepts include:
-
-- distributing requests across prefixes
-- using Multipart Upload for large object uploads
-- using Transfer Acceleration for long-distance transfers
-- using Byte-Range Fetches for parallel or partial downloads
-
-Multipart Upload and Transfer Acceleration solve different performance problems and can be used together.
-
----
-
-## 📚 Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Prefix | プレフィックス | 접두사 |
-| Request Rate | リクエストレート | 요청 처리율 |
-| Multipart Upload | マルチパートアップロード | 멀티파트 업로드 |
-| Transfer Acceleration | 転送高速化 | 전송 가속 |
-| Edge Location | エッジロケーション | 엣지 로케이션 |
-| Byte-Range Fetch | バイト範囲取得 | 바이트 범위 가져오기 |
-| Throughput | スループット | 처리량 |
-| Parallelization | 並列化 | 병렬화 |
-| Retry | 再試行 | 재시도 |
-| Partial Retrieval | 部分取得 | 부분 가져오기 |
-
----
 
 ## 📝 Review Questions
 
@@ -452,3 +381,44 @@ S3 Transfer Acceleration을 고려할 수 있습니다.
 Byte-Range Fetch를 사용할 수 있습니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+Amazon S3は高いリクエストレートに自動的にスケールします。
+
+主なパフォーマンス最適化方法：
+
+- Prefixごとにリクエストを分散
+- Multipart Uploadによる大容量ファイルの並列アップロード
+- Transfer Accelerationによる長距離転送の高速化
+- Byte-Range Fetchによる大容量オブジェクトの並列・部分ダウンロード
+
+Multipart UploadとTransfer Accelerationは異なる問題を解決する機能であり、必要に応じて併用できます。
+
+## 🇺🇸 English Summary
+
+Amazon S3 automatically scales to high request rates.
+
+Important performance concepts include:
+
+- distributing requests across prefixes
+- using Multipart Upload for large object uploads
+- using Transfer Acceleration for long-distance transfers
+- using Byte-Range Fetches for parallel or partial downloads
+
+Multipart Upload and Transfer Acceleration solve different performance problems and can be used together.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Prefix | プレフィックス | 접두사 |
+| Request Rate | リクエストレート | 요청 처리율 |
+| Multipart Upload | マルチパートアップロード | 멀티파트 업로드 |
+| Transfer Acceleration | 転送高速化 | 전송 가속 |
+| Edge Location | エッジロケーション | 엣지 로케이션 |
+| Byte-Range Fetch | バイト範囲取得 | 바이트 범위 가져오기 |
+| Throughput | スループット | 처리량 |
+| Parallelization | 並列化 | 병렬화 |
+| Retry | 再試行 | 재시도 |
+| Partial Retrieval | 部分取得 | 부분 가져오기 |

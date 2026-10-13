@@ -1,6 +1,6 @@
-# EBS Multi-Attach
+# 📘 05-06. EBS Multi-Attach
 
-## Overview
+## 🇰🇷 1. Overview
 
 **EBS Multi-Attach**는 하나의 EBS Volume을
 같은 Availability Zone에 있는 여러 EC2 Instance에
@@ -17,9 +17,7 @@
 각 EC2 Instance는 동일한 EBS Volume에 대해
 Read / Write 권한을 가질 수 있다.
 
----
-
-# 1. Supported Volume Types
+## 🇰🇷 2. Supported Volume Types
 
 Multi-Attach는 모든 EBS Volume에서 사용할 수 있는 기능이 아니다.
 
@@ -44,9 +42,7 @@ EBS Multi-Attach
 → io1 / io2 family
 ```
 
----
-
-# 2. Same Availability Zone Only
+## 🇰🇷 3. Same Availability Zone Only
 
 EBS Volume은 Availability Zone에 종속된다.
 
@@ -72,9 +68,7 @@ Multi-Attach
 ≠ Multi-AZ
 ```
 
----
-
-# 3. Read and Write Access
+## 🇰🇷 4. Read and Write Access
 
 Multi-Attach된 모든 EC2 Instance는
 같은 EBS Volume에 Read / Write 작업을 수행할 수 있다.
@@ -90,9 +84,7 @@ EC2-C ─┘
 따라서 애플리케이션은
 **Concurrent Write**를 안전하게 관리할 수 있어야 한다.
 
----
-
-# 4. Cluster-Aware File System
+## 🇰🇷 5. Cluster-Aware File System
 
 여러 EC2가 같은 Volume에 동시에 접근하기 때문에
 Cluster 환경을 인식할 수 있는 File System이 필요하다.
@@ -112,9 +104,7 @@ EXT4
 
 등은 Multi-Attach용 Cluster File System이 아니라고 설명한다.
 
----
-
-# 5. Use Cases
+## 🇰🇷 6. Use Cases
 
 대표적인 사용 사례:
 
@@ -133,9 +123,7 @@ Teradata
 특히 여러 EC2가 하나의 고성능 Storage를 공유해야 하는
 Clustered Application에서 사용할 수 있다.
 
----
-
-# 6. Limits
+## 🇰🇷 7. Limits
 
 강의 기준:
 
@@ -147,9 +135,25 @@ Maximum
 하나의 Multi-Attach EBS Volume을
 동시에 최대 16개의 EC2 Instance에 연결할 수 있다.
 
----
+## 🇰🇷 8. Summary
 
-# Exam Notes
+```text
+EBS Multi-Attach
+= One EBS Volume
++ Multiple EC2 Instances
++ Same AZ
+```
+
+핵심 암기:
+
+```text
+io1 / io2
+Same AZ
+16 Instances
+Cluster-Aware File System
+```
+
+## 🎯 Exam Notes
 
 가장 중요한 조건:
 
@@ -180,29 +184,41 @@ Normal XFS / EXT4 for shared concurrent access
 → X
 ```
 
----
+## 📝 Review Questions
 
-# Summary
+#### Q1. EBS Multi-Attach란?
 
-```text
-EBS Multi-Attach
-= One EBS Volume
-+ Multiple EC2 Instances
-+ Same AZ
-```
+하나의 EBS Volume을
+여러 EC2 Instance에 동시에 연결하는 기능이다.
 
-핵심 암기:
+#### Q2. 어떤 EBS Volume Type에서 사용할 수 있는가?
 
 ```text
 io1 / io2
-Same AZ
-16 Instances
-Cluster-Aware File System
 ```
 
----
+#### Q3. 서로 다른 Availability Zone의 EC2에도 연결할 수 있는가?
 
-# Japanese Summary
+아니다.
+
+같은 Availability Zone의 EC2에만 연결할 수 있다.
+
+#### Q4. 강의 기준 최대 몇 개의 EC2에 연결할 수 있는가?
+
+```text
+16 Instances
+```
+
+#### Q5. 왜 Cluster-Aware File System이 필요한가?
+
+여러 EC2 Instance가 동일한 Volume에
+동시에 접근하고 Write할 수 있기 때문이다.
+
+#### Q6. Multi-Attach를 사용하면 애플리케이션이 고려해야 하는 것은?
+
+Concurrent Write 작업을 안전하게 관리해야 한다.
+
+## 🇯🇵 日本語 Summary
 
 **EBS Multi-Attach**は、
 1つのEBS Volumeを同じAvailability Zone内の
@@ -228,9 +244,7 @@ Cluster-Aware File System
 複数のInstanceが同時に書き込むため、
 Application側でもConcurrent Writeを管理する必要があります。
 
----
-
-# English Summary
+## 🇺🇸 English Summary
 
 **EBS Multi-Attach** allows a single EBS volume
 to be attached to multiple EC2 instances in the same Availability Zone.
@@ -254,9 +268,7 @@ Cluster-aware file system
 
 Applications must also manage concurrent write operations.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -269,39 +281,3 @@ Applications must also manage concurrent write operations.
 | Availability Zone | アベイラビリティゾーン | AWS Region 내부의 독립된 데이터센터 영역 |
 | Read Permission | 読み取り権限 | 데이터를 읽을 수 있는 권한 |
 | Write Permission | 書き込み権限 | 데이터를 쓸 수 있는 권한 |
-
----
-
-# Review Questions
-
-### Q1. EBS Multi-Attach란?
-
-하나의 EBS Volume을
-여러 EC2 Instance에 동시에 연결하는 기능이다.
-
-### Q2. 어떤 EBS Volume Type에서 사용할 수 있는가?
-
-```text
-io1 / io2
-```
-
-### Q3. 서로 다른 Availability Zone의 EC2에도 연결할 수 있는가?
-
-아니다.
-
-같은 Availability Zone의 EC2에만 연결할 수 있다.
-
-### Q4. 강의 기준 최대 몇 개의 EC2에 연결할 수 있는가?
-
-```text
-16 Instances
-```
-
-### Q5. 왜 Cluster-Aware File System이 필요한가?
-
-여러 EC2 Instance가 동일한 Volume에
-동시에 접근하고 Write할 수 있기 때문이다.
-
-### Q6. Multi-Attach를 사용하면 애플리케이션이 고려해야 하는 것은?
-
-Concurrent Write 작업을 안전하게 관리해야 한다.

@@ -1,4 +1,4 @@
-# 14-04. AWS Transfer Family
+# 📘 14-04. AWS Transfer Family
 
 ## 🇰🇷 1. AWS Transfer Family란?
 
@@ -17,9 +17,7 @@ AWS Transfer Family
 
 즉 기존 Application을 S3 API 또는 EFS NFS 방식으로 변경하지 않고 기존 File Transfer 방식을 유지할 수 있습니다.
 
----
-
-# 2. 지원 Protocol
+## 🇰🇷 2. 지원 Protocol
 
 강의에서 다룬 주요 Protocol은 다음과 같습니다.
 
@@ -31,9 +29,7 @@ AWS Transfer Family
 
 FTP는 암호화되지 않으며 FTPS와 SFTP는 전송 중 Encryption을 제공합니다.
 
----
-
-# 3. Transfer Family는 Storage가 아니다
+## 🇰🇷 3. Transfer Family는 Storage가 아니다
 
 Transfer Family 자체가 데이터를 저장하는 것은 아닙니다.
 
@@ -53,9 +49,7 @@ Transfer Family
 
 Transfer Family는 FTP 계열 Endpoint를 제공하는 역할을 합니다.
 
----
-
-# 4. Authentication
+## 🇰🇷 4. Authentication
 
 Transfer Family는 기존 Authentication System과 통합할 수 있습니다.
 
@@ -85,9 +79,7 @@ User ──SFTP──→ Transfer Family
 
 외부 Authentication System은 사용자를 인증하고 IAM Role은 AWS Storage에 대한 접근 권한을 제공합니다.
 
----
-
-# 5. Route 53
+## 🇰🇷 5. Route 53
 
 선택적으로 Route 53을 이용하여 Transfer Family Endpoint에 Custom Hostname을 제공할 수 있습니다.
 
@@ -101,9 +93,7 @@ Transfer Family
 Amazon S3 / EFS
 ```
 
----
-
-# 6. Use Cases
+## 🇰🇷 6. Use Cases
 
 대표적인 사용 사례:
 
@@ -121,9 +111,7 @@ AWS Storage
 - ERP
 - 기존 FTP/SFTP Application Migration
 
----
-
-# 7. Exam Scenario
+## 🎯 Exam Notes
 
 ```text
 Existing SFTP Application
@@ -145,10 +133,6 @@ FTP / FTPS / SFTP
 Transfer Family
 ```
 
----
-
-## 🔑 핵심 정리
-
 ```text
 AWS Transfer Family
 = Managed FTP Interface for AWS Storage
@@ -168,30 +152,6 @@ Authentication
 Authorization
 → IAM Role
 ```
-
----
-
-## 🇯🇵 日本語 Summary
-
-AWS Transfer Familyは、FTP、FTPS、SFTPなどのファイル転送プロトコルを使用してAmazon S3またはAmazon EFSへアクセスできるフルマネージドサービスです。
-
-既存のFTPベースのアプリケーションを大きく変更せずにAWSストレージを利用できます。
-
-FTPは暗号化されませんが、FTPSとSFTPは転送中の暗号化をサポートします。
-
-外部認証システムとの統合も可能です。
-
----
-
-## 🇺🇸 English Summary
-
-AWS Transfer Family provides fully managed FTP, FTPS, and SFTP endpoints for Amazon S3 and Amazon EFS.
-
-It is useful when existing applications rely on traditional file transfer protocols and need to use AWS storage without major application changes.
-
-FTP is unencrypted, while FTPS and SFTP provide encryption in transit.
-
----
 
 ## 📝 Review Questions
 
@@ -215,3 +175,21 @@ AWS Transfer Family를 사용할 수 있습니다.
 FTP입니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+AWS Transfer Familyは、FTP、FTPS、SFTPなどのファイル転送プロトコルを使用してAmazon S3またはAmazon EFSへアクセスできるフルマネージドサービスです。
+
+既存のFTPベースのアプリケーションを大きく変更せずにAWSストレージを利用できます。
+
+FTPは暗号化されませんが、FTPSとSFTPは転送中の暗号化をサポートします。
+
+外部認証システムとの統合も可能です。
+
+## 🇺🇸 English Summary
+
+AWS Transfer Family provides fully managed FTP, FTPS, and SFTP endpoints for Amazon S3 and Amazon EFS.
+
+It is useful when existing applications rely on traditional file transfer protocols and need to use AWS storage without major application changes.
+
+FTP is unencrypted, while FTPS and SFTP provide encryption in transit.

@@ -1,4 +1,4 @@
-# Amazon ElastiCache
+# 📘 07-06. Amazon ElastiCache
 
 Amazon ElastiCache는 AWS에서 **Redis 또는 Memcached를 Managed Service로 제공**하는 서비스이다.
 
@@ -26,13 +26,11 @@ AWS는 ElastiCache의 OS 유지 관리, Patch, 설정, Monitoring, 장애 복구
 
 Application이 Cache를 조회하고 관리하도록 **Application Code 변경이 필요하다.**
 
----
-
-# 1. Cache Hit & Cache Miss
+## 🇰🇷 1. Cache Hit & Cache Miss
 
 Application은 Database를 조회하기 전에 ElastiCache를 먼저 확인할 수 있다.
 
-## Cache Hit
+### Cache Hit
 
 요청한 데이터가 이미 Cache에 존재하는 경우이다.
 
@@ -50,7 +48,7 @@ Cache Hit
 
 Database까지 요청할 필요가 없으므로 **Latency와 Database Read 부하를 줄일 수 있다.**
 
-## Cache Miss
+### Cache Miss
 
 요청한 데이터가 Cache에 존재하지 않는 경우이다.
 
@@ -74,7 +72,7 @@ Application
 
 이후 같은 데이터가 요청되면 Cache Hit가 발생할 수 있다.
 
-### 핵심
+#### 핵심
 
 ```text
 Cache Hit
@@ -87,9 +85,7 @@ Cache Miss
 → 결과를 Cache에 저장
 ```
 
----
-
-# 2. Cache Invalidation
+## 🇰🇷 2. Cache Invalidation
 
 Database의 원본 데이터가 변경되어도 Cache에 이전 데이터가 남아 있을 수 있다.
 
@@ -115,9 +111,7 @@ Stale Data 방지
 → Cache Invalidation 필요
 ```
 
----
-
-# 3. Lazy Loading
+## 🇰🇷 3. Lazy Loading
 
 Lazy Loading은 **Cache Miss가 발생했을 때만 Database에서 데이터를 읽어 Cache에 저장**하는 방식이다.
 
@@ -149,13 +143,11 @@ Cache Miss
 
 단, Database의 데이터가 변경된 후에도 Cache에 이전 데이터가 남아 **Stale Data가 발생할 수 있다.**
 
-### 시험 핵심
+#### 시험 핵심
 
 `Lazy Loading → Cache Miss일 때 Load → Stale Data 가능`
 
----
-
-# 4. Write Through
+## 🇰🇷 4. Write Through
 
 Write Through는 **Database에 데이터가 기록될 때마다 Cache에도 데이터를 추가하거나 갱신**하는 방식이다.
 
@@ -169,7 +161,7 @@ Write Through는 **Database에 데이터가 기록될 때마다 Cache에도 데�
 
 Database의 변경과 함께 Cache도 갱신하므로 강의에서는 Stale Data를 방지하는 방식으로 설명한다.
 
-### Lazy Loading vs Write Through
+#### Lazy Loading vs Write Through
 
 ```text
 Lazy Loading
@@ -181,7 +173,7 @@ Write Through
 → Cache도 Add / Update
 ```
 
-### 시험 핵심
+#### 시험 핵심
 
 ```text
 Lazy Loading
@@ -191,9 +183,7 @@ Write Through
 → DB Write 시 Cache도 Update
 ```
 
----
-
-# 5. Session Store
+## 🇰🇷 5. Session Store
 
 ElastiCache는 User Session을 저장하는 **Session Store**로 사용할 수 있다.
 
@@ -222,7 +212,7 @@ Session을 ElastiCache에 저장하면 여러 Application Instance가 같은 Ses
 
 이를 통해 Application Instance가 직접 Session State를 저장할 필요가 없어져 **Stateless Application**을 구성할 수 있다.
 
-## TTL
+### TTL
 
 Session Data에는 **TTL (Time To Live)**을 설정하여 일정 시간이 지나면 자동으로 만료되도록 할 수 있다.
 
@@ -236,13 +226,11 @@ TTL
 일정 시간 후 Expire
 ```
 
-### 시험 핵심
+#### 시험 핵심
 
 `Shared Session + Stateless Application + TTL → ElastiCache`
 
----
-
-# 6. Redis
+## 🇰🇷 6. Redis
 
 Redis는 강의에서 **Replication과 High Availability를 지원하는 Cache Engine**으로 설명한다.
 
@@ -256,7 +244,7 @@ Redis Replica
 
 같은 데이터를 다른 Node에 복제할 수 있으므로 장애 대응과 Read Scaling에 활용할 수 있다.
 
-### 주요 특징
+#### 주요 특징
 
 - Multi-AZ
 - Automatic Failover
@@ -274,7 +262,7 @@ Redis Replica
 Failover
 ```
 
-### 시험 핵심
+#### 시험 핵심
 
 ```text
 Replication
@@ -285,9 +273,7 @@ Persistence
 → Redis
 ```
 
----
-
-# 7. Memcached
+## 🇰🇷 7. Memcached
 
 Memcached는 강의에서 여러 Node에 Cache 데이터를 **분할하여 저장하는 구조**로 설명한다.
 
@@ -329,7 +315,7 @@ Database Read
 Cache 다시 생성
 ```
 
-### 주요 특징
+#### 주요 특징
 
 - Multi-node
 - Data Partitioning / Sharding
@@ -340,9 +326,7 @@ Cache 다시 생성
 
 강의에서는 Backup / Restore가 **Memcached Serverless**에서 지원된다고 설명한다.
 
----
-
-# 8. Redis vs Memcached
+## 🇰🇷 8. Redis vs Memcached
 
 강의에서 사용하는 핵심 비교 이미지는 다음과 같다.
 
@@ -356,7 +340,6 @@ Main
    ▼
 Replica
 🍎🍌🍇
-
 
 Memcached
 → Data를 여러 Node에 Sharding
@@ -383,7 +366,7 @@ Node A  Node B  Node C
 
 > 이 비교는 강의에서 Redis와 Memcached의 차이를 이해하기 위해 단순화한 구조이다.
 
-### 시험 핵심
+#### 시험 핵심
 
 ```text
 Redis
@@ -397,11 +380,9 @@ Memcached
 → No Replication
 ```
 
----
+## 🇰🇷 9. ElastiCache Security
 
-# 9. ElastiCache Security
-
-## Redis Security
+### Redis Security
 
 강의에서는 Redis에 다음 보안 기능을 설명한다.
 
@@ -422,7 +403,7 @@ Redis AUTH / IAM Authentication
 Redis
 ```
 
-### Redis AUTH
+#### Redis AUTH
 
 Redis AUTH를 사용하여 Redis Cluster에 **Password / Token**을 설정할 수 있다.
 
@@ -440,7 +421,7 @@ Redis에서는 **IAM Authentication**도 사용할 수 있다.
 
 ElastiCache에 정의하는 IAM Policy는 **AWS API-level Security**에 사용된다.
 
-### Encryption in Transit
+#### Encryption in Transit
 
 Redis는 SSL을 사용한 **Encryption in Transit**을 지원한다.
 
@@ -452,9 +433,7 @@ Client
 Redis
 ```
 
----
-
-## Memcached Security
+### Memcached Security
 
 Memcached는 **SASL-based Authentication**을 지원한다.
 
@@ -465,7 +444,7 @@ Memcached
 → SASL Authentication
 ```
 
-### Security 핵심
+#### Security 핵심
 
 ```text
 Redis
@@ -477,9 +456,7 @@ Memcached
 → SASL
 ```
 
----
-
-# 10. Redis Sorted Sets & Leaderboards
+## 🇰🇷 10. Redis Sorted Sets & Leaderboards
 
 Redis의 **Sorted Sets**는 요소의 Unique함과 Ordering을 보장한다.
 
@@ -503,13 +480,11 @@ Leaderboard
 
 Application이 직접 복잡한 Ranking Logic을 구현하는 대신 Redis Sorted Sets를 활용할 수 있다.
 
-### 시험 핵심
+#### 시험 핵심
 
 `Real-time Gaming Leaderboard → Redis Sorted Sets`
 
----
-
-# 11. 시험 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 Amazon ElastiCache
@@ -522,7 +497,6 @@ Read-intensive Workload
 → ElastiCache
 → Database Load 감소
 
-
 Cache Hit
 → Cache에 Data 있음
 → DB 조회 X
@@ -532,7 +506,6 @@ Cache Miss
 → DB 조회
 → Cache에 저장
 
-
 Lazy Loading
 → Cache Miss일 때 Load
 → Stale Data 가능
@@ -540,11 +513,9 @@ Lazy Loading
 Write Through
 → DB Write 시 Cache도 Update
 
-
 Session Store
 → Stateless Application
 → TTL로 Session 만료
-
 
 Redis
 → Replication
@@ -560,7 +531,6 @@ Memcached
 → Non-Persistent
 → Multi-threaded
 
-
 Redis Security
 → Redis AUTH
 → IAM Authentication
@@ -569,22 +539,29 @@ Redis Security
 Memcached Authentication
 → SASL
 
-
 Real-time Leaderboard
 → Redis Sorted Sets
 ```
 
----
+## 📝 Review Questions
 
-# 日本語まとめ
+1. ElastiCache가 Read-intensive Workload에서 Database 부하를 줄일 수 있는 이유는 무엇인가?
+2. Cache Hit와 Cache Miss의 차이는 무엇인가?
+3. Lazy Loading과 Write Through는 Cache를 언제 갱신하는가?
+4. ElastiCache에 User Session을 저장하면 Application을 Stateless하게 만들 수 있는 이유는 무엇인가?
+5. 강의에서 Redis의 Replication과 Memcached의 Sharding을 어떻게 구분하는가?
+6. Redis와 Memcached에서 사용하는 Authentication 방식은 각각 무엇인가?
+7. Real-time Gaming Leaderboard를 구현할 때 Redis의 어떤 기능을 사용할 수 있는가?
 
-## Amazon ElastiCache
+## 🇯🇵 日本語 Summary
+
+### Amazon ElastiCache
 
 Amazon ElastiCacheは、RedisまたはMemcachedをManaged Serviceとして提供するIn-Memory Cacheサービスである。
 
 Read-intensiveなWorkloadでDatabaseへのアクセスを減らし、低Latencyでデータを取得できる。
 
-## Cache Hit / Cache Miss
+### Cache Hit / Cache Miss
 
 ```text
 Cache Hit
@@ -597,19 +574,19 @@ Cache Miss
 → Cacheに保存
 ```
 
-## Caching Strategy
+### Caching Strategy
 
 **Lazy Loading**はCache Missが発生した時にDatabaseからデータを取得してCacheに保存する。Cache内のDataが古くなる可能性がある。
 
 **Write Through**はDatabaseへの書き込み時にCacheも追加・更新する。
 
-## Session Store
+### Session Store
 
 User SessionをElastiCacheに保存することで、複数のApplication Instanceが同じSessionを利用できる。
 
 これによりStateless Applicationを構成でき、TTLを使用してSessionを期限切れにできる。
 
-## Redis
+### Redis
 
 - Replication
 - Multi-AZ
@@ -621,7 +598,7 @@ User SessionをElastiCacheに保存することで、複数のApplication Instan
 
 RedisではRedis AUTH、IAM Authentication、SSLによる通信中の暗号化を利用できる。
 
-## Memcached
+### Memcached
 
 - Multi-node
 - Sharding
@@ -630,19 +607,17 @@ RedisではRedis AUTH、IAM Authentication、SSLによる通信中の暗号化�
 - Multi-threaded
 - SASL Authentication
 
-## Leaderboard
+### Leaderboard
 
 Real-time Gaming Leaderboardには**Redis Sorted Sets**を利用できる。
 
----
+## 🇺🇸 English Summary
 
-# English Summary
-
-## Amazon ElastiCache
+### Amazon ElastiCache
 
 Amazon ElastiCache provides managed Redis and Memcached as high-performance, low-latency in-memory caching services.
 
-## Caching
+### Caching
 
 A **Cache Hit** returns data directly from the cache.
 
@@ -652,29 +627,27 @@ A **Cache Miss** requires the application to retrieve data from the database and
 
 **Write Through** updates the cache whenever data is written to the database.
 
-## Session Store
+### Session Store
 
 ElastiCache can store shared user sessions, allowing application instances to remain stateless. TTL can be used to expire session data.
 
-## Redis
+### Redis
 
 Redis supports replication, Multi-AZ, automatic failover, read replicas, persistence, backup/restore, and Sorted Sets.
 
 Redis security includes Redis AUTH, IAM Authentication, and SSL encryption in transit.
 
-## Memcached
+### Memcached
 
 Memcached uses multiple nodes and sharding. In the course comparison, it does not provide replication or persistence and supports a multi-threaded architecture.
 
 Memcached supports SASL-based authentication.
 
-## Leaderboard
+### Leaderboard
 
 Redis Sorted Sets can be used to build real-time gaming leaderboards.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -698,15 +671,3 @@ Redis Sorted Sets can be used to build real-time gaming leaderboards.
 | SASL | SASL | SASL 인증 |
 | Sorted Set | ソート済みセット | 정렬된 집합 |
 | Leaderboard | リーダーボード | 순위표 |
-
----
-
-# Review Questions
-
-1. ElastiCache가 Read-intensive Workload에서 Database 부하를 줄일 수 있는 이유는 무엇인가?
-2. Cache Hit와 Cache Miss의 차이는 무엇인가?
-3. Lazy Loading과 Write Through는 Cache를 언제 갱신하는가?
-4. ElastiCache에 User Session을 저장하면 Application을 Stateless하게 만들 수 있는 이유는 무엇인가?
-5. 강의에서 Redis의 Replication과 Memcached의 Sharding을 어떻게 구분하는가?
-6. Redis와 Memcached에서 사용하는 Authentication 방식은 각각 무엇인가?
-7. Real-time Gaming Leaderboard를 구현할 때 Redis의 어떤 기능을 사용할 수 있는가?

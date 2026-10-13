@@ -1,4 +1,4 @@
-# 15-03. Amazon SNS
+# 📘 15-03. Amazon SNS
 
 ## 🇰🇷 1. Amazon SNS란?
 
@@ -16,9 +16,7 @@ Producer → Topic ├─ Subscriber B
 
 Topic을 구독한 Subscriber들에게 Message가 전달됩니다.
 
----
-
-# 2. Subscriber
+## 🇰🇷 2. Subscriber
 
 SNS는 다양한 Endpoint로 Message를 전달할 수 있습니다.
 
@@ -44,9 +42,7 @@ Many Subscribers
 
 입니다.
 
----
-
-# 3. SNS Standard
+## 🇰🇷 3. SNS Standard
 
 일반적인 Pub/Sub Messaging에 사용합니다.
 
@@ -58,9 +54,7 @@ Best-Effort Ordering
 
 다양한 Subscriber Type을 사용할 수 있습니다.
 
----
-
-# 4. SNS FIFO
+## 🇰🇷 4. SNS FIFO
 
 Message의 순서와 중복 제거가 중요한 경우 사용합니다.
 
@@ -85,9 +79,7 @@ SQS FIFO
 
 조합을 사용합니다.
 
----
-
-# 5. Message Filtering
+## 🇰🇷 5. Message Filtering
 
 Subscriber마다 필요한 Message만 받을 수 있습니다.
 
@@ -111,9 +103,7 @@ SNS Topic
 
 이를 **Subscription Filter Policy**라고 합니다.
 
----
-
-# 6. Security
+## 🇰🇷 6. Security
 
 ```text
 In Transit
@@ -126,8 +116,6 @@ Access
 → IAM Policy
 → SNS Access Policy
 ```
-
----
 
 ## 🎯 Exam Notes
 
@@ -145,29 +133,7 @@ Ordering + Deduplication
 → SNS FIFO
 ```
 
----
-
-## 🇯🇵 日本語 Summary
-
-Amazon SNSはPub/Sub型のMessaging Serviceです。
-
-ProducerはSNS TopicにMessageをPublishし、複数のSubscriberへMessageを配信できます。
-
-Subscription Filter Policyを使用すると、Subscriberごとに必要なMessageだけを受信できます。
-
----
-
-## 🇺🇸 English Summary
-
-Amazon SNS is a publish/subscribe messaging service.
-
-Publishers send messages to a topic, and SNS distributes them to subscribers.
-
-Subscription filter policies allow subscribers to receive only selected messages.
-
----
-
-## 📝 Review
+## 📝 Review Questions
 
 **Q1. 하나의 Event를 여러 Subscriber에게 전달하려면?**
 
@@ -180,3 +146,19 @@ Subscription Filter Policy
 **Q3. SNS에서 Ordering과 Deduplication이 필요하면?**
 
 SNS FIFO Topic
+
+## 🇯🇵 日本語 Summary
+
+Amazon SNSはPub/Sub型のMessaging Serviceです。
+
+ProducerはSNS TopicにMessageをPublishし、複数のSubscriberへMessageを配信できます。
+
+Subscription Filter Policyを使用すると、Subscriberごとに必要なMessageだけを受信できます。
+
+## 🇺🇸 English Summary
+
+Amazon SNS is a publish/subscribe messaging service.
+
+Publishers send messages to a topic, and SNS distributes them to subscribers.
+
+Subscription filter policies allow subscribers to receive only selected messages.

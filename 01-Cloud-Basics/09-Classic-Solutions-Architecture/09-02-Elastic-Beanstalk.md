@@ -1,6 +1,6 @@
-# 09-02. AWS Elastic Beanstalk
+# 📘 09-02. AWS Elastic Beanstalk
 
-## Overview
+## 🇰🇷 1. Overview
 
 일반적인 Web Application은 비슷한 AWS Architecture를 반복해서 사용하는 경우가 많다.
 
@@ -33,9 +33,7 @@ Database / Cache
 
 AWS Elastic Beanstalk는 이러한 문제를 해결하기 위한 개발자 중심의 Managed Service이다.
 
----
-
-## 1. Elastic Beanstalk란?
+## 🇰🇷 2. Elastic Beanstalk란?
 
 Elastic Beanstalk는 AWS에서 Application을 배포하고 관리하기 위한 Managed Service이다.
 
@@ -58,9 +56,7 @@ Elastic Beanstalk
 
 즉 Beanstalk는 기존 AWS Infrastructure를 **개발자 중심의 하나의 인터페이스로 통합하고 관리하는 역할**을 한다.
 
----
-
-## 2. Elastic Beanstalk가 관리하는 것
+## 🇰🇷 3. Elastic Beanstalk가 관리하는 것
 
 Elastic Beanstalk는 다음과 같은 작업을 처리할 수 있다.
 
@@ -87,9 +83,7 @@ AWS Infrastructure
 
 필요하다면 Beanstalk가 사용하는 각 구성 요소의 설정을 변경할 수 있다.
 
----
-
-## 3. 비용
+## 🇰🇷 4. 비용
 
 Elastic Beanstalk 서비스 자체에는 별도의 추가 비용이 없다.
 
@@ -110,9 +104,7 @@ RDS
 
 즉 Beanstalk가 EC2를 대신 생성했다고 해서 EC2가 무료가 되는 것은 아니다.
 
----
-
-## 4. Beanstalk Components
+## 🇰🇷 5. Beanstalk Components
 
 Elastic Beanstalk에서는 다음 세 개념을 구분해야 한다.
 
@@ -121,8 +113,6 @@ Application
 Application Version
 Environment
 ```
-
----
 
 ### Application
 
@@ -137,8 +127,6 @@ MyApplication
 ```
 
 하나의 Application 아래에서 여러 Version과 Environment를 관리할 수 있다.
-
----
 
 ### Application Version
 
@@ -155,8 +143,6 @@ MyApplication
 ```
 
 Application을 수정하고 새로운 Code를 배포할 때 새로운 Application Version을 만들 수 있다.
-
----
 
 ### Environment
 
@@ -188,9 +174,7 @@ Production
 
 처럼 기존 Environment에 새로운 Application Version을 배포할 수 있다.
 
----
-
-## 5. Multiple Environments
+## 🇰🇷 6. Multiple Environments
 
 하나의 Application에서 여러 Environment를 생성할 수 있다.
 
@@ -209,9 +193,7 @@ MyApplication
 
 따라서 개발, 테스트, 운영 환경을 서로 분리하여 관리할 수 있다.
 
----
-
-## 6. Deployment Workflow
+## 🇰🇷 7. Deployment Workflow
 
 Beanstalk의 기본적인 Application Deployment 흐름은 다음과 같다.
 
@@ -237,9 +219,7 @@ Environment Updated
 
 이렇게 Application Code를 업데이트할 수 있다.
 
----
-
-## 7. Supported Platforms
+## 🇰🇷 8. Supported Platforms
 
 Elastic Beanstalk는 다양한 Application Platform을 지원한다.
 
@@ -257,9 +237,7 @@ Elastic Beanstalk는 다양한 Application Platform을 지원한다.
 
 각 플랫폼의 전체 목록을 암기하는 것보다 **다양한 일반 Application Runtime과 Container 환경을 지원한다**는 점을 이해하는 것이 중요하다.
 
----
-
-## 8. Web Server Environment
+## 🇰🇷 9. Web Server Environment
 
 Web Server Environment는 일반적인 Web Traffic을 처리한다.
 
@@ -287,9 +265,7 @@ Web Server Environment
 
 라고 이해할 수 있다.
 
----
-
-## 9. Worker Environment
+## 🇰🇷 10. Worker Environment
 
 Worker Environment는 사용자의 Web Request를 직접 처리하는 환경이 아니다.
 
@@ -325,9 +301,7 @@ Worker Environment
 
 Web Application이 즉시 처리할 필요가 없는 작업을 SQS Queue에 전달하고 Worker가 이를 처리하는 구조이다.
 
----
-
-## 10. Deployment Modes
+## 🇰🇷 11. Deployment Modes
 
 ### Single Instance
 
@@ -344,8 +318,6 @@ EC2 Instance
 단일 EC2 Instance를 사용하기 때문에 구조가 간단하다.
 
 하지만 Instance에 장애가 발생하면 Application도 사용할 수 없기 때문에 높은 가용성을 제공하는 구성은 아니다.
-
----
 
 ### High Availability with Load Balancer
 
@@ -378,9 +350,7 @@ Load Balanced + Multi-AZ
 → Production / High Availability
 ```
 
----
-
-## 11. Hands-on Verification
+## 🇰🇷 12. Hands-on Verification
 
 실습에서는 Sample Node.js Application을 Single Instance Environment로 배포했다.
 
@@ -428,9 +398,7 @@ AWS Resources
 
 이 실습에서 가장 중요한 점은 **Beanstalk가 별도의 서버를 제공하는 것이 아니라 실제 AWS Resource를 내부적으로 생성하고 관리한다는 것**이다.
 
----
-
-## 12. IAM과 Beanstalk
+## 🇰🇷 13. IAM과 Beanstalk
 
 Elastic Beanstalk가 AWS Resource를 생성하고 관리하려면 필요한 IAM Permission이 있어야 한다.
 
@@ -443,7 +411,6 @@ IAM Service Role
         ↓
 AWS Resource 관리
 
-
 EC2 Instance
         ↓
 Instance Profile
@@ -453,9 +420,7 @@ Instance Profile
 
 IAM의 기본 원칙은 기존에 학습한 내용과 동일하다.
 
----
-
-## 13. Elastic Beanstalk와 CloudFormation
+## 🇰🇷 14. Elastic Beanstalk와 CloudFormation
 
 실습에서는 Elastic Beanstalk가 생성한 Infrastructure를 CloudFormation Stack에서 확인했다.
 
@@ -473,9 +438,7 @@ CloudFormation
 
 CloudFormation은 이후 별도의 섹션에서 자세히 학습한다.
 
----
-
-## Mental Model
+## 🇰🇷 15. Mental Model
 
 Elastic Beanstalk를 다음과 같이 기억할 수 있다.
 
@@ -510,9 +473,7 @@ EC2 / ASG / ELB / ...
 
 > **Elastic Beanstalk = 기존 AWS 인프라를 활용하면서 Application Deployment와 Environment 관리를 단순화하는 개발자 중심 Managed Service**
 
----
-
-## Summary
+## 🇰🇷 16. Summary
 
 | 개념 | 의미 |
 |---|---|
@@ -525,9 +486,7 @@ EC2 / ASG / ELB / ...
 | Single Instance | 개발용 간단한 환경 |
 | High Availability | Load Balancer + 여러 EC2를 사용하는 운영 환경 |
 
----
-
-## Exam Notes
+## 🎯 Exam Notes
 
 - Elastic Beanstalk는 Managed Application Deployment Service이다.
 - EC2, ASG, ELB, RDS 등 기존 AWS Service를 활용한다.
@@ -543,93 +502,7 @@ EC2 / ASG / ELB / ...
 - Single Instance는 개발 환경에 적합하다.
 - Load Balanced High Availability 구성은 Production 환경에 적합하다.
 
----
-
-## 日本語まとめ
-
-AWS Elastic Beanstalkは、AWS上でアプリケーションのデプロイと管理を簡単にする開発者向けのマネージドサービスです。
-
-Beanstalkは新しいComputeサービスではなく、EC2、Auto Scaling Group、Elastic Load Balancing、RDSなどの既存AWSサービスを利用します。
-
-```text
-Developer
-    ↓
-Application Code
-    ↓
-Elastic Beanstalk
-    ↓
-EC2 / ASG / ELB / RDS
-```
-
-### 主なコンポーネント
-
-- **Application**: Beanstalkコンポーネントの集合
-- **Application Version**: アプリケーションコードの特定バージョン
-- **Environment**: Application Versionを実行するAWSリソースの集合
-
-### Environment Tier
-
-- **Web Server Environment**: HTTPリクエストを処理
-- **Worker Environment**: SQSメッセージを処理
-
-### Deployment Mode
-
-- **Single Instance**: 開発環境向け
-- **High Availability**: Load Balancerと複数EC2を利用する本番環境向け
-
-Beanstalk自体には追加料金はありませんが、EC2やELBなどの基盤AWSリソースには通常の料金が発生します。
-
----
-
-## English Summary
-
-AWS Elastic Beanstalk is a developer-centric managed service that simplifies application deployment and environment management.
-
-It uses existing AWS services such as EC2, Auto Scaling Groups, Elastic Load Balancing, and RDS.
-
-Developers primarily focus on application code while Beanstalk manages infrastructure provisioning, scaling, load balancing, health monitoring, and instance configuration.
-
-### Core Components
-
-- **Application**: Collection of Beanstalk components
-- **Application Version**: A specific iteration of application code
-- **Environment**: AWS resources running an application version
-
-### Environment Tiers
-
-- **Web Server Environment**: Handles web requests
-- **Worker Environment**: Processes messages from Amazon SQS
-
-### Deployment Modes
-
-- **Single Instance**: Suitable for development
-- **High Availability**: Suitable for production workloads
-
-Beanstalk itself has no additional service charge, but the underlying AWS resources are billed normally.
-
----
-
-## Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Elastic Beanstalk | Elastic Beanstalk | Elastic Beanstalk |
-| Application | アプリケーション | 애플리케이션 |
-| Application Version | アプリケーションバージョン | 애플리케이션 버전 |
-| Environment | 環境 | 환경 |
-| Web Server Tier | Webサーバーティア | 웹 서버 티어 |
-| Worker Tier | ワーカーティア | 작업자 티어 |
-| Managed Service | マネージドサービス | 관리형 서비스 |
-| Provisioning | プロビジョニング | 리소스 프로비저닝 |
-| Deployment | デプロイ | 배포 |
-| Health Monitoring | ヘルスモニタリング | 상태 모니터링 |
-| Instance Profile | インスタンスプロファイル | 인스턴스 프로파일 |
-| Underlying Resource | 基盤リソース | 기반 리소스 |
-| Asynchronous Processing | 非同期処理 | 비동기 처리 |
-
----
-
-## Review Questions
+## 📝 Review Questions
 
 ### 1. Elastic Beanstalk의 핵심 목적은 무엇인가?
 
@@ -705,3 +578,81 @@ Worker Instance가 SQS Queue에서 Message를 가져와 처리한다.
 Beanstalk는 이러한 서비스를 대체하는 것이 아니라 기존 AWS Service들을 기반으로 Infrastructure를 생성하고 관리한다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+AWS Elastic Beanstalkは、AWS上でアプリケーションのデプロイと管理を簡単にする開発者向けのマネージドサービスです。
+
+Beanstalkは新しいComputeサービスではなく、EC2、Auto Scaling Group、Elastic Load Balancing、RDSなどの既存AWSサービスを利用します。
+
+```text
+Developer
+    ↓
+Application Code
+    ↓
+Elastic Beanstalk
+    ↓
+EC2 / ASG / ELB / RDS
+```
+
+### 主なコンポーネント
+
+- **Application**: Beanstalkコンポーネントの集合
+- **Application Version**: アプリケーションコードの特定バージョン
+- **Environment**: Application Versionを実行するAWSリソースの集合
+
+### Environment Tier
+
+- **Web Server Environment**: HTTPリクエストを処理
+- **Worker Environment**: SQSメッセージを処理
+
+### Deployment Mode
+
+- **Single Instance**: 開発環境向け
+- **High Availability**: Load Balancerと複数EC2を利用する本番環境向け
+
+Beanstalk自体には追加料金はありませんが、EC2やELBなどの基盤AWSリソースには通常の料金が発生します。
+
+## 🇺🇸 English Summary
+
+AWS Elastic Beanstalk is a developer-centric managed service that simplifies application deployment and environment management.
+
+It uses existing AWS services such as EC2, Auto Scaling Groups, Elastic Load Balancing, and RDS.
+
+Developers primarily focus on application code while Beanstalk manages infrastructure provisioning, scaling, load balancing, health monitoring, and instance configuration.
+
+### Core Components
+
+- **Application**: Collection of Beanstalk components
+- **Application Version**: A specific iteration of application code
+- **Environment**: AWS resources running an application version
+
+### Environment Tiers
+
+- **Web Server Environment**: Handles web requests
+- **Worker Environment**: Processes messages from Amazon SQS
+
+### Deployment Modes
+
+- **Single Instance**: Suitable for development
+- **High Availability**: Suitable for production workloads
+
+Beanstalk itself has no additional service charge, but the underlying AWS resources are billed normally.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Elastic Beanstalk | Elastic Beanstalk | Elastic Beanstalk |
+| Application | アプリケーション | 애플리케이션 |
+| Application Version | アプリケーションバージョン | 애플리케이션 버전 |
+| Environment | 環境 | 환경 |
+| Web Server Tier | Webサーバーティア | 웹 서버 티어 |
+| Worker Tier | ワーカーティア | 작업자 티어 |
+| Managed Service | マネージドサービス | 관리형 서비스 |
+| Provisioning | プロビジョニング | 리소스 프로비저닝 |
+| Deployment | デプロイ | 배포 |
+| Health Monitoring | ヘルスモニタリング | 상태 모니터링 |
+| Instance Profile | インスタンスプロファイル | 인스턴스 프로파일 |
+| Underlying Resource | 基盤リソース | 기반 리소스 |
+| Asynchronous Processing | 非同期処理 | 비동기 처리 |

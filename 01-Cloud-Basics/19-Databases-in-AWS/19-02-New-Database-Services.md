@@ -113,6 +113,7 @@ flowchart TD
 **🎯 Time-Series / Timestamped Metrics → Timestream**
 
 ## 🎯 Exam Notes
+
 | 키워드 | 서비스 |
 |---|---|
 | MongoDB | DocumentDB |
@@ -124,6 +125,7 @@ flowchart TD
 | Event Transformation | Lambda |
 
 ## 🇯🇵 日本語 Summary
+
 - **DocumentDB:** MongoDB 互換のドキュメント DB。
 - **Neptune:** 複雑な関係を探索するグラフ DB。
 - **Keyspaces:** Cassandra / CQL 互換のサーバーレス DB。
@@ -131,9 +133,11 @@ flowchart TD
 - **Timestream:** 時系列データの保存と分析。Kinesis と Lambda は必須ではない。
 
 ## 🇺🇸 English Summary
+
 DocumentDB supports MongoDB-compatible document workloads. Neptune handles graph relationships. Keyspaces supports Cassandra/CQL. QLDB was a centralized verifiable ledger database and is retired. Timestream handles timestamped metrics and time-series analytics.
 
 ## 📚 Vocabulary
+
 | English | 한국어 | 日本語 |
 |---|---|---|
 | Document | 문서 | ドキュメント |

@@ -49,7 +49,7 @@ VPC Flow Logs → CloudWatch Logs → Contributor Insights Rules
 - 예: 웹 사이트에서 응답 지연 발생 → ALB·EC2·RDS 지표 및 문제 정보를 함께 분석.
 - 자동 분석이 문제를 반드시 정확하게 진단·수정한다는 뜻은 아니다.
 
-## 🎯 SAA 선택 연습
+## 🇰🇷 6. SAA 선택 연습
 
 | 문제 | 서비스 |
 |---|---|
@@ -91,7 +91,19 @@ VPC Flow Logs → CloudWatch Logs → Contributor Insights Rules
 | Q25 | **A** | Contributor Insights는 로그 등에서 Top N 기여자를 찾는 기능이다. Top IP가 무조건 악성이라는 뜻은 아니다. |
 | Q26 | **C** | Lambda Insights는 Lambda 런타임의 상세 시스템 성능을 보여 준다. |
 
-## 📚 Vocabulary — English · 한국어 · 日本語
+## 🇯🇵 日本語 Summary
+
+Container Insights は ECS・EKS・Fargate などのコンテナ環境を監視する。Lambda Insights は Lambda 関数の詳細な性能指標とコールドスタートを分析する。Contributor Insights はログから上位 N 件の送信元 IP など主要な寄与要因を識別する。Application Insights はアプリケーション全体の障害分析を支援する。
+
+**試験の注意点:** コンテナ・Lambda・上位 N 件・アプリ全体という対象を見分ければ適切な Insights 機能を選択できる。
+
+## 🇺🇸 English Summary
+
+Container Insights monitors containerized workloads. Lambda Insights provides detailed Lambda function performance metrics. Contributor Insights identifies top contributors such as source IPs and hosts. Application Insights helps detect and troubleshoot problems across application resources. For SAA, match the monitoring requirement to the correct Insights feature.
+
+**Exam tip:** Match the question keyword to the workload: containers, Lambda runtimes, top contributors, or application-wide troubleshooting.
+
+## 📚 Vocabulary
 
 > GitHub 검색 시 영어 표제어 그대로 검색하면 관련 설명으로 이동하기 쉽다.
 
@@ -105,20 +117,7 @@ VPC Flow Logs → CloudWatch Logs → Contributor Insights Rules
 | Top N Contributors | 상위 N개 기여 대상 | 上位 N 件の寄与要因 |
 | Containerized Agent | 컨테이너형 에이전트 | コンテナ化エージェント |
 
-
-## 🇯🇵 日本語 Summary
-
-Container Insights は ECS・EKS・Fargate などのコンテナ環境を監視する。Lambda Insights は Lambda 関数の詳細な性能指標とコールドスタートを分析する。Contributor Insights はログから上位 N 件の送信元 IP など主要な寄与要因を識別する。Application Insights はアプリケーション全体の障害分析を支援する。
-
-**試験の注意点:** コンテナ・Lambda・上位 N 件・アプリ全体という対象を見分ければ適切な Insights 機能を選択できる。
-
-## 🇺🇸 English Summary
-
-Container Insights monitors containerized workloads. Lambda Insights provides detailed Lambda function performance metrics. Contributor Insights identifies top contributors such as source IPs and hosts. Application Insights helps detect and troubleshoot problems across application resources. For SAA, match the monitoring requirement to the correct Insights feature.
-
-**Exam tip:** Match the question keyword to the workload: containers, Lambda runtimes, top contributors, or application-wide troubleshooting.
-
-## 📚 References
+## 📚 Official References
 
 - [CloudWatch Container Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContainerInsights.html)
 - [CloudWatch Lambda Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Lambda-Insights.html)

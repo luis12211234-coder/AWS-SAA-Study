@@ -102,7 +102,7 @@ Command ID: cmd-123   (모든 서버 동일)
 | 새 로그를 Lambda / Kinesis로 전달 | Subscription Filter | [22-03](./22-03-CloudWatch-Logs-Analysis-and-Delivery.md) |
 | 저장한 로그를 S3로 일괄 내보내기 | Export Task | [22-03](./22-03-CloudWatch-Logs-Analysis-and-Delivery.md) |
 
-## 🎯 Exam Triggers
+## 🎯 Exam Notes
 
 - **서버 내부 로그를 중앙 수집:** CloudWatch Agent → CloudWatch Logs.
 - **Log Group / Log Stream / Log Event:** 그룹 → 로그 출처별 스트림 → 개별 기록.
@@ -142,20 +142,6 @@ Command ID: cmd-123   (모든 서버 동일)
 | Q06 | **D** | Log Group은 관련 Log Stream들을 묶고, 각 Stream 안에 Log Event가 있다. |
 | Q07 | **C** | 3개 대상 × stdout/stderr 2개 = 6개. 실제 출력이 없을 때는 일부 스트림이 생성되지 않을 수 있다. |
 
-## 📚 Vocabulary — English · 한국어 · 日本語
-
-> GitHub 검색 시 영어 표제어 그대로 검색하면 관련 설명으로 이동하기 쉽다.
-
-| English | 한국어 | 日本語 |
-|---|---|---|
-| Log Group | 로그 그룹 | ロググループ |
-| Log Stream | 로그 스트림 | ログストリーム |
-| Log Event | 로그 이벤트 | ログイベント |
-| Log Retention | 로그 보존 기간 | ログ保持期間 |
-| Standard Output (stdout) | 표준 출력 | 標準出力 |
-| Standard Error (stderr) | 표준 오류 출력 | 標準エラー出力 |
-
-
 ## 🇯🇵 日本語 Summary
 
 CloudWatch Logs はログを Log Group、Log Stream、Log Event の階層で管理する。EC2 のアプリケーションログを収集するには通常 CloudWatch Agent が必要である。SSM Run Command の実行結果では stdout（標準出力）と stderr（標準エラー出力）が別々のストリームになる場合がある。保存期間や暗号化は Log Group で設定する。
@@ -168,7 +154,20 @@ CloudWatch Logs collects and retains application and AWS service log events. A l
 
 **Exam tip:** EC2 log files are not shipped automatically. Configure the agent, input paths, IAM permissions, and log groups. An SSM command can generate separate stdout and stderr streams.
 
-## 📚 References
+## 📚 Vocabulary
+
+> GitHub 검색 시 영어 표제어 그대로 검색하면 관련 설명으로 이동하기 쉽다.
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| Log Group | 로그 그룹 | ロググループ |
+| Log Stream | 로그 스트림 | ログストリーム |
+| Log Event | 로그 이벤트 | ログイベント |
+| Log Retention | 로그 보존 기간 | ログ保持期間 |
+| Standard Output (stdout) | 표준 출력 | 標準出力 |
+| Standard Error (stderr) | 표준 오류 출력 | 標準エラー出力 |
+
+## 📚 Official References
 
 - [CloudWatch Logs concepts](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogsConcepts.html)
 - [SSM Run Command CloudWatch output](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-logs.html)

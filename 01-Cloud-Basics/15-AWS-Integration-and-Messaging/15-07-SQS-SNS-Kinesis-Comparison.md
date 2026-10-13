@@ -1,6 +1,6 @@
-# 15-07. SQS vs SNS vs Kinesis
+# 📘 15-07. SQS vs SNS vs Kinesis
 
-## 🇰🇷 핵심 비교
+## 🇰🇷 1. 핵심 비교
 
 | Service | 핵심 목적 | 방식 | 데이터 저장 / Replay |
 |---|---|---|---|
@@ -9,9 +9,7 @@
 | Kinesis Data Streams | Real-Time Streaming | Stream Consumer | Retention + Replay |
 | Data Firehose | Destination Delivery | Managed Delivery | 자체 Replay 없음 |
 
----
-
-# 1. SQS
+## 🇰🇷 2. SQS
 
 ```text
 Producer
@@ -29,9 +27,7 @@ Consumer
 
 Consumer가 Message를 가져가 처리하고 삭제합니다.
 
----
-
-# 2. SNS
+## 🇰🇷 3. SNS
 
 ```text
              ┌─ A
@@ -48,9 +44,7 @@ Producer → SNS├─ B
 
 하나의 Message를 여러 Subscriber에게 전달합니다.
 
----
-
-# 3. Kinesis Data Streams
+## 🇰🇷 4. Kinesis Data Streams
 
 ```text
 Producer
@@ -70,9 +64,7 @@ Streaming Data를 저장하고 Consumer들이 읽습니다.
 
 Retention 기간 내 Replay가 가능합니다.
 
----
-
-# 4. Data Firehose
+## 🇰🇷 5. Data Firehose
 
 ```text
 Stream
@@ -90,9 +82,7 @@ S3 / Redshift / OpenSearch
 
 Delivery 자체를 AWS가 관리합니다.
 
----
-
-# 5. 최종 선택법 ⭐
+## 🇰🇷 6. 최종 선택법 ⭐
 
 ```text
 작업 Queue
@@ -123,9 +113,7 @@ Streaming → S3 / Redshift / OpenSearch
 → Amazon Data Firehose
 ```
 
----
-
-# 🔥 한 줄 암기
+## 🇰🇷 7. 한 줄 암기
 
 ```text
 SQS
@@ -141,45 +129,7 @@ Data Firehose
 = Delivery
 ```
 
----
-
-## 🇯🇵 日本語 Summary
-
-```text
-SQS
-→ Queue / Decoupling
-
-SNS
-→ Pub/Sub / Fan-Out
-
-Kinesis Data Streams
-→ Real-Time Streaming / Replay
-
-Amazon Data Firehose
-→ Streaming Data Delivery
-```
-
----
-
-## 🇺🇸 English Summary
-
-```text
-SQS
-→ Queue and application decoupling
-
-SNS
-→ Publish/subscribe and fan-out
-
-Kinesis Data Streams
-→ Real-time streaming with retention and replay
-
-Amazon Data Firehose
-→ Managed streaming data delivery
-```
-
----
-
-## 📝 Review
+## 📝 Review Questions
 
 **Q1. 갑작스러운 Traffic Spike를 Buffering해야 한다면?**
 
@@ -208,4 +158,36 @@ SQS      = Queue
 SNS      = Broadcast
 KDS      = Stream
 Firehose = Delivery
+```
+
+## 🇯🇵 日本語 Summary
+
+```text
+SQS
+→ Queue / Decoupling
+
+SNS
+→ Pub/Sub / Fan-Out
+
+Kinesis Data Streams
+→ Real-Time Streaming / Replay
+
+Amazon Data Firehose
+→ Streaming Data Delivery
+```
+
+## 🇺🇸 English Summary
+
+```text
+SQS
+→ Queue and application decoupling
+
+SNS
+→ Publish/subscribe and fan-out
+
+Kinesis Data Streams
+→ Real-time streaming with retention and replay
+
+Amazon Data Firehose
+→ Managed streaming data delivery
 ```

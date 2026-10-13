@@ -1,7 +1,6 @@
-
 # 🤖 21-01. AWS Machine Learning Services
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
+> AWS Certified Solutions Architect – Associate (SAA-C03)
 > AWS AI/ML 서비스 및 사용 사례 정리
 
 ## 🇰🇷 1. Machine Learning Overview
@@ -38,8 +37,6 @@ AWS는 특정 AI 기능을 제공하는 관리형 서비스와 사용자가 직�
 
 - Amazon SageMaker AI
 - 데이터 준비, 모델 개발, 학습, 튜닝, 배포를 지원
-
----
 
 ## 🇰🇷 2. Amazon Rekognition
 
@@ -95,8 +92,6 @@ Amazon Augmented AI(A2I)를 이용해 분석 결과에 사람이 검토하는 �
 
 **🎯 Image / Video / Face Recognition → Rekognition**
 
----
-
 ## 🇰🇷 3. Amazon Transcribe
 
 **음성을 텍스트로 변환하는 Speech-to-Text 서비스.**
@@ -141,8 +136,6 @@ PII(Personally Identifiable Information)는 개인 식별 정보이다.
 - 검색 가능한 오디오 아카이브
 
 **🎯 Speech-to-Text / ASR / Subtitles → Transcribe**
-
----
 
 ## 🇰🇷 4. Amazon Polly
 
@@ -204,8 +197,6 @@ Lexicon을 등록하고 SynthesizeSpeech 요청에서 적용할 수 있다.
 
 **🎯 Text-to-Speech / Speech Synthesis → Polly**
 
----
-
 ## 🇰🇷 5. Amazon Translate
 
 **자연스러운 언어 번역을 제공하는 관리형 머신러닝 서비스.**
@@ -247,8 +238,6 @@ Transcribe는 음성을 텍스트로 변환하고, Translate는 언어를 번역
 
 **🎯 Language Translation / Localization → Translate**
 
----
-
 ## 🇰🇷 6. Amazon Lex
 
 **음성 또는 텍스트 기반의 대화형 챗봇을 구축하는 서비스.**
@@ -285,8 +274,6 @@ Alexa에 사용되는 기술과 관련된 서비스이며 다음 기능을 제�
 - 주문 접수 봇
 
 **🎯 Conversational Bot / Intent / Slot → Lex**
-
----
 
 ## 🇰🇷 7. Amazon Connect
 
@@ -325,8 +312,6 @@ flowchart TD
 Connect는 사용량 기반의 클라우드 고객센터 운영을 지원한다.
 
 **🎯 Cloud Contact Center / Contact Flow → Connect**
-
----
 
 ## 🇰🇷 8. Amazon Comprehend
 
@@ -373,8 +358,6 @@ Connect는 사용량 기반의 클라우드 고객센터 운영을 지원한다.
 | Intent / Slot | Sentiment / Entity / Topic |
 
 **🎯 NLP / Sentiment Analysis / Entity Detection → Comprehend**
-
----
 
 ## 🇰🇷 9. Amazon Comprehend Medical
 
@@ -434,8 +417,6 @@ Amazon Comprehend Medical
 
 **🎯 Medical NLP / PHI / Clinical Text → Comprehend Medical**
 
----
-
 ## 🇰🇷 10. Amazon SageMaker AI
 
 **개발자와 데이터 과학자가 직접 ML 모델을 개발하고 학습·배포하는 관리형 서비스.**
@@ -479,8 +460,6 @@ flowchart TD
 
 **🎯 Custom ML Model / Training / Deployment → SageMaker AI**
 
----
-
 ## 🇰🇷 11. Amazon Forecast (Legacy)
 
 **과거 시계열 데이터를 기반으로 미래 수치를 예측하는 관리형 ML 서비스.**
@@ -518,8 +497,6 @@ Future Demand Prediction
 > 신규 구축에는 Amazon SageMaker Canvas 등 AWS가 안내하는 대안을 검토한다.
 
 **🎯 Historical Keyword: Time-Series Forecasting → Amazon Forecast**
-
----
 
 ## 🇰🇷 12. Amazon Kendra
 
@@ -577,8 +554,6 @@ Relevant Answers / Documents
 
 **🎯 Intelligent Document Search / Knowledge Search → Kendra**
 
----
-
 ## 🇰🇷 13. Amazon Personalize
 
 **머신러닝을 이용한 실시간 개인 맞춤형 추천 서비스.**
@@ -617,8 +592,6 @@ Website / Mobile Application
 - 추천 결과를 웹사이트와 모바일 앱에 통합할 수 있다.
 
 **🎯 Personalized Recommendations / Re-ranking → Personalize**
-
----
 
 ## 🇰🇷 14. Amazon Textract
 
@@ -665,9 +638,7 @@ OCR 기술과 머신러닝을 활용해 문서를 분석한다.
 
 **🎯 OCR / Scanned Documents / Forms / Tables → Textract**
 
----
-
-## 🎯 15. SAA Exam Notes
+## 🎯 Exam Notes
 
 ### 서비스 선택 가이드
 
@@ -734,8 +705,6 @@ OCR 기술과 머신러닝을 활용해 문서를 분석한다.
 - SageMaker AI: 직접 ML 모델 개발
 - 목적별 서비스: AWS가 제공하는 특정 AI 기능 사용
 
----
-
 ## 🇯🇵 日本語 Summary
 
 ### 主要サービス
@@ -768,8 +737,6 @@ OCR 기술과 머신러닝을 활용해 문서를 분석한다.
 
 AWS SAA 試験では、機械学習アルゴリズムの詳細よりも、要件に適したサービスを選ぶことが重要である。
 
----
-
 ## 🇺🇸 English Summary
 
 ### Main Services
@@ -795,8 +762,6 @@ AWS SAA 試験では、機械学習アルゴリズムの詳細よりも、要件
 3. Select the right service based on input data and business requirements.
 4. Recognize common AWS AI/ML integration architectures.
 5. Understand important service availability and support limitations.
-
----
 
 ## 📚 Vocabulary
 

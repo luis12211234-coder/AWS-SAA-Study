@@ -1,6 +1,6 @@
-# 17-07. Amazon Cognito
+# 📘 17-07. Amazon Cognito
 
-## 1. Amazon Cognito
+## 🇰🇷 1. Amazon Cognito
 
 Amazon Cognito는 **웹 및 모바일 애플리케이션 사용자의 인증과 AWS 리소스 접근을 지원하는 서비스**이다.
 
@@ -26,9 +26,7 @@ Amazon Cognito
        └── Temporary AWS Credentials
 ```
 
----
-
-# 2. Cognito User Pool
+## 🇰🇷 2. Cognito User Pool
 
 User Pool은 웹/모바일 애플리케이션의 **사용자 회원가입과 로그인**을 처리한다.
 
@@ -55,9 +53,7 @@ Token
 
 Google, Facebook, SAML 등의 외부 Identity Provider와도 연동할 수 있다.
 
----
-
-# 3. User Pool + API Gateway
+## 🇰🇷 3. User Pool + API Gateway
 
 로그인 후 발급받은 Token을 API Gateway에서 검증할 수 있다.
 
@@ -77,9 +73,7 @@ API Gateway가 인증을 처리하므로 Backend에서 모든 로그인 검증 �
 
 User Pool은 Application Load Balancer와도 통합할 수 있다.
 
----
-
-# 4. Cognito Identity Pool
+## 🇰🇷 4. Cognito Identity Pool
 
 Identity Pool은 사용자에게 **Temporary AWS Credentials**를 제공한다.
 
@@ -97,9 +91,7 @@ AWS Resource
 
 이를 통해 애플리케이션 사용자가 S3, DynamoDB 등의 AWS 리소스에 접근할 수 있다.
 
----
-
-# 5. User Pool + Identity Pool
+## 🇰🇷 5. User Pool + Identity Pool
 
 둘을 함께 사용할 수 있다.
 
@@ -133,9 +125,7 @@ Identity Pool
 
 Identity Pool은 User Pool뿐 아니라 외부 Identity Provider에서 얻은 인증 정보도 사용할 수 있다.
 
----
-
-# 6. IAM Roles
+## 🇰🇷 6. IAM Roles
 
 Identity Pool에서 발급되는 AWS Credentials에는 IAM 권한이 연결된다.
 
@@ -151,9 +141,7 @@ Allowed AWS Resources
 
 인증된 사용자와 Guest 사용자 등에 서로 다른 Role을 적용할 수 있다.
 
----
-
-# 7. DynamoDB Fine-Grained Access
+## 🇰🇷 7. DynamoDB Fine-Grained Access
 
 Identity Pool의 사용자 정보와 IAM Policy 조건을 활용해 DynamoDB 접근을 세밀하게 제한할 수 있다.
 
@@ -193,8 +181,6 @@ DynamoDB
 자신에게 허용된 Item만 접근
 ```
 
----
-
 ## 🎯 Exam Notes
 
 가장 중요:
@@ -227,8 +213,6 @@ Fine-Grained AWS Permissions
 
 IAM과 Cognito를 혼동하지 않는다.
 
-## 💡 Practical Example
-
 사진 앱:
 
 ```text
@@ -246,26 +230,6 @@ Temporary AWS Credentials
 ```
 
 사용자는 AWS 계정의 IAM User가 아니지만 제한된 임시 AWS 권한을 받아 필요한 리소스에 접근할 수 있다.
-
-## 🇯🇵 日本語 Summary
-
-Amazon Cognitoは、Web・モバイルアプリケーションのユーザー認証とAWSリソースへのアクセスを支援します。User Poolはサインアップ・サインインを担当し、Identity Poolは一時的なAWS認証情報を提供します。
-
-## 🇺🇸 English Summary
-
-Amazon Cognito provides identity features for web and mobile application users. User Pools handle sign-up and authentication, while Identity Pools provide temporary AWS credentials that allow users to access authorized AWS resources.
-
-## 📚 Vocabulary
-
-| Term | Meaning |
-|---|---|
-| User Pool | 앱 사용자의 회원가입 및 인증을 관리 |
-| Identity Pool | 사용자에게 임시 AWS Credentials를 제공 |
-| Authentication | 사용자가 누구인지 확인 |
-| Credentials | AWS 접근에 사용하는 자격 증명 |
-| Federation | 외부 Identity Provider와 인증을 연동하는 방식 |
-| MFA | Multi-Factor Authentication |
-| Fine-Grained Access | 사용자별로 세밀하게 제한된 접근 권한 |
 
 ## 📝 Review Questions
 
@@ -295,3 +259,23 @@ Cognito Identity Pool
 User Pool은 사용자 회원가입과 인증을 담당하고, Identity Pool은 사용자에게 AWS 리소스 접근에 사용할 Temporary AWS Credentials를 제공한다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+Amazon Cognitoは、Web・モバイルアプリケーションのユーザー認証とAWSリソースへのアクセスを支援します。User Poolはサインアップ・サインインを担当し、Identity Poolは一時的なAWS認証情報を提供します。
+
+## 🇺🇸 English Summary
+
+Amazon Cognito provides identity features for web and mobile application users. User Pools handle sign-up and authentication, while Identity Pools provide temporary AWS credentials that allow users to access authorized AWS resources.
+
+## 📚 Vocabulary
+
+| Term | Meaning |
+|---|---|
+| User Pool | 앱 사용자의 회원가입 및 인증을 관리 |
+| Identity Pool | 사용자에게 임시 AWS Credentials를 제공 |
+| Authentication | 사용자가 누구인지 확인 |
+| Credentials | AWS 접근에 사용하는 자격 증명 |
+| Federation | 외부 Identity Provider와 인증을 연동하는 방식 |
+| MFA | Multi-Factor Authentication |
+| Fine-Grained Access | 사용자별로 세밀하게 제한된 접근 권한 |

@@ -1,6 +1,6 @@
-# 10-04. S3 Versioning
+# 📘 10-04. S3 Versioning
 
-## 1. S3 Versioning이란?
+## 🇰🇷 1. S3 Versioning이란?
 
 S3 Versioning은 **같은 Object Key의 여러 Version을 보관하는 기능**이다.
 
@@ -18,9 +18,7 @@ v1
 
 각 Version은 **Version ID**로 구분된다.
 
----
-
-## 2. Versioning을 사용하는 이유
+## 🇰🇷 2. Versioning을 사용하는 이유
 
 Versioning의 대표적인 목적은 **실수로 인한 Object 삭제 또는 덮어쓰기에서 복구하는 것**이다.
 
@@ -47,9 +45,7 @@ v1  ← 이전 정상 Version
 
 이전 Version이 남아 있기 때문에 복구할 수 있다.
 
----
-
-## 3. Versioning은 Bucket 단위
+## 🇰🇷 3. Versioning은 Bucket 단위
 
 Versioning은 개별 Object마다 설정하는 기능이 아니라 **Bucket 단위로 활성화**한다.
 
@@ -65,9 +61,7 @@ S3 Bucket
 
 Versioning이 활성화된 이후 동일한 Key의 Object를 다시 Upload하면 새로운 Version ID가 생성된다.
 
----
-
-## 4. Version ID
+## 🇰🇷 4. Version ID
 
 Versioning이 활성화된 Bucket에서는 Object Version마다 고유한 **Version ID**가 생성된다.
 
@@ -95,9 +89,7 @@ Key + Version ID
 
 를 이용하여 특정 Object Version을 구분할 수 있다.
 
----
-
-## 5. Null Version
+## 🇰🇷 5. Null Version
 
 Versioning을 활성화하기 **전에 존재했던 Object**가 있을 수 있다.
 
@@ -140,9 +132,7 @@ null version
 
 따라서 필요하면 null version의 데이터도 다시 사용할 수 있다.
 
----
-
-## 6. 같은 Key를 다시 Upload하면?
+## 🇰🇷 6. 같은 Key를 다시 Upload하면?
 
 Versioning이 활성화된 상태에서 같은 Key의 Object를 다시 Upload하면 기존 Version을 삭제하지 않는다.
 
@@ -175,9 +165,7 @@ v1
 
 일반적인 요청에서는 **Current Version**이 반환된다.
 
----
-
-## 7. Versioning과 Storage Cost
+## 🇰🇷 7. Versioning과 Storage Cost
 
 Versioning은 이전 데이터를 보존하지만, 그만큼 Storage도 사용한다.
 
@@ -199,9 +187,7 @@ v3 → 1 GB
 
 이후 Lifecycle Rule 등을 이용하여 오래된 Version을 관리할 수 있다.
 
----
-
-## 8. Object를 삭제하면?
+## 🇰🇷 8. Object를 삭제하면?
 
 Versioning이 활성화된 Bucket에서 Object를 **일반적으로 Delete**하면 기존 Object Version이 즉시 영구 삭제되는 것이 아니다.
 
@@ -236,9 +222,7 @@ v1
 
 기존 Version은 그대로 남아 있다.
 
----
-
-## 9. Delete Marker
+## 🇰🇷 9. Delete Marker
 
 Delete Marker는 실제 Object 데이터가 아니라:
 
@@ -270,9 +254,7 @@ v2
 v1
 ```
 
----
-
-## 10. 삭제된 Object 복구
+## 🇰🇷 10. 삭제된 Object 복구
 
 Delete Marker를 제거하면 이전 Version이 다시 Current 상태로 드러날 수 있다.
 
@@ -297,9 +279,7 @@ v1
 
 따라서 Versioning은 실수로 Object를 삭제했을 때 복구하는 데 유용하다.
 
----
-
-## 11. 특정 Version 삭제
+## 🇰🇷 11. 특정 Version 삭제
 
 일반적인 Object Delete와 **특정 Version 삭제**는 다르다.
 
@@ -343,9 +323,7 @@ v2 자체가 삭제
 → 해당 Version 자체 삭제
 ```
 
----
-
-## 12. Versioning Suspend
+## 🇰🇷 12. Versioning Suspend
 
 한 번 Versioning을 활성화한 Bucket은 이후 **Suspend**할 수 있다.
 
@@ -366,7 +344,6 @@ coffee.jpg
 ├── v2
 └── v1
 
-
 After Suspend
 
 기존 Version
@@ -384,9 +361,7 @@ Suspend
 
 Versioning을 Suspend한 이후 새롭게 저장되는 Object의 Version 처리 방식은 Enabled 상태와 달라진다.
 
----
-
-## 13. Versioning 전체 흐름
+## 🇰🇷 13. Versioning 전체 흐름
 
 처음 Bucket에 Object가 있다고 하자.
 
@@ -445,18 +420,14 @@ null
 
 이 흐름을 이해하면 S3 Versioning의 핵심은 거의 끝이다.
 
----
-
-# 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 S3 Versioning
 → 같은 Key의 여러 Version 보관
 
-
 Versioning
 → Bucket 단위 설정
-
 
 Same Key Upload
 
@@ -465,15 +436,12 @@ coffee.jpg
 ├── v2
 └── v1
 
-
 Version ID
 → 각 Object Version을 구분
-
 
 null version
 → Versioning 활성화 이전 등에 존재한 Object Version
 → 실제 데이터가 존재하는 Version
-
 
 Normal DELETE
 
@@ -483,7 +451,6 @@ coffee.jpg
 ├── v2
 └── v1
 
-
 Delete Marker 삭제
 
 coffee.jpg
@@ -491,103 +458,17 @@ coffee.jpg
 ├── v2
 └── v1
 
-
 특정 Version ID DELETE
 → 해당 Version 자체 삭제
 
-
 Versioning Suspend
 → 기존 Version 삭제 X
-
 
 각 Version은 실제 Object 데이터를 저장
 → Storage Cost 증가 가능
 ```
 
----
-
-# 🇯🇵 日本語まとめ
-
-S3 Versioning を有効にすると、同じ Object Key に対して複数の Version を保存できます。
-
-```text
-index.html
-
-v3 ← Current
-v2
-v1
-```
-
-Versioning を有効にする前から存在していた Object は `null version` として扱われる場合があります。
-
-Versioning が有効な Bucket で通常の Delete を実行すると、既存 Version がすぐに削除されるのではなく **Delete Marker** が作成されます。
-
-```text
-Delete Marker ← Current
-v3
-v2
-v1
-```
-
-Delete Marker を削除すると以前の Version を再び利用できます。
-
-一方、Version ID を指定して削除すると、その Version 自体を削除できます。
-
-Versioning を Suspend しても既存の Version は削除されません。
-
----
-
-# 🇺🇸 English Summary
-
-S3 Versioning allows multiple versions of an object with the same key to be stored.
-
-```text
-index.html
-
-v3 ← Current
-v2
-v1
-```
-
-Each version is identified by a Version ID.
-
-Objects that existed before versioning was enabled may appear as a `null version`.
-
-When an object is deleted normally from a versioned bucket, S3 creates a **Delete Marker** instead of immediately removing previous versions.
-
-```text
-Delete Marker ← Current
-v3
-v2
-v1
-```
-
-Removing the Delete Marker can make the previous version accessible again.
-
-Deleting a specific Version ID removes that particular version.
-
-Suspending versioning does not delete versions that already exist.
-
----
-
-# Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Versioning | バージョニング | 버전 관리 |
-| Version | バージョン | 버전 |
-| Version ID | バージョンID | 버전 ID |
-| Current Version | 現在のバージョン | 현재 버전 |
-| Null Version | Nullバージョン | Null 버전 |
-| Delete Marker | 削除マーカー | 삭제 마커 |
-| Permanent Delete | 完全削除 | 영구 삭제 |
-| Suspend | 一時停止 | 중지 |
-| Recovery | 復元 | 복구 |
-| Overwrite | 上書き | 덮어쓰기 |
-
----
-
-# Review Questions
+## 📝 Review Questions
 
 <details>
 <summary>1. S3 Versioning의 주요 목적은?</summary>
@@ -656,3 +537,78 @@ Version ID를 지정한 Delete는 해당 Object Version 자체를 삭제한다.
 여러 Version이 계속 누적되면 그만큼 Storage 사용량도 증가할 수 있다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+S3 Versioning を有効にすると、同じ Object Key に対して複数の Version を保存できます。
+
+```text
+index.html
+
+v3 ← Current
+v2
+v1
+```
+
+Versioning を有効にする前から存在していた Object は `null version` として扱われる場合があります。
+
+Versioning が有効な Bucket で通常の Delete を実行すると、既存 Version がすぐに削除されるのではなく **Delete Marker** が作成されます。
+
+```text
+Delete Marker ← Current
+v3
+v2
+v1
+```
+
+Delete Marker を削除すると以前の Version を再び利用できます。
+
+一方、Version ID を指定して削除すると、その Version 自体を削除できます。
+
+Versioning を Suspend しても既存の Version は削除されません。
+
+## 🇺🇸 English Summary
+
+S3 Versioning allows multiple versions of an object with the same key to be stored.
+
+```text
+index.html
+
+v3 ← Current
+v2
+v1
+```
+
+Each version is identified by a Version ID.
+
+Objects that existed before versioning was enabled may appear as a `null version`.
+
+When an object is deleted normally from a versioned bucket, S3 creates a **Delete Marker** instead of immediately removing previous versions.
+
+```text
+Delete Marker ← Current
+v3
+v2
+v1
+```
+
+Removing the Delete Marker can make the previous version accessible again.
+
+Deleting a specific Version ID removes that particular version.
+
+Suspending versioning does not delete versions that already exist.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Versioning | バージョニング | 버전 관리 |
+| Version | バージョン | 버전 |
+| Version ID | バージョンID | 버전 ID |
+| Current Version | 現在のバージョン | 현재 버전 |
+| Null Version | Nullバージョン | Null 버전 |
+| Delete Marker | 削除マーカー | 삭제 마커 |
+| Permanent Delete | 完全削除 | 영구 삭제 |
+| Suspend | 一時停止 | 중지 |
+| Recovery | 復元 | 복구 |
+| Overwrite | 上書き | 덮어쓰기 |

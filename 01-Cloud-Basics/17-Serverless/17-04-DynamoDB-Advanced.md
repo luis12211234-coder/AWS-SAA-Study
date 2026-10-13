@@ -1,6 +1,6 @@
-# 17-04. DynamoDB Advanced
+# 📘 17-04. DynamoDB Advanced
 
-## 1. DynamoDB Accelerator (DAX)
+## 🇰🇷 1. DynamoDB Accelerator (DAX)
 
 DAX는 DynamoDB 전용 **In-Memory Cache**이다.
 
@@ -34,9 +34,7 @@ ElastiCache
 
 DynamoDB Read 성능 개선이 핵심 요구사항이면 DAX를 우선적으로 고려한다.
 
----
-
-# 2. DynamoDB Streams
+## 🇰🇷 2. DynamoDB Streams
 
 DynamoDB Item의 변경 사항을 기록한다.
 
@@ -59,9 +57,7 @@ Lambda
 
 Stream Record 보존 기간은 **24시간**이다.
 
----
-
-# 3. DynamoDB Streams vs Kinesis Data Streams
+## 🇰🇷 3. DynamoDB Streams vs Kinesis Data Streams
 
 ```text
 DynamoDB Streams
@@ -75,9 +71,7 @@ DynamoDB Streams는 DynamoDB 변경 처리에 간단하게 사용할 수 있다.
 
 Kinesis Data Streams는 더 긴 Retention과 다양한 Consumer가 필요한 Streaming Architecture에 적합하다.
 
----
-
-# 4. Global Tables
+## 🇰🇷 4. Global Tables
 
 DynamoDB Global Tables는 여러 Region에 Table을 구성하여 **Multi-Region Active-Active** 구조를 제공한다.
 
@@ -97,9 +91,7 @@ Users US
 - Active-Active
 - 글로벌 사용자 Low Latency
 
----
-
-# 5. Time To Live (TTL)
+## 🇰🇷 5. Time To Live (TTL)
 
 Item에 만료 시간을 설정할 수 있다.
 
@@ -119,11 +111,9 @@ TTL 도달
 
 TTL 삭제는 만료 시각에 정확히 즉시 실행되는 것을 보장하지 않는다.
 
----
+## 🇰🇷 6. Backup
 
-# 6. Backup
-
-## Point-in-Time Recovery
+### Point-in-Time Recovery
 
 Continuous Backup 기능이다.
 
@@ -132,17 +122,15 @@ Continuous Backup 기능이다.
 - 특정 시점으로 복원
 - 복원 시 새로운 Table 생성
 
-## On-Demand Backup
+### On-Demand Backup
 
 필요할 때 직접 Backup을 생성한다.
 
 명시적으로 삭제하기 전까지 보관할 수 있다.
 
----
+## 🇰🇷 7. DynamoDB + S3
 
-# 7. DynamoDB + S3
-
-### Export to S3
+#### Export to S3
 
 ```text
 DynamoDB
@@ -154,7 +142,7 @@ Athena / Analytics
 
 PITR을 이용한 Export는 Table의 Read Capacity를 소비하지 않는다.
 
-### Import from S3
+#### Import from S3
 
 ```text
 S3
@@ -172,8 +160,6 @@ New DynamoDB Table
 
 Import는 새로운 DynamoDB Table을 생성하며 Table의 Write Capacity를 소비하지 않는다.
 
----
-
 ## 🎯 Exam Notes
 
 - DynamoDB Read Cache → DAX
@@ -184,8 +170,6 @@ Import는 새로운 DynamoDB Table을 생성하며 Table의 Write Capacity를 �
 - 자동 Item 만료 → TTL
 - 최대 35일 시점 복구 → PITR
 - DynamoDB Data 분석 → Export to S3
-
-## 💡 Practical Example
 
 사용자 Session 관리:
 
@@ -201,25 +185,6 @@ TTL 설정
    ↓
 자동 삭제
 ```
-
-## 🇯🇵 日本語 Summary
-
-DynamoDBには、DAXによる高速キャッシュ、Streamsによる変更データ処理、Global Tablesによるマルチリージョン構成、TTLによる自動削除、PITRやオンデマンドバックアップなどの機能があります。
-
-## 🇺🇸 English Summary
-
-DynamoDB provides advanced features including DAX for caching, Streams for change processing, Global Tables for multi-Region active-active architectures, TTL for automatic expiration, and multiple backup and S3 integration options.
-
-## 📚 Vocabulary
-
-| Term | Meaning |
-|---|---|
-| DAX | DynamoDB 전용 In-Memory Cache |
-| Stream | 데이터 변경 Event의 연속 |
-| Global Table | Multi-Region DynamoDB Table |
-| TTL | 데이터 만료 시간 |
-| PITR | Point-in-Time Recovery |
-| Active-Active | 여러 위치에서 동시에 Read/Write 가능한 구성 |
 
 ## 📝 Review Questions
 
@@ -249,3 +214,22 @@ DynamoDB Streams를 사용할 수 있다.
 DynamoDB Global Tables
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+DynamoDBには、DAXによる高速キャッシュ、Streamsによる変更データ処理、Global Tablesによるマルチリージョン構成、TTLによる自動削除、PITRやオンデマンドバックアップなどの機能があります。
+
+## 🇺🇸 English Summary
+
+DynamoDB provides advanced features including DAX for caching, Streams for change processing, Global Tables for multi-Region active-active architectures, TTL for automatic expiration, and multiple backup and S3 integration options.
+
+## 📚 Vocabulary
+
+| Term | Meaning |
+|---|---|
+| DAX | DynamoDB 전용 In-Memory Cache |
+| Stream | 데이터 변경 Event의 연속 |
+| Global Table | Multi-Region DynamoDB Table |
+| TTL | 데이터 만료 시간 |
+| PITR | Point-in-Time Recovery |
+| Active-Active | 여러 위치에서 동시에 Read/Write 가능한 구성 |

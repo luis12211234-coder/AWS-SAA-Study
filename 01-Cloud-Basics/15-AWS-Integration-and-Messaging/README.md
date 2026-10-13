@@ -1,51 +1,38 @@
-# 15. AWS Integration & Messaging
+# 📨 15. AWS Integration & Messaging
 
-AWS Application 간 통신을 분리하고 독립적으로 확장하기 위한 Messaging / Streaming Service를 학습합니다.
+> AWS Certified Solutions Architect – Associate (SAA-C03)  
+> GitHub Section 15
 
-## 📚 Contents
+## 📌 Overview
 
-| No. | Topic | 핵심 |
-|---|---|---|
-| 15-01 | Application Integration | Synchronous / Asynchronous, Decoupling |
-| 15-02 | Amazon SQS | Queue, Visibility Timeout, Long Polling, FIFO |
-| 15-03 | Amazon SNS | Pub/Sub, Topic, Subscriber, Filtering |
-| 15-04 | SNS + SQS Fan-Out | 하나의 Event를 여러 Queue로 전달 |
-| 15-05 | Kinesis Data Streams | Real-Time Streaming, Shard, Replay |
-| 15-06 | Amazon Data Firehose | Streaming Data Delivery |
-| 15-07 | Comparison | SQS vs SNS vs Kinesis |
+SQS, SNS, Kinesis와 Firehose를 이용한 애플리케이션 통합·메시징 패턴을 학습한다.
 
-## 🔑 전체 그림
+## 🎯 Learning Objectives
 
-```text
-SQS
-→ Queue
-→ 작업을 쌓아두고 Consumer가 처리
+1. AWS Integration & Messaging의 핵심 개념과 AWS에서의 역할을 설명한다.
+2. Application Integration, Amazon SQS, Amazon SNS의 차이와 사용 사례를 구분한다.
+3. SAA-C03 문제의 요구사항에서 적절한 서비스와 설계를 선택한다.
 
-SNS
-→ Pub/Sub
-→ 하나의 Event를 여러 Subscriber에게 전달
+## 📂 Contents
 
-Kinesis Data Streams
-→ Real-Time Stream
-→ 계속 발생하는 데이터를 수집 / 저장
+| File | Topic |
+|---|---|
+| [15-01-Application-Integration.md](./15-01-Application-Integration.md) | Application Integration |
+| [15-02-Amazon-SQS.md](./15-02-Amazon-SQS.md) | Amazon SQS |
+| [15-03-Amazon-SNS.md](./15-03-Amazon-SNS.md) | Amazon SNS |
+| [15-04-SNS-SQS-Fan-Out.md](./15-04-SNS-SQS-Fan-Out.md) | SNS + SQS Fan-Out |
+| [15-05-Kinesis-Data-Streams.md](./15-05-Kinesis-Data-Streams.md) | Kinesis Data Streams |
+| [15-06-Amazon-Data-Firehose.md](./15-06-Amazon-Data-Firehose.md) | Amazon Data Firehose |
+| [15-07-SQS-SNS-Kinesis-Comparison.md](./15-07-SQS-SNS-Kinesis-Comparison.md) | SQS vs SNS vs Kinesis |
 
-Amazon Data Firehose
-→ Delivery
-→ Streaming Data를 S3 등의 목적지로 전달
-```
+## 🧠 Key Concept
 
-## 🎯 Exam Keywords
+서비스 이름 자체보다 **요구사항, 선택 기준, 제한 사항과 유사 서비스의 차이**를 중심으로 이해한다.
 
-```text
-Decoupling / Buffer / Traffic Spike
-→ SQS
+## 🇯🇵 日本語 Summary
 
-Pub/Sub / Notification / Fan-Out
-→ SNS
+このセクションでは、AWS Integration & Messaging に関する主要な AWS サービス、設計原則、試験ポイントを学習します。
 
-Real-Time / Clickstream / Logs / IoT / Replay
-→ Kinesis Data Streams
+## 🇺🇸 English Summary
 
-Streaming → S3 / Redshift / OpenSearch
-→ Amazon Data Firehose
-```
+This section covers the core AWS services, design principles, and exam points for AWS Integration & Messaging.

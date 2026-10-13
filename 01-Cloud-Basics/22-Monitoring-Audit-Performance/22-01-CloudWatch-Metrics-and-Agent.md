@@ -1,6 +1,6 @@
 # 📈 22-01. Amazon CloudWatch Metrics & Unified CloudWatch Agent
 
-> AWS SAA-C03 · Udemy Section 24 / GitHub Section 22  
+> AWS SAA-C03 · Udemy Section 24 / GitHub Section 22
 > 검색 키워드: **Metrics, Namespace, Dimension, Datapoint, Detailed Monitoring, CWAgent, RAM, mem_used_percent, Metric Streams, CloudWatchAgentServerPolicy, SSM Parameter Store**
 
 ## 🇰🇷 1. CloudWatch의 역할
@@ -111,7 +111,7 @@ CloudWatch Metrics → Metric Stream → Amazon Data Firehose → S3 / Third-par
 - **CloudWatch Logs Subscription:** 로그 이벤트 스트리밍. → [22-03](./22-03-CloudWatch-Logs-Analysis-and-Delivery.md)
 - Metric Streams를 로그의 Metric Filter와 혼동하지 않는다.
 
-## 🎯 Exam Triggers
+## 🎯 Exam Notes
 
 | 문제 문구 | 답 |
 |---|---|
@@ -162,7 +162,19 @@ CloudWatch Metrics → Metric Stream → Amazon Data Firehose → S3 / Third-par
 | Q03 | **B** | Namespace와 Metric 이름이 같아도 InstanceId Dimension 값에 따라 서로 다른 시계열로 구분한다. |
 | Q04 | **C** | Metric Streams는 숫자 지표를 Amazon Data Firehose 등을 통해 지속 전송한다. Logs Subscription은 로그 이벤트 전송. |
 
-## 📚 Vocabulary — English · 한국어 · 日本語
+## 🇯🇵 日本語 Summary
+
+CloudWatch Metrics は CPU 使用率などの数値データを時系列で管理する。Namespace は指標の分類、Dimension はインスタンスなどの識別情報である。EC2 の詳細モニタリングは通常 1 分間隔で基本指標を送信するが、RAM 使用率を自動的に追加しない。Unified CloudWatch Agent を使用すると、メモリ・ディスク・プロセス等の詳細な指標とログを収集できる。SSM Parameter Store でエージェント設定を共有できる。
+
+**試験の注意点:** 5分/1分は EC2 の基本メトリクスの収集間隔を意味する。CPU Credit のように別の周期を持つ指標もある。
+
+## 🇺🇸 English Summary
+
+CloudWatch Metrics stores time-series measurements identified by a namespace, metric name, and dimensions. EC2 detailed monitoring increases the frequency of standard metrics, but does not add memory usage automatically. The unified CloudWatch Agent collects OS-level metrics and application logs from EC2 or on-premises servers; IAM permissions are required. Metric Streams export metric data via Amazon Data Firehose.
+
+**Exam tip:** Detailed Monitoring changes the granularity of standard EC2 metrics, while the agent adds OS-level metrics. A metric stream delivers measurements, not raw log events.
+
+## 📚 Vocabulary
 
 > GitHub 검색 시 영어 표제어 그대로 검색하면 관련 설명으로 이동하기 쉽다.
 
@@ -191,20 +203,7 @@ CloudWatch Metrics → Metric Stream → Amazon Data Firehose → S3 / Third-par
 | Configuration File | 설정 파일 | 設定ファイル |
 | Metric Stream | 지표 스트림 | メトリクスストリーム |
 
-
-## 🇯🇵 日本語 Summary
-
-CloudWatch Metrics は CPU 使用率などの数値データを時系列で管理する。Namespace は指標の分類、Dimension はインスタンスなどの識別情報である。EC2 の詳細モニタリングは通常 1 分間隔で基本指標を送信するが、RAM 使用率を自動的に追加しない。Unified CloudWatch Agent を使用すると、メモリ・ディスク・プロセス等の詳細な指標とログを収集できる。SSM Parameter Store でエージェント設定を共有できる。
-
-**試験の注意点:** 5分/1分は EC2 の基本メトリクスの収集間隔を意味する。CPU Credit のように別の周期を持つ指標もある。
-
-## 🇺🇸 English Summary
-
-CloudWatch Metrics stores time-series measurements identified by a namespace, metric name, and dimensions. EC2 detailed monitoring increases the frequency of standard metrics, but does not add memory usage automatically. The unified CloudWatch Agent collects OS-level metrics and application logs from EC2 or on-premises servers; IAM permissions are required. Metric Streams export metric data via Amazon Data Firehose.
-
-**Exam tip:** Detailed Monitoring changes the granularity of standard EC2 metrics, while the agent adds OS-level metrics. A metric stream delivers measurements, not raw log events.
-
-## 📚 References
+## 📚 Official References
 
 - [CloudWatch Agent overview](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html)
 - [EC2 detailed monitoring](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html)

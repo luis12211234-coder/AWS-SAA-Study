@@ -1,6 +1,6 @@
-# EC2 Public IP, Private IP and Elastic IP
+# 📘 04-08. EC2 Public IP, Private IP and Elastic IP
 
-## Overview
+## 🇰🇷 1. Overview
 
 EC2 Instance에서는 네트워크 통신을 위해 Public IP와 Private IP를 사용할 수 있다.
 
@@ -10,9 +10,7 @@ Public IP는 인터넷을 통해 Instance에 접근하기 위해 사용한다.
 또한 일반 Public IPv4 Address는 EC2 Instance를 Stop 후 Start하면 변경될 수 있기 때문에,
 고정된 Public IPv4 Address가 필요한 경우 Elastic IP를 사용할 수 있다.
 
----
-
-## IPv4 and IPv6
+## 🇰🇷 2. IPv4 and IPv6
 
 IP Address에는 대표적으로 IPv4와 IPv6가 있다.
 
@@ -39,9 +37,7 @@ IPv6는 IPv4의 Address 부족 문제를 해결하기 위해 훨씬 큰 Address 
 
 AWS는 IPv4와 IPv6를 모두 지원한다.
 
----
-
-## Public IP
+## 🇰🇷 3. Public IP
 
 Public IP는 인터넷에서 Resource를 식별할 수 있는 IP Address이다.
 
@@ -71,9 +67,7 @@ Public IPv4
 EC2
 ```
 
----
-
-## Private IP
+## 🇰🇷 4. Private IP
 
 Private IP는 Private Network 내부에서 Resource를 식별하기 위해 사용한다.
 
@@ -108,9 +102,7 @@ Company B
 → 서로 다른 Private Network이므로 사용 가능
 ```
 
----
-
-## Public IP vs Private IP
+## 🇰🇷 5. Public IP vs Private IP
 
 | 특징 | Public IP | Private IP |
 |---|---|---|
@@ -130,9 +122,7 @@ Private IP
 → Internal Network
 ```
 
----
-
-## EC2 and IP Addresses
+## 🇰🇷 6. EC2 and IP Addresses
 
 강의의 EC2 환경에서는 Instance에 다음 Address가 존재한다.
 
@@ -162,9 +152,7 @@ EC2
 
 Private IP로 직접 접근하려면 동일한 Network 또는 VPN 등 Private Network에 접근할 수 있는 연결이 필요하다.
 
----
-
-## Public IP after Stop and Start
+## 🇰🇷 7. Public IP after Stop and Start
 
 일반적인 EC2 Public IPv4 Address는 Instance를 Stop한 후 다시 Start하면 변경될 수 있다.
 
@@ -212,11 +200,9 @@ Stop + Start
 
 강의에서 Public IP 변경을 확인하기 위해서는 Instance를 Stop한 후 다시 Start한다.
 
----
+## 🇰🇷 8. Elastic IP
 
-# Elastic IP
-
-## What is an Elastic IP?
+### What is an Elastic IP?
 
 Elastic IP(EIP)는 AWS에서 사용할 수 있는 **고정된 Public IPv4 Address**이다.
 
@@ -245,9 +231,7 @@ Start
 Same Public IPv4
 ```
 
----
-
-## Why Use an Elastic IP?
+### Why Use an Elastic IP?
 
 고정된 Public IPv4 Address가 반드시 필요한 경우 Elastic IP를 사용할 수 있다.
 
@@ -282,9 +266,7 @@ Instance B
 
 같은 Public IP를 다른 Instance로 이동시켜 장애를 숨기는 방식으로 사용할 수 있다.
 
----
-
-## Elastic IP Characteristics
+### Elastic IP Characteristics
 
 Elastic IP의 핵심 특징:
 
@@ -295,9 +277,7 @@ Elastic IP의 핵심 특징:
 - 다른 Instance로 Remap 가능
 - Public IPv4이므로 비용에 주의해야 함
 
----
-
-## Elastic IP Lifecycle
+### Elastic IP Lifecycle
 
 Elastic IP 사용 흐름:
 
@@ -325,7 +305,7 @@ Release
 Elastic IP 반환
 ```
 
-### Disassociate vs Release
+#### Disassociate vs Release
 
 ```text
 Disassociate
@@ -337,9 +317,7 @@ Release
 
 사용하지 않는 Elastic IP를 불필요하게 유지하지 않는 것이 중요하다.
 
----
-
-## Elastic IP Architecture Consideration
+### Elastic IP Architecture Consideration
 
 강의에서는 가능하면 Elastic IP에 의존하는 Architecture를 피하는 것을 권장한다.
 
@@ -368,9 +346,7 @@ DNS / Load Balancer 기반 Architecture
 Elastic IP가 나쁜 서비스라는 뜻이 아니라,
 Application Architecture를 하나의 고정 IP에 지나치게 의존하도록 만드는 것을 피하는 것이 좋다는 의미이다.
 
----
-
-## Public IPv4 Cost
+### Public IPv4 Cost
 
 AWS에서는 Public IPv4 Address가 유료 Resource가 될 수 있다.
 
@@ -388,9 +364,7 @@ Terminate / Release unused resources
 
 > Public IPv4의 정확한 가격 및 Free Tier 조건은 시점과 계정 조건에 따라 변경될 수 있으므로 AWS의 현재 Pricing 정보를 확인한다.
 
----
-
-## Summary
+### Summary
 
 - IPv4와 IPv6는 IP Address 형식이다.
 - Public IP는 Internet에서 Resource를 식별하기 위해 사용한다.
@@ -406,9 +380,7 @@ Terminate / Release unused resources
 - Elastic IP가 필요하지 않다면 Disassociate 후 Release하여 정리한다.
 - 가능하면 DNS 또는 Load Balancer 기반 Architecture를 고려한다.
 
----
-
-## Exam Notes
+## 🎯 Exam Notes
 
 ### Public vs Private IP
 
@@ -478,10 +450,6 @@ Release
 → Elastic IP 자체 반환
 ```
 
----
-
-## Practical Example
-
 웹 서버에 고정 Public IPv4 Address가 필요하다고 가정한다.
 
 일반 Public IPv4를 사용하는 경우:
@@ -527,11 +495,22 @@ EC2
 
 따라서 고정 Public IPv4가 반드시 필요한 경우 Elastic IP를 사용할 수 있다.
 
----
+## 📝 Review Questions
 
-# 🇯🇵 日本語
+1. Public IP와 Private IP의 가장 큰 차이는 무엇인가?
+2. 서로 다른 Private Network에서 같은 Private IP를 사용할 수 있는 이유는 무엇인가?
+3. Local PC에서 EC2의 Private IP로 직접 SSH할 수 없는 이유는 무엇인가?
+4. EC2 Instance를 Stop 후 Start하면 일반 Public IPv4는 어떻게 될 수 있는가?
+5. Primary Private IPv4는 Stop / Start 후 일반적으로 어떻게 되는가?
+6. Elastic IP란 무엇인가?
+7. 고정 Public IPv4가 필요한 경우 어떤 AWS 기능을 사용할 수 있는가?
+8. Elastic IP를 다른 EC2 Instance로 Remap할 수 있는 이유는 무엇인가?
+9. Disassociate와 Release의 차이는 무엇인가?
+10. AWS Architecture에서 Elastic IP에 지나치게 의존하는 것을 피하는 이유는 무엇인가?
 
-## Public IP and Private IP
+## 🇯🇵 日本語 Summary
+
+### Public IP and Private IP
 
 Public IPはインターネット上でResourceを識別するためのIP Addressである。
 
@@ -550,9 +529,7 @@ Public IPはインターネット全体でUniqueである必要がある。
 Private IPはPrivate Network内でUniqueであればよいため、
 異なるPrivate Networkでは同じPrivate IPを使用できる。
 
----
-
-## EC2 IP Behavior
+### EC2 IP Behavior
 
 EC2 Instanceの通常のPublic IPv4 Addressは、
 InstanceをStopして再びStartすると変更される可能性がある。
@@ -569,9 +546,7 @@ Private IPv4
 → Remains
 ```
 
----
-
-## Elastic IP
+### Elastic IP
 
 Elastic IPは固定されたPublic IPv4 Addressである。
 
@@ -587,9 +562,7 @@ Elastic IPを使用することで同じPublic IPv4 Addressを維持できる。
 
 不要になったElastic IPはReleaseする。
 
----
-
-## Summary
+### Summary
 
 - Public IPはInternetで使用する。
 - Private IPはPrivate Network内部で使用する。
@@ -599,11 +572,9 @@ Elastic IPを使用することで同じPublic IPv4 Addressを維持できる。
 - Elastic IPは別のInstanceにRemapできる。
 - 不要なElastic IPはReleaseする。
 
----
+## 🇺🇸 English Summary
 
-# 🇺🇸 English
-
-## Public IP and Private IP
+### Public IP and Private IP
 
 A Public IP identifies a resource on the public Internet.
 
@@ -621,9 +592,7 @@ A Public IP must be unique across the Internet.
 
 Private IP addresses only need to be unique within their private network, so different private networks can use the same private IP ranges.
 
----
-
-## EC2 IP Behavior
+### EC2 IP Behavior
 
 A normal EC2 public IPv4 address can change when an instance is stopped and started again.
 
@@ -639,9 +608,7 @@ Private IPv4
 → Remains
 ```
 
----
-
-## Elastic IP
+### Elastic IP
 
 An Elastic IP is a static public IPv4 address.
 
@@ -656,9 +623,7 @@ An Elastic IP can also be remapped to another instance when necessary.
 
 Unused Elastic IP addresses should be released.
 
----
-
-## Summary
+### Summary
 
 - Public IP addresses are used for Internet communication.
 - Private IP addresses are used inside private networks.
@@ -668,9 +633,7 @@ Unused Elastic IP addresses should be released.
 - Elastic IP can be remapped to another instance.
 - Unused Elastic IP addresses should be released.
 
----
-
-## Vocabulary
+## 📚 Vocabulary
 
 | English | 한국어 | 日本語 |
 |---|---|---|
@@ -688,18 +651,3 @@ Unused Elastic IP addresses should be released.
 | Remap | 재연결 | 再マッピング |
 | DNS | 도메인 이름 시스템 | DNS |
 | Load Balancer | 로드 밸런서 | ロードバランサー |
-
----
-
-## Review Questions
-
-1. Public IP와 Private IP의 가장 큰 차이는 무엇인가?
-2. 서로 다른 Private Network에서 같은 Private IP를 사용할 수 있는 이유는 무엇인가?
-3. Local PC에서 EC2의 Private IP로 직접 SSH할 수 없는 이유는 무엇인가?
-4. EC2 Instance를 Stop 후 Start하면 일반 Public IPv4는 어떻게 될 수 있는가?
-5. Primary Private IPv4는 Stop / Start 후 일반적으로 어떻게 되는가?
-6. Elastic IP란 무엇인가?
-7. 고정 Public IPv4가 필요한 경우 어떤 AWS 기능을 사용할 수 있는가?
-8. Elastic IP를 다른 EC2 Instance로 Remap할 수 있는 이유는 무엇인가?
-9. Disassociate와 Release의 차이는 무엇인가?
-10. AWS Architecture에서 Elastic IP에 지나치게 의존하는 것을 피하는 이유는 무엇인가?

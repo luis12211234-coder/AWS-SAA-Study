@@ -1,4 +1,4 @@
-# 13-03. CloudFront Custom Origins
+# 📘 13-03. CloudFront Custom Origins
 
 ## 🇰🇷 1. Custom Origin이란?
 
@@ -17,9 +17,7 @@ CloudFront
 
 이러한 HTTP 기반 Backend를 Custom Origin으로 사용할 수 있습니다.
 
----
-
-## 2. S3 Website Endpoint
+## 🇰🇷 2. S3 Website Endpoint
 
 여기서 중요한 구분이 있습니다.
 
@@ -41,9 +39,7 @@ S3 Website Endpoint
 
 즉 이름은 S3지만 CloudFront 입장에서는 일반 HTTP Website와 같은 방식으로 접근합니다.
 
----
-
-## 3. EC2를 직접 Origin으로 사용
+## 🇰🇷 3. EC2를 직접 Origin으로 사용
 
 EC2를 직접 CloudFront Origin으로 사용할 수도 있습니다.
 
@@ -57,9 +53,7 @@ Public EC2
 
 CloudFront가 EC2에 접근할 수 있도록 Network와 Security Group을 구성해야 합니다.
 
----
-
-## 4. ALB를 Origin으로 사용
+## 🇰🇷 4. ALB를 Origin으로 사용
 
 ALB를 CloudFront Origin으로 두고 실제 EC2를 뒤에 배치할 수도 있습니다.
 
@@ -77,9 +71,7 @@ CloudFront는 ALB에 접근하고 ALB가 Backend EC2로 Traffic을 분산합니�
 
 따라서 Backend EC2는 Private으로 둘 수 있습니다.
 
----
-
-## 5. Security Group
+## 🇰🇷 5. Security Group
 
 요청 흐름을 그대로 따라가면 됩니다.
 
@@ -107,9 +99,7 @@ EC2 SG
 
 EC2 입장에서 직접 요청을 보내는 대상은 CloudFront가 아니라 ALB입니다.
 
----
-
-## 6. 서비스 역할 구분
+## 🇰🇷 6. 서비스 역할 구분
 
 ```text
 CloudFront
@@ -122,9 +112,7 @@ EC2
 = 실제 Application Server
 ```
 
----
-
-## 🔑 핵심 정리
+## 🎯 Exam Notes
 
 ```text
 Origin
@@ -151,40 +139,6 @@ Private EC2
 
 > **CloudFront 뒤에는 S3뿐 아니라 ALB, EC2 등의 HTTP Backend도 연결할 수 있다.**
 
----
-
-## 🇯🇵 日本語 Summary
-
-CloudFrontでは、S3だけでなくEC2、ALB、HTTP ServerなどをCustom Originとして利用できます。
-
-S3 Website EndpointもHTTPベースのCustom Originとして扱われます。
-
-ALBをOriginとして利用する場合、ALBをPublicにし、Backend EC2をPrivateにする構成が可能です。
-
----
-
-## 🇺🇸 English Summary
-
-CloudFront can use HTTP-based custom origins such as EC2 instances, Application Load Balancers, and HTTP servers.
-
-An S3 website endpoint is also treated as a custom HTTP origin.
-
-A common architecture uses a public ALB as the CloudFront origin while keeping backend EC2 instances private.
-
----
-
-## 📚 Vocabulary
-
-| English | 日本語 | 한국어 |
-|---|---|---|
-| Custom Origin | カスタムオリジン | 사용자 지정 원본 |
-| Website Endpoint | ウェブサイトエンドポイント | 웹사이트 엔드포인트 |
-| Application Load Balancer | Application Load Balancer | 애플리케이션 로드 밸런서 |
-| Backend | バックエンド | 백엔드 |
-| Security Group | セキュリティグループ | 보안 그룹 |
-
----
-
 ## 📝 Review Questions
 
 <details>
@@ -207,3 +161,29 @@ HTTP 기반 Custom Origin으로 취급됩니다.
 ALB에서 옵니다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+CloudFrontでは、S3だけでなくEC2、ALB、HTTP ServerなどをCustom Originとして利用できます。
+
+S3 Website EndpointもHTTPベースのCustom Originとして扱われます。
+
+ALBをOriginとして利用する場合、ALBをPublicにし、Backend EC2をPrivateにする構成が可能です。
+
+## 🇺🇸 English Summary
+
+CloudFront can use HTTP-based custom origins such as EC2 instances, Application Load Balancers, and HTTP servers.
+
+An S3 website endpoint is also treated as a custom HTTP origin.
+
+A common architecture uses a public ALB as the CloudFront origin while keeping backend EC2 instances private.
+
+## 📚 Vocabulary
+
+| English | 日本語 | 한국어 |
+|---|---|---|
+| Custom Origin | カスタムオリジン | 사용자 지정 원본 |
+| Website Endpoint | ウェブサイトエンドポイント | 웹사이트 엔드포인트 |
+| Application Load Balancer | Application Load Balancer | 애플리케이션 로드 밸런서 |
+| Backend | バックエンド | 백엔드 |
+| Security Group | セキュリティグループ | 보안 그룹 |

@@ -1,6 +1,6 @@
-# 18-03. Microservices Architecture
+# 📘 18-03. Microservices Architecture
 
-## 1. Overview
+## 🇰🇷 1. Overview
 
 Microservices Architecture는 하나의 큰 애플리케이션을 여러 독립적인 서비스로 분리하는 설계 방식이다.
 
@@ -24,7 +24,7 @@ Microservices는 Serverless와 같은 의미가 아니다.
 
 각 서비스는 EC2, ECS, Lambda 등 다양한 컴퓨팅 환경에서 구현할 수 있다.
 
-## 2. Requirements
+## 🇰🇷 2. Requirements
 
 - 여러 서비스의 독립적인 개발 및 배포
 - 서비스별 기술 선택의 자유
@@ -32,7 +32,7 @@ Microservices는 Serverless와 같은 의미가 아니다.
 - 서비스 간 API 통신
 - 동기식 및 비동기식 통신 지원
 
-## 3. Different Architectures per Service
+## 🇰🇷 3. Different Architectures per Service
 
 각 마이크로서비스는 서로 다른 AWS 서비스를 사용할 수 있다.
 
@@ -109,7 +109,7 @@ service3.example.com
 
 전통적인 서버 기반 웹 애플리케이션을 구성한다.
 
-## 4. Synchronous Communication
+## 🇰🇷 4. Synchronous Communication
 
 동기식 통신은 호출자가 다른 서비스의 응답을 기다리는 방식이다.
 
@@ -141,7 +141,7 @@ AWS에서 활용할 수 있는 서비스:
 - 서비스 장애가 연쇄적으로 영향을 줄 수 있다.
 - Timeout과 Retry 설계가 중요하다.
 
-## 5. Asynchronous Communication
+## 🇰🇷 5. Asynchronous Communication
 
 비동기식 통신은 호출자가 후속 작업 완료를 기다리지 않는 방식이다.
 
@@ -196,7 +196,7 @@ Prepare Shipment
 - Eventual Consistency를 고려해야 한다.
 - 메시지 추적과 장애 분석이 복잡해질 수 있다.
 
-## 6. Microservices Challenges
+## 🇰🇷 6. Microservices Challenges
 
 ### Repeated Infrastructure Overhead
 
@@ -214,7 +214,7 @@ Prepare Shipment
 
 클라이언트가 여러 서비스와 직접 통신하면 연동 코드가 복잡해질 수 있다.
 
-## 7. How Serverless Helps
+## 🇰🇷 7. How Serverless Helps
 
 ### API Gateway + Lambda
 
@@ -244,8 +244,6 @@ OpenAPI Specification을 사용해 API 계약을 문서화하고 클라이언트
 - Loose Coupling: Message Queue / Event-Driven Design
 - Independent Scaling: Service-Specific Scaling
 
-## 💡 Practical Example
-
 전자상거래 서비스에서 주문과 배송 기능을 분리한다.
 
 사용자가 주문을 생성하면 Order Service는 주문 정보를 저장하고 SQS에 메시지를 전송한다.
@@ -253,29 +251,6 @@ OpenAPI Specification을 사용해 API 계약을 문서화하고 클라이언트
 Shipping Service는 메시지를 소비하여 배송 작업을 수행한다.
 
 배송 서비스가 일시적으로 느려지더라도 주문 서비스가 배송 완료를 기다릴 필요는 없다.
-
-## 🇯🇵 日本語 Summary
-
-マイクロサービスアーキテクチャは、アプリケーションを独立した小さなサービスに分割する設計手法である。各サービスは ECS、EC2、Lambda など異なる技術で構築できる。サービス間通信には API Gateway や Load Balancer を利用した同期通信と、SQS、SNS、Kinesis などを利用した非同期通信がある。
-
-## 🇺🇸 English Summary
-
-Microservices architecture divides an application into independently deployable services. Each service can use different technologies, including ECS, EC2, and Lambda. Services communicate synchronously through APIs or asynchronously through queues and event streams. Serverless technologies can reduce infrastructure overhead, but distributed-system complexity remains.
-
-## 📚 Vocabulary
-
-| Term | Meaning |
-|---|---|
-| Microservices | 마이크로서비스 |
-| Monolith | 단일 애플리케이션 구조 |
-| Synchronous | 동기식 |
-| Asynchronous | 비동기식 |
-| Loose Coupling | 느슨한 결합 |
-| Service Boundary | 서비스 경계 |
-| Independent Deployment | 독립 배포 |
-| API Contract | API 인터페이스 계약 |
-| Server Utilization | 서버 자원 활용률 |
-| Eventual Consistency | 최종적 일관성 |
 
 ## 📝 Review Questions
 
@@ -309,3 +284,26 @@ API Gateway 또는 Load Balancer를 통한 동기식 HTTP 통신을 사용할 �
 SQS, SNS, Kinesis 등의 메시징 및 이벤트 서비스를 고려한다.
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+マイクロサービスアーキテクチャは、アプリケーションを独立した小さなサービスに分割する設計手法である。各サービスは ECS、EC2、Lambda など異なる技術で構築できる。サービス間通信には API Gateway や Load Balancer を利用した同期通信と、SQS、SNS、Kinesis などを利用した非同期通信がある。
+
+## 🇺🇸 English Summary
+
+Microservices architecture divides an application into independently deployable services. Each service can use different technologies, including ECS, EC2, and Lambda. Services communicate synchronously through APIs or asynchronously through queues and event streams. Serverless technologies can reduce infrastructure overhead, but distributed-system complexity remains.
+
+## 📚 Vocabulary
+
+| Term | Meaning |
+|---|---|
+| Microservices | 마이크로서비스 |
+| Monolith | 단일 애플리케이션 구조 |
+| Synchronous | 동기식 |
+| Asynchronous | 비동기식 |
+| Loose Coupling | 느슨한 결합 |
+| Service Boundary | 서비스 경계 |
+| Independent Deployment | 독립 배포 |
+| API Contract | API 인터페이스 계약 |
+| Server Utilization | 서버 자원 활용률 |
+| Eventual Consistency | 최종적 일관성 |

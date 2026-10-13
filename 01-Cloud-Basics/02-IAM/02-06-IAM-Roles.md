@@ -1,6 +1,6 @@
-# IAM Roles
+# 📘 02-06. IAM Roles
 
-## Overview
+## 🇰🇷 1. Overview
 
 IAM Role은 AWS 서비스나 애플리케이션 등이 AWS에서 작업을 수행할 수 있도록 권한을 부여하는 IAM 자격 증명이다.
 
@@ -8,9 +8,7 @@ IAM User가 일반적으로 실제 사람을 위해 생성되는 반면, IAM Rol
 
 대표적으로 EC2 Instance, Lambda Function, CloudFormation 등이 IAM Role을 사용할 수 있다.
 
----
-
-## Why Use IAM Roles?
+## 🇰🇷 2. Why Use IAM Roles?
 
 EC2 Instance나 Lambda Function 같은 AWS 서비스도 다른 AWS 서비스에 접근해야 할 수 있다.
 
@@ -18,9 +16,7 @@ EC2 Instance나 Lambda Function 같은 AWS 서비스도 다른 AWS 서비스에 
 
 AWS 서비스에 사용자의 Access Key를 직접 저장하는 대신 IAM Role을 연결하는 것이 권장된다.
 
----
-
-## IAM User vs IAM Role
+## 🇰🇷 3. IAM User vs IAM Role
 
 | 구분 | IAM User | IAM Role |
 |---|---|---|
@@ -29,9 +25,7 @@ AWS 서비스에 사용자의 Access Key를 직접 저장하는 대신 IAM Role�
 | 대표 예시 | 개발자, 관리자 | EC2, Lambda, CloudFormation |
 | 권한 부여 | Policy 연결 | Policy 연결 |
 
----
-
-## Trusted Entity
+## 🇰🇷 4. Trusted Entity
 
 Trusted Entity는 해당 IAM Role을 맡을 수 있는 주체이다.
 
@@ -42,9 +36,7 @@ Role을 생성할 때는 다음 두 가지를 구분해야 한다.
 - 누가 이 Role을 맡을 수 있는가?
 - Role을 맡은 주체가 무엇을 할 수 있는가?
 
----
-
-## Permissions Policy
+## 🇰🇷 5. Permissions Policy
 
 Permissions Policy는 Role을 맡은 주체가 수행할 수 있는 작업을 정의한다.
 
@@ -56,9 +48,7 @@ Permissions Policy는 Role을 맡은 주체가 수행할 수 있는 작업을 �
 
 이 Role을 사용하는 EC2 Instance는 연결된 Policy의 범위 안에서 IAM 정보를 조회할 수 있다.
 
----
-
-## Common IAM Roles
+## 🇰🇷 6. Common IAM Roles
 
 - EC2 Instance Role
 - Lambda Function Role
@@ -66,9 +56,7 @@ Permissions Policy는 Role을 맡은 주체가 수행할 수 있는 작업을 �
 
 각 AWS 서비스는 연결된 Role의 권한 범위 안에서만 작업을 수행할 수 있다.
 
----
-
-## Summary
+## 🇰🇷 7. Summary
 
 - IAM Role은 권한을 가진 IAM 자격 증명이다.
 - IAM Role은 실제 사용자에게 고정되는 계정이 아니다.
@@ -76,9 +64,7 @@ Permissions Policy는 Role을 맡은 주체가 수행할 수 있는 작업을 �
 - Role에는 Policy를 연결하여 권한을 부여한다.
 - Trusted Entity는 Role을 맡을 수 있는 주체이다.
 
----
-
-## Exam Notes
+## 🎯 Exam Notes
 
 - AWS 서비스에 권한을 부여할 때 IAM Role을 사용한다.
 - EC2 Instance에 개인 Access Key를 직접 저장하지 않는다.
@@ -87,10 +73,6 @@ Permissions Policy는 Role을 맡은 주체가 수행할 수 있는 작업을 �
 - Trusted Entity는 Role을 맡을 수 있는 주체다.
 - Role의 권한은 최소 권한 원칙에 따라 부여한다.
 - EC2 Instance Role, Lambda Function Role, CloudFormation Role은 대표적인 예시다.
-
----
-
-## Practical Example
 
 EC2 Instance에서 S3 Bucket의 파일을 읽어야 한다고 가정한다.
 
@@ -107,52 +89,49 @@ EC2 Instance에서 S3 Bucket의 파일을 읽어야 한다고 가정한다.
 
 IAM Role을 사용하면 개인 Access Key를 서버에 직접 저장하지 않고 필요한 권한을 제공할 수 있다.
 
----
+## 📝 Review Questions
 
-# 🇯🇵 日本語
+1. IAM User와 IAM Role의 주요 차이점은 무엇인가?
+2. AWS 서비스에 권한을 부여할 때 무엇을 사용해야 하는가?
+3. Trusted Entity란 무엇인가?
+4. Permissions Policy는 무엇을 정의하는가?
+5. EC2 Instance에 개인 Access Key를 저장하면 안 되는 이유는 무엇인가?
+6. 대표적인 IAM Role에는 무엇이 있는가?
 
-## IAM Roleとは
+## 🇯🇵 日本語 Summary
+
+### IAM Roleとは
 
 IAM Roleは、AWSサービスなどに権限を付与するためのIAMアイデンティティである。
 
 IAM Userは通常、人間のユーザーに対応する。一方、IAM RoleはEC2、Lambda、CloudFormationなどのAWSサービスで使用される。
 
----
-
-## Trusted Entity
+### Trusted Entity
 
 Trusted Entityは、そのRoleを引き受けることができる主体である。
 
 EC2用のRoleでは、EC2サービスがTrusted Entityになる。RoleにPolicyをアタッチすることで、AWSサービスが実行できる操作を定義する。
 
----
-
-## Summary
+### Summary
 
 - AWSサービスにはIAM Roleを使用する。
 - RoleにはPolicyで権限を付与する。
 - Trusted EntityはRoleを引き受ける主体である。
 - EC2に個人のAccess Keyを保存しない。
 
----
+## 🇺🇸 English Summary
 
-# 🇺🇸 English
-
-## What Is an IAM Role?
+### What Is an IAM Role?
 
 An IAM Role is an IAM identity that provides permissions to a trusted entity.
 
 AWS services such as EC2, Lambda, and CloudFormation can use IAM Roles to perform actions on your behalf.
 
----
-
-## Trusted Entity and Permissions
+### Trusted Entity and Permissions
 
 A trusted entity is allowed to assume the Role. A permissions policy defines what the entity can do after assuming it.
 
----
-
-## Summary
+### Summary
 
 - Use IAM Roles to grant permissions to AWS services.
 - Attach Policies to Roles.
@@ -160,9 +139,7 @@ A trusted entity is allowed to assume the Role. A permissions policy defines wha
 - Do not store personal Access Keys on EC2 Instances.
 - Apply the Principle of Least Privilege.
 
----
-
-## Vocabulary
+## 📚 Vocabulary
 
 | English | 한국어 | 日本語 |
 |---|---|---|
@@ -175,14 +152,3 @@ A trusted entity is allowed to assume the Role. A permissions policy defines wha
 | Temporary Credentials | 임시 자격 증명 | 一時的な認証情報 |
 | On Your Behalf | 사용자를 대신하여 | ユーザーに代わって |
 | Attach | 연결하다 | アタッチする |
-
----
-
-## Review Questions
-
-1. IAM User와 IAM Role의 주요 차이점은 무엇인가?
-2. AWS 서비스에 권한을 부여할 때 무엇을 사용해야 하는가?
-3. Trusted Entity란 무엇인가?
-4. Permissions Policy는 무엇을 정의하는가?
-5. EC2 Instance에 개인 Access Key를 저장하면 안 되는 이유는 무엇인가?
-6. 대표적인 IAM Role에는 무엇이 있는가?

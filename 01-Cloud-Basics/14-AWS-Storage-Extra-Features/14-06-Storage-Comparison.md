@@ -1,12 +1,10 @@
-# 14-06. AWS Storage Comparison
+# 📘 14-06. AWS Storage Comparison
 
 ## 🇰🇷 1. AWS Storage 전체 비교
 
 AWS Solutions Architect에게 중요한 것은 모든 Storage의 세부 구현을 외우는 것이 아니라 **Workload의 요구사항에 따라 적절한 Storage를 선택하는 것**입니다.
 
----
-
-# 2. Object / Block / File Storage
+## 🇰🇷 2. Object / Block / File Storage
 
 ```text
 AWS Storage
@@ -23,9 +21,7 @@ AWS Storage
     └─ Amazon FSx
 ```
 
----
-
-# 3. Amazon S3
+## 🇰🇷 3. Amazon S3
 
 ```text
 Amazon S3
@@ -49,9 +45,7 @@ Archive
 S3 Glacier
 ```
 
----
-
-# 4. Amazon EBS
+## 🇰🇷 4. Amazon EBS
 
 EC2 Instance에 연결하는 Network Block Storage입니다.
 
@@ -66,9 +60,7 @@ EBS
 
 일부 Provisioned IOPS Volume에서는 Multi-Attach 기능도 지원됩니다.
 
----
-
-# 5. EC2 Instance Store
+## 🇰🇷 5. EC2 Instance Store
 
 EC2 Host에 직접 연결된 Physical Storage입니다.
 
@@ -80,9 +72,7 @@ EC2
 
 Network Storage가 아닌 매우 높은 I/O 성능의 Local Storage가 필요한 경우 사용할 수 있습니다.
 
----
-
-# 6. Amazon EFS
+## 🇰🇷 6. Amazon EFS
 
 Linux 기반의 Shared Network File System입니다.
 
@@ -112,9 +102,7 @@ Multi-AZ
 → Amazon EFS
 ```
 
----
-
-# 7. Amazon FSx
+## 🇰🇷 7. Amazon FSx
 
 특정 Workload를 위한 Managed File System입니다.
 
@@ -125,9 +113,7 @@ Multi-AZ
 | FSx for NetApp ONTAP | NFS, SMB, iSCSI, Enterprise Storage |
 | FSx for OpenZFS | Managed ZFS, NFS |
 
----
-
-# 8. Storage Connection / Migration Services
+## 🇰🇷 8. Storage Connection / Migration Services
 
 Storage 자체 외에도 Storage를 연결하거나 데이터를 이동하기 위한 서비스가 있습니다.
 
@@ -140,9 +126,7 @@ Connection / Migration
 └─ Snow Family
 ```
 
----
-
-# 9. Storage Gateway
+## 🇰🇷 9. Storage Gateway
 
 ```text
 On-Premises
@@ -163,9 +147,7 @@ AWS Storage
 | Volume Gateway | iSCSI Block Storage |
 | Tape Gateway | VTL / Tape Backup |
 
----
-
-# 10. AWS Transfer Family
+## 🇰🇷 10. AWS Transfer Family
 
 ```text
 FTP / FTPS / SFTP
@@ -177,9 +159,7 @@ Transfer Family
 
 기존 FTP 계열 Application에서 AWS Storage를 사용해야 하는 경우 적합합니다.
 
----
-
-# 11. AWS DataSync
+## 🇰🇷 11. AWS DataSync
 
 ```text
 Storage A
@@ -200,9 +180,7 @@ Metadata Preservation
 Permission Preservation
 ```
 
----
-
-# 12. AWS Snow Family
+## 🇰🇷 12. AWS Snow Family
 
 Network Capacity가 부족하여 대량 데이터를 온라인으로 전송하기 어려운 경우 Physical Device를 이용합니다.
 
@@ -223,9 +201,7 @@ Snowball Edge
 
 또한 Edge Computing에도 사용할 수 있습니다.
 
----
-
-# 13. 서비스 선택표 ⭐
+## 🇰🇷 13. 서비스 선택표 ⭐
 
 | 요구사항 | AWS Service |
 |---|---|
@@ -244,9 +220,7 @@ Snowball Edge
 | Metadata / Permission 보존 Migration | AWS DataSync |
 | Offline Large-scale Migration | AWS Snow Family |
 
----
-
-# 14. 시험 문제 접근법
+## 🇰🇷 14. 시험 문제 접근법
 
 문제를 읽고 먼저 **Storage Type**을 찾습니다.
 
@@ -291,9 +265,7 @@ Network 부족?
 → Snow Family
 ```
 
----
-
-# 🔥 Final Mental Map
+## 🇰🇷 15. Final Mental Map
 
 ```text
                     AWS STORAGE
@@ -328,39 +300,7 @@ Network 부족?
                                      Offline Move
 ```
 
----
-
-## 🇯🇵 日本語 Summary
-
-AWSにはObject、Block、Fileなど、さまざまなストレージサービスがあります。
-
-Amazon S3はObject Storage、Amazon EBSはEC2向けのBlock Storage、Amazon EFSはLinux向けの共有File Systemです。
-
-Amazon FSxはWindows、Lustre、NetApp ONTAP、OpenZFSなどの特定のFile Systemをマネージドサービスとして提供します。
-
-また、Storage GatewayはオンプレミスとAWSストレージを接続し、Transfer FamilyはFTP系プロトコルを提供します。
-
-DataSyncは大量データのコピーと同期に使用し、ネットワークでの転送が困難な場合はSnow Familyを利用できます。
-
----
-
-## 🇺🇸 English Summary
-
-AWS provides multiple storage options for different workloads.
-
-Amazon S3 provides object storage, Amazon EBS provides network block storage for EC2, and Amazon EFS provides a shared Linux file system.
-
-Amazon FSx provides managed specialized file systems including Windows File Server, Lustre, NetApp ONTAP, and OpenZFS.
-
-Storage Gateway connects on-premises environments with AWS storage.
-
-Transfer Family provides FTP-based access to S3 and EFS.
-
-DataSync performs large-scale data transfer and synchronization, while Snow Family provides physical devices for offline migration.
-
----
-
-## 📝 Final Review Questions
+## 📝 Review Questions
 
 <details>
 <summary>Q1. 여러 Linux EC2에서 동시에 사용하는 Multi-AZ Shared File System은?</summary>
@@ -417,3 +357,29 @@ EC2 Instance Store
 FSx for Windows File Server
 
 </details>
+
+## 🇯🇵 日本語 Summary
+
+AWSにはObject、Block、Fileなど、さまざまなストレージサービスがあります。
+
+Amazon S3はObject Storage、Amazon EBSはEC2向けのBlock Storage、Amazon EFSはLinux向けの共有File Systemです。
+
+Amazon FSxはWindows、Lustre、NetApp ONTAP、OpenZFSなどの特定のFile Systemをマネージドサービスとして提供します。
+
+また、Storage GatewayはオンプレミスとAWSストレージを接続し、Transfer FamilyはFTP系プロトコルを提供します。
+
+DataSyncは大量データのコピーと同期に使用し、ネットワークでの転送が困難な場合はSnow Familyを利用できます。
+
+## 🇺🇸 English Summary
+
+AWS provides multiple storage options for different workloads.
+
+Amazon S3 provides object storage, Amazon EBS provides network block storage for EC2, and Amazon EFS provides a shared Linux file system.
+
+Amazon FSx provides managed specialized file systems including Windows File Server, Lustre, NetApp ONTAP, and OpenZFS.
+
+Storage Gateway connects on-premises environments with AWS storage.
+
+Transfer Family provides FTP-based access to S3 and EFS.
+
+DataSync performs large-scale data transfer and synchronization, while Snow Family provides physical devices for offline migration.

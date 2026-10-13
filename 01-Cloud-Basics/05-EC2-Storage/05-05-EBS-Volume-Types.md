@@ -1,6 +1,6 @@
-# EBS Volume Types
+# 📘 05-05. EBS Volume Types
 
-## Overview
+## 🇰🇷 1. Overview
 
 Amazon EBS는 Workload의 성능과 비용 요구사항에 따라
 여러 Volume Type을 제공한다.
@@ -25,9 +25,7 @@ Cost
 
 이다.
 
----
-
-# 1. gp2 / gp3 - General Purpose SSD
+## 🇰🇷 2. gp2 / gp3 - General Purpose SSD
 
 범용 Workload를 위한 비용 효율적인 SSD이다.
 
@@ -46,7 +44,7 @@ Development / Test
 General Applications
 ```
 
-### gp3
+#### gp3
 
 최신 세대 General Purpose SSD이다.
 
@@ -67,7 +65,7 @@ Throughput
 → Independently configurable
 ```
 
-### gp2
+#### gp2
 
 gp2에서는 Volume Size와 IOPS가 연결되어 있다.
 
@@ -87,9 +85,7 @@ gp3
 → Size / IOPS / Throughput independently configurable
 ```
 
----
-
-# 2. io1 / io2 - Provisioned IOPS SSD
+## 🇰🇷 3. io1 / io2 - Provisioned IOPS SSD
 
 매우 높은 Storage Performance와
 일관된 IOPS가 필요한 Workload를 위한 SSD이다.
@@ -117,9 +113,7 @@ io1 / io2
 정확한 성능 한도는 Volume 및 EC2 구성에 따라 달라질 수 있으므로
 시험에서는 **Provisioned IOPS = 고성능/중요 DB**라는 선택 기준을 우선 기억한다.
 
----
-
-# 3. st1 - Throughput Optimized HDD
+## 🇰🇷 4. st1 - Throughput Optimized HDD
 
 `st1`은 높은 **Throughput**이 필요한 대용량 Workload를 위한 HDD이다.
 
@@ -145,9 +139,7 @@ st1
 
 Boot Volume으로 사용할 수 없다.
 
----
-
-# 4. sc1 - Cold HDD
+## 🇰🇷 5. sc1 - Cold HDD
 
 `sc1`은 접근 빈도가 낮은 데이터를 위한
 가장 저렴한 HDD 계열이다.
@@ -165,9 +157,7 @@ Archive 성격의 데이터처럼
 
 Boot Volume으로 사용할 수 없다.
 
----
-
-# 5. Boot Volume Support
+## 🇰🇷 6. Boot Volume Support
 
 강의에서 설명한 Boot Volume 지원 여부:
 
@@ -185,9 +175,7 @@ Boot Volume X
 → sc1
 ```
 
----
-
-# 6. Quick Comparison
+## 🇰🇷 7. Quick Comparison
 
 | Type | Storage | Main Purpose |
 |---|---|---|
@@ -213,9 +201,32 @@ Lowest-Cost HDD
 → sc1
 ```
 
----
+## 🇰🇷 8. Summary
 
-# Exam Notes
+```text
+gp3
+= General Purpose SSD
+
+io1 / io2
+= High Performance SSD
+
+st1
+= Throughput Optimized HDD
+
+sc1
+= Cold / Lowest-Cost HDD
+```
+
+한 줄 암기:
+
+```text
+범용 → gp3
+고성능 DB → io
+대용량 처리 → st1
+싸게 보관 → sc1
+```
+
+## 🎯 Exam Notes
 
 가장 중요한 구분:
 
@@ -254,36 +265,42 @@ Boot Volume
 → HDD Types X
 ```
 
----
+## 📝 Review Questions
 
-# Summary
+#### Q1. 일반적인 Workload에 적합한 EBS SSD는?
 
 ```text
-gp3
-= General Purpose SSD
+gp2 / gp3
+```
 
+#### Q2. gp2와 gp3의 중요한 차이는?
+
+gp2는 Volume Size와 IOPS가 연결되어 있지만,
+gp3는 Size, IOPS, Throughput을 독립적으로 설정할 수 있다.
+
+#### Q3. 매우 높은 IOPS가 필요한 중요한 Database에는?
+
+```text
 io1 / io2
-= High Performance SSD
-
-st1
-= Throughput Optimized HDD
-
-sc1
-= Cold / Lowest-Cost HDD
 ```
 
-한 줄 암기:
+#### Q4. Big Data나 Log Processing처럼 높은 Throughput이 중요하다면?
 
 ```text
-범용 → gp3
-고성능 DB → io
-대용량 처리 → st1
-싸게 보관 → sc1
+st1
 ```
 
----
+#### Q5. 접근 빈도가 낮고 가장 낮은 비용이 중요하다면?
 
-# Japanese Summary
+```text
+sc1
+```
+
+#### Q6. st1과 sc1을 Boot Volume으로 사용할 수 있는가?
+
+사용할 수 없다.
+
+## 🇯🇵 日本語 Summary
 
 Amazon EBSにはWorkloadに応じて
 複数のVolume Typeがあります。
@@ -316,9 +333,7 @@ gp3
 高いThroughputにはst1、
 低頻度アクセス・低コストにはsc1が適しています。
 
----
-
-# English Summary
+## 🇺🇸 English Summary
 
 Amazon EBS provides multiple volume types for different workloads.
 
@@ -349,9 +364,7 @@ gp3
 Provisioned IOPS volumes are suitable for performance-sensitive databases,
 while st1 focuses on throughput and sc1 focuses on low cost.
 
----
-
-# Vocabulary
+## 📚 Vocabulary
 
 | English | 日本語 | 한국어 |
 |---|---|---|
@@ -365,40 +378,3 @@ while st1 focuses on throughput and sc1 focuses on low cost.
 | Boot Volume | ブートボリューム | 운영체제를 부팅하는 볼륨 |
 | Mission-Critical | ミッションクリティカル | 업무상 매우 중요한 시스템 |
 | Data Warehouse | データウェアハウス | 분석용 대규모 데이터 저장 시스템 |
-
----
-
-# Review Questions
-
-### Q1. 일반적인 Workload에 적합한 EBS SSD는?
-
-```text
-gp2 / gp3
-```
-
-### Q2. gp2와 gp3의 중요한 차이는?
-
-gp2는 Volume Size와 IOPS가 연결되어 있지만,
-gp3는 Size, IOPS, Throughput을 독립적으로 설정할 수 있다.
-
-### Q3. 매우 높은 IOPS가 필요한 중요한 Database에는?
-
-```text
-io1 / io2
-```
-
-### Q4. Big Data나 Log Processing처럼 높은 Throughput이 중요하다면?
-
-```text
-st1
-```
-
-### Q5. 접근 빈도가 낮고 가장 낮은 비용이 중요하다면?
-
-```text
-sc1
-```
-
-### Q6. st1과 sc1을 Boot Volume으로 사용할 수 있는가?
-
-사용할 수 없다.

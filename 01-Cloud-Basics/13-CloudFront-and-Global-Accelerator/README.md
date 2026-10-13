@@ -1,175 +1,39 @@
-# 13. CloudFront & AWS Global Accelerator
+# 🌎 13. CloudFront & AWS Global Accelerator
 
-Amazon CloudFront를 이용한 글로벌 콘텐츠 전송과 캐싱, 그리고 AWS Global Accelerator를 이용한 글로벌 네트워크 가속을 정리한 섹션입니다.
+> AWS Certified Solutions Architect – Associate (SAA-C03)  
+> GitHub Section 13
 
----
+## 📌 Overview
 
-## 📚 Contents
+CloudFront와 Global Accelerator를 이용한 글로벌 콘텐츠·애플리케이션 전송을 학습한다.
 
-| No. | Topic | File |
-|---|---|---|
-| 13-01 | CloudFront Overview | [13-01-CloudFront-Overview.md](./13-01-CloudFront-Overview.md) |
-| 13-02 | CloudFront Origins & OAC | [13-02-CloudFront-Origins-and-OAC.md](./13-02-CloudFront-Origins-and-OAC.md) |
-| 13-03 | CloudFront Custom Origins | [13-03-CloudFront-Custom-Origins.md](./13-03-CloudFront-Custom-Origins.md) |
-| 13-04 | CloudFront Geo Restriction | [13-04-CloudFront-Geo-Restriction.md](./13-04-CloudFront-Geo-Restriction.md) |
-| 13-05 | CloudFront Price Classes | [13-05-CloudFront-Price-Classes.md](./13-05-CloudFront-Price-Classes.md) |
-| 13-06 | CloudFront Cache Invalidation | [13-06-CloudFront-Cache-Invalidation.md](./13-06-CloudFront-Cache-Invalidation.md) |
-| 13-07 | AWS Global Accelerator | [13-07-AWS-Global-Accelerator.md](./13-07-AWS-Global-Accelerator.md) |
-| 13-08 | CloudFront vs Global Accelerator | [13-08-CloudFront-vs-Global-Accelerator.md](./13-08-CloudFront-vs-Global-Accelerator.md) |
+## 🎯 Learning Objectives
 
----
+1. CloudFront & AWS Global Accelerator의 핵심 개념과 AWS에서의 역할을 설명한다.
+2. CloudFront Overview, CloudFront Origins & OAC, CloudFront Custom Origins의 차이와 사용 사례를 구분한다.
+3. SAA-C03 문제의 요구사항에서 적절한 서비스와 설계를 선택한다.
 
-## 🗺️ Section Map
+## 📂 Contents
 
-```text
-CloudFront & Global Accelerator
-│
-├─ Global Content Delivery
-│  └─ Amazon CloudFront
-│      ├─ Edge Location
-│      ├─ Cache
-│      ├─ Origin
-│      │   ├─ S3 + OAC
-│      │   └─ Custom Origin
-│      ├─ Geo Restriction
-│      ├─ Price Classes
-│      └─ Cache Invalidation
-│
-└─ Global Network Acceleration
-   └─ AWS Global Accelerator
-       ├─ Static Anycast IP
-       ├─ AWS Global Network
-       ├─ Endpoint Group
-       ├─ Health Check
-       └─ Failover
-```
+| File | Topic |
+|---|---|
+| [13-01-CloudFront-Overview.md](./13-01-CloudFront-Overview.md) | CloudFront Overview |
+| [13-02-CloudFront-Origins-and-OAC.md](./13-02-CloudFront-Origins-and-OAC.md) | CloudFront Origins & OAC |
+| [13-03-CloudFront-Custom-Origins.md](./13-03-CloudFront-Custom-Origins.md) | CloudFront Custom Origins |
+| [13-04-CloudFront-Geo-Restriction.md](./13-04-CloudFront-Geo-Restriction.md) | CloudFront Geo Restriction |
+| [13-05-CloudFront-Price-Classes.md](./13-05-CloudFront-Price-Classes.md) | CloudFront Price Classes |
+| [13-06-CloudFront-Cache-Invalidation.md](./13-06-CloudFront-Cache-Invalidation.md) | CloudFront Cache Invalidation |
+| [13-07-AWS-Global-Accelerator.md](./13-07-AWS-Global-Accelerator.md) | AWS Global Accelerator |
+| [13-08-CloudFront-vs-Global-Accelerator.md](./13-08-CloudFront-vs-Global-Accelerator.md) | CloudFront vs Global Accelerator |
 
----
+## 🧠 Key Concept
 
-## 🔑 Core Concepts
-
-### CloudFront
-
-CloudFront는 AWS의 CDN(Content Delivery Network) 서비스입니다.
-
-전 세계 Edge Location에 콘텐츠를 캐싱하여 사용자에게 낮은 Latency로 콘텐츠를 제공합니다.
-
-```text
-User
- ↓
-Nearest Edge
- ↓
-CloudFront Cache
- ↓
-Origin
-```
-
----
-
-### CloudFront Origins
-
-Origin은 CloudFront가 원본 콘텐츠를 가져오는 Backend입니다.
-
-대표적인 Origin:
-
-```text
-S3
-EC2
-ALB
-S3 Website Endpoint
-HTTP Backend
-```
-
-Private S3 Bucket은 OAC를 이용해 CloudFront를 통한 접근만 허용하도록 구성할 수 있습니다.
-
----
-
-### Cache Management
-
-```text
-Cache Hit
-→ Edge에서 바로 응답
-
-Cache Miss
-→ Origin에서 가져온 후 Cache
-
-Cache Invalidation
-→ 기존 Cache 강제 제거
-```
-
----
-
-### CloudFront Additional Features
-
-```text
-Geo Restriction
-→ 국가별 접근 제어
-
-Price Classes
-→ Edge 범위와 비용 조절
-
-Cache Invalidation
-→ 변경된 콘텐츠 즉시 반영
-```
-
----
-
-### AWS Global Accelerator
-
-Global Accelerator는 Static Anycast IP와 AWS Global Network를 이용해 사용자의 Traffic을 Application Endpoint로 빠르게 전달합니다.
-
-```text
-User
- ↓
-Static Anycast IP
- ↓
-Nearest AWS Edge
- ↓
-AWS Global Network
- ↓
-Application
-```
-
-CloudFront와 달리 콘텐츠를 Cache하지 않습니다.
-
----
-
-### CloudFront vs Global Accelerator
-
-```text
-CloudFront
-= CDN
-= Cache
-= Content Delivery
-
-Global Accelerator
-= Network Acceleration
-= No Cache
-= Traffic Routing
-```
-
----
+서비스 이름 자체보다 **요구사항, 선택 기준, 제한 사항과 유사 서비스의 차이**를 중심으로 이해한다.
 
 ## 🇯🇵 日本語 Summary
 
-Amazon CloudFrontは、世界中のEdge Locationにコンテンツをキャッシュして低レイテンシーで配信するCDNサービスです。
-
-S3やHTTP BackendなどをOriginとして利用でき、Geo Restriction、Price Class、Cache Invalidationなどの機能を提供します。
-
-AWS Global Acceleratorは、Static Anycast IPとAWS Global Networkを利用してTrafficをApplication Endpointへ高速にRoutingします。
-
-CloudFrontはコンテンツ配信、Global Acceleratorはネットワーク高速化を主な目的とします。
-
----
+このセクションでは、CloudFront & AWS Global Accelerator に関する主要な AWS サービス、設計原則、試験ポイントを学習します。
 
 ## 🇺🇸 English Summary
 
-Amazon CloudFront is AWS's Content Delivery Network service.
-
-It caches content at global Edge Locations and delivers it to users with low latency.
-
-CloudFront supports S3 and HTTP-based origins as well as Geo Restriction, Price Classes, and Cache Invalidation.
-
-AWS Global Accelerator uses static Anycast IP addresses and the AWS Global Network to route traffic to application endpoints.
-
-CloudFront focuses on content delivery and caching, while Global Accelerator focuses on network acceleration and traffic routing.
+This section covers the core AWS services, design principles, and exam points for CloudFront & AWS Global Accelerator.
