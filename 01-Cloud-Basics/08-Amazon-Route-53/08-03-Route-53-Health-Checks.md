@@ -1,5 +1,9 @@
 # 📘 08-03. Amazon Route 53 - Health Checks
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Health Check` · `Healthy` · `Unhealthy` · `Endpoint` · `Public Endpoint`
+
 ## 🇰🇷 1. Overview
 
 Route 53 Health Check는 리소스의 상태를 확인하여
@@ -414,6 +418,9 @@ DNS Response
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Public Endpoint 상태 확인
 → Endpoint Health Check
@@ -443,10 +450,13 @@ Health Check
 
 ## 📝 Review Questions
 
-#### 1. Route 53 Health Check의 가장 기본적인 역할은 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **리소스가 정상적으로 동작하고 있는지 확인하는 것이다.**
 
@@ -459,10 +469,10 @@ Health Check   = 거기 살아있나?
 
 </details>
 
-#### 2. Route 53 Record를 생성하면 Health Check도 자동으로 생성되는가?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **아니다.**
 
@@ -470,10 +480,10 @@ Health Check는 별도로 생성하며, 필요한 경우 지원되는 Route 53 R
 
 </details>
 
-#### 3. Route 53 Health Check의 세 가지 주요 방식은 무엇인가?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 1. Public Endpoint를 직접 확인하는 **Endpoint Health Check**
 2. 여러 Health Check 결과를 조합하는 **Calculated Health Check**
@@ -481,10 +491,10 @@ Health Check는 별도로 생성하며, 필요한 경우 지원되는 Route 53 R
 
 </details>
 
-#### 4. 정상적으로 동작하던 EC2의 HTTP Inbound Rule을 Security Group에서 제거하면 Endpoint Health Check에는 어떤 일이 발생할 수 있는가?
+### Q4. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 Route 53 Health Checker가 EC2의 HTTP Endpoint에 접근할 수 없게 되어
 **Connection Timeout이 발생하고 Health Check가 Unhealthy가 될 수 있다.**
@@ -493,10 +503,10 @@ Health Check 역시 실제 Network Request이므로 Security Group과 Firewall�
 
 </details>
 
-#### 5. Calculated Health Check는 무엇인가?
+### Q5. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **여러 Child Health Check의 결과를 조합하여 하나의 최종 Health 상태를 만드는 Health Check이다.**
 
@@ -512,50 +522,6 @@ C = Unhealthy
 A AND B AND C
 → Unhealthy
 ```
-
-</details>
-
-#### 6. Route 53 Health Checker가 Private Subnet의 EC2에 직접 접근할 수 없는 경우 어떻게 상태를 확인할 수 있는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**CloudWatch Metric과 CloudWatch Alarm을 이용할 수 있다.**
-
-```text
-Private Resource
-      ↓
-CloudWatch Metric
-      ↓
-CloudWatch Alarm
-      ↓
-Route 53 Health Check
-```
-
-Route 53 Health Checker가 Private Resource에 직접 접근하는 것이 아니라
-CloudWatch Alarm의 상태를 통해 간접적으로 Health 상태를 판단한다.
-
-</details>
-
-#### 7. Latency-based Routing과 Health Check를 함께 사용하면 각각 무엇을 판단하는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**Latency-based Routing**은 사용자에게 낮은 Network Latency를 제공하는 Region을 선택하고,
-**Health Check**는 해당 리소스가 정상인지 판단한다.
-
-따라서 개념적으로:
-
-```text
-Low Latency
-    +
-Healthy
-    ↓
-DNS Response
-```
-
-가 된다.
 
 </details>
 

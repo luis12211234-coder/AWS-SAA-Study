@@ -1,5 +1,9 @@
 # 📘 12-07. S3 Access Points
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Access Point` · `Access Point Policy` · `Network Origin` · `Internet Origin` · `VPC Origin`
+
 ## 🇰🇷 1. S3 Access Point란?
 
 하나의 S3 Bucket을 여러 Team이나 Application이 사용할 경우 Bucket Policy가 매우 복잡해질 수 있습니다.
@@ -217,6 +221,9 @@ S3 Bucket
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 다음과 같은 문제가 나오면 S3 Access Points를 생각합니다.
 
 ```text
@@ -268,31 +275,51 @@ VPC Endpoint
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. 하나의 S3 Bucket을 여러 Team이 사용해 Bucket Policy가 지나치게 복잡해졌다면?
+
 <details>
-<summary>Q1. 하나의 S3 Bucket을 여러 Team이 사용해 Bucket Policy가 지나치게 복잡해졌다면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 Access Points를 사용할 수 있습니다.
 
 </details>
 
+### Q2. Q2. Internet Origin은 Access Point가 Public이라는 의미인가?
+
 <details>
-<summary>Q2. Internet Origin은 Access Point가 Public이라는 의미인가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. 특정 VPC에서 오는 요청만으로 제한하지 않았다는 의미입니다.
 
 </details>
 
+### Q3. Q3. 특정 VPC에서만 Access Point를 사용하도록 제한하려면?
+
 <details>
-<summary>Q3. 특정 VPC에서만 Access Point를 사용하도록 제한하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 VPC Origin Access Point를 사용합니다.
 
 </details>
 
+### Q4. Q4. VPC Endpoint와 Access Point의 역할 차이는?
+
 <details>
-<summary>Q4. VPC Endpoint와 Access Point의 역할 차이는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 VPC Endpoint는 VPC에서 S3로 Private하게 연결하는 통로이고, Access Point는 S3 Bucket으로 들어가는 접근 지점입니다.
+
+</details>
+
+### Q5. S3 Access Point란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+하나의 S3 Bucket을 여러 Team이나 Application이 사용할 경우 Bucket Policy가 매우 복잡해질 수 있습니다.
 
 </details>
 

@@ -1,5 +1,9 @@
 # 📘 12-06. S3 Object Lock & Glacier Vault Lock
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `WORM` · `Vault Lock` · `Object Lock` · `Compliance Mode` · `Governance Mode`
+
 ## 🇰🇷 1. WORM이란?
 
 WORM은 다음을 의미합니다.
@@ -195,6 +199,9 @@ S3 Object Lock
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 WORM + Glacier Vault
 → Glacier Vault Lock
@@ -235,36 +242,49 @@ Legal Hold
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. WORM은 무엇의 약자인가?
+
 <details>
-<summary>Q1. WORM은 무엇의 약자인가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Write Once Read Many입니다.
 
 </details>
 
+### Q2. Q2. 관리자를 포함해 Retention을 우회할 수 없는 Object Lock Mode는?
+
 <details>
-<summary>Q2. 관리자를 포함해 Retention을 우회할 수 없는 Object Lock Mode는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Compliance Mode입니다.
 
 </details>
 
+### Q3. Q3. 특별한 권한을 가진 관리자가 Retention을 우회할 수 있는 Mode는?
+
 <details>
-<summary>Q3. 특별한 권한을 가진 관리자가 Retention을 우회할 수 있는 Mode는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Governance Mode입니다.
 
 </details>
 
+### Q4. Q4. 종료 날짜 없이 법적 조사 기간 동안 Object를 보호하려면?
+
 <details>
-<summary>Q4. 종료 날짜 없이 법적 조사 기간 동안 Object를 보호하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Legal Hold를 사용합니다.
 
 </details>
 
+### Q5. Q5. Glacier Vault 전체에 WORM 보존 정책을 적용하려면?
+
 <details>
-<summary>Q5. Glacier Vault 전체에 WORM 보존 정책을 적용하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Glacier Vault Lock을 사용합니다.
 

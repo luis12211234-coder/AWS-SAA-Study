@@ -1,5 +1,9 @@
 # 📘 13-04. CloudFront Geo Restriction
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Geo Restriction` · `Allow List` · `Block List` · `GeoIP` · `Copyright`
+
 ## 🇰🇷 1. Geo Restriction이란?
 
 CloudFront Distribution에 접근할 수 있는 사용자를 국가 단위로 제한하는 기능입니다.
@@ -48,6 +52,9 @@ CloudFront Geo Restriction
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Geo Restriction
 = 국가 단위 CloudFront 접근 제어
@@ -68,17 +75,51 @@ Block List
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. 특정 국가에서만 CloudFront 콘텐츠에 접근하도록 하려면?
+
 <details>
-<summary>Q1. 특정 국가에서만 CloudFront 콘텐츠에 접근하도록 하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Geo Restriction의 Allow List를 사용할 수 있습니다.
 
 </details>
 
+### Q2. Q2. 특정 국가만 차단하려면?
+
 <details>
-<summary>Q2. 특정 국가만 차단하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Block List를 사용할 수 있습니다.
+
+</details>
+
+### Q3. Geo Restriction이란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+CloudFront Distribution에 접근할 수 있는 사용자를 국가 단위로 제한하는 기능입니다.
+
+</details>
+
+### Q4. Allow List의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+지정한 국가에서만 접근을 허용합니다.
+
+</details>
+
+### Q5. Block List의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+지정한 국가의 접근을 차단합니다.
 
 </details>
 

@@ -1,6 +1,8 @@
-# 🧩 20-04. Amazon EMR
+# 📘 20-04. Amazon EMR
 
-> **Keyword: Hadoop / Spark / Big Data / Primary–Core–Task / Spot**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Distributed Processing` · `Primary Node` · `Core Node` · `Task Node` · `Transient Cluster`
 
 ## 🇰🇷 1. Overview
 
@@ -58,11 +60,70 @@ flowchart TD
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - **Hadoop / Spark big-data processing → EMR**.
 - **Primary = 관리, Core = 저장+처리, Task = 처리만**.
 - **중단 허용 가능한 추가 작업 용량 → Spot Task Node**.
 - **주기적인 배치 분석 후 클러스터 종료 → Transient EMR Cluster**.
 - **직접 클러스터를 관리하지 않고 Spark → EMR Serverless 또는 Glue ETL**(요구사항에 따라 선택).
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Overview의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Amazon EMR(Elastic MapReduce)은 **Apache Hadoop, Spark, Hive 등 빅데이터 프레임워크를 관리형으로 실행**하게 해주는 서비스다.
+
+</details>
+
+### Q2. EMR on EC2 Nodes의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- 일부 HA 구성은 여러 Primary Node를 사용할 수 있다.
+- Task Node가 Spot 중단을 당하면 실행 작업은 재시도해야 할 수 있지만 HDFS 데이터 손실 위험이 Core보다 작다.
+- **On-Demand = 절대 중단되지 않는다**는 뜻이 아니다.
+- **Reserved Instance**는 일정 기간 계속 실행할 의무가 아니라 약정 조건에 따른 EC2 할인 방식이다.
+
+</details>
+
+### Q3. Long-running vs Transient의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- **Long-running Cluster:** 장기간 실행하며 여러 작업을 처리.
+- **Transient Cluster:** 특정 작업만 실행한 뒤 종료.
+- S3에 원본/결과를 보관하면 클러스터 종료 후에도 S3 객체가 남는다.
+- 반면 클러스터 내부 HDFS에만 저장한 데이터는 종료 시 사라질 수 있다.
+
+</details>
+
+### Q4. Deployment Options의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**주의:** 'EMR은 반드시 EC2 인스턴스를 직접 선택한다'는 설명은 **EMR on EC2**에 해당한다.
+
+</details>
+
+### Q5. 이 문서에서 반드시 기억해야 할 시험 포인트 5은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**Hadoop / Spark big-data processing → EMR**.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

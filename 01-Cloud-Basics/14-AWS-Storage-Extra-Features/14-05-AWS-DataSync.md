@@ -1,5 +1,9 @@
 # 📘 14-05. AWS DataSync
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `AWS DataSync란?` · `On-Premises → AWS` · `AWS Storage 간 DataSync` · `Supported AWS Storage` · `Scheduled Synchronization`
+
 ## 🇰🇷 1. AWS DataSync란?
 
 AWS DataSync는 대량의 데이터를 Storage 간에 복사하고 동기화하기 위한 서비스입니다.
@@ -241,6 +245,9 @@ Network Capacity가 부족하여 대량 전송이 현실적으로 어렵다면 S
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 AWS DataSync
 = Large-scale Data Transfer / Synchronization
@@ -280,36 +287,49 @@ Metadata / Permission Preservation
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. On-Premises NFS Server의 대량 데이터를 S3로 Migration하려면?
+
 <details>
-<summary>Q1. On-Premises NFS Server의 대량 데이터를 S3로 Migration하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 AWS DataSync를 사용할 수 있습니다.
 
 </details>
 
+### Q2. Q2. On-Premises와 AWS 사이에서 DataSync를 사용할 때 필요한 것은?
+
 <details>
-<summary>Q2. On-Premises와 AWS 사이에서 DataSync를 사용할 때 필요한 것은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 DataSync Agent가 필요합니다.
 
 </details>
 
+### Q3. Q3. AWS Storage 간 DataSync에서도 Agent가 필요한가?
+
 <details>
-<summary>Q3. AWS Storage 간 DataSync에서도 Agent가 필요한가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다.
 
 </details>
 
+### Q4. Q4. 기존 File Permission과 Metadata를 유지하면서 Migration해야 한다면?
+
 <details>
-<summary>Q4. 기존 File Permission과 Metadata를 유지하면서 Migration해야 한다면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 AWS DataSync가 적합합니다.
 
 </details>
 
+### Q5. Q5. DataSync는 Continuous Real-Time Synchronization인가?
+
 <details>
-<summary>Q5. DataSync는 Continuous Real-Time Synchronization인가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. Schedule에 따라 Synchronization Task를 실행할 수 있습니다.
 
@@ -338,3 +358,13 @@ A DataSync Agent is required when connecting on-premises file systems to AWS. Tr
 DataSync can preserve file metadata and permissions during migration.
 
 Synchronization is scheduled rather than continuous real-time replication.
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| AWS DataSync란? | AWS DataSync란? | AWS DataSync란? |
+| On-Premises → AWS | On-Premises → AWS | On-Premises → AWS |
+| AWS Storage 간 DataSync | AWS Storage 간 DataSync | AWS Storage 간 DataSync |
+| Supported AWS Storage | Supported AWS Storage | Supported AWS Storage |
+| Scheduled Synchronization | Scheduled Synchronization | Scheduled Synchronization |

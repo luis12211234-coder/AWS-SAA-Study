@@ -1,5 +1,9 @@
 # 📘 10-03. S3 Static Website Hosting
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Static Website` · `Static Website Hosting` · `Website Endpoint` · `Index Document` · `Error Document`
+
 ## 🇰🇷 1. Static Website Hosting
 
 Amazon S3는 Object Storage이지만, Bucket에 저장된 HTML, CSS, JavaScript, Image 등의 파일을 이용하여 **Static Website**를 Hosting할 수도 있다.
@@ -412,6 +416,9 @@ CloudFront는 이후 관련 섹션에서 자세히 학습한다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 S3 Static Website Hosting
 → HTML / CSS / JS / Image 등
@@ -466,8 +473,13 @@ HTTPS가 필요한 Architecture
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. S3에서 Static Website를 Hosting할 수 있는가?
+
 <details>
-<summary>1. S3에서 Static Website를 Hosting할 수 있는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 가능하다.
 
@@ -475,8 +487,10 @@ HTML, CSS, JavaScript, Image 등의 Static Content를 S3에 저장하고 Static 
 
 </details>
 
+### Q2. Website Endpoint의 Root에 접근하면 어떤 Object가 반환되는가?
+
 <details>
-<summary>2. Website Endpoint의 Root에 접근하면 어떤 Object가 반환되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Static Website Hosting 설정에서 지정한 Index Document가 반환된다.
 
@@ -489,8 +503,10 @@ GET /
 
 </details>
 
+### Q3. index.html에 beach.jpg가 포함되어 있다면 S3가 한 번에 둘을 반환하는가?
+
 <details>
-<summary>3. index.html에 beach.jpg가 포함되어 있다면 S3가 한 번에 둘을 반환하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
@@ -506,8 +522,10 @@ GET /beach.jpg
 
 </details>
 
+### Q4. /images/beach.jpg라는 URL Path는 S3에서 무엇과 연결되는가?
+
 <details>
-<summary>4. /images/beach.jpg라는 URL Path는 S3에서 무엇과 연결되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 다음 Object Key와 연결된다.
 
@@ -517,32 +535,16 @@ images/beach.jpg
 
 </details>
 
+### Q5. Object URL을 알고 있다면 Private Object에도 접근할 수 있는가?
+
 <details>
-<summary>5. Object URL을 알고 있다면 Private Object에도 접근할 수 있는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
 URL의 존재와 접근 Permission은 별개의 문제이다.
 
 Permission이 없다면 `Access Denied`가 발생할 수 있다.
-
-</details>
-
-<details>
-<summary>6. Block Public Access를 OFF하면 Static Website가 자동으로 Public이 되는가?</summary>
-
-아니다.
-
-Block Public Access는 Public Access를 막는 안전장치이며, 실제 Public Read Permission은 Bucket Policy 등을 통해 별도로 허용해야 한다.
-
-</details>
-
-<details>
-<summary>7. S3 Static Website Endpoint는 HTTPS를 직접 지원하는가?</summary>
-
-지원하지 않는다.
-
-HTTPS가 필요한 Architecture에서는 CloudFront 등을 S3 앞에 구성할 수 있다.
 
 </details>
 

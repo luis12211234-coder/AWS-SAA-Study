@@ -1,5 +1,9 @@
 # 📘 02-05. IAM Access Keys, CLI, SDK, and CloudShell
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Management Console` · `Command Line Interface` · `Software Development Kit` · `Programmatic Access` · `Access Key ID`
+
 ## 🇰🇷 1. Overview
 
 AWS에 접근하는 방법에는 Management Console, CLI, SDK가 있으며, 각 방식은 IAM 자격 증명과 권한을 사용하여 보호된다.
@@ -85,6 +89,9 @@ AWS CloudShell은 AWS Management Console에서 사용할 수 있는 브라우저
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Management Console은 Password와 MFA를 사용한다.
 - CLI와 SDK는 Access Key를 이용한 프로그래밍 방식 접근을 지원한다.
 - Secret Access Key는 절대 공유하면 안 된다.
@@ -103,13 +110,53 @@ IAM User에게 `iam:GetUser`와 `iam:ListUsers` 권한만 부여했다고 가정
 
 ## 📝 Review Questions
 
-1. AWS에 접근하는 세 가지 주요 방법은 무엇인가?
-2. Management Console은 어떤 인증 방식으로 보호되는가?
-3. Access Key ID와 Secret Access Key는 각각 무엇에 비유할 수 있는가?
-4. AWS CLI와 AWS SDK의 차이점은 무엇인가?
-5. IAM User의 권한을 제거하면 CLI 호출에는 어떤 영향이 있는가?
-6. CloudShell의 장점은 무엇인가?
-7. Secret Access Key를 GitHub에 올리면 안 되는 이유는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. AWS에 접근하는 세 가지 주요 방법은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS Management Console, AWS CLI, AWS SDK이다.
+
+</details>
+
+### Q2. Management Console은 어떤 인증 방식으로 보호되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+사용자 이름과 비밀번호로 로그인하며 MFA를 추가하여 보호할 수 있다.
+
+</details>
+
+### Q3. Access Key ID와 Secret Access Key는 각각 무엇에 비유할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Access Key ID는 사용자 이름, Secret Access Key는 비밀번호에 비유할 수 있다. 둘 다 공개 저장소나 다른 사람과 공유하면 안 된다.
+
+</details>
+
+### Q4. AWS CLI와 AWS SDK의 차이점은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+CLI는 터미널 명령으로 AWS API를 호출하고 자동화한다. SDK는 애플리케이션 코드에서 프로그래밍 언어별 라이브러리로 AWS API를 호출한다.
+
+</details>
+
+### Q5. IAM User의 권한을 제거하면 CLI 호출에는 어떤 영향이 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Console과 CLI는 같은 IAM 권한 평가를 받으므로, 필요한 권한이 제거되면 CLI API 호출도 Access Denied로 실패한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

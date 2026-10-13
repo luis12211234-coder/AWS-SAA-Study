@@ -1,5 +1,9 @@
 # 📘 02-04. IAM Password Policy and MFA
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Password Policy` · `Multi-Factor Authentication` · `MFA Device` · `Virtual MFA Device` · `Security Key`
+
 ## 🇰🇷 1. Overview
 
 IAM 사용자와 Root User를 보호하기 위해 AWS에서는 비밀번호 정책(Password Policy)과 다중 인증(Multi-Factor Authentication, MFA)을 사용할 수 있다.
@@ -109,6 +113,9 @@ MFA 장치에 접근할 수 없으면 계정 로그인이 어려워질 수 있�
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - 강력한 비밀번호는 계정 보안을 강화한다.
 - IAM Password Policy는 IAM 사용자에게 적용된다.
 - 비밀번호 정책으로 최소 길이, 문자 유형, 만료 및 재사용 방지를 설정할 수 있다.
@@ -137,13 +144,53 @@ MFA가 활성화되어 있다면 공격자는 비밀번호뿐만 아니라 사�
 
 ## 📝 Review Questions
 
-1. IAM Password Policy에서 설정할 수 있는 항목은 무엇인가?
-2. 비밀번호 재사용 방지는 어떤 기능인가?
-3. MFA가 사용하는 두 가지 인증 요소는 무엇인가?
-4. 비밀번호가 유출되어도 MFA가 계정을 보호할 수 있는 이유는 무엇인가?
-5. MFA를 우선적으로 설정해야 하는 사용자는 누구인가?
-6. Virtual MFA Device와 Security Key의 차이점은 무엇인가?
-7. MFA 장치에 접근할 수 없게 되면 어떤 문제가 발생할 수 있는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. IAM Password Policy에서 설정할 수 있는 항목은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+최소 길이, 대문자·소문자·숫자·특수문자 요구, 만료 기간, 사용자의 비밀번호 변경 허용, 이전 비밀번호 재사용 방지 등을 설정할 수 있다.
+
+</details>
+
+### Q2. 비밀번호 재사용 방지는 어떤 기능인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+사용자가 최근에 사용했던 비밀번호를 다시 선택하지 못하게 하는 기능이다.
+
+</details>
+
+### Q3. MFA가 사용하는 두 가지 인증 요소는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+사용자가 알고 있는 것인 비밀번호와 사용자가 소유한 것인 MFA 장치 또는 보안 키를 함께 사용한다.
+
+</details>
+
+### Q4. 비밀번호가 유출되어도 MFA가 계정을 보호할 수 있는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+공격자가 비밀번호뿐 아니라 사용자의 MFA 장치에서 생성되는 코드나 물리적 보안 키도 확보해야 로그인할 수 있기 때문이다.
+
+</details>
+
+### Q5. MFA를 우선적으로 설정해야 하는 사용자는 누구인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+가장 먼저 Root User를 보호해야 하며, 권한이 높은 IAM 사용자와 가능한 모든 사용자에게 MFA를 적용하는 것이 권장된다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

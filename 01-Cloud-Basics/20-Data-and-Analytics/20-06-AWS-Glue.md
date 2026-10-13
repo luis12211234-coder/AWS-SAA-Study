@@ -1,6 +1,8 @@
-# 🛠️ 20-06. AWS Glue
+# 📘 20-06. AWS Glue
 
-> **Keyword: ETL / Crawler / Data Catalog / Job Bookmarks / Parquet**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Extract` · `Transform` · `Load` · `Crawler` · `Job Bookmark`
 
 ## 🇰🇷 1. Glue ETL: Extract → Transform → Load
 
@@ -92,11 +94,75 @@ Job Bookmark는 이전 ETL 실행의 처리 상태를 기록하여 **이미 처�
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - **CSV → Parquet / Data Cleaning / ETL → Glue ETL**.
 - **Discover Tables / Infer Schema → Glue Crawler**.
 - **Store Metadata / Database + Table Schema → Glue Data Catalog**.
 - **Avoid Reprocessing → Glue Job Bookmarks**.
 - **Centralized Fine-grained Data Lake Permissions → Lake Formation**.
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Glue ETL: Extract → Transform → Load의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS Glue는 데이터 분석을 위한 **서버리스 데이터 통합·ETL 서비스**이다.
+
+</details>
+
+### Q2. Glue Crawler vs Data Catalog vs ETL의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+-- 직접 테이블 구조를 정의하는 방법 (설명용)
+CREATE EXTERNAL TABLE shopping_db.orders (
+    order_id INT,
+    product STRING,
+    price INT
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 's3://example-bucket/orders/';
+```
+
+</details>
+
+### Q3. Glue Job Bookmarks의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Job Bookmark는 이전 ETL 실행의 처리 상태를 기록하여 **이미 처리한 입력 데이터의 불필요한 재처리를 줄이는 기능**이다.
+
+</details>
+
+### Q4. Additional Glue Services의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- Streaming ETL은 Apache Spark Structured Streaming 기반이며 Checkpoint를 이용해 진행 상태를 관리할 수 있다.
+- **Glue Elastic Views:** 강의의 오래된 Preview 기능으로 현행 기능 선택 기준에 넣지 않는다.
+
+</details>
+
+### Q5. 이 문서에서 반드시 기억해야 할 시험 포인트 5은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**CSV → Parquet / Data Cleaning / ETL → Glue ETL**.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

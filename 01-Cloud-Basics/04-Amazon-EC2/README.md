@@ -1,7 +1,7 @@
-# 🖥️ 04. Amazon EC2
+# 📚 04. Amazon EC2
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 04
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 04`
 
 ## 📌 Overview
 

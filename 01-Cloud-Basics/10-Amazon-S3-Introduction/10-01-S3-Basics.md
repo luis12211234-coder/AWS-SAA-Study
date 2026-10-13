@@ -1,5 +1,9 @@
 # 📘 10-01. Amazon S3 Basics
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Object Storage` · `Bucket` · `Object` · `Key` · `Value`
+
 ## 🇰🇷 1. Amazon S3란?
 
 Amazon S3(Simple Storage Service)는 AWS의 대표적인 **Object Storage Service**이다.
@@ -308,6 +312,9 @@ O
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Amazon S3
 = Object Storage
@@ -342,8 +349,13 @@ Multipart Upload
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Amazon S3는 어떤 종류의 Storage Service인가?
+
 <details>
-<summary>1. Amazon S3는 어떤 종류의 Storage Service인가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Amazon S3는 **Object Storage Service**이다.
 
@@ -355,8 +367,10 @@ S3  → Object Storage
 
 </details>
 
+### Q2. S3 Bucket은 모든 Region에 동시에 존재하는가?
+
 <details>
-<summary>2. S3 Bucket은 모든 Region에 동시에 존재하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
@@ -366,8 +380,10 @@ S3 Console에서 여러 Region의 Bucket을 통합 관리할 수 있지만, 각 
 
 </details>
 
+### Q3. images/vacation/beach.jpg에서 images와 vacation은 실제 Directory인가?
+
 <details>
-<summary>3. images/vacation/beach.jpg에서 images와 vacation은 실제 Directory인가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
@@ -377,8 +393,10 @@ S3는 전통적인 Directory 구조를 사용하지 않는다.
 
 </details>
 
+### Q4. 25GB Object를 S3에 저장할 수 있는가?
+
 <details>
-<summary>4. 25GB Object를 S3에 저장할 수 있는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 저장할 수 있다.
 
@@ -386,21 +404,14 @@ S3는 전통적인 Directory 구조를 사용하지 않는다.
 
 </details>
 
+### Q5. S3에서 5GB라는 숫자는 무엇을 의미하는가?
+
 <details>
-<summary>5. S3에서 5GB라는 숫자는 무엇을 의미하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 하나의 PUT 요청으로 Upload할 수 있는 최대 Object 크기이다.
 
 5GB보다 큰 Object는 Multipart Upload가 필요하다.
-
-</details>
-
-<details>
-<summary>6. Multipart Upload를 사용하는 이유는 무엇인가?</summary>
-
-큰 Object를 여러 Part로 나누어 Upload할 수 있다.
-
-또한 일부 Part의 Upload가 실패했을 때 전체 Object를 처음부터 다시 전송하지 않고 실패한 Part를 다시 Upload할 수 있으며, 병렬 Upload도 가능하다.
 
 </details>
 

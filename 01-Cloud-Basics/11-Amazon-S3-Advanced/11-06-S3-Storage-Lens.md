@@ -1,5 +1,9 @@
 # 📘 11-06. S3 Storage Lens
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Storage Lens` · `Dashboard` · `Organization` · `Aggregate` · `Insight`
+
 ## 🇰🇷 1. S3 Storage Lens란?
 
 S3 Storage Lens는 여러 AWS Account, Region, Bucket에 분산되어 있는 S3 Storage 환경을 중앙에서 분석하고 시각화하는 기능입니다.
@@ -237,6 +241,9 @@ Storage Lens 자체가 Object를 자동으로 Glacier로 이동하거나 삭제�
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 다음과 같은 문제가 나오면 Storage Lens를 생각합니다.
 
 ```text
@@ -290,36 +297,49 @@ Lifecycle / Batch Operations
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. 여러 AWS Account와 Region의 S3 사용 현황을 중앙에서 분석하려면?
+
 <details>
-<summary>Q1. 여러 AWS Account와 Region의 S3 사용 현황을 중앙에서 분석하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 Storage Lens를 사용할 수 있습니다.
 
 </details>
 
+### Q2. Q2. Storage Lens의 대표적인 분석 영역은?
+
 <details>
-<summary>Q2. Storage Lens의 대표적인 분석 영역은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Storage Usage, Cost Efficiency, Data Protection 등이 있습니다.
 
 </details>
 
+### Q3. Q3. Storage Lens가 오래된 Object를 직접 Glacier로 이동시키는가?
+
 <details>
-<summary>Q3. Storage Lens가 오래된 Object를 직접 Glacier로 이동시키는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. Storage Lens는 분석과 Insight를 제공하며 실제 시간 기반 Object 관리는 Lifecycle Rule 등이 담당합니다.
 
 </details>
 
+### Q4. Q4. Default Dashboard의 중요한 특징은?
+
 <details>
-<summary>Q4. Default Dashboard의 중요한 특징은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Multi-Account와 Multi-Region 데이터를 중앙에서 확인할 수 있습니다.
 
 </details>
 
+### Q5. Q5. Storage Lens와 Batch Operations의 가장 큰 차이는?
+
 <details>
-<summary>Q5. Storage Lens와 Batch Operations의 가장 큰 차이는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Storage Lens는 S3 환경을 분석하고 시각화하며, Batch Operations는 기존 Object에 실제 대량 작업을 수행합니다.
 

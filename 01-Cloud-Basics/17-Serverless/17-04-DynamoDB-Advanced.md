@@ -1,5 +1,9 @@
 # 📘 17-04. DynamoDB Advanced
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `DAX` · `Stream` · `Global Table` · `TTL` · `PITR`
+
 ## 🇰🇷 1. DynamoDB Accelerator (DAX)
 
 DAX는 DynamoDB 전용 **In-Memory Cache**이다.
@@ -162,6 +166,9 @@ Import는 새로운 DynamoDB Table을 생성하며 Table의 Write Capacity를 �
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - DynamoDB Read Cache → DAX
 - DAX → Microsecond Latency
 - Item 변경 추적 → DynamoDB Streams
@@ -188,30 +195,51 @@ TTL 설정
 
 ## 📝 Review Questions
 
-### Q1. DynamoDB에서 Microsecond Read Latency가 필요하다면?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 DAX를 사용한다.
 
 </details>
 
-### Q2. DynamoDB Item의 변경을 Lambda로 처리하려면?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 DynamoDB Streams를 사용할 수 있다.
 
 </details>
 
-### Q3. Multi-Region Active-Active DynamoDB가 필요하다면?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 DynamoDB Global Tables
+
+</details>
+
+### Q4. DynamoDB Accelerator (DAX)의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+DAX는 DynamoDB 전용 **In-Memory Cache**이다.
+
+</details>
+
+### Q5. DynamoDB Streams의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+DynamoDB Item의 변경 사항을 기록한다.
 
 </details>
 

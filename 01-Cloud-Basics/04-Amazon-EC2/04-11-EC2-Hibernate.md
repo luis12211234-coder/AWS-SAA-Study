@@ -1,5 +1,9 @@
 # 📘 04-11. EC2 Hibernate
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Hibernate` · `In-memory State` · `RAM` · `Root EBS Volume` · `RAM Dump`
+
 ## 🇰🇷 1. Overview
 
 EC2 Instance는 일반적으로 다음과 같은 상태 전환을 사용할 수 있다.
@@ -625,6 +629,9 @@ Hibernate
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 초기화에 시간이 오래 걸리는 Application이 있다고 가정한다.
 
 ```text
@@ -730,12 +737,23 @@ Terminate
 
 ## 📝 Review Questions
 
-#### Q1. EC2 Hibernate란 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. EC2 Hibernate란 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 EC2의 RAM 상태를 Root EBS Volume에 저장하여
 다시 시작할 때 이전 Memory 상태를 복원하는 기능이다.
 
-#### Q2. Stop과 Hibernate의 가장 큰 차이는?
+</details>
+
+### Q2. Stop과 Hibernate의 가장 큰 차이는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Stop
@@ -745,58 +763,36 @@ Hibernate
 → RAM 보존
 ```
 
-#### Q3. Hibernate 시 RAM은 어디에 저장되는가?
+</details>
+
+### Q3. Hibernate 시 RAM은 어디에 저장되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 Encrypted Root EBS Volume에 저장된다.
 
-#### Q4. 왜 Root EBS Volume을 암호화해야 하는가?
+</details>
+
+### Q4. 왜 Root EBS Volume을 암호화해야 하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 RAM에는 Credential, Session, Application State 등
 민감한 정보가 존재할 수 있기 때문이다.
 
-#### Q5. Root EBS에는 어떤 용량 조건이 필요한가?
+</details>
+
+### Q5. Root EBS에는 어떤 용량 조건이 필요한가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 OS와 Application 데이터뿐 아니라
 RAM Dump도 저장할 수 있을 정도로 충분히 커야 한다.
 
-#### Q6. Hibernate의 주요 사용 사례는?
-
-장시간 실행되는 Process,
-RAM 상태 보존,
-초기화 시간이 긴 Application,
-Cache가 큰 서비스 등에 사용할 수 있다.
-
-#### Q7. Bare Metal Instance에서 Hibernate를 사용할 수 있는가?
-
-사용할 수 없다.
-
-#### Q8. Hibernate 후 EC2를 다시 Start하면 어떻게 되는가?
-
-Root EBS에 저장했던 RAM 내용을 Memory로 복원하고
-이전에 실행 중이던 Process 상태를 이어서 사용할 수 있다.
-
-#### Q9. Stop, Hibernate, Terminate를 간단히 비교하면?
-
-```text
-Stop
-= EBS 보존
-
-Hibernate
-= EBS + RAM 보존
-
-Terminate
-= Instance 제거
-```
-
-#### Q10. 시험에서 어떤 키워드가 나오면 Hibernate를 떠올려야 하는가?
-
-```text
-Preserve RAM
-In-memory state
-Resume process
-Long initialization
-Faster resume
-```
+</details>
 
 ## 🇯🇵 日本語 Summary
 

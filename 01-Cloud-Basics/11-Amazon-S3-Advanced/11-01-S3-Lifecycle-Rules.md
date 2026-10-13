@@ -1,5 +1,9 @@
 # 📘 11-01. Amazon S3 Lifecycle Rules
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Lifecycle Rule` · `Transition` · `Expiration` · `Current Version` · `Noncurrent Version`
+
 ## 🇰🇷 1. S3 Lifecycle이란?
 
 S3 Lifecycle은 Object가 시간이 지나면서 어떻게 관리될지를 자동화하는 기능입니다.
@@ -280,6 +284,9 @@ Versioning은 특히 Noncurrent Version의 Transition 및 Expiration을 관리�
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ### Regenerable Thumbnail
 
 Thumbnail은 원본 이미지에서 다시 생성할 수 있고 자주 사용하지 않는 데이터라고 가정합니다.
@@ -333,31 +340,51 @@ Incomplete Multipart Upload
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. S3 Lifecycle의 두 가지 대표적인 Action은?
+
 <details>
-<summary>Q1. S3 Lifecycle의 두 가지 대표적인 Action은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Transition과 Expiration입니다.
 
 </details>
 
+### Q2. Q2. NoncurrentDays는 언제부터 계산되는가?
+
 <details>
-<summary>Q2. NoncurrentDays는 언제부터 계산되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Object Version이 처음 생성된 시점이 아니라 해당 Version이 Noncurrent가 된 시점부터 계산됩니다.
 
 </details>
 
+### Q3. Q3. Current Object의 Lifecycle Transition에 Versioning이 반드시 필요한가?
+
 <details>
-<summary>Q3. Current Object의 Lifecycle Transition에 Versioning이 반드시 필요한가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. 일반적인 Current Object Transition 자체에는 Versioning이 필수가 아닙니다.
 
 </details>
 
+### Q4. Q4. 미완료 Multipart Upload를 자동 정리할 수 있는 기능은?
+
 <details>
-<summary>Q4. 미완료 Multipart Upload를 자동 정리할 수 있는 기능은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 Lifecycle Rule입니다.
+
+</details>
+
+### Q5. S3 Lifecycle이란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+S3 Lifecycle은 Object가 시간이 지나면서 어떻게 관리될지를 자동화하는 기능입니다.
 
 </details>
 

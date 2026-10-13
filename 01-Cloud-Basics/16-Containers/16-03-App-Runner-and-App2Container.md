@@ -1,5 +1,9 @@
 # 📘 16-03. AWS App Runner & AWS App2Container
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `App Runner` · `App2Container (A2C)` · `Container Image` · `Amazon ECR` · `Concurrency`
+
 ## 🇰🇷 1. AWS App Runner
 
 AWS App Runner는 **웹 애플리케이션과 API를 빠르게 배포하고 운영하기 위한 완전관리형 서비스**이다.
@@ -179,6 +183,9 @@ App2Container는 모든 종류의 프로그램을 자동으로 Container화하�
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 #### App Runner
 
 > **Web Application / API를 최소한의 인프라 관리로 빠르게 배포**
@@ -272,10 +279,13 @@ ECS / EKS / App Runner
 
 ## 📝 Review Questions
 
-#### Q1. 웹 애플리케이션이나 API를 최소한의 인프라 관리로 빠르게 배포하고 싶다. 적합한 서비스는?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **AWS App Runner**
 
@@ -283,74 +293,41 @@ ECS / EKS / App Runner
 
 </details>
 
-#### Q2. App Runner에 애플리케이션을 제공할 수 있는 대표적인 두 가지 형태는?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **Source Code 또는 Container Image**
 
 </details>
 
-#### Q3. App Runner와 ECS의 가장 중요한 차이는?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 App Runner는 웹 애플리케이션/API를 간단하게 배포하고 운영하는 데 초점을 두며, ECS는 Task와 Service 등 Container 운영 구조를 더 세밀하게 제어할 수 있다.
 
 </details>
 
-#### Q4. On-Premises에서 실행 중인 기존 Java/.NET 애플리케이션을 코드 변경을 최소화하면서 Container화하려 한다. 적합한 도구는?
+### Q4. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **AWS App2Container (A2C)**
 
 </details>
 
-#### Q5. App2Container로 생성된 Container Image를 저장하는 대표적인 AWS 서비스는?
+### Q5. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **Amazon ECR**
 
 </details>
-
-#### Q6. App2Container로 Container화한 애플리케이션을 배포할 수 있는 대표적인 서비스는?
-
-<details>
-<summary>정답 보기</summary>
-
-**Amazon ECS, Amazon EKS, AWS App Runner**
-
-</details>
-
-### ⚠️ Current AWS Note
-
-강의 및 SAA 학습에서는 다음과 같이 기억한다.
-
-```text
-Legacy Java / .NET
-        ↓
-AWS App2Container
-        ↓
-Container Migration
-```
-
-다만 최신 AWS 환경에서는 App2Container의 신규 고객 제공 여부 등 서비스 상태가 변경될 수 있으므로, 실제 프로젝트에서 도입할 때는 AWS 공식 문서를 기준으로 최신 상태를 확인한다.
-
-### 한 줄 정리
-
-```text
-App Runner
-= "내 Web App/API를 쉽게 배포하고 운영해줘"
-
-App2Container
-= "내 기존 Java/.NET 앱을 Container로 옮기는 걸 도와줘"
-```
 
 ## 🇯🇵 日本語 Summary
 

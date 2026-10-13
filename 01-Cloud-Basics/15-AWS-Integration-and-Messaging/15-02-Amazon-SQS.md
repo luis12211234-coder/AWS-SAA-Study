@@ -1,5 +1,9 @@
 # 📘 15-02. Amazon SQS
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Amazon SQS란?` · `Standard Queue` · `Visibility Timeout ⭐` · `Long Polling` · `FIFO Queue`
+
 ## 🇰🇷 1. Amazon SQS란?
 
 **Amazon Simple Queue Service**
@@ -194,6 +198,9 @@ Access Control
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Decoupling
 Traffic Spike
@@ -214,17 +221,54 @@ Queue Length에 따라 EC2 증가
 
 ## 📝 Review Questions
 
-**Q1. 처리 중인 Message를 다른 Consumer에게 숨기는 기능은?**
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-Visibility Timeout
+### Q1. Amazon SQS란?의 핵심 개념은 무엇인가?
 
-**Q2. 엄격한 Message 순서가 필요하면?**
+<details>
+<summary>정답 및 해설 보기</summary>
 
-SQS FIFO
+**Amazon Simple Queue Service**
 
-**Q3. Queue가 길어질수록 EC2 Consumer를 증가시키려면?**
+</details>
 
-CloudWatch의 Queue Length Metric과 Auto Scaling Group을 사용합니다.
+### Q2. Standard Queue의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+기본 SQS Queue입니다.
+
+</details>
+
+### Q3. Visibility Timeout ⭐의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Consumer가 Message를 가져가면 일정 시간 동안 다른 Consumer에게 보이지 않습니다.
+
+</details>
+
+### Q4. Long Polling의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Queue가 비어 있을 때 즉시 빈 응답을 받는 대신 일정 시간 Message를 기다립니다.
+
+</details>
+
+### Q5. FIFO Queue의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+1 → 2 → 3 → 4
+```
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -241,3 +285,13 @@ Amazon SQS is a managed message queue used to decouple applications.
 Consumers poll messages from the queue and delete them after successful processing.
 
 Important concepts include Visibility Timeout, Long Polling, FIFO queues, and scaling consumers based on queue length.
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| Amazon SQS란? | Amazon SQS란? | Amazon SQS란? |
+| Standard Queue | Standard Queue | Standard Queue |
+| Visibility Timeout ⭐ | Visibility Timeout ⭐ | Visibility Timeout ⭐ |
+| Long Polling | Long Polling | Long Polling |
+| FIFO Queue | FIFO Queue | FIFO Queue |

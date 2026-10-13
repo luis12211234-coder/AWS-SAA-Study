@@ -1,5 +1,9 @@
 # 📘 13-01. CloudFront Overview
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `CDN` · `Edge Location` · `Origin` · `Cache` · `Cache Hit`
+
 ## 🇰🇷 1. CloudFront란?
 
 Amazon CloudFront는 AWS의 CDN(Content Delivery Network) 서비스입니다.
@@ -134,6 +138,9 @@ S3 CRR
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 CloudFront
 = AWS CDN
@@ -159,31 +166,51 @@ CloudFront ≠ S3 CRR
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. AWS의 CDN 서비스는?
+
 <details>
-<summary>Q1. AWS의 CDN 서비스는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Amazon CloudFront입니다.
 
 </details>
 
+### Q2. Q2. Cache Hit이 발생하면?
+
 <details>
-<summary>Q2. Cache Hit이 발생하면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 CloudFront Edge에 이미 콘텐츠가 있으므로 Origin까지 가지 않고 Edge에서 바로 제공합니다.
 
 </details>
 
+### Q3. Q3. Origin은 S3만 의미하는가?
+
 <details>
-<summary>Q3. Origin은 S3만 의미하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. S3, EC2, ALB 및 다른 HTTP Backend 등이 Origin이 될 수 있습니다.
 
 </details>
 
+### Q4. Q4. CloudFront와 S3 CRR의 핵심 차이는?
+
 <details>
-<summary>Q4. CloudFront와 S3 CRR의 핵심 차이는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 CloudFront는 Edge Cache를 이용한 콘텐츠 전송 서비스이고, CRR은 실제 S3 Object를 다른 Region으로 복제하는 기능입니다.
+
+</details>
+
+### Q5. CloudFront란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Amazon CloudFront는 AWS의 CDN(Content Delivery Network) 서비스입니다.
 
 </details>
 

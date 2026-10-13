@@ -1,5 +1,9 @@
 # 📘 02-07. IAM Security Tools and Best Practices
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Credentials Report` · `Access Advisor` · `Account-Level` · `User-Level` · `Last Accessed`
+
 ## 🇰🇷 1. Overview
 
 AWS에서는 IAM 환경을 점검하고 불필요한 권한을 줄이기 위해 IAM Credentials Report와 IAM Access Advisor를 제공한다.
@@ -82,6 +86,9 @@ Access Advisor의 정보를 활용하면 최소 권한 원칙에 맞게 Policy�
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Credentials Report는 Account-Level이다.
 - Access Advisor는 User-Level이다.
 - Credentials Report는 Password, MFA, Access Key 상태를 확인한다.
@@ -101,13 +108,53 @@ Access Advisor에서 Alice가 S3만 사용하고 EC2는 사용한 적이 없다�
 
 ## 📝 Review Questions
 
-1. Credentials Report와 Access Advisor의 범위 차이는 무엇인가?
-2. Credentials Report에서 확인할 수 있는 정보는 무엇인가?
-3. Access Advisor는 최소 권한 원칙을 적용하는 데 어떻게 도움이 되는가?
-4. Root User는 언제 사용해야 하는가?
-5. 한 IAM User를 여러 사람이 공유하면 안 되는 이유는 무엇인가?
-6. AWS 서비스에 Access Key 대신 IAM Role을 사용하는 이유는 무엇인가?
-7. IAM 환경에서 정기적으로 감사해야 할 항목은 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Credentials Report와 Access Advisor의 범위 차이는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Credentials Report는 계정 전체 IAM 사용자의 자격 증명 상태를 보여준다. Access Advisor는 특정 User, Group, Role의 서비스 접근 권한과 마지막 접근 시점을 보여준다.
+
+</details>
+
+### Q2. Credentials Report에서 확인할 수 있는 정보는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+비밀번호 활성화와 마지막 사용·변경 시점, MFA 활성화 여부, Access Key 상태와 마지막 사용·교체 시점 등을 확인할 수 있다.
+
+</details>
+
+### Q3. Access Advisor는 최소 권한 원칙을 적용하는 데 어떻게 도움이 되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+오랫동안 사용되지 않은 서비스 권한을 식별해 불필요한 권한을 제거하는 근거를 제공한다.
+
+</details>
+
+### Q4. Root User는 언제 사용해야 하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Root User가 반드시 필요한 계정 수준 작업에만 사용하고, 그 외 작업은 별도 관리 Identity로 수행한다.
+
+</details>
+
+### Q5. 한 IAM User를 여러 사람이 공유하면 안 되는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+누가 어떤 작업을 했는지 감사하기 어렵고 자격 증명 노출 범위가 커지기 때문이다. 실제 사용자마다 별도 Identity를 만든다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

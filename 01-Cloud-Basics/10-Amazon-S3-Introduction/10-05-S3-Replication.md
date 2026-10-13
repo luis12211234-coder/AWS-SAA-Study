@@ -1,5 +1,9 @@
 # 📘 10-05. S3 Replication
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Replication` · `Source Bucket` · `Destination Bucket` · `Cross-Region Replication` · `Same-Region Replication`
+
 ## 🇰🇷 1. S3 Replication이란?
 
 S3 Replication은 Source Bucket의 Object를 다른 S3 Bucket으로 **비동기적으로 복제**하는 기능이다.
@@ -537,6 +541,9 @@ Replica의 자동 Chaining
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 S3 Replication
 = Object Version을 다른 Bucket으로 비동기 복제
@@ -588,8 +595,13 @@ B에서 C로 자동 Relay
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. CRR과 SRR의 차이는?
+
 <details>
-<summary>1. CRR과 SRR의 차이는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 CRR은 서로 다른 AWS Region 사이에서 수행하는 Replication이다.
 
@@ -597,8 +609,10 @@ SRR은 같은 AWS Region의 Bucket 사이에서 수행하는 Replication이다.
 
 </details>
 
+### Q2. S3 Replication을 사용하기 위한 중요한 조건은?
+
 <details>
-<summary>2. S3 Replication을 사용하기 위한 중요한 조건은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Source와 Destination Bucket 모두 Versioning이 활성화되어 있어야 한다.
 
@@ -606,8 +620,10 @@ Source와 Destination Bucket 모두 Versioning이 활성화되어 있어야 한�
 
 </details>
 
+### Q3. Replication Rule을 생성하기 전에 존재하던 Object도 Live Replication으로 자동 복제되는가?
+
 <details>
-<summary>3. Replication Rule을 생성하기 전에 존재하던 Object도 Live Replication으로 자동 복제되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 일반적으로 아니다.
 
@@ -615,8 +631,10 @@ Source와 Destination Bucket 모두 Versioning이 활성화되어 있어야 한�
 
 </details>
 
+### Q4. Source에 Version이 3개라면 Destination에도 반드시 3개가 존재하는가?
+
 <details>
-<summary>4. Source에 Version이 3개라면 Destination에도 반드시 3개가 존재하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
@@ -624,44 +642,12 @@ Replication Rule이 적용된 시점과 대상 Version에 따라 Source와 Desti
 
 </details>
 
+### Q5. S3 Batch Replication은 언제 사용하는가?
+
 <details>
-<summary>5. S3 Batch Replication은 언제 사용하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Replication 설정 이전부터 존재하던 Object나 기존 데이터 등을 일괄적으로 복제할 때 사용할 수 있다.
-
-</details>
-
-<details>
-<summary>6. Delete Marker도 Replication할 수 있는가?</summary>
-
-Replication 설정에서 Delete Marker Replication을 활성화하면 가능하다.
-
-</details>
-
-<details>
-<summary>7. Source에서 특정 Version을 영구 삭제하면 Destination의 동일 Version도 자동 삭제되는가?</summary>
-
-아니다.
-
-특정 Version의 Permanent Delete는 Destination으로 자동 전파되지 않는다.
-
-</details>
-
-<details>
-<summary>8. A → B와 B → C Replication Rule이 있으면 A의 Object가 자동으로 C까지 복제되는가?</summary>
-
-아니다.
-
-A에서 B로 Replication된 Replica가 다시 B → C Live Replication을 통해 자동으로 전달되지는 않는다.
-
-</details>
-
-<details>
-<summary>9. B에서 직접 새로운 Object를 생성하면 B → C Replication이 가능한가?</summary>
-
-가능하다.
-
-Replication을 통해 B에 들어온 Replica의 자동 Chaining이 되지 않는 것이지, B에서 직접 생성된 적격 Object까지 Replication할 수 없는 것은 아니다.
 
 </details>
 

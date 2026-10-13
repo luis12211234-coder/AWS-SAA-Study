@@ -1,5 +1,9 @@
 # 📘 11-02. S3 Requester Pays
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Requester Pays` · `Requester` · `Bucket Owner` · `Request Cost` · `Data Transfer`
+
 ## 🇰🇷 1. Requester Pays란?
 
 일반적인 S3 Bucket에서는 Bucket Owner가 Storage뿐 아니라 Request와 Data Transfer 비용도 부담합니다.
@@ -99,6 +103,9 @@ SAA 수준에서는 구체적인 명령어보다 **Requester가 비용 부담을
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Normal S3
 Owner
@@ -126,24 +133,51 @@ Bucket Owner가 Download Cost를 부담하고 싶지 않음
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. Requester Pays에서 Storage Cost는 누가 부담하는가?
+
 <details>
-<summary>Q1. Requester Pays에서 Storage Cost는 누가 부담하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Bucket Owner가 부담합니다.
 
 </details>
 
+### Q2. Q2. Requester가 주로 부담하는 비용은?
+
 <details>
-<summary>Q2. Requester가 주로 부담하는 비용은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Request Cost와 Data Download/Transfer Cost입니다.
 
 </details>
 
+### Q3. Q3. Requester Pays를 활성화하면 IAM 권한이 없어도 Object를 읽을 수 있는가?
+
 <details>
-<summary>Q3. Requester Pays를 활성화하면 IAM 권한이 없어도 Object를 읽을 수 있는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. Requester Pays는 Billing 기능이며 기존 Authorization은 그대로 필요합니다.
+
+</details>
+
+### Q4. Requester Pays란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+일반적인 S3 Bucket에서는 Bucket Owner가 Storage뿐 아니라 Request와 Data Transfer 비용도 부담합니다.
+
+</details>
+
+### Q5. 비용 구조의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Requester Pays를 활성화하면 비용 구조가 다음과 같이 바뀝니다.
 
 </details>
 

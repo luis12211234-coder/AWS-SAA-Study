@@ -1,5 +1,9 @@
 # 📘 17-02. AWS Lambda Advanced
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Cold Start` · `SnapStart` · `RDS Proxy` · `Connection Pooling` · `Edge Function`
+
 ## 🇰🇷 1. Lambda SnapStart
 
 Lambda의 초기화 과정에서 발생하는 Cold Start 시간을 줄이기 위한 기능이다.
@@ -188,6 +192,9 @@ Lambda@Edge는 위 네 Event 지점에서 실행할 수 있다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Lambda → Private RDS 접근 시 VPC Connectivity 필요
 - VPC 연결만으로 인터넷 접근이 자동 제공되는 것은 아님
 - Lambda의 대량 DB Connection → RDS Proxy
@@ -210,21 +217,51 @@ Lambda가 급격하게 Scaling되더라도 RDS Proxy가 DB Connection을 관리�
 
 ## 📝 Review Questions
 
-### Q1. Lambda가 대량으로 RDS에 연결해서 Connection 문제가 발생한다면?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 RDS Proxy를 사용한다.
 
 </details>
 
-### Q2. VPC에 연결한 Lambda는 자동으로 인터넷에 접근할 수 있는가?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다. 일반적인 IPv4 인터넷 접근 구조에서는 Private Subnet에서 NAT Gateway 등을 통한 인터넷 경로를 구성해야 한다.
+
+</details>
+
+### Q3. Lambda SnapStart의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Lambda의 초기화 과정에서 발생하는 Cold Start 시간을 줄이기 위한 기능이다.
+
+</details>
+
+### Q4. Lambda Networking의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+기본 Lambda는 사용자의 VPC 내부에 직접 연결되어 있지 않다.
+
+</details>
+
+### Q5. Lambda + RDS Proxy의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Lambda가 RDS에 직접 대량으로 연결하면 많은 DB Connection이 생성될 수 있다.
 
 </details>
 

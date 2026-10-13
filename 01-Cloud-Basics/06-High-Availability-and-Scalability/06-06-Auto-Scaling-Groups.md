@@ -1,5 +1,9 @@
 # 📘 06-06. Auto Scaling Groups (ASG)
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Auto Scaling Group` · `Scale Out` · `Scale In` · `Minimum Capacity` · `Desired Capacity`
+
 ## 🇰🇷 1. Overview
 
 **Auto Scaling Group (ASG)**은 애플리케이션의 부하와 설정에 따라 **EC2 Instance 수를 자동으로 관리**하는 기능이다.
@@ -624,6 +628,9 @@ Scale In
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ### ASG Core
 
 ```text
@@ -723,16 +730,53 @@ Scale Out / Scale In
 
 ## 📝 Review Questions
 
-1. Scale Out과 Scale In의 차이는 무엇인가?
-2. Minimum, Desired, Maximum Capacity는 각각 무엇을 의미하는가?
-3. Launch Template은 ASG에서 어떤 역할을 하는가?
-4. ASG와 Load Balancer를 함께 사용하면 각각 어떤 역할을 담당하는가?
-5. EC2 또는 ELB Health Check에서 Instance가 Unhealthy로 판단되면 ASG는 어떻게 동작할 수 있는가?
-6. Target Tracking Scaling은 어떤 방식으로 Capacity를 조절하는가?
-7. Target Tracking과 Step Scaling의 차이는 무엇인가?
-8. Scheduled Scaling과 Predictive Scaling의 차이는 무엇인가?
-9. ASG Scaling에 사용할 수 있는 대표적인 Metric에는 무엇이 있는가?
-10. Scaling Cooldown이 필요한 이유는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Scale Out과 Scale In의 차이는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Scale Out은 인스턴스를 추가하고, Scale In은 인스턴스를 제거한다.
+
+</details>
+
+### Q2. Minimum, Desired, Maximum Capacity는 각각 무엇을 의미하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Minimum은 유지할 최소 인스턴스 수, Desired는 현재 목표 수, Maximum은 확장 가능한 최대 수다.
+
+</details>
+
+### Q3. Launch Template은 ASG에서 어떤 역할을 하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AMI, Instance Type, Security Group, User Data 등 새 EC2 인스턴스의 생성 구성을 정의한다.
+
+</details>
+
+### Q4. ASG와 Load Balancer를 함께 사용하면 각각 어떤 역할을 담당하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+ASG는 필요한 인스턴스 수와 상태를 유지하고, Load Balancer는 정상 인스턴스들에 Traffic을 분산한다.
+
+</details>
+
+### Q5. EC2 또는 ELB Health Check에서 Instance가 Unhealthy로 판단되면 ASG는 어떻게 동작할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+비정상 인스턴스를 종료하고 Desired Capacity를 유지하도록 새 인스턴스를 생성한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

@@ -1,5 +1,9 @@
 # 📘 10-02. Amazon S3 Security
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `IAM Policy` · `Bucket Policy` · `Identity-based Policy` · `Resource-based Policy` · `Principal`
+
 ## 🇰🇷 1. S3 Security
 
 S3 Bucket과 Object는 기본적으로 Private하게 관리하며, 필요한 대상에게만 접근 권한을 부여하는 것이 기본 원칙이다.
@@ -436,6 +440,9 @@ Private Object + Presigned URL
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 S3 Security
 │
@@ -486,8 +493,13 @@ Presigned URL
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. IAM Policy와 Bucket Policy의 가장 큰 차이는?
+
 <details>
-<summary>1. IAM Policy와 Bucket Policy의 가장 큰 차이는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 IAM Policy는 User나 Role 등의 **Identity에 연결되는 Identity-based Policy**이다.
 
@@ -495,8 +507,10 @@ Bucket Policy는 S3 Bucket에 직접 연결되는 **Resource-based Policy**이�
 
 </details>
 
+### Q2. Allow와 Explicit Deny가 동시에 적용되면 어떻게 되는가?
+
 <details>
-<summary>2. Allow와 Explicit Deny가 동시에 적용되면 어떻게 되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Explicit Deny가 우선한다.
 
@@ -506,8 +520,10 @@ Explicit Deny > Allow
 
 </details>
 
+### Q3. s3:GetObject에 Bucket ARN 자체를 사용하면 되는가?
+
 <details>
-<summary>3. s3:GetObject에 Bucket ARN 자체를 사용하면 되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Object에 대한 Permission이므로 Object ARN이 필요하다.
 
@@ -525,8 +541,10 @@ arn:aws:s3:::my-bucket
 
 </details>
 
+### Q4. Block Public Access를 OFF하면 Bucket이 자동으로 Public이 되는가?
+
 <details>
-<summary>4. Block Public Access를 OFF하면 Bucket이 자동으로 Public이 되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
@@ -534,32 +552,16 @@ Public Access를 막는 안전장치를 해제하는 것이며, 실제 Public Pe
 
 </details>
 
+### Q5. IAM Role은 사람에게만 사용하는가?
+
 <details>
-<summary>5. IAM Role은 사람에게만 사용하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
 EC2와 같은 AWS Service 또는 Workload가 다른 AWS Resource에 접근할 때도 IAM Role을 사용할 수 있다.
 
 S3 Replication 역시 Source와 Destination에 접근할 수 있는 적절한 IAM Permission이 필요하다.
-
-</details>
-
-<details>
-<summary>6. Encryption과 Permission은 같은 개념인가?</summary>
-
-아니다.
-
-Permission은 누가 Resource에 접근할 수 있는지를 제어하고, Encryption은 데이터를 암호화하여 보호한다.
-
-</details>
-
-<details>
-<summary>7. Private Object를 Public으로 변경하지 않고 임시 공유하려면?</summary>
-
-Presigned URL을 사용할 수 있다.
-
-서명된 URL을 통해 제한된 시간 동안 Private Object에 접근할 수 있다.
 
 </details>
 

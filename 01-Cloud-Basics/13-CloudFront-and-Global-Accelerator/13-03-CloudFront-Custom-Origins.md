@@ -1,5 +1,9 @@
 # 📘 13-03. CloudFront Custom Origins
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Custom Origin` · `Website Endpoint` · `Application Load Balancer` · `Backend` · `Security Group`
+
 ## 🇰🇷 1. Custom Origin이란?
 
 CloudFront의 Origin은 S3에만 국한되지 않습니다.
@@ -114,6 +118,9 @@ EC2
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Origin
 ≠ S3 전용 개념
@@ -141,24 +148,51 @@ Private EC2
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. CloudFront Origin은 S3만 가능한가?
+
 <details>
-<summary>Q1. CloudFront Origin은 S3만 가능한가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. EC2, ALB 및 다른 HTTP Backend도 사용할 수 있습니다.
 
 </details>
 
+### Q2. Q2. S3 Website Endpoint는 CloudFront에서 어떻게 취급되는가?
+
 <details>
-<summary>Q2. S3 Website Endpoint는 CloudFront에서 어떻게 취급되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 HTTP 기반 Custom Origin으로 취급됩니다.
 
 </details>
 
+### Q3. Q3. CloudFront → ALB → EC2 구조에서 EC2가 직접 받는 요청은 누구에게서 오는가?
+
 <details>
-<summary>Q3. CloudFront → ALB → EC2 구조에서 EC2가 직접 받는 요청은 누구에게서 오는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 ALB에서 옵니다.
+
+</details>
+
+### Q4. Custom Origin이란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+CloudFront의 Origin은 S3에만 국한되지 않습니다.
+
+</details>
+
+### Q5. EC2를 직접 Origin으로 사용의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+EC2를 직접 CloudFront Origin으로 사용할 수도 있습니다.
 
 </details>
 

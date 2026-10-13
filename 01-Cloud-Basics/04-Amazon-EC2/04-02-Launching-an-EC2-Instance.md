@@ -1,5 +1,9 @@
 # 📘 04-02. Launching an EC2 Instance
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Launch Instance` · `Amazon Machine Image (AMI)` · `Instance Type` · `Key Pair` · `SSH`
+
 ## 🇰🇷 1. Overview
 
 이번 실습에서는 AWS Management Console을 사용하여 Amazon Linux 기반의 첫 번째 EC2 Instance를 생성한다.
@@ -414,6 +418,9 @@ Access Web Server through Public IP
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - AMI = EC2 Instance를 생성하기 위한 이미지
 - Instance Type = CPU / RAM 등의 컴퓨팅 사양
 - Key Pair = SSH 인증에 사용
@@ -461,29 +468,53 @@ EC2 Instance를 Stop하면 웹 서버에 접근할 수 없으며, 다시 Start�
 
 ## 📝 Review Questions
 
-1. AMI는 EC2 Instance 생성 과정에서 어떤 역할을 하는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-2. Instance Type을 선택할 때 달라지는 주요 자원은 무엇인가?
+### Q1. AMI는 EC2 Instance 생성 과정에서 어떤 역할을 하는가?
 
-3. Key Pair는 어떤 목적으로 사용하는가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-4. SSH와 HTTP는 각각 어떤 Port를 사용하는가?
+운영체제와 기본 소프트웨어, Block Device Mapping 등 인스턴스의 시작 상태를 정의하는 이미지 템플릿이다.
 
-5. Security Group은 EC2 Instance에서 어떤 역할을 하는가?
+</details>
 
-6. EC2 User Data는 언제 실행되는가?
+### Q2. Instance Type을 선택할 때 달라지는 주요 자원은 무엇인가?
 
-7. Bootstrapping이란 무엇인가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-8. `Delete on Termination`이 활성화된 Root EBS Volume은 EC2를 Terminate하면 어떻게 되는가?
+vCPU, 메모리, 네트워크 성능, Storage 특성과 비용이 달라진다.
 
-9. Stop과 Terminate의 차이는 무엇인가?
+</details>
 
-10. EC2 Instance를 Stop한 뒤 다시 Start하면 Public IPv4 Address는 어떻게 될 수 있는가?
+### Q3. Key Pair는 어떤 목적으로 사용하는가?
 
-11. Public IPv4와 Private IPv4는 각각 어떤 용도로 사용되는가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-12. 이번 실습에서 웹 서버에 접근할 때 `https://`가 아닌 `http://`를 사용한 이유는 무엇인가?
+주로 Linux EC2에 SSH로 안전하게 접속할 때 공개 키 인증에 사용한다.
+
+</details>
+
+### Q4. SSH와 HTTP는 각각 어떤 Port를 사용하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+SSH는 TCP 22번, HTTP는 TCP 80번 Port를 사용한다.
+
+</details>
+
+### Q5. Security Group은 EC2 Instance에서 어떤 역할을 하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+허용 규칙을 이용해 인스턴스로 들어오고 나가는 네트워크 트래픽을 제어한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

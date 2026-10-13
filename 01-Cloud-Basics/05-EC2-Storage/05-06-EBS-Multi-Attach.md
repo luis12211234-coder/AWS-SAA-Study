@@ -1,5 +1,9 @@
 # 📘 05-06. EBS Multi-Attach
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Multi-Attach` · `Cluster` · `Cluster-Aware File System` · `Concurrent Write` · `Shared Storage`
+
 ## 🇰🇷 1. Overview
 
 **EBS Multi-Attach**는 하나의 EBS Volume을
@@ -155,6 +159,9 @@ Cluster-Aware File System
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 가장 중요한 조건:
 
 ```text
@@ -186,37 +193,61 @@ Normal XFS / EXT4 for shared concurrent access
 
 ## 📝 Review Questions
 
-#### Q1. EBS Multi-Attach란?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. EBS Multi-Attach란?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 하나의 EBS Volume을
 여러 EC2 Instance에 동시에 연결하는 기능이다.
 
-#### Q2. 어떤 EBS Volume Type에서 사용할 수 있는가?
+</details>
+
+### Q2. 어떤 EBS Volume Type에서 사용할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 io1 / io2
 ```
 
-#### Q3. 서로 다른 Availability Zone의 EC2에도 연결할 수 있는가?
+</details>
+
+### Q3. 서로 다른 Availability Zone의 EC2에도 연결할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
 같은 Availability Zone의 EC2에만 연결할 수 있다.
 
-#### Q4. 강의 기준 최대 몇 개의 EC2에 연결할 수 있는가?
+</details>
+
+### Q4. 강의 기준 최대 몇 개의 EC2에 연결할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 16 Instances
 ```
 
-#### Q5. 왜 Cluster-Aware File System이 필요한가?
+</details>
+
+### Q5. 왜 Cluster-Aware File System이 필요한가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 여러 EC2 Instance가 동일한 Volume에
 동시에 접근하고 Write할 수 있기 때문이다.
 
-#### Q6. Multi-Attach를 사용하면 애플리케이션이 고려해야 하는 것은?
-
-Concurrent Write 작업을 안전하게 관리해야 한다.
+</details>
 
 ## 🇯🇵 日本語 Summary
 

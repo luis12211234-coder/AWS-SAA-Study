@@ -1,5 +1,9 @@
 # 📘 11-05. S3 Batch Operations
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Batch Operations` · `Bulk Operation` · `Manifest` · `Inventory` · `Retry`
+
 ## 🇰🇷 1. S3 Batch Operations란?
 
 S3 Batch Operations는 많은 기존 S3 Object에 동일한 작업을 대량으로 수행하기 위한 기능입니다.
@@ -176,6 +180,9 @@ S3 Batch Operations
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 시험에서 다음과 같은 표현이 나오면 S3 Batch Operations를 생각합니다.
 
 ```text
@@ -197,31 +204,51 @@ Completion Report
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. 수백만 개의 기존 S3 Object에 동일한 작업을 수행해야 한다면?
+
 <details>
-<summary>Q1. 수백만 개의 기존 S3 Object에 동일한 작업을 수행해야 한다면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 Batch Operations를 사용할 수 있습니다.
 
 </details>
 
+### Q2. Q2. Batch Operations에서 Manifest의 역할은?
+
 <details>
-<summary>Q2. Batch Operations에서 Manifest의 역할은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 작업을 수행할 대상 Object 목록을 정의합니다.
 
 </details>
 
+### Q3. Q3. S3 Inventory와 Batch Operations의 차이는?
+
 <details>
-<summary>Q3. S3 Inventory와 Batch Operations의 차이는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Inventory는 Object 목록과 정보를 파악하는 데 사용하고, Batch Operations는 해당 Object들에 실제 대량 작업을 수행합니다.
 
 </details>
 
+### Q4. Q4. 기본 Batch Operation으로 해결할 수 없는 Custom 작업은 어떻게 수행할 수 있는가?
+
 <details>
-<summary>Q4. 기본 Batch Operation으로 해결할 수 없는 Custom 작업은 어떻게 수행할 수 있는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Batch Operations에서 Lambda Function을 호출하여 Custom Logic을 실행할 수 있습니다.
+
+</details>
+
+### Q5. S3 Batch Operations란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+S3 Batch Operations는 많은 기존 S3 Object에 동일한 작업을 대량으로 수행하기 위한 기능입니다.
 
 </details>
 

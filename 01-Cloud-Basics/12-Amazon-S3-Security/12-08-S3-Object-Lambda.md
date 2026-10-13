@@ -1,5 +1,9 @@
 # 📘 12-08. S3 Object Lambda
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Object Lambda` · `Transformation` · `Redaction` · `PII` · `Watermark`
+
 ## 🇰🇷 1. S3 Object Lambda란?
 
 S3 Object Lambda는 S3 Object가 Application에 반환되기 전에 Lambda Function을 이용해 데이터를 동적으로 변환하는 기능입니다.
@@ -190,6 +194,9 @@ S3 Object Lambda
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 강의 기준 다음과 같은 요구사항에서 S3 Object Lambda를 생각합니다.
 
 ```text
@@ -241,36 +248,49 @@ S3 Object Lambda
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. S3 원본을 복제하지 않고 Application마다 다른 형태의 데이터를 제공하려면?
+
 <details>
-<summary>Q1. S3 원본을 복제하지 않고 Application마다 다른 형태의 데이터를 제공하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 강의 기준 S3 Object Lambda를 사용할 수 있습니다.
 
 </details>
 
+### Q2. Q2. Object Lambda로 PII를 제거하면 S3의 원본 Object에서도 PII가 삭제되는가?
+
 <details>
-<summary>Q2. Object Lambda로 PII를 제거하면 S3의 원본 Object에서도 PII가 삭제되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. 반환되는 데이터를 동적으로 변환하며 원본 Object는 그대로 유지됩니다.
 
 </details>
 
+### Q3. Q3. Object Lambda의 대표적인 사용 사례는?
+
 <details>
-<summary>Q3. Object Lambda의 대표적인 사용 사례는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 PII Redaction, Format Conversion, Image Resize, Watermark, Data Enrichment 등이 있습니다.
 
 </details>
 
+### Q4. Q4. 신규 AWS 고객은 현재 S3 Object Lambda를 일반적으로 새로 사용할 수 있는가?
+
 <details>
-<summary>Q4. 신규 AWS 고객은 현재 S3 Object Lambda를 일반적으로 새로 사용할 수 있는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. 2025년 11월 7일부터 기존 고객과 일부 APN Partner를 중심으로 제공됩니다.
 
 </details>
 
+### Q5. Q5. S3 Object Lambda 제한이 AWS Lambda 자체의 신규 사용 제한을 의미하는가?
+
 <details>
-<summary>Q5. S3 Object Lambda 제한이 AWS Lambda 자체의 신규 사용 제한을 의미하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. 제한되는 것은 S3 Object Lambda 기능이며 AWS Lambda 자체는 계속 사용할 수 있습니다.
 

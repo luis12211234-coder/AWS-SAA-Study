@@ -1,5 +1,9 @@
 # 📘 05-05. EBS Volume Types
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `General Purpose SSD` · `Provisioned IOPS SSD` · `Throughput Optimized HDD` · `Cold HDD` · `IOPS`
+
 ## 🇰🇷 1. Overview
 
 Amazon EBS는 Workload의 성능과 비용 요구사항에 따라
@@ -228,6 +232,9 @@ sc1
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 가장 중요한 구분:
 
 ```text
@@ -267,38 +274,62 @@ Boot Volume
 
 ## 📝 Review Questions
 
-#### Q1. 일반적인 Workload에 적합한 EBS SSD는?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 일반적인 Workload에 적합한 EBS SSD는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 gp2 / gp3
 ```
 
-#### Q2. gp2와 gp3의 중요한 차이는?
+</details>
+
+### Q2. gp2와 gp3의 중요한 차이는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 gp2는 Volume Size와 IOPS가 연결되어 있지만,
 gp3는 Size, IOPS, Throughput을 독립적으로 설정할 수 있다.
 
-#### Q3. 매우 높은 IOPS가 필요한 중요한 Database에는?
+</details>
+
+### Q3. 매우 높은 IOPS가 필요한 중요한 Database에는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 io1 / io2
 ```
 
-#### Q4. Big Data나 Log Processing처럼 높은 Throughput이 중요하다면?
+</details>
+
+### Q4. Big Data나 Log Processing처럼 높은 Throughput이 중요하다면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 st1
 ```
 
-#### Q5. 접근 빈도가 낮고 가장 낮은 비용이 중요하다면?
+</details>
+
+### Q5. 접근 빈도가 낮고 가장 낮은 비용이 중요하다면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 sc1
 ```
 
-#### Q6. st1과 sc1을 Boot Volume으로 사용할 수 있는가?
-
-사용할 수 없다.
+</details>
 
 ## 🇯🇵 日本語 Summary
 

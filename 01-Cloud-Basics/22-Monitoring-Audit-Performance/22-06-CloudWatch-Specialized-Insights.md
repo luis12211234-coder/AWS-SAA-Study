@@ -1,6 +1,8 @@
-# 🧩 22-06. CloudWatch Specialized Insights (4 Types)
+# 📘 22-06. CloudWatch Specialized Insights (4 Types)
 
-> AWS SAA-C03 · 검색 키워드: **Container Insights, Lambda Insights, Contributor Insights, Application Insights, Top N, Cold Start, Fargate**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Container Insights` · `Lambda Insights` · `Contributor Insights` · `Application Insights` · `Cold Start`
 
 ## 🇰🇷 1. 어떤 Insights를 선택할까?
 
@@ -58,38 +60,75 @@ VPC Flow Logs → CloudWatch Logs → Contributor Insights Rules
 | 트래픽 발생량 상위 10개 IP | Contributor Insights |
 | 애플리케이션 관련 AWS 자원의 종합적 장애 가시성 | Application Insights |
 
+## 🎯 Exam Notes
+
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
+- 컨테이너 환경의 CPU·메모리·네트워크 등 지표와 로그를 수집·집계·시각화한다.
+- 지원 대상: Amazon ECS, Amazon EKS, Kubernetes on EC2, Fargate 환경 등.
+- EKS / Kubernetes에서 실행할 때 **컨테이너화된 CloudWatch Agent** 같은 수집 구성 요소를 사용한다. 현재는 다양한 관측성 애드온과 구성 방식이 있으므로 구현에 따라 확인한다.
+- **SAA 예시:** “EKS Pod마다 메모리 사용량을 확인” → **Container Insights**.
+- Lambda 함수의 기본 호출 횟수·Errors·Duration보다 상세한 시스템 수준 지표를 제공한다.
+
 ## 📝 Review Questions
 
-> 해당 문서의 개념을 확인하는 SAA 스타일 복습 문제. 정답은 질문 아래 **정답 및 해설**에서 확인한다.
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-### Q24. EKS Pod별 메모리 지표와 컨테이너 성능을 분석하려면?
+### Q1. EKS Pod별 메모리 지표와 컨테이너 성능을 분석하려면?
 
-- A. CloudTrail Insights
-- B. CloudWatch Container Insights
-- C. AWS Config
-- D. CloudWatch Contributor Insights
+<details>
+<summary>정답 및 해설 보기</summary>
 
-### Q25. VPC Flow Logs를 분석해 트래픽을 가장 많이 발생시킨 IP 상위 10개를 보고 싶다. 무엇을 사용하나?
+**정답:** CloudWatch Container Insights
 
-- A. CloudWatch Contributor Insights
-- B. CloudWatch Lambda Insights
-- C. CloudWatch Application Insights
-- D. CloudTrail Event History
+Container Insights는 ECS/EKS/Kubernetes/Fargate의 컨테이너·클러스터 수준 지표와 로그를 분석한다.
 
-### Q26. Lambda의 Cold Start와 상세 메모리 사용량을 조사하고 싶다. 어떤 기능인가?
+</details>
 
-- A. Container Insights
-- B. Contributor Insights
-- C. Lambda Insights
-- D. Config Rule
+### Q2. VPC Flow Logs를 분석해 트래픽을 가장 많이 발생시킨 IP 상위 10개를 보고 싶다. 무엇을 사용하나?
 
-### ✅ 정답 및 해설
+<details>
+<summary>정답 및 해설 보기</summary>
 
-| 문제 | 정답 | 풀이 핵심 |
-|---|---|---|
-| Q24 | **B** | Container Insights는 ECS/EKS/Kubernetes/Fargate의 컨테이너·클러스터 수준 지표와 로그를 분석한다. |
-| Q25 | **A** | Contributor Insights는 로그 등에서 Top N 기여자를 찾는 기능이다. Top IP가 무조건 악성이라는 뜻은 아니다. |
-| Q26 | **C** | Lambda Insights는 Lambda 런타임의 상세 시스템 성능을 보여 준다. |
+**정답:** CloudWatch Contributor Insights
+
+Contributor Insights는 로그 등에서 Top N 기여자를 찾는 기능이다. Top IP가 무조건 악성이라는 뜻은 아니다.
+
+</details>
+
+### Q3. Lambda의 Cold Start와 상세 메모리 사용량을 조사하고 싶다. 어떤 기능인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** Lambda Insights
+
+Lambda Insights는 Lambda 런타임의 상세 시스템 성능을 보여 준다.
+
+</details>
+
+### Q4. 어떤 Insights를 선택할까?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+컨테이너 환경의 CPU·메모리·네트워크 등 지표와 로그를 수집·집계·시각화한다.
+
+</details>
+
+### Q5. CloudWatch Container Insights의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- 컨테이너 환경의 CPU·메모리·네트워크 등 지표와 로그를 수집·집계·시각화한다.
+- 지원 대상: Amazon ECS, Amazon EKS, Kubernetes on EC2, Fargate 환경 등.
+- EKS / Kubernetes에서 실행할 때 **컨테이너화된 CloudWatch Agent** 같은 수집 구성 요소를 사용한다. 현재는 다양한 관측성 애드온과 구성 방식이 있으므로 구현에 따라 확인한다.
+- **SAA 예시:** “EKS Pod마다 메모리 사용량을 확인” → **Container Insights**.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -116,10 +155,3 @@ Container Insights monitors containerized workloads. Lambda Insights provides de
 | Cold Start | 초기 실행 지연 | コールドスタート |
 | Top N Contributors | 상위 N개 기여 대상 | 上位 N 件の寄与要因 |
 | Containerized Agent | 컨테이너형 에이전트 | コンテナ化エージェント |
-
-## 📚 Official References
-
-- [CloudWatch Container Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContainerInsights.html)
-- [CloudWatch Lambda Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Lambda-Insights.html)
-- [CloudWatch Contributor Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html)
-- [CloudWatch Application Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch-application-insights.html)

@@ -1,5 +1,9 @@
 # 📘 17-05. Amazon API Gateway
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Resource` · `Method` · `Integration` · `Proxy Integration` · `Stage`
+
 ## 🇰🇷 1. API Gateway
 
 API Gateway는 애플리케이션의 **API 요청을 받는 진입점**이다.
@@ -225,6 +229,9 @@ API Gateway Cache Hit이면 Lambda까지 호출하지 않아도 된다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Serverless REST API → API Gateway + Lambda
 - API 관리 기능 필요 → API Gateway
 - Global Client → Edge-Optimized
@@ -251,30 +258,51 @@ API Gateway는 요청을 받고 Lambda는 주문 처리 로직을 실행하며 D
 
 ## 📝 Review Questions
 
-### Q1. API Gateway에서 `GET /houses`의 `/houses`와 `GET`은 각각 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 `/houses`는 Resource, `GET`은 Method이다.
 
 </details>
 
-### Q2. VPC 내부에서만 API Gateway에 접근해야 한다면?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 Private Endpoint를 사용한다.
 
 </details>
 
-### Q3. Stage란?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 API의 배포 환경이다. 예를 들어 dev, test, prod 등의 Stage를 구성할 수 있다.
+
+</details>
+
+### Q4. API Gateway의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+API Gateway는 애플리케이션의 **API 요청을 받는 진입점**이다.
+
+</details>
+
+### Q5. Integrations의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+API Gateway Backend는 Lambda만 가능한 것이 아니다.
 
 </details>
 

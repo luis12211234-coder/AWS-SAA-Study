@@ -1,4 +1,8 @@
-# 🐳 16-01. Docker & Amazon ECS
+# 📘 16-01. Docker & Amazon ECS
+
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Container` · `Docker Image` · `Registry` · `Cluster` · `Task Definition`
 
 ## 🇰🇷 1. Docker
 
@@ -283,6 +287,9 @@ ECS Task의 상태 변화를 EventBridge로 감지하고 SNS를 통해 관리자
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - **Task Definition** = Container 실행 설계도
 - **Task** = 실제 Container 실행 단위
 - **Service** = 원하는 수의 Task를 유지
@@ -317,30 +324,33 @@ DynamoDB
 
 ## 📝 Review Questions
 
-### 1. Task Definition과 Task의 차이는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **Task Definition**은 Container를 어떻게 실행할지 정의하는 설계도이고,
 **Task**는 Task Definition을 기반으로 실제 실행되는 단위이다.
 
 </details>
 
-### 2. Task와 Service의 관계는 무엇인가?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **Task**가 실제 Container 실행 단위이고,
 **Service**는 원하는 수의 Task가 계속 실행되도록 관리한다.
 
 </details>
 
-### 3. EC2와 Fargate의 가장 큰 차이는 무엇인가?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 - **EC2**: 사용자가 기반 EC2 Instance를 관리
 - **Fargate**: AWS가 기반 서버 인프라를 관리
@@ -349,77 +359,26 @@ Fargate에서도 Task에 필요한 CPU와 Memory는 사용자가 지정한다.
 
 </details>
 
-### 4. Task Execution Role과 Task Role의 차이는 무엇인가?
+### Q4. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 - **Task Execution Role**: ECR Image Pull, Logs 등 Task 실행 준비에 필요한 권한
 - **Task Role**: Container 내부 Application이 S3, DynamoDB 등 AWS 서비스에 접근하기 위한 권한
 
 </details>
 
-### 5. ECS Service Auto Scaling과 EC2 Auto Scaling의 차이는 무엇인가?
+### Q5. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **ECS Service Auto Scaling**
 → Task 수를 증가/감소
 
 **EC2 Auto Scaling**
 → 기반 EC2 Instance 수를 증가/감소
-
-</details>
-
-### 6. Capacity Provider의 역할은 무엇인가?
-
-<details>
-<summary>정답 보기</summary>
-
-ECS Task를 실행할 **Compute Capacity를 어디에서 공급받을지 연결하는 역할**을 한다.
-
-예:
-
-- FARGATE
-- FARGATE_SPOT
-- ASG Capacity Provider
-
-</details>
-
-### 7. EventBridge로 ECS Task를 실행하는 대표적인 두 가지 방식은?
-
-<details>
-<summary>정답 보기</summary>
-
-**Event 기반 실행**
-
-```text
-S3 Event
-   ↓
-EventBridge
-   ↓
-ECS Task
-```
-
-**Schedule 기반 실행**
-
-```text
-EventBridge Schedule
-        ↓
-     ECS Task
-```
-
-</details>
-
-### 8. SQS와 ECS Service를 함께 사용하는 이유는 무엇인가?
-
-<details>
-<summary>정답 보기</summary>
-
-SQS에 작업을 Queue로 저장하고 ECS Task들이 이를 Polling하여 처리할 수 있다.
-
-메시지가 많이 쌓이면 **ECS Service Auto Scaling**을 통해 Task 수를 늘려 병렬 처리할 수 있다.
 
 </details>
 

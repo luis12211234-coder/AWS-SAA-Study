@@ -1,6 +1,8 @@
-# 🚨 22-04. CloudWatch Alarms, Composite Alarms & EC2 Recovery
+# 📘 22-04. CloudWatch Alarms, Composite Alarms & EC2 Recovery
 
-> AWS SAA-C03 · 검색 키워드: **Threshold, Period, EvaluationPeriods, DatapointsToAlarm, INSUFFICIENT_DATA, Composite Alarm, StatusCheckFailed_System, Recover, SetAlarmState**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Alarm` · `Threshold` · `Period` · `Evaluation Periods` · `Datapoints to Alarm`
 
 ## 🇰🇷 1. CloudWatch Alarm이란?
 
@@ -107,6 +109,9 @@ aws cloudwatch set-alarm-state \
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - CPU 80% 초과 시 이메일 → CloudWatch Alarm → SNS.
 - 2 out of 3 데이터 포인트 → `Datapoints to Alarm=2`, `EvaluationPeriods=3`.
 - 여러 Alarm을 AND/OR → Composite Alarm.
@@ -116,52 +121,63 @@ aws cloudwatch set-alarm-state \
 
 ## 📝 Review Questions
 
-> 해당 문서의 개념을 확인하는 SAA 스타일 복습 문제. 정답은 질문 아래 **정답 및 해설**에서 확인한다.
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-### Q14. CloudWatch Alarm의 상태 세 가지가 아닌 것은?
+### Q1. CloudWatch Alarm의 상태 세 가지가 아닌 것은?
 
-- A. OK
-- B. ALARM
-- C. INSUFFICIENT_DATA
-- D. COMPLIANT
+<details>
+<summary>정답 및 해설 보기</summary>
 
-### Q15. EC2 CPU가 95%를 초과하는 5분짜리 데이터 포인트 3개가 연속으로 발생할 때 ALARM으로 설정하려면?
+**정답:** COMPLIANT
 
-- A. Period 1분, 1/1
-- B. Period 5분, 3/3
-- C. Period 15분, 2/3
-- D. Period 5분, 1/3
+COMPLIANT는 AWS Config 규칙 평가 상태다. CloudWatch Alarm 상태는 OK/ALARM/INSUFFICIENT_DATA이다.
 
-### Q16. CPUHigh Alarm과 DiskHigh Alarm이 둘 다 ALARM일 때만 관리자에게 알리려 한다. 무엇을 사용하나?
+</details>
 
-- A. Composite Alarm (AND)
-- B. CloudTrail Trail
-- C. Logs Insights
-- D. EC2 User Data
+### Q2. EC2 CPU가 95%를 초과하는 5분짜리 데이터 포인트 3개가 연속으로 발생할 때 ALARM으로 설정하려면?
 
-### Q17. EC2의 AWS 하드웨어/호스트 장애에 대응하는 대표적인 상태 검사 및 조치는?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-- A. Instance Status Check / Logs Insights
-- B. System Status Check / EC2 Recovery
-- C. Data Event / CloudTrail
-- D. Config Aggregator / EC2 Scale In
+**정답:** Period 5분, 3/3
 
-### Q18. CloudWatch Alarm을 실제로 CPU를 높이지 않고 임시로 ALARM 상태로 전환해 테스트하려면?
+5분 Period, EvaluationPeriods=3, DatapointsToAlarm=3. 세 5분 구간이 모두 위반해야 한다.
 
-- A. CreateExportTask
-- B. PutEvents
-- C. SetAlarmState
-- D. RevokeSecurityGroupIngress
+</details>
 
-### ✅ 정답 및 해설
+### Q3. CPUHigh Alarm과 DiskHigh Alarm이 둘 다 ALARM일 때만 관리자에게 알리려 한다. 무엇을 사용하나?
 
-| 문제 | 정답 | 풀이 핵심 |
-|---|---|---|
-| Q14 | **D** | COMPLIANT는 AWS Config 규칙 평가 상태다. CloudWatch Alarm 상태는 OK/ALARM/INSUFFICIENT_DATA이다. |
-| Q15 | **B** | 5분 Period, EvaluationPeriods=3, DatapointsToAlarm=3. 세 5분 구간이 모두 위반해야 한다. |
-| Q16 | **A** | Composite Alarm은 하위 Alarm의 상태를 AND/OR/NOT으로 조합하여 불필요한 알림을 줄인다. |
-| Q17 | **B** | System Status Check는 AWS 호스트 인프라를 감시한다. 지원되는 인스턴스에서 Recovery가 가능하며 일부 임시 데이터 손실에 주의한다. |
-| Q18 | **C** | SetAlarmState는 지표를 조작하지 않고 경보 상태만 바꾼다. 연결된 실제 EC2 Terminate 같은 Action이 실행될 수 있으므로 주의한다. |
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** Composite Alarm (AND)
+
+Composite Alarm은 하위 Alarm의 상태를 AND/OR/NOT으로 조합하여 불필요한 알림을 줄인다.
+
+</details>
+
+### Q4. EC2의 AWS 하드웨어/호스트 장애에 대응하는 대표적인 상태 검사 및 조치는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** System Status Check / EC2 Recovery
+
+System Status Check는 AWS 호스트 인프라를 감시한다. 지원되는 인스턴스에서 Recovery가 가능하며 일부 임시 데이터 손실에 주의한다.
+
+</details>
+
+### Q5. CloudWatch Alarm을 실제로 CPU를 높이지 않고 임시로 ALARM 상태로 전환해 테스트하려면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** SetAlarmState
+
+SetAlarmState는 지표를 조작하지 않고 경보 상태만 바꾼다. 연결된 실제 EC2 Terminate 같은 Action이 실행될 수 있으므로 주의한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -194,9 +210,3 @@ CloudWatch Alarms evaluate metrics using statistics, thresholds, periods, and M-
 | SetAlarmState | 경보 상태 강제 설정 | アラーム状態の設定 |
 | Scale Out | 수평 확장 | スケールアウト |
 | Scale In | 수평 축소 | スケールイン |
-
-## 📚 Official References
-
-- [Using Amazon CloudWatch alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)
-- [CloudWatch alarm concepts](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)
-- [SetAlarmState](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_SetAlarmState.html)

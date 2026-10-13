@@ -1,5 +1,9 @@
 # 📘 03. AWS Billing and Budgets
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Billing Access for IAM Users` · `Bills` · `Free Tier` · `AWS Budgets` · `Zero-Spend Budget`
+
 ## 🇰🇷 1. Overview
 
 AWS Billing and Cost Management는 AWS 계정에서 발생하는 비용과 사용량을 확인하고 관리하기 위한 기능이다.
@@ -113,6 +117,9 @@ Budgets로 임계값 설정
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Billing 정보 접근은 IAM 권한과 별도로 계정 수준에서 활성화가 필요할 수 있다.
 - AWS Budgets는 비용 임계값에 대한 알림을 설정할 수 있다.
 - Free Tier는 무료 사용량을 추적하는 데 사용할 수 있다.
@@ -142,12 +149,53 @@ $10
 
 ## 📝 Review Questions
 
-1. IAM User가 Billing 정보에 접근하지 못하는 이유는 무엇일 수 있는가?
-2. Billing IAM Access는 어디에서 활성화할 수 있는가?
-3. Bills에서는 어떤 정보를 확인할 수 있는가?
-4. Free Tier 페이지의 목적은 무엇인가?
-5. AWS Budgets는 어떤 기능을 제공하는가?
-6. Zero-Spend Budget을 설정하는 이유는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. IAM User가 Billing 정보에 접근하지 못하는 이유는 무엇일 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+필요한 IAM 권한이 없거나, 계정에서 IAM 사용자의 Billing Console 접근을 허용하지 않았기 때문일 수 있다.
+
+</details>
+
+### Q2. Billing IAM Access는 어디에서 활성화할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Root User로 Account 설정에 들어가 IAM User/Role의 Billing 정보 접근을 활성화한다.
+
+</details>
+
+### Q3. Bills에서는 어떤 정보를 확인할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+청구 기간의 총비용과 서비스·Region·계정별 사용량 및 비용 내역을 확인할 수 있다.
+
+</details>
+
+### Q4. Free Tier 페이지의 목적은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+무료 사용 한도와 현재 사용량을 추적하여 Free Tier 초과 가능성을 확인하는 데 사용한다.
+
+</details>
+
+### Q5. AWS Budgets는 어떤 기능을 제공하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+비용 또는 사용량 예산과 임계값을 설정하고, 실제·예측 값이 임계값에 도달하면 알림을 보낼 수 있다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

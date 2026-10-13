@@ -1,7 +1,7 @@
-# 🗄️ 07. Databases
+# 📚 07. Databases
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 07
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 07`
 
 ## 📌 Overview
 

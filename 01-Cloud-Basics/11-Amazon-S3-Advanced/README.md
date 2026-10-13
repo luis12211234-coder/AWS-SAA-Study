@@ -1,7 +1,7 @@
-# ⚙️ 11. Amazon S3 Advanced
+# 📚 11. Amazon S3 Advanced
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 11
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 11`
 
 ## 📌 Overview
 

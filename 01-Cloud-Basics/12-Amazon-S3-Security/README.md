@@ -1,7 +1,7 @@
-# 🛡️ 12. Amazon S3 Security
+# 📚 12. Amazon S3 Security
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 12
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 12`
 
 ## 📌 Overview
 

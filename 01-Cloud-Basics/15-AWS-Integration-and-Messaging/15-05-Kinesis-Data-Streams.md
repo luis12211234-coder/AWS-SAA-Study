@@ -1,5 +1,9 @@
 # 📘 15-05. Kinesis Data Streams
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Kinesis Data Streams란?` · `핵심은 Real-Time` · `Shard ⭐` · `Partition Key` · `Retention & Replay ⭐`
+
 ## 🇰🇷 1. Kinesis Data Streams란?
 
 실시간으로 계속 생성되는 Streaming Data를 **수집하고 저장**하는 서비스입니다.
@@ -135,6 +139,9 @@ Enhanced Fan-Out을 사용하면 각 등록 Consumer에게 전용 Read Throughpu
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Real-Time
 Streaming
@@ -159,17 +166,53 @@ Record 분배
 
 ## 📝 Review Questions
 
-**Q1. Kinesis의 처리량 단위는?**
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-Shard
+### Q1. Kinesis Data Streams란?의 핵심 개념은 무엇인가?
 
-**Q2. Record가 어느 Shard로 들어갈지 결정하는 데 사용하는 값은?**
+<details>
+<summary>정답 및 해설 보기</summary>
 
-Partition Key
+실시간으로 계속 생성되는 Streaming Data를 **수집하고 저장**하는 서비스입니다.
 
-**Q3. 이미 처리한 과거 Data를 다시 읽을 수 있는 특징은?**
+</details>
 
-Replay
+### Q2. 핵심은 Real-Time의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+을 Queue에 넣는 개념이라면,
+
+</details>
+
+### Q3. Shard ⭐의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Shard는 Kinesis Data Stream을 구성하는 **처리량 단위**입니다.
+
+</details>
+
+### Q4. Partition Key의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Producer는 Record를 보낼 때 Partition Key를 지정합니다.
+
+</details>
+
+### Q5. Retention & Replay ⭐의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Kinesis Data Streams는 데이터를 저장합니다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -186,3 +229,13 @@ Kinesis Data Streams collects and stores real-time streaming data.
 A stream consists of shards, and partition keys determine how records are distributed.
 
 Stored records can be replayed during the retention period.
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| Kinesis Data Streams란? | Kinesis Data Streams란? | Kinesis Data Streams란? |
+| 핵심은 Real-Time | 핵심은 Real-Time | 핵심은 Real-Time |
+| Shard ⭐ | Shard ⭐ | Shard ⭐ |
+| Partition Key | Partition Key | Partition Key |
+| Retention & Replay ⭐ | Retention & Replay ⭐ | Retention & Replay ⭐ |

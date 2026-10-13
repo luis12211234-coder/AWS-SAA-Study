@@ -1,7 +1,7 @@
-# ⚡ 17. Serverless
+# 📚 17. Serverless
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 17
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 17`
 
 ## 📌 Overview
 

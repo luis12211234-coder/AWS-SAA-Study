@@ -1,5 +1,9 @@
 # 📘 13-08. CloudFront vs Global Accelerator
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Content Delivery` · `Network Acceleration` · `Cache` · `Anycast IP` · `Global Network`
+
 ## 🇰🇷 1. 공통점
 
 CloudFront와 Global Accelerator는 모두 AWS의 Global Infrastructure와 Edge Location을 활용하여 전 세계 사용자에 대한 성능을 개선합니다.
@@ -131,6 +135,9 @@ Edge가 콘텐츠를 Cache하는 것이 아니라 Traffic을 실제 Application�
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 다음 키워드가 나오면 CloudFront를 생각합니다.
 
 ```text
@@ -180,36 +187,49 @@ User → Edge → Application
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. 이미지와 비디오를 전 세계 사용자에게 Cache하여 제공하려면?
+
 <details>
-<summary>Q1. 이미지와 비디오를 전 세계 사용자에게 Cache하여 제공하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Amazon CloudFront를 사용합니다.
 
 </details>
 
+### Q2. Q2. TCP/UDP Application을 AWS Global Network를 통해 가속하려면?
+
 <details>
-<summary>Q2. TCP/UDP Application을 AWS Global Network를 통해 가속하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 AWS Global Accelerator를 사용합니다.
 
 </details>
 
+### Q3. Q3. Static Anycast IP가 중요한 요구 사항이라면?
+
 <details>
-<summary>Q3. Static Anycast IP가 중요한 요구 사항이라면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 AWS Global Accelerator를 생각합니다.
 
 </details>
 
+### Q4. Q4. CloudFront와 Global Accelerator의 가장 중요한 차이는?
+
 <details>
-<summary>Q4. CloudFront와 Global Accelerator의 가장 중요한 차이는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 CloudFront는 Edge에 콘텐츠를 Cache하여 제공하고, Global Accelerator는 Cache 없이 Traffic을 실제 Application Endpoint로 전달합니다.
 
 </details>
 
+### Q5. Q5. Multi-Region Endpoint의 Health Check와 빠른 Failover가 중요한 경우에는?
+
 <details>
-<summary>Q5. Multi-Region Endpoint의 Health Check와 빠른 Failover가 중요한 경우에는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 AWS Global Accelerator를 사용할 수 있습니다.
 

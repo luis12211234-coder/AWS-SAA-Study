@@ -1,5 +1,9 @@
 # 📘 04-09. EC2 Placement Groups
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Placement Group` · `Placement Strategy` · `Availability Zone` · `Cluster` · `Spread`
+
 ## 🇰🇷 1. Overview
 
 EC2 Placement Group은 EC2 Instance가 AWS의 물리적 Infrastructure에 어떻게 배치될지에 대한 전략을 정의하는 기능이다.
@@ -708,6 +712,9 @@ Clock Synchronization이 필요한가?
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ### Cluster
 
 문제에서 다음 Keyword가 나오면 Cluster를 생각한다.
@@ -846,23 +853,53 @@ Precision Time Placement Group
 
 ## 📝 Review Questions
 
-1. EC2 Placement Group의 목적은 무엇인가?
-2. Availability Zone은 Region과 어떤 관계인가?
-3. Cluster Placement Group은 Instance를 어떻게 배치하는가?
-4. Cluster Placement Group이 Low Latency Workload에 적합한 이유는 무엇인가?
-5. Cluster Placement Group의 주요 Failure Risk는 무엇인가?
-6. Spread Placement Group은 Instance를 어떻게 배치하는가?
-7. Spread Placement Group이 반드시 EC2 Instance 하나당 하나의 AZ를 의미하는가?
-8. Spread Placement Group의 강의 기준 Instance 수 제한은 무엇인가?
-9. Spread와 Partition의 가장 중요한 차이는 무엇인가?
-10. Partition Placement Group에서 Partition은 무엇을 의미하는가?
-11. 서로 다른 Partition은 물리 Infrastructure 측면에서 어떻게 격리되는가?
-12. Partition Placement Group이 수백 개 EC2 Instance를 지원할 수 있는 이유는 무엇인가?
-13. HDFS, HBase, Cassandra, Kafka에 적합한 Placement Strategy는 무엇인가?
-14. Precision Time Placement Group의 목적은 무엇인가?
-15. 정확한 Transaction Timestamp가 중요한 Application에는 어떤 Placement Strategy가 적합한가?
-16. HPC Application에서 Instance 간 Low Latency가 가장 중요하다면 어떤 Strategy를 선택해야 하는가?
-17. 소수의 Critical EC2 Instance를 서로 다른 Hardware에 배치하려면 어떤 Strategy를 선택해야 하는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. EC2 Placement Group의 목적은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+EC2 인스턴스의 물리적 배치 방식을 제어하여 네트워크 성능이나 장애 격리 요구사항을 충족하는 것이다.
+
+</details>
+
+### Q2. Availability Zone은 Region과 어떤 관계인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+하나의 Region은 서로 격리된 여러 Availability Zone으로 구성된다.
+
+</details>
+
+### Q3. Cluster Placement Group은 Instance를 어떻게 배치하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+하나의 Availability Zone 안에서 인스턴스를 서로 가깝게 배치한다.
+
+</details>
+
+### Q4. Cluster Placement Group이 Low Latency Workload에 적합한 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+인스턴스 간 높은 네트워크 처리량과 낮은 지연 시간을 제공하도록 가까이 배치하기 때문이다.
+
+</details>
+
+### Q5. Cluster Placement Group의 주요 Failure Risk는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+인스턴스가 한 AZ의 가까운 하드웨어에 집중되므로 장애가 여러 인스턴스에 동시에 영향을 줄 수 있다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

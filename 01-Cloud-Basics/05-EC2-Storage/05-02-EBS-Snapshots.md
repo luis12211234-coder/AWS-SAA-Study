@@ -1,5 +1,9 @@
 # 📘 05-02. Amazon EBS Snapshots
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `EBS Snapshot` · `Point-in-Time Backup` · `Snapshot Archive` · `Archive Tier` · `Recycle Bin`
+
 ## 🇰🇷 1. Overview
 
 **EBS Snapshot**은 EBS Volume의 특정 시점 상태를 저장하는 백업이다.
@@ -232,6 +236,9 @@ EBS는 AZ에 묶임
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 EBS Backup
 → Snapshot
@@ -264,11 +271,22 @@ Need immediate full performance
 
 ## 📝 Review Questions
 
-#### Q1. EBS Snapshot이란?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. EBS Snapshot이란?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 EBS Volume의 특정 시점 상태를 저장하는 Backup이다.
 
-#### Q2. 다른 AZ로 EBS 데이터를 옮기려면?
+</details>
+
+### Q2. 다른 AZ로 EBS 데이터를 옮기려면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Create Snapshot
@@ -276,22 +294,35 @@ Create Snapshot
 Create Volume in target AZ
 ```
 
-#### Q3. Snapshot을 다른 Region으로 복사할 수 있는가?
+</details>
+
+### Q3. Snapshot을 다른 Region으로 복사할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 가능하다.
 
-#### Q4. Snapshot Archive는 언제 사용하는가?
+</details>
+
+### Q4. Snapshot Archive는 언제 사용하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 장기간 저렴하게 보관하고,
 빠른 복원이 필요하지 않을 때 사용한다.
 
-#### Q5. 삭제한 Snapshot을 복원하려면?
+</details>
+
+### Q5. 삭제한 Snapshot을 복원하려면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 Recycle Bin을 사용한다.
 
-#### Q6. Snapshot 기반 EBS가 즉시 높은 성능을 내야 한다면?
-
-Fast Snapshot Restore를 사용한다.
+</details>
 
 ## 🇯🇵 日本語 Summary
 

@@ -1,5 +1,9 @@
 # 📘 02-02. IAM Users and Groups
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Inherit` · `AdministratorAccess` · `Account Alias` · `Login URL` · `Tag`
+
 ## 🇰🇷 1. Overview
 
 IAM Users and Groups는 AWS 계정의 사용자를 생성하고 권한을 효율적으로 관리하기 위한 기능이다.
@@ -102,6 +106,9 @@ Tag는 리소스 관리와 검색을 쉽게 해준다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - IAM은 Global Service이다.
 - IAM User는 모든 Region에서 사용할 수 있다.
 - 그룹에는 사용자만 포함할 수 있다.
@@ -131,12 +138,53 @@ Admin Group에 AdministratorAccess 정책을 연결하면,
 
 ## 📝 Review Questions
 
-1. IAM은 Global Service인가?
-2. Root User 대신 무엇을 사용하는 것이 권장되는가?
-3. 그룹에 권한을 부여하는 이유는 무엇인가?
-4. 사용자는 어떻게 권한을 상속받는가?
-5. Account Alias의 역할은 무엇인가?
-6. Tag의 용도는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. IAM은 Global Service인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+그렇다. IAM 사용자와 그룹은 특정 Region에 종속되지 않는다.
+
+</details>
+
+### Q2. Root User 대신 무엇을 사용하는 것이 권장되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+일반 작업에는 IAM User 또는 조직의 인력 접근을 중앙에서 관리하는 IAM Identity Center를 사용한다.
+
+</details>
+
+### Q3. 그룹에 권한을 부여하는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+같은 업무를 하는 사용자에게 동일한 권한을 일관되게 부여하고, 입사·이동·퇴사 시 권한 관리를 단순화하기 위해서다.
+
+</details>
+
+### Q4. 사용자는 어떻게 권한을 상속받는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+사용자가 속한 IAM Group에 연결된 Policy의 권한을 상속받는다. 여러 Group에 속하면 각 Group의 권한이 함께 평가된다.
+
+</details>
+
+### Q5. Account Alias의 역할은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+숫자로 된 AWS Account ID 대신 기억하기 쉬운 IAM 사용자 로그인 URL을 만들 수 있게 한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

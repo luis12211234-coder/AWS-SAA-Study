@@ -1,7 +1,7 @@
-# 💾 05. EC2 Storage
+# 📚 05. EC2 Storage
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 05
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 05`
 
 ## 📌 Overview
 

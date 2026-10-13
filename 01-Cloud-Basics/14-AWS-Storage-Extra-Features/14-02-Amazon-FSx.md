@@ -1,5 +1,9 @@
 # 📘 14-02. Amazon FSx
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `File System` · `Fully Managed` · `File Server` · `Active Directory` · `High Performance Computing`
+
 ## 🇰🇷 1. Amazon FSx란?
 
 Amazon FSx는 특정 고성능 File System을 AWS에서 완전 관리형으로 제공하는 서비스입니다.
@@ -354,6 +358,9 @@ NetApp ONTAP과 달리 Deduplication은 지원하지 않습니다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Windows
 +
@@ -427,45 +434,51 @@ OpenZFS
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. Windows, SMB, Microsoft Active Directory가 필요한 File System은?
+
 <details>
-<summary>Q1. Windows, SMB, Microsoft Active Directory가 필요한 File System은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 FSx for Windows File Server입니다.
 
 </details>
 
+### Q2. Q2. HPC와 Machine Learning을 위한 고성능 File System은?
+
 <details>
-<summary>Q2. HPC와 Machine Learning을 위한 고성능 File System은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 FSx for Lustre입니다.
 
 </details>
 
+### Q3. Q3. S3의 대규모 Dataset을 고성능으로 처리해야 한다면?
+
 <details>
-<summary>Q3. S3의 대규모 Dataset을 고성능으로 처리해야 한다면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Amazon S3와 FSx for Lustre를 연동할 수 있습니다.
 
 </details>
 
+### Q4. Q4. Lustre의 Scratch와 Persistent의 핵심 차이는?
+
 <details>
-<summary>Q4. Lustre의 Scratch와 Persistent의 핵심 차이는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Scratch는 임시 데이터와 높은 성능을 중시하며 데이터가 복제되지 않습니다. Persistent는 장기 사용과 안정성을 위해 데이터를 복제합니다.
 
 </details>
 
+### Q5. Q5. NFS, SMB, iSCSI를 모두 지원하며 기존 NetApp 환경의 Migration에 적합한 것은?
+
 <details>
-<summary>Q5. NFS, SMB, iSCSI를 모두 지원하며 기존 NetApp 환경의 Migration에 적합한 것은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 FSx for NetApp ONTAP입니다.
-
-</details>
-
-<details>
-<summary>Q6. 기존 ZFS Workload를 AWS로 Migration하려면?</summary>
-
-FSx for OpenZFS를 사용할 수 있습니다.
 
 </details>
 

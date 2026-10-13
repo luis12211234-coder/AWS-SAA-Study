@@ -1,5 +1,9 @@
 # 📘 12-04. S3 Server Access Logging
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Server Access Logging` · `Audit` · `Source Bucket` · `Destination Bucket` · `Access Log`
+
 ## 🇰🇷 1. S3 Server Access Logging이란?
 
 S3 Bucket에 들어오는 Request를 감사 목적으로 기록하는 기능입니다.
@@ -100,6 +104,9 @@ Log가 Destination Bucket에 전달되기까지 시간이 걸릴 수 있습니�
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Audit S3 Requests
 +
@@ -135,24 +142,51 @@ Destination
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. S3 Request를 감사 목적으로 기록하는 기능은?
+
 <details>
-<summary>Q1. S3 Request를 감사 목적으로 기록하는 기능은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 Server Access Logging입니다.
 
 </details>
 
+### Q2. Q2. Source Bucket과 Logging Bucket을 동일하게 설정하면 왜 위험한가?
+
 <details>
-<summary>Q2. Source Bucket과 Logging Bucket을 동일하게 설정하면 왜 위험한가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Log 저장 자체가 다시 Access를 발생시켜 Logging Loop가 발생할 수 있기 때문입니다.
 
 </details>
 
+### Q3. Q3. S3 Access Log를 분석하는 데 사용할 수 있는 AWS 서비스의 예는?
+
 <details>
-<summary>Q3. S3 Access Log를 분석하는 데 사용할 수 있는 AWS 서비스의 예는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Amazon Athena입니다.
+
+</details>
+
+### Q4. S3 Server Access Logging이란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+S3 Bucket에 들어오는 Request를 감사 목적으로 기록하는 기능입니다.
+
+</details>
+
+### Q5. 로그는 다른 S3 Bucket에 저장의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Access Logging을 활성화하면 로그가 Destination S3 Bucket에 Object 형태로 저장됩니다.
 
 </details>
 

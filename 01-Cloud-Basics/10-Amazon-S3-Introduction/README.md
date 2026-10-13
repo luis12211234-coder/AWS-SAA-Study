@@ -1,7 +1,7 @@
-# 🪣 10. Amazon S3 - Introduction
+# 📚 10. Amazon S3 - Introduction
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 10
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 10`
 
 ## 📌 Overview
 

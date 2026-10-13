@@ -1,5 +1,9 @@
 # 📘 04-04. EC2 Security Groups
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Security Group` · `Firewall` · `Inbound Traffic` · `Outbound Traffic` · `Source`
+
 ## 🇰🇷 1. Overview
 
 Security Group은 AWS에서 EC2 Instance의 네트워크 트래픽을 제어하는 기본적인 방화벽이다.
@@ -305,6 +309,9 @@ RDP   → 3389
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Security Group = EC2 Firewall
 - Inbound = Outside → EC2
 - Outbound = EC2 → Outside
@@ -363,29 +370,53 @@ Source My IP
 
 ## 📝 Review Questions
 
-1. Security Group의 역할은 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-2. Inbound Traffic과 Outbound Traffic의 차이는 무엇인가?
+### Q1. Security Group의 역할은 무엇인가?
 
-3. Security Group Rule의 Source에는 무엇을 지정할 수 있는가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-4. `0.0.0.0/0`은 무엇을 의미하는가?
+EC2 같은 리소스의 Inbound와 Outbound 트래픽을 제어하는 Stateful 가상 방화벽이다.
 
-5. 기본적으로 Inbound와 Outbound Traffic은 각각 어떻게 처리되는가?
+</details>
 
-6. Security Group은 EC2 내부와 외부 중 어디에서 동작하는가?
+### Q2. Inbound Traffic과 Outbound Traffic의 차이는 무엇인가?
 
-7. 하나의 Security Group을 여러 EC2 Instance에 연결할 수 있는가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-8. Security Group이 다른 Security Group을 Source로 참조한다는 것은 무슨 의미인가?
+Inbound는 외부에서 리소스로 들어오는 트래픽이고, Outbound는 리소스에서 외부로 나가는 트래픽이다.
 
-9. Timeout이 발생하면 강의에서는 어떤 문제를 우선 의심하는가?
+</details>
 
-10. Connection Refused가 발생하면 어떤 문제를 의심할 수 있는가?
+### Q3. Security Group Rule의 Source에는 무엇을 지정할 수 있는가?
 
-11. SSH, HTTP, HTTPS, RDP의 Port 번호는 각각 무엇인가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-12. Linux EC2와 Windows EC2에 원격 접속할 때 사용하는 Protocol은 각각 무엇인가?
+IPv4/IPv6 CIDR, 다른 Security Group, 관리형 Prefix List 등을 지정할 수 있다.
+
+</details>
+
+### Q4. `0.0.0.0/0`은 무엇을 의미하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+모든 IPv4 주소를 의미한다. 민감한 Port에 사용하면 인터넷 전체에 노출될 수 있다.
+
+</details>
+
+### Q5. 기본적으로 Inbound와 Outbound Traffic은 각각 어떻게 처리되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+새 Security Group은 기본적으로 Inbound 트래픽을 허용하지 않고 모든 Outbound 트래픽을 허용한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -493,11 +524,3 @@ A source can be an IP address or another Security Group.
 | RDP | 원격 데스크톱 프로토콜 | RDP |
 | Timeout | 시간 초과 | タイムアウト |
 | Connection Refused | 연결 거부 | 接続拒否 |
-
-## 📚 Official References
-
-A Security Group can reference another Security Group as a source.
-
-Instances associated with the referenced Security Group can then communicate according to the configured rule.
-
-This avoids managing individual IP addresses.

@@ -1,5 +1,9 @@
 # 📘 15-06. Amazon Data Firehose
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Amazon Data Firehose란?` · `Source` · `Data Transformation` · `Buffering ⭐` · `Data Streams vs Firehose`
+
 ## 🇰🇷 1. Amazon Data Firehose란?
 
 Streaming Data를 Destination으로 전달하는 **완전 관리형 Delivery Service**입니다.
@@ -111,6 +115,9 @@ Amazon Data Firehose
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Streaming Data
 +
@@ -131,17 +138,58 @@ Destination으로 자동 Delivery
 
 ## 📝 Review Questions
 
-**Q1. Streaming Data를 S3로 자동 전달하려면?**
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Amazon Data Firehose란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Streaming Data를 Destination으로 전달하는 **완전 관리형 Delivery Service**입니다.
+
+</details>
+
+### Q2. Source의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Firehose는 여러 Source에서 데이터를 받을 수 있습니다.
+
+</details>
+
+### Q3. Data Transformation의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+필요하면 Lambda를 사용하여 데이터를 변환할 수 있습니다.
+
+</details>
+
+### Q4. Buffering ⭐의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Firehose는 일반적으로 데이터를 바로 하나씩 전달하지 않고 Buffer에 모은 후 전송합니다.
+
+</details>
+
+### Q5. Data Streams vs Firehose의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 Amazon Data Firehose
+→ Streaming Data Delivery
+→ Fully Managed
+→ Near Real-Time
+→ 자체 Data Retention / Replay 없음
+```
 
-**Q2. Firehose가 Real-Time이 아니라 Near Real-Time인 핵심 이유는?**
-
-Destination으로 전달하기 전에 데이터를 Buffering하기 때문입니다.
-
-**Q3. Stream 자체를 저장하고 Replay해야 한다면?**
-
-Kinesis Data Streams
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -154,3 +202,13 @@ Bufferingを行うため、一般的にNear Real-Timeのサービスとして扱
 Amazon Data Firehose is a fully managed service that delivers streaming data to destinations such as S3, Redshift, and OpenSearch.
 
 Because records are typically buffered before delivery, Firehose is considered near real-time.
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| Amazon Data Firehose란? | Amazon Data Firehose란? | Amazon Data Firehose란? |
+| Source | Source | Source |
+| Data Transformation | Data Transformation | Data Transformation |
+| Buffering ⭐ | Buffering ⭐ | Buffering ⭐ |
+| Data Streams vs Firehose | Data Streams vs Firehose | Data Streams vs Firehose |

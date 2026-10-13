@@ -1,7 +1,7 @@
-# 🐳 16. Containers on AWS
+# 📚 16. Containers on AWS
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 16
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 16`
 
 ## 📌 Overview
 

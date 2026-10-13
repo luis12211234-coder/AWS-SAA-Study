@@ -1,6 +1,8 @@
 # 📘 07-04. RDS & Aurora Security
 
-Amazon RDS와 Aurora는 **Encryption, Authentication, Network Security, Audit Logging**을 통해 Database를 보호한다.
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Encryption at Rest` · `Encryption in Transit` · `AWS KMS` · `TLS` · `Authentication`
 
 ## 🇰🇷 1. Encryption at Rest
 
@@ -145,6 +147,9 @@ Long-term Retention
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Encryption at Rest
 → AWS KMS
@@ -173,12 +178,53 @@ Audit Logs 장기 보관
 
 ## 📝 Review Questions
 
-1. RDS와 Aurora의 Encryption at Rest에는 어떤 AWS 서비스가 사용되는가?
-2. 기존 Unencrypted Database를 암호화하려면 어떤 과정을 거쳐야 하는가?
-3. Encryption at Rest와 Encryption in Transit에는 각각 무엇이 사용되는가?
-4. Security Group과 Database Authentication의 역할 차이는 무엇인가?
-5. 일반 RDS/Aurora에서 SSH Access가 불가능한 이유는 무엇이며, 예외는 무엇인가?
-6. RDS/Aurora의 Audit Logs를 장기간 보관하려면 어디로 전송해야 하는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. RDS와 Aurora의 Encryption at Rest에는 어떤 AWS 서비스가 사용되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS KMS의 암호화 키가 사용된다.
+
+</details>
+
+### Q2. 기존 Unencrypted Database를 암호화하려면 어떤 과정을 거쳐야 하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Snapshot을 생성하고 암호화된 Snapshot Copy를 만든 뒤, 그 암호화 Snapshot에서 새 Database를 Restore한다.
+
+</details>
+
+### Q3. Encryption at Rest와 Encryption in Transit에는 각각 무엇이 사용되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+At Rest에는 AWS KMS, In Transit에는 TLS가 사용된다.
+
+</details>
+
+### Q4. Security Group과 Database Authentication의 역할 차이는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Security Group은 네트워크 연결 허용 여부를 제어하고, Database Authentication은 연결한 주체가 Database에 로그인할 수 있는지 검증한다.
+
+</details>
+
+### Q5. 일반 RDS/Aurora에서 SSH Access가 불가능한 이유는 무엇이며, 예외는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS가 OS를 관리하는 Managed Service이므로 일반 RDS와 Aurora의 호스트에는 SSH로 접근할 수 없다. 추가 OS 제어가 필요한 지원 엔진에서는 RDS Custom을 검토한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

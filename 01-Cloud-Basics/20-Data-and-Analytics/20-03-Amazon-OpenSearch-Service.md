@@ -1,6 +1,8 @@
-# 🔍 20-03. Amazon OpenSearch Service
+# 📘 20-03. Amazon OpenSearch Service
 
-> **Keyword: Full-text Search / Inverted Index / Log Analytics**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Full-text Search` · `Inverted Index` · `Source of Truth` · `Subscription Filter`
 
 ## 🇰🇷 1. Overview
 
@@ -64,6 +66,9 @@ Kinesis Data Streams ── Lambda (custom consumer) ── OpenSearch
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 | Keyword | Candidate |
 |---|---|
 | Product Search / Full-text | **OpenSearch** |
@@ -71,6 +76,63 @@ Kinesis Data Streams ── Lambda (custom consumer) ── OpenSearch
 | Searchable CloudWatch logs | **CloudWatch Logs → Lambda → OpenSearch** |
 | Log visualization | **OpenSearch Dashboards** |
 | SQL analysis of S3 files | Athena (not OpenSearch first) |
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Overview의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Amazon OpenSearch Service는 전문 검색, 검색 결과 관련도 평가, 로그 검색 및 분석을 위한 관리형 검색·분석 서비스이다. 과거 Amazon Elasticsearch Service와 연결되는 서비스다.
+
+</details>
+
+### Q2. DynamoDB + OpenSearch Pattern의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+1. 사용자가 DynamoDB의 상품 Item을 추가/수정/삭제한다.
+2. DynamoDB Streams에 변경 이벤트가 기록된다.
+3. Lambda가 이벤트를 읽어 OpenSearch 인덱스를 반영한다.
+4. 검색은 OpenSearch에서 수행하고, 최신 상세 정보는 DynamoDB에서 조회할 수 있다.
+
+</details>
+
+### Q3. Log Ingestion Patterns의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Kinesis Data Streams ── Amazon Data Firehose ── OpenSearch
+
+</details>
+
+### Q4. Deployment, Query, Security의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- **Provisioned Domain:** 인스턴스·스토리지 등 클러스터 용량과 구성을 선택.
+- **OpenSearch Serverless:** Collection 단위로 컴퓨팅 용량 관리 부담을 줄임. 사용 패턴에 따라 비용이 달라진다.
+- Query DSL은 주로 JSON 기반이며 SQL/PPL 지원 방식도 있다.
+- IAM, 암호화(KMS at rest/TLS in transit), 네트워크·액세스 정책 등으로 보호.
+- Cognito 등과 Dashboards 인증을 연계할 수 있는 구성도 있다.
+
+</details>
+
+### Q5. 이 문서에서 반드시 기억해야 할 시험 포인트 5은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Amazon OpenSearch Service는 전문 검색, 검색 결과 관련도 평가, 로그 검색 및 분석을 위한 관리형 검색·분석 서비스이다. 과거 Amazon Elasticsearch Service와 연결되는 서비스다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

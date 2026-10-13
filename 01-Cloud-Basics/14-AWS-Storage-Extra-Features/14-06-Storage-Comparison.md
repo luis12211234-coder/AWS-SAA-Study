@@ -1,5 +1,9 @@
 # 📘 14-06. AWS Storage Comparison
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `AWS Storage 전체 비교` · `Object / Block / File Storage` · `Amazon S3` · `Amazon EBS` · `EC2 Instance Store`
+
 ## 🇰🇷 1. AWS Storage 전체 비교
 
 AWS Solutions Architect에게 중요한 것은 모든 Storage의 세부 구현을 외우는 것이 아니라 **Workload의 요구사항에 따라 적절한 Storage를 선택하는 것**입니다.
@@ -300,61 +304,64 @@ Network 부족?
                                      Offline Move
 ```
 
+## 🎯 Exam Notes
+
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
+- Object Storage
+- Static Content
+- **AWS DataSync**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **AWS Snow Family**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **서비스 선택표 ⭐**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. 여러 Linux EC2에서 동시에 사용하는 Multi-AZ Shared File System은?
+
 <details>
-<summary>Q1. 여러 Linux EC2에서 동시에 사용하는 Multi-AZ Shared File System은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Amazon EFS
 
 </details>
 
+### Q2. Q2. HPC 및 Machine Learning을 위한 고성능 File System은?
+
 <details>
-<summary>Q2. HPC 및 Machine Learning을 위한 고성능 File System은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 FSx for Lustre
 
 </details>
 
+### Q3. Q3. 기존 SFTP Application을 유지하면서 S3에 데이터를 저장하려면?
+
 <details>
-<summary>Q3. 기존 SFTP Application을 유지하면서 S3에 데이터를 저장하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 AWS Transfer Family
 
 </details>
 
+### Q4. Q4. On-Premises NFS의 대량 데이터를 Permission과 Metadata를 유지하면서 AWS로 Migration하려면?
+
 <details>
-<summary>Q4. On-Premises NFS의 대량 데이터를 Permission과 Metadata를 유지하면서 AWS로 Migration하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 AWS DataSync
 
 </details>
 
+### Q5. Q5. 네트워크 대역폭이 부족하여 수백 TB의 데이터를 온라인으로 전송하기 어렵다면?
+
 <details>
-<summary>Q5. 네트워크 대역폭이 부족하여 수백 TB의 데이터를 온라인으로 전송하기 어렵다면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 AWS Snow Family
-
-</details>
-
-<details>
-<summary>Q6. On-Premises Application에서 NFS/SMB로 접근하지만 실제 데이터는 S3에 저장하고 싶다면?</summary>
-
-S3 File Gateway
-
-</details>
-
-<details>
-<summary>Q7. EC2에 매우 빠른 Local Physical Storage가 필요하다면?</summary>
-
-EC2 Instance Store
-
-</details>
-
-<details>
-<summary>Q8. Windows + SMB + Active Directory가 요구된다면?</summary>
-
-FSx for Windows File Server
 
 </details>
 
@@ -383,3 +390,13 @@ Storage Gateway connects on-premises environments with AWS storage.
 Transfer Family provides FTP-based access to S3 and EFS.
 
 DataSync performs large-scale data transfer and synchronization, while Snow Family provides physical devices for offline migration.
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| AWS Storage 전체 비교 | AWS Storage 전체 비교 | AWS Storage 전체 비교 |
+| Object / Block / File Storage | Object / Block / File Storage | Object / Block / File Storage |
+| Amazon S3 | Amazon S3 | Amazon S3 |
+| Amazon EBS | Amazon EBS | Amazon EBS |
+| EC2 Instance Store | EC2 Instance Store | EC2 Instance Store |

@@ -1,5 +1,9 @@
 # 📘 09-02. AWS Elastic Beanstalk
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Elastic Beanstalk` · `Application` · `Application Version` · `Environment` · `Web Server Tier`
+
 ## 🇰🇷 1. Overview
 
 일반적인 Web Application은 비슷한 AWS Architecture를 반복해서 사용하는 경우가 많다.
@@ -488,6 +492,9 @@ EC2 / ASG / ELB / ...
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Elastic Beanstalk는 Managed Application Deployment Service이다.
 - EC2, ASG, ELB, RDS 등 기존 AWS Service를 활용한다.
 - 개발자는 Application Code에 집중할 수 있다.
@@ -504,10 +511,13 @@ EC2 / ASG / ELB / ...
 
 ## 📝 Review Questions
 
-### 1. Elastic Beanstalk의 핵심 목적은 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: 개발자가 Application Code에 집중할 수 있도록 AWS Infrastructure의 배포와 관리를 단순화하는 것이다.**
 
@@ -515,19 +525,19 @@ Beanstalk는 EC2, ASG, ELB 등의 기존 AWS Service를 이용하여 Application
 
 </details>
 
-### 2. Application Version과 Environment의 차이는 무엇인가?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: Application Version은 Code의 특정 버전이고, Environment는 그 Version을 실행하는 AWS Resource들의 집합이다.**
 
 </details>
 
-### 3. HTTP Request를 처리하는 Beanstalk Environment Tier는?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: Web Server Environment**
 
@@ -535,10 +545,10 @@ Load Balancer와 Web Server EC2 Instance를 이용하여 Web Traffic을 처리�
 
 </details>
 
-### 4. SQS Message를 처리하는 Environment Tier는?
+### Q4. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: Worker Environment**
 
@@ -546,36 +556,14 @@ Worker Instance가 SQS Queue에서 Message를 가져와 처리한다.
 
 </details>
 
-### 5. 개발 환경에 적합한 간단한 Deployment Mode는?
+### Q5. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: Single Instance**
 
 하나의 EC2 Instance를 사용하는 간단한 환경이다.
-
-</details>
-
-### 6. Production에서 High Availability가 필요하다면 어떤 구성을 사용할 수 있는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: Load Balancer와 Auto Scaling Group의 여러 EC2 Instance를 사용하는 High Availability 환경**
-
-여러 Availability Zone에 Instance를 배치하여 가용성을 높일 수 있다.
-
-</details>
-
-### 7. Elastic Beanstalk를 사용하면 EC2, ELB, ASG 등의 개념을 몰라도 되는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: 아니다.**
-
-Beanstalk는 이러한 서비스를 대체하는 것이 아니라 기존 AWS Service들을 기반으로 Infrastructure를 생성하고 관리한다.
 
 </details>
 

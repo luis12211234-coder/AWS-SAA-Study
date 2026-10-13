@@ -18,9 +18,9 @@
 5. 🇯🇵 日本語 Summary
 6. 🇺🇸 English Summary
 7. 📚 Vocabulary
-8. 📚 Official References
+각 문서의 복습 문제는 정확히 5개이며, 답과 해설은 접기 영역 안에 배치한다.
 
-문서 성격에 따라 불필요한 항목은 생략하지만, 포함된 항목의 순서는 동일하게 유지한다.
+- [전체 문서 스타일 가이드](../DOCUMENT-STYLE-GUIDE.md)
 
 ## 📂 Sections
 

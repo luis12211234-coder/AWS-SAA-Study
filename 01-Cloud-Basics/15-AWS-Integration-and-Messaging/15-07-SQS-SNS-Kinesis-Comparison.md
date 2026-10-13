@@ -1,5 +1,9 @@
 # 📘 15-07. SQS vs SNS vs Kinesis
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `SQS` · `SNS` · `Kinesis Data Streams` · `Data Firehose`
+
 ## 🇰🇷 1. 핵심 비교
 
 | Service | 핵심 목적 | 방식 | 데이터 저장 / Replay |
@@ -129,36 +133,66 @@ Data Firehose
 = Delivery
 ```
 
+## 🎯 Exam Notes
+
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
+- **SNS**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **Kinesis Data Streams**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **Data Firehose**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **최종 선택법 ⭐**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **한 줄 암기**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+
 ## 📝 Review Questions
 
-**Q1. 갑작스러운 Traffic Spike를 Buffering해야 한다면?**
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-Amazon SQS
+### Q1. 핵심 비교의 핵심 개념은 무엇인가?
 
-**Q2. 하나의 Event를 여러 Consumer에게 전달하려면?**
+<details>
+<summary>정답 및 해설 보기</summary>
 
-Amazon SNS
+**SNS**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
 
-**Q3. 하나의 Event를 여러 독립적인 Queue에 전달하려면?**
+</details>
 
-SNS + SQS Fan-Out
+### Q2. SQS의 핵심 개념은 무엇인가?
 
-**Q4. Clickstream을 실시간으로 수집하고 나중에 Replay해야 한다면?**
+<details>
+<summary>정답 및 해설 보기</summary>
 
-Kinesis Data Streams
+Consumer가 Message를 가져가 처리하고 삭제합니다.
 
-**Q5. Streaming Data를 S3에 자동으로 전달하려면?**
+</details>
 
-Amazon Data Firehose
+### Q3. SNS의 핵심 개념은 무엇인가?
 
-**Q6. 딱 네 단어로 구분하면?**
+<details>
+<summary>정답 및 해설 보기</summary>
 
-```text
-SQS      = Queue
-SNS      = Broadcast
-KDS      = Stream
-Firehose = Delivery
-```
+하나의 Message를 여러 Subscriber에게 전달합니다.
+
+</details>
+
+### Q4. Kinesis Data Streams의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Streaming Data를 저장하고 Consumer들이 읽습니다.
+
+</details>
+
+### Q5. Data Firehose의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Delivery 자체를 AWS가 관리합니다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -191,3 +225,12 @@ Kinesis Data Streams
 Amazon Data Firehose
 → Managed streaming data delivery
 ```
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| SQS | SQS | SQS |
+| SNS | SNS | SNS |
+| Kinesis Data Streams | Kinesis Data Streams | Kinesis Data Streams |
+| Data Firehose | Data Firehose | Data Firehose |

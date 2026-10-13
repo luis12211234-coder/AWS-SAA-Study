@@ -1,5 +1,9 @@
 # 📘 18-03. Microservices Architecture
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Microservices` · `Monolith` · `Synchronous` · `Asynchronous` · `Loose Coupling`
+
 ## 🇰🇷 1. Overview
 
 Microservices Architecture는 하나의 큰 애플리케이션을 여러 독립적인 서비스로 분리하는 설계 방식이다.
@@ -235,6 +239,9 @@ OpenAPI Specification을 사용해 API 계약을 문서화하고 클라이언트
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Microservices: Independently Deployable Services
 - Container-Based Service: Amazon ECS
 - Kubernetes-Based Service: Amazon EKS
@@ -254,10 +261,13 @@ Shipping Service는 메시지를 소비하여 배송 작업을 수행한다.
 
 ## 📝 Review Questions
 
-### Q1. Microservices와 Serverless는 같은 개념인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
@@ -267,21 +277,43 @@ Serverless는 서버 인프라 관리 부담을 줄이는 실행 및 운영 모�
 
 </details>
 
-### Q2. 즉시 응답이 필요한 서비스 간 통신에는 무엇을 사용할 수 있는가?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 API Gateway 또는 Load Balancer를 통한 동기식 HTTP 통신을 사용할 수 있다.
 
 </details>
 
-### Q3. 서비스 간 결합도를 낮추고 작업을 비동기적으로 처리하려면?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 SQS, SNS, Kinesis 등의 메시징 및 이벤트 서비스를 고려한다.
+
+</details>
+
+### Q4. Overview의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Microservices Architecture는 하나의 큰 애플리케이션을 여러 독립적인 서비스로 분리하는 설계 방식이다.
+
+</details>
+
+### Q5. Requirements의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- 여러 서비스의 독립적인 개발 및 배포
+- 서비스별 기술 선택의 자유
+- 서비스별 확장성
+- 서비스 간 API 통신
+- 동기식 및 비동기식 통신 지원
 
 </details>
 

@@ -1,7 +1,7 @@
-# 🤖 21. Machine Learning
+# 📚 21. Machine Learning
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 21
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 21`
 
 ## 📌 Overview
 

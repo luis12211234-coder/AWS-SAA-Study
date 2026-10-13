@@ -1,5 +1,9 @@
 # 📘 02-06. IAM Roles
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `IAM Role` · `Trusted Entity` · `Assume a Role` · `Permissions Policy` · `EC2 Instance Role`
+
 ## 🇰🇷 1. Overview
 
 IAM Role은 AWS 서비스나 애플리케이션 등이 AWS에서 작업을 수행할 수 있도록 권한을 부여하는 IAM 자격 증명이다.
@@ -66,6 +70,9 @@ Permissions Policy는 Role을 맡은 주체가 수행할 수 있는 작업을 �
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - AWS 서비스에 권한을 부여할 때 IAM Role을 사용한다.
 - EC2 Instance에 개인 Access Key를 직접 저장하지 않는다.
 - EC2 Instance가 AWS API를 호출해야 한다면 EC2 Role을 연결한다.
@@ -91,12 +98,53 @@ IAM Role을 사용하면 개인 Access Key를 서버에 직접 저장하지 않�
 
 ## 📝 Review Questions
 
-1. IAM User와 IAM Role의 주요 차이점은 무엇인가?
-2. AWS 서비스에 권한을 부여할 때 무엇을 사용해야 하는가?
-3. Trusted Entity란 무엇인가?
-4. Permissions Policy는 무엇을 정의하는가?
-5. EC2 Instance에 개인 Access Key를 저장하면 안 되는 이유는 무엇인가?
-6. 대표적인 IAM Role에는 무엇이 있는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. IAM User와 IAM Role의 주요 차이점은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+IAM User는 일반적으로 사람이나 애플리케이션의 장기 자격 증명이다. IAM Role은 신뢰받는 주체가 필요할 때 Assume하여 임시 자격 증명을 얻는 Identity이다.
+
+</details>
+
+### Q2. AWS 서비스에 권한을 부여할 때 무엇을 사용해야 하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+해당 AWS 서비스가 맡을 수 있는 IAM Role을 사용한다.
+
+</details>
+
+### Q3. Trusted Entity란 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Role을 Assume할 수 있도록 신뢰 정책에 지정된 AWS 서비스, 계정, 사용자 또는 외부 Identity다.
+
+</details>
+
+### Q4. Permissions Policy는 무엇을 정의하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Role을 맡은 주체가 어떤 AWS Action을 어떤 Resource에 수행할 수 있는지 정의한다.
+
+</details>
+
+### Q5. EC2 Instance에 개인 Access Key를 저장하면 안 되는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+키가 노출될 위험이 있고 수동 교체가 필요하기 때문이다. EC2에는 IAM Role을 연결하여 자동으로 교체되는 임시 자격 증명을 사용한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

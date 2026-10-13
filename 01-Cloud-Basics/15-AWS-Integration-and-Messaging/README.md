@@ -1,7 +1,7 @@
-# 📨 15. AWS Integration & Messaging
+# 📚 15. AWS Integration & Messaging
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 15
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 15`
 
 ## 📌 Overview
 

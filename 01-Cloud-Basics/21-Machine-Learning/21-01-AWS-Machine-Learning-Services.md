@@ -1,7 +1,8 @@
-# 🤖 21-01. AWS Machine Learning Services
+# 📘 21-01. AWS Machine Learning Services
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)
-> AWS AI/ML 서비스 및 사용 사례 정리
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Machine Learning` · `Deep Learning` · `Natural Language Processing` · `Speech Recognition` · `Speech Synthesis`
 
 ## 🇰🇷 1. Machine Learning Overview
 
@@ -640,6 +641,9 @@ OCR 기술과 머신러닝을 활용해 문서를 분석한다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ### 서비스 선택 가이드
 
 | Requirement | AWS Service |
@@ -704,6 +708,56 @@ OCR 기술과 머신러닝을 활용해 문서를 분석한다.
 
 - SageMaker AI: 직접 ML 모델 개발
 - 목적별 서비스: AWS가 제공하는 특정 AI 기능 사용
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Machine Learning Overview의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**Machine Learning(ML)**은 데이터에서 패턴을 학습하고 새로운 데이터에 대한 예측이나 판단을 수행하는 기술이다.
+
+</details>
+
+### Q2. Amazon Rekognition의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**이미지와 비디오를 머신러닝으로 분석하는 서비스.**
+
+</details>
+
+### Q3. Amazon Transcribe의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**음성을 텍스트로 변환하는 Speech-to-Text 서비스.**
+
+</details>
+
+### Q4. Amazon Polly의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**텍스트를 자연스러운 음성으로 변환하는 Text-to-Speech 서비스.**
+
+</details>
+
+### Q5. Amazon Translate의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**자연스러운 언어 번역을 제공하는 관리형 머신러닝 서비스.**
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

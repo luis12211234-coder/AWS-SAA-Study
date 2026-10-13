@@ -1,6 +1,8 @@
-# 📜 22-02. CloudWatch Logs Fundamentals & Sources
+# 📘 22-02. CloudWatch Logs Fundamentals & Sources
 
-> AWS SAA-C03 · 검색 키워드: **Log Group, Log Stream, Log Event, Retention, KMS, stdout, stderr, SSM Run Command, VPC Flow Logs**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Log Group` · `Log Stream` · `Log Event` · `Log Retention` · `Standard Output (stdout)`
 
 ## 🇰🇷 1. CloudWatch Logs
 
@@ -104,6 +106,9 @@ Command ID: cmd-123   (모든 서버 동일)
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - **서버 내부 로그를 중앙 수집:** CloudWatch Agent → CloudWatch Logs.
 - **Log Group / Log Stream / Log Event:** 그룹 → 로그 출처별 스트림 → 개별 기록.
 - **보존 기간 및 KMS 암호화:** Log Group 설정.
@@ -111,36 +116,59 @@ Command ID: cmd-123   (모든 서버 동일)
 
 ## 📝 Review Questions
 
-> 해당 문서의 개념을 확인하는 SAA 스타일 복습 문제. 정답은 질문 아래 **정답 및 해설**에서 확인한다.
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-### Q05. EC2의 /var/log/myapp/app.log 파일을 CloudWatch Logs에 전송하려고 한다. 필요한 구성은?
+### Q1. EC2의 /var/log/myapp/app.log 파일을 CloudWatch Logs에 전송하려고 한다. 필요한 구성은?
 
-- A. CloudWatch Agent, 로그 수집 설정 및 IAM 권한
-- B. CloudTrail Event History 조회
-- C. AWS Config Rule만 설정
-- D. EC2 Detailed Monitoring만 활성화
+<details>
+<summary>정답 및 해설 보기</summary>
 
-### Q06. CloudWatch Logs에서 하나의 애플리케이션 로그를 출처별로 묶는 상위 단위는?
+**정답:** CloudWatch Agent, 로그 수집 설정 및 IAM 권한
 
-- A. Log Event
-- B. Log Stream
-- C. Metric Dimension
-- D. Log Group
+EC2 애플리케이션 로그 파일은 기본적으로 전송되지 않는다. Agent가 파일을 읽고 권한을 이용해 CloudWatch Logs에 전송한다.
 
-### Q07. SSM Run Command를 3개 EC2에 동일한 Command ID로 실행했고 각각 stdout, stderr가 기록됐다. 예상 스트림 수는?
+</details>
 
-- A. 2개
-- B. 3개
-- C. 6개
-- D. 12개
+### Q2. CloudWatch Logs에서 하나의 애플리케이션 로그를 출처별로 묶는 상위 단위는?
 
-### ✅ 정답 및 해설
+<details>
+<summary>정답 및 해설 보기</summary>
 
-| 문제 | 정답 | 풀이 핵심 |
-|---|---|---|
-| Q05 | **A** | EC2 애플리케이션 로그 파일은 기본적으로 전송되지 않는다. Agent가 파일을 읽고 권한을 이용해 CloudWatch Logs에 전송한다. |
-| Q06 | **D** | Log Group은 관련 Log Stream들을 묶고, 각 Stream 안에 Log Event가 있다. |
-| Q07 | **C** | 3개 대상 × stdout/stderr 2개 = 6개. 실제 출력이 없을 때는 일부 스트림이 생성되지 않을 수 있다. |
+**정답:** Log Group
+
+Log Group은 관련 Log Stream들을 묶고, 각 Stream 안에 Log Event가 있다.
+
+</details>
+
+### Q3. SSM Run Command를 3개 EC2에 동일한 Command ID로 실행했고 각각 stdout, stderr가 기록됐다. 예상 스트림 수는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** 6개
+
+3개 대상 × stdout/stderr 2개 = 6개. 실제 출력이 없을 때는 일부 스트림이 생성되지 않을 수 있다.
+
+</details>
+
+### Q4. Log Group → Log Stream → Log Event의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**주의:** Log Group을 생성했다고 로그가 자동으로 들어오지는 않는다. 서비스의 로깅 활성화 또는 Agent 구성 등이 필요하다.
+
+</details>
+
+### Q5. 로그가 들어오는 소스의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**서버 내부 로그를 중앙 수집:** CloudWatch Agent → CloudWatch Logs.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -166,8 +194,3 @@ CloudWatch Logs collects and retains application and AWS service log events. A l
 | Log Retention | 로그 보존 기간 | ログ保持期間 |
 | Standard Output (stdout) | 표준 출력 | 標準出力 |
 | Standard Error (stderr) | 표준 오류 출력 | 標準エラー出力 |
-
-## 📚 Official References
-
-- [CloudWatch Logs concepts](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogsConcepts.html)
-- [SSM Run Command CloudWatch output](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-logs.html)

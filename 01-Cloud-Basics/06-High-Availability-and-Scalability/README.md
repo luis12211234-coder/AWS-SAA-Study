@@ -1,7 +1,7 @@
-# ⚖️ 06. High Availability and Scalability
+# 📚 06. High Availability and Scalability
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 06
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 06`
 
 ## 📌 Overview
 

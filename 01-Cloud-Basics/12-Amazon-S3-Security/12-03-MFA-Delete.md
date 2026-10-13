@@ -1,5 +1,9 @@
 # 📘 12-03. S3 MFA Delete
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `MFA Delete` · `Versioning` · `Object Version` · `Delete Marker` · `Permanent Delete`
+
 ## 🇰🇷 1. MFA Delete란?
 
 MFA Delete는 Versioning된 S3 Bucket에서 중요한 삭제 작업을 수행할 때 MFA 인증을 추가로 요구하는 보호 기능입니다.
@@ -79,6 +83,9 @@ Enable / Disable MFA Delete
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 다음과 같은 요구사항이면 MFA Delete를 생각합니다.
 
 ```text
@@ -112,24 +119,51 @@ Enable / Disable
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. MFA Delete를 사용하기 위한 필수 기능은?
+
 <details>
-<summary>Q1. MFA Delete를 사용하기 위한 필수 기능은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 Versioning입니다.
 
 </details>
 
+### Q2. Q2. Versioning된 Bucket에서 일반 Delete를 하면 무엇이 생성되는가?
+
 <details>
-<summary>Q2. Versioning된 Bucket에서 일반 Delete를 하면 무엇이 생성되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Delete Marker가 생성됩니다.
 
 </details>
 
+### Q3. Q3. MFA Delete의 핵심 목적은?
+
 <details>
-<summary>Q3. MFA Delete의 핵심 목적은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Object Version의 영구 삭제와 같은 파괴적인 작업을 MFA로 보호하는 것입니다.
+
+</details>
+
+### Q4. MFA Delete란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+MFA Delete는 Versioning된 S3 Bucket에서 중요한 삭제 작업을 수행할 때 MFA 인증을 추가로 요구하는 보호 기능입니다.
+
+</details>
+
+### Q5. Versioning이 필요하다의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+MFA Delete는 S3 Version을 보호하기 위한 기능이므로 Bucket Versioning이 활성화되어 있어야 합니다.
 
 </details>
 

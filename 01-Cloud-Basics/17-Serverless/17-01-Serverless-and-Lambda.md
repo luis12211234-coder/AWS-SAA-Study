@@ -1,5 +1,9 @@
 # 📘 17-01. Serverless & AWS Lambda
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Function` · `Handler` · `Event` · `Trigger` · `Execution Role`
+
 ## 🇰🇷 1. Serverless
 
 Serverless는 서버가 없는 것이 아니라 **개발자가 서버를 직접 프로비저닝하고 관리하지 않는 구조**이다.
@@ -129,6 +133,9 @@ Lambda의 동시 실행 수는 **Concurrency**로 관리된다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Lambda
 = Serverless Compute
@@ -157,21 +164,51 @@ EventBridge Schedule
 
 ## 📝 Review Questions
 
-### Q1. Lambda와 EC2의 가장 큰 차이는?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 Lambda는 서버를 직접 관리하지 않고 Event에 따라 코드를 실행하는 Serverless Compute 서비스이다.
 
 </details>
 
-### Q2. Lambda가 S3에 접근하려면 무엇이 필요한가?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 필요한 S3 권한이 포함된 Lambda Execution Role이 필요하다.
+
+</details>
+
+### Q3. Serverless의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Serverless는 서버가 없는 것이 아니라 **개발자가 서버를 직접 프로비저닝하고 관리하지 않는 구조**이다.
+
+</details>
+
+### Q4. AWS Lambda의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS Lambda는 서버를 직접 관리하지 않고 **필요할 때 코드를 실행하는 Serverless Compute 서비스**이다.
+
+</details>
+
+### Q5. Event-Driven Architecture의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Lambda는 다양한 Event에 의해 실행될 수 있다.
 
 </details>
 

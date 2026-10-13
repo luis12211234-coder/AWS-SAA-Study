@@ -1,7 +1,7 @@
-# 🌐 08. Amazon Route 53
+# 📚 08. Amazon Route 53
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 08
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 08`
 
 ## 📌 Overview
 

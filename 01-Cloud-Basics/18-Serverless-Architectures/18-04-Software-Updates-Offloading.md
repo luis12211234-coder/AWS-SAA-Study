@@ -1,5 +1,9 @@
 # 📘 18-04. Software Updates Offloading
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Offloading` · `Origin` · `Edge Cache` · `Cache Hit Ratio` · `Static Content`
+
 ## 🇰🇷 1. Overview
 
 기존 EC2 기반 애플리케이션에서 소프트웨어 업데이트 파일을 대량 배포할 때 발생하는 비용과 서버 부하를 줄이는 아키텍처를 학습한다.
@@ -226,6 +230,9 @@ CloudFront를 도입해도 EC2와 EFS가 사라지는 것은 아니다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Static Content Distribution: CloudFront
 - Edge Caching: CloudFront
 - Existing EC2 Application Optimization: CloudFront in Front of ELB
@@ -242,32 +249,59 @@ CloudFront 도입 후에는 캐싱된 업데이트 파일을 엣지에서 제공
 
 ## 📝 Review Questions
 
-### Q1. 기존 EC2 애플리케이션에서 대량의 정적 파일 다운로드를 최적화하려면?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 CloudFront를 기존 ELB 앞에 배치한다.
 
 </details>
 
-### Q2. CloudFront Cache Hit가 발생하면 EC2와 EFS는 어떻게 되는가?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 CloudFront가 캐싱된 파일을 직접 반환하므로 해당 요청은 원본 EC2와 EFS에 전달되지 않는다.
 
 </details>
 
-### Q3. CloudFront를 도입하면 EC2가 완전히 필요 없어지는가?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
 기존 EC2 애플리케이션은 유지되며 CloudFront가 정적 파일 전달 부담을 줄여준다.
+
+</details>
+
+### Q4. Overview의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+기존 EC2 기반 애플리케이션에서 소프트웨어 업데이트 파일을 대량 배포할 때 발생하는 비용과 서버 부하를 줄이는 아키텍처를 학습한다.
+
+</details>
+
+### Q5. Requirements의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- 기존 EC2 애플리케이션 유지
+- 여러 Availability Zone에서 서비스 운영
+- 소프트웨어 업데이트 파일 제공
+- 신규 업데이트 출시 시 대량 다운로드 요청 처리
+- CPU 및 네트워크 부하 감소
+- 인프라 비용 절감
+- 글로벌 사용자에 대한 확장성 개선
 
 </details>
 

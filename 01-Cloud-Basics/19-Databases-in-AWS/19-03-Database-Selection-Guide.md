@@ -1,6 +1,8 @@
-# 🧭 19-03. Database Selection Guide
+# 📘 19-03. Database Selection Guide
 
-> **그래서 어떤 상황에서 어떤 데이터베이스를 선택해야 하는가?**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Access Pattern` · `Data Model` · `High Availability` · `Consistency` · `Trade-off`
 
 ## 🇰🇷 1. 선택 전 질문
 1. **데이터 모델:** Relational / Key-Value / Document / Graph / Time-Series / Object?
@@ -70,6 +72,9 @@ flowchart TD
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ### A. 단순 IoT 시계열 분석
 ```mermaid
 flowchart TD
@@ -133,29 +138,52 @@ flowchart TD
 
 ## 📝 Review Questions
 
-### Q1. Read Replica와 Multi-AZ의 주요 목적은?
-<details><summary>정답</summary>
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
 Read Replica는 읽기 확장, Multi-AZ는 장애 조치 및 가용성.
+
 </details>
 
-### Q2. MongoDB 호환 DB가 필요하다면?
-<details><summary>정답</summary>
+### Q2. 정답
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
 DocumentDB. 실제 API 호환 범위 확인 필요.
+
 </details>
 
-### Q3. 계좌·기기·결제수단 사이 복잡한 관계를 분석한다면?
-<details><summary>정답</summary>
+### Q3. 정답
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
 Neptune (Graph DB).
+
 </details>
 
-### Q4. 센서 → Timestream에 Kinesis와 Lambda가 반드시 필요한가?
-<details><summary>정답</summary>
+### Q4. 정답
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
 아니다. 스트리밍 버퍼링과 데이터 변환 등 요구사항이 있을 때 사용한다.
+
 </details>
 
-### Q5. Cassandra 호환성 vs 시간별 센서 분석?
-<details><summary>정답</summary>
+### Q5. 정답
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
 Cassandra/CQL → Keyspaces. 시간별 집계/분석 → Timestream.
+
 </details>
 
 ## 🇯🇵 日本語 Summary

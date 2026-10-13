@@ -1,5 +1,9 @@
 # 📘 06-05. Elastic Load Balancer Advanced Features
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Sticky Session` · `Session Affinity` · `Cross-Zone Load Balancing` · `SSL/TLS Certificate` · `In-flight Encryption`
+
 ## 🇰🇷 1. Overview
 
 Elastic Load Balancer의 주요 고급 기능:
@@ -256,6 +260,9 @@ Deregistration Delay
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 | Requirement | Feature |
 |---|---|
 | Same Client → Same Target | Sticky Session |
@@ -286,13 +293,53 @@ Deregistration Delay
 
 ## 📝 Review Questions
 
-1. Sticky Session은 어떤 문제를 해결하는가?
-2. Cross-Zone Load Balancing이 비활성화되면 Traffic은 어떻게 분산되는가?
-3. ALB와 NLB의 Cross-Zone 기본 설정은 어떻게 다른가?
-4. ACM의 역할은 무엇인가?
-5. SNI와 ALB Host-based Routing의 역할 차이는 무엇인가?
-6. ALB와 NLB에서 TLS를 사용하는 Listener는 각각 어떤 프로토콜을 사용하는가?
-7. Deregistration Delay가 필요한 이유는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Sticky Session은 어떤 문제를 해결하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+같은 사용자의 요청을 같은 Target으로 보내 서버 로컬에 저장된 Session 상태를 유지한다.
+
+</details>
+
+### Q2. Cross-Zone Load Balancing이 비활성화되면 Traffic은 어떻게 분산되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+각 Load Balancer Node는 자신의 Availability Zone에 있는 Target에만 Traffic을 분산한다.
+
+</details>
+
+### Q3. ALB와 NLB의 Cross-Zone 기본 설정은 어떻게 다른가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+ALB는 기본적으로 활성화된다. NLB는 기본적으로 비활성화되며 필요하면 활성화할 수 있다.
+
+</details>
+
+### Q4. ACM의 역할은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS Certificate Manager는 SSL/TLS 인증서를 발급·가져오기·갱신하고 ELB 등 AWS 서비스에 연결하도록 관리한다.
+
+</details>
+
+### Q5. SNI와 ALB Host-based Routing의 역할 차이는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+SNI는 TLS 연결에서 Hostname에 맞는 인증서를 선택한다. Host-based Routing은 HTTP Host Header에 따라 요청을 다른 Target Group으로 보낸다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

@@ -1,5 +1,9 @@
 # 📘 11-04. Amazon S3 Performance
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Prefix` · `Request Rate` · `Multipart Upload` · `Transfer Acceleration` · `Edge Location`
+
 ## 🇰🇷 1. S3 Baseline Performance
 
 Amazon S3는 높은 Request Rate에 맞춰 자동으로 확장됩니다.
@@ -325,6 +329,9 @@ S3 Performance 문제는 어떤 병목을 해결하려는지 먼저 판단합니
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Prefix
 → 높은 Request Rate 확장
@@ -347,36 +354,49 @@ Byte-Range Fetch
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. Prefix당 최소 GET/HEAD Request Rate는?
+
 <details>
-<summary>Q1. Prefix당 최소 GET/HEAD Request Rate는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 초당 5,500 requests입니다.
 
 </details>
 
+### Q2. Q2. Prefix당 최소 PUT/COPY/POST/DELETE Request Rate는?
+
 <details>
-<summary>Q2. Prefix당 최소 PUT/COPY/POST/DELETE Request Rate는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 초당 3,500 requests입니다.
 
 </details>
 
+### Q3. Q3. 대용량 Object Upload에 사용하는 기능은?
+
 <details>
-<summary>Q3. 대용량 Object Upload에 사용하는 기능은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Multipart Upload입니다.
 
 </details>
 
+### Q4. Q4. 전 세계 사용자와 먼 Region의 S3 사이 전송을 가속하려면?
+
 <details>
-<summary>Q4. 전 세계 사용자와 먼 Region의 S3 사이 전송을 가속하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 Transfer Acceleration을 고려할 수 있습니다.
 
 </details>
 
+### Q5. Q5. Large Object의 특정 부분만 가져오거나 병렬 Download하려면?
+
 <details>
-<summary>Q5. Large Object의 특정 부분만 가져오거나 병렬 Download하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Byte-Range Fetch를 사용할 수 있습니다.
 

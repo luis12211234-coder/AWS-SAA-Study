@@ -1,5 +1,9 @@
 # 📘 18-02. MyBlog.com - Serverless Hosted Website
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `CDN` · `Origin` · `Edge Location` · `OAC` · `Global Tables`
+
 ## 🇰🇷 1. Requirements
 
 전 세계 사용자가 접근하는 블로그 서비스를 구축한다.
@@ -345,6 +349,9 @@ Thumbnail in S3
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Global Static Content Delivery: CloudFront + S3
 - Secure S3 Origin: OAC + Bucket Policy
 - Serverless REST API: API Gateway + Lambda
@@ -365,41 +372,53 @@ Thumbnail in S3
 
 ## 📝 Review Questions
 
-### Q1. 비공개 S3 버킷의 정적 콘텐츠를 CloudFront로 제공하려면?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 CloudFront OAC와 S3 Bucket Policy를 구성한다.
 
 </details>
 
-### Q2. 신규 구독자 등록 후 자동 이메일을 발송하는 서비스 조합은?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 DynamoDB Streams → Lambda → Amazon SES
 
 </details>
 
-### Q3. 이미지 업로드 후 썸네일을 자동 생성하려면?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 ObjectCreated Event → Lambda → S3
 
 </details>
 
-### Q4. CloudFront와 S3 Transfer Acceleration의 차이는?
+### Q4. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 CloudFront는 콘텐츠 전달 및 캐싱을 위한 CDN이다.
 
 S3 Transfer Acceleration은 원거리에서 S3로 파일을 업로드할 때 전송 성능을 개선하는 기능이다.
+
+</details>
+
+### Q5. Requirements의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+전 세계 사용자가 접근하는 블로그 서비스를 구축한다.
 
 </details>
 

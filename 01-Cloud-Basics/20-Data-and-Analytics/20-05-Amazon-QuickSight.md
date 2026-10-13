@@ -1,6 +1,8 @@
-# 📈 20-05. Amazon QuickSight (Amazon Quick Sight)
+# 📘 20-05. Amazon QuickSight (Amazon Quick Sight)
 
-> **Keyword: BI / Dashboard / SPICE / Direct Query / CLS**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Business Intelligence` · `Dataset` · `Analysis` · `Dashboard` · `Column-Level Security`
 
 ## 🇰🇷 1. Overview
 
@@ -60,6 +62,9 @@ CSV 파일만 SPICE를 사용하는 것이 아니다. Athena/RDS/Redshift 등 �
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 | Keyword | Candidate |
 |---|---|
 | Business Intelligence / Dashboard | **QuickSight / Quick Sight** |
@@ -70,6 +75,60 @@ CSV 파일만 SPICE를 사용하는 것이 아니다. Athena/RDS/Redshift 등 �
 | Hide salary column | **CLS** |
 | Restrict rows by region | **RLS** |
 | S3 SQL + Dashboard | **Athena + QuickSight** |
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Overview의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Amazon QuickSight는 **관리형·서버리스 BI(Business Intelligence) 시각화 서비스**이다. 다양한 데이터 소스를 연결하여 차트, 보고서, 대화형 대시보드를 만든다.
+
+</details>
+
+### Q2. SPICE vs Direct Query의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**SPICE(Super-fast, Parallel, In-memory Calculation Engine)**는 데이터를 QuickSight 쪽으로 가져와 In-memory 방식으로 빠르게 계산하는 엔진이다.
+
+</details>
+
+### Q3. Dataset → Analysis → Dashboard의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**Dashboard의 '읽기 전용 Snapshot'은 구성/편집 관점**의 설명이다. 데이터는 SPICE Refresh나 Direct Query 결과에 따라 갱신될 수 있다. Reader는 허용된 필터를 조작할 수 있지만 Analysis 자체를 편집하지 않는다.
+
+</details>
+
+### Q4. Users, Groups, Security의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- 대시보드 공유에는 QuickSight의 콘텐츠 접근 권한 설정이 필요하다.
+- IAM 권한은 AWS 서비스 관리와 연계되며, QuickSight 내 Reader/Author/Admin 권한과 구분한다.
+- 사용자·그룹은 내부 관리 또는 IAM Identity Center 연동 방식 등을 활용할 수 있다.
+- **CLS(Column-Level Security):** 민감한 컬럼 접근 제한 (예: 급여 열).
+- **RLS(Row-Level Security):** 조건에 맞는 행만 접근 (예: 서울 직원에게 서울 주문만).
+
+</details>
+
+### Q5. Current Naming (2026)의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+기존 **Amazon QuickSight**는 AWS의 브랜드 개편을 거쳤다. 현재 공식 안내에서 **Amazon Quick**의 BI 기능은 **Amazon Quick Sight**라고 표기하며, 기존 QuickSight API/SDK/통합은 유지된다. SAA 강의와 문제에는 여전히 QuickSight라는 이름이 나타날 수 있다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -88,7 +147,3 @@ QuickSight, now called Quick Sight within Amazon Quick, provides BI dashboards a
 | Analysis | 분석 편집본 | 分析 |
 | Dashboard | 대시보드 | ダッシュボード |
 | Column-Level Security | 열 수준 보안 | 列レベルセキュリティ |
-
-## 📚 Official References
-
-- [What is Amazon Quick?](https://docs.aws.amazon.com/quick/latest/userguide/what-is.html)

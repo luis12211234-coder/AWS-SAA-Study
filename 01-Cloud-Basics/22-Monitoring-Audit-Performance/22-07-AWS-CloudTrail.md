@@ -1,6 +1,8 @@
-# 🕵️ 22-07. AWS CloudTrail: API Audit, Event History & Insights
+# 📘 22-07. AWS CloudTrail: API Audit, Event History & Insights
 
-> AWS SAA-C03 · 검색 키워드: **CloudTrail, Event History, Trail, Management Events, Data Events, Insights Events, Network Activity Events, Read Write, TerminateInstances, DeleteTable, AssumeRole, 90 Days, Athena, EventBridge**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Audit` · `Governance` · `Management Event` · `Data Event` · `Insights Event`
 
 ## 🇰🇷 1. CloudTrail이란?
 
@@ -118,6 +120,9 @@ EventBridge의 Rule 예시 및 추가 조건 → [22-05](./22-05-Amazon-EventBri
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 | 문제 키워드 | 답 |
 |---|---|
 | `Who deleted EC2?`, `who invoked API?` | CloudTrail Event History / Trail |
@@ -129,36 +134,59 @@ EventBridge의 Rule 예시 및 추가 조건 → [22-05](./22-05-Amazon-EventBri
 
 ## 📝 Review Questions
 
-> 해당 문서의 개념을 확인하는 SAA 스타일 복습 문제. 정답은 질문 아래 **정답 및 해설**에서 확인한다.
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-### Q27. 누가 EC2의 TerminateInstances API를 호출했는지 조사하려 한다. 무엇을 확인하나?
+### Q1. 누가 EC2의 TerminateInstances API를 호출했는지 조사하려 한다. 무엇을 확인하나?
 
-- A. CloudWatch Logs Metric Filter
-- B. AWS Config Compliance
-- C. EventBridge Scheduler
-- D. CloudTrail Event History
+<details>
+<summary>정답 및 해설 보기</summary>
 
-### Q28. S3 객체 GetObject API 액세스 감사가 필요하다. CloudTrail에서 어떤 이벤트를 활성화해야 하나?
+**정답:** CloudTrail Event History
 
-- A. Management Events만
-- B. Data Events
-- C. CloudWatch Metric Streams
-- D. AWS Config Remediation
+CloudTrail은 AWS 계정의 API 활동 감사 기록이다. Event History는 최근 90일의 관리 이벤트를 조회한다.
 
-### Q29. CloudTrail의 최근 90일 Event History에 기본적으로 포함되는 이벤트는?
+</details>
 
-- A. Management Events
-- B. 모든 S3 Data Events
-- C. 모든 Insights Events
-- D. 모든 Network Activity Events
+### Q2. S3 객체 GetObject API 액세스 감사가 필요하다. CloudTrail에서 어떤 이벤트를 활성화해야 하나?
 
-### ✅ 정답 및 해설
+<details>
+<summary>정답 및 해설 보기</summary>
 
-| 문제 | 정답 | 풀이 핵심 |
-|---|---|---|
-| Q27 | **D** | CloudTrail은 AWS 계정의 API 활동 감사 기록이다. Event History는 최근 90일의 관리 이벤트를 조회한다. |
-| Q28 | **B** | 객체 GetObject/PutObject/DeleteObject는 Data Events에 속하고 기본으로 기록되지 않으므로 별도 활성화한다. |
-| Q29 | **A** | Event History의 기본 범위는 리전별 최근 90일 Management Events이다. 모든 유형이 90일 저장된다는 뜻은 아니다. |
+**정답:** Data Events
+
+객체 GetObject/PutObject/DeleteObject는 Data Events에 속하고 기본으로 기록되지 않으므로 별도 활성화한다.
+
+</details>
+
+### Q3. CloudTrail의 최근 90일 Event History에 기본적으로 포함되는 이벤트는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** Management Events
+
+Event History의 기본 범위는 리전별 최근 90일 Management Events이다. 모든 유형이 90일 저장된다는 뜻은 아니다.
+
+</details>
+
+### Q4. CloudTrail이란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**AWS CloudTrail**은 AWS 계정의 API 활동과 지원되는 계정 활동을 기록하는 감사(Audit) 서비스다. 콘솔 버튼 클릭도 내부적으로 AWS API 호출로 이어질 수 있다.
+
+</details>
+
+### Q5. Event History vs Trail의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**시험 함정:** “CloudTrail은 기본 활성화”란 **Event History**가 기본 제공된다는 뜻. 별도 Trail을 자동으로 생성해 S3에 장기 보관한다는 뜻은 아니다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -188,9 +216,3 @@ CloudTrail provides AWS account activity and API auditing: who performed which a
 | Trail | 지속 이벤트 전달 설정 | 証跡（トレイル） |
 | Anomaly Detection | 이상 탐지 | 異常検知 |
 | Baseline | 기준선 | ベースライン |
-
-## 📚 Official References
-
-- [CloudTrail Event History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)
-- [CloudTrail event types](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-events.html)
-- [CloudTrail via EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event-cloudtrail.html)

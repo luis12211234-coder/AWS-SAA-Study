@@ -1,5 +1,9 @@
 # 📘 04-06. EC2 Purchasing Options
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `On-Demand Instance` · `Reserved Instance` · `Convertible Reserved Instance` · `Savings Plans` · `Spot Instance`
+
 ## 🇰🇷 1. Overview
 
 Amazon EC2는 Workload의 기간, 중단 가능 여부, 비용 최적화 요구사항에 따라 여러 Purchasing Option을 제공한다.
@@ -509,6 +513,9 @@ Resort 건물 전체 예약
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ### On-Demand
 
 ```text
@@ -639,18 +646,53 @@ Capacity Reservation
 
 ## 📝 Review Questions
 
-1. 단기적이고 사용량을 예측하기 어려운 Workload에는 어떤 구매 옵션이 적합한가?
-2. 장기간 일정하게 실행되는 Database에는 어떤 옵션이 적합한가?
-3. Reserved Instance의 약정 기간은 무엇인가?
-4. Savings Plans는 무엇을 약정하여 할인을 받는 방식인가?
-5. Spot Instance가 저렴한 대신 가지는 가장 중요한 위험은 무엇인가?
-6. Spot Instance가 Batch Processing에 적합한 이유는 무엇인가?
-7. 중요한 Database에 Spot Instance가 부적합한 이유는 무엇인가?
-8. Dedicated Host와 Dedicated Instance의 핵심 차이는 무엇인가?
-9. BYOL 요구사항이 있을 때 어떤 옵션을 고려할 수 있는가?
-10. Capacity Reservation의 주요 목적은 비용 절감인가, Capacity 확보인가?
-11. Capacity Reservation은 Instance를 실행하지 않아도 비용이 발생하는가?
-12. 특정 AZ의 EC2 Capacity를 반드시 확보해야 한다면 어떤 옵션을 선택해야 하는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 단기적이고 사용량을 예측하기 어려운 Workload에는 어떤 구매 옵션이 적합한가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+장기 약정이 없는 On-Demand Instance가 적합하다.
+
+</details>
+
+### Q2. 장기간 일정하게 실행되는 Database에는 어떤 옵션이 적합한가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+중단할 수 없는 일정한 장기 Workload라면 Reserved Instance나 Savings Plans를 검토한다.
+
+</details>
+
+### Q3. Reserved Instance의 약정 기간은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+1년 또는 3년이다.
+
+</details>
+
+### Q4. Savings Plans는 무엇을 약정하여 할인을 받는 방식인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+1년 또는 3년 동안 시간당 일정한 컴퓨팅 사용 금액을 약정해 할인을 받는다.
+
+</details>
+
+### Q5. Spot Instance가 저렴한 대신 가지는 가장 중요한 위험은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS가 Capacity를 회수하면 짧은 알림 후 인스턴스가 중단될 수 있다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

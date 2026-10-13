@@ -1,6 +1,8 @@
-# 🏗️ 20-10. Big Data Ingestion Pipeline
+# 📘 20-10. Big Data Ingestion Pipeline
 
-> **Keyword: IoT → Streams → Firehose → S3 → Athena → QuickSight**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Ingestion Pipeline` · `Data Transformation` · `Reporting Bucket` · `Near Real-Time` · `Data Warehouse`
 
 ## 🇰🇷 1. Business Requirements
 
@@ -105,6 +107,9 @@ flowchart LR
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 | Requirement | Candidate |
 |---|---|
 | Receive data from IoT devices | IoT Core |
@@ -117,6 +122,65 @@ flowchart LR
 | Business dashboards | QuickSight |
 | Analytical warehouse | Redshift |
 | Continuous stateful stream analytics | Managed Service for Apache Flink |
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Business Requirements의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- IoT 센서 등에서 **실시간 데이터 수집**.
+- 원본 데이터를 정리하고 **Amazon S3에 저장**.
+- 저장된 데이터를 **SQL로 분석**.
+- SQL 결과는 **별도 Reporting S3 경로에 저장**.
+- 필요하면 **Redshift 데이터 웨어하우스에 적재**.
+- **QuickSight**로 결과를 시각화.
+- 가능한 범위에서 서버리스·관리형 서비스 사용.
+
+</details>
+
+### Q2. Reference Architecture의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**위 구조는 요구사항을 보여주기 위한 참조 예시. 모든 서비스가 필수는 아니다.**
+
+</details>
+
+### Q3. Service-by-service Flow의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+SQS는 **이벤트 메시지 버퍼링/재시도**를 위한 선택 사항이다. SQS에 모든 원본 센서 데이터를 복사할 필요는 없다.
+
+</details>
+
+### Q4. S3 원본 위치 vs 쿼리 결과 위치의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Athena는 조회 결과를 고객 관리 S3에 저장하거나, 워크그룹 설정에 따라 Athena Managed Query Results를 사용할 수 있다. **영구 보고서 보관이 필요하면 사용자 S3 저장을 별도로 설계**한다.
+
+</details>
+
+### Q5. Real-time vs Near-real-time vs Batch의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- IoT Core / Kinesis Data Streams: 이벤트를 빠르게 수신·전달한다.
+- Firehose: 버퍼링 설정에 따라 S3에 데이터를 나누어 저장한다. **강의의 '최소 1분'은 현재 고정 제약이 아니다.**
+- Athena: S3에 도착한 데이터에 대한 SQL 분석. 수집이 실시간이어도 쿼리는 보통 파일 도착 후 실행된다.
+- **수 초 이내 실시간 이상 감지가 목적이면 Managed Service for Apache Flink 등의 직접 스트림 분석을 검토**한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -135,8 +199,3 @@ An ingestion pipeline can receive IoT data through IoT Core and Kinesis Data Str
 | Reporting Bucket | 결과/보고서 버킷 | レポート用バケット |
 | Near Real-Time | 준실시간 | ニアリアルタイム |
 | Data Warehouse | 데이터 웨어하우스 | データウェアハウス |
-
-## 📚 Official References
-
-- [Amazon Data Firehose buffering](https://docs.aws.amazon.com/firehose/latest/dev/create-configure-backup.html)
-- [Athena managed query results](https://docs.aws.amazon.com/athena/latest/ug/managed-results.html)

@@ -1,7 +1,8 @@
-# 📈 22-01. Amazon CloudWatch Metrics & Unified CloudWatch Agent
+# 📘 22-01. Amazon CloudWatch Metrics & Unified CloudWatch Agent
 
-> AWS SAA-C03 · Udemy Section 24 / GitHub Section 22
-> 검색 키워드: **Metrics, Namespace, Dimension, Datapoint, Detailed Monitoring, CWAgent, RAM, mem_used_percent, Metric Streams, CloudWatchAgentServerPolicy, SSM Parameter Store**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Monitoring` · `Metric` · `Namespace` · `Dimension` · `Datapoint`
 
 ## 🇰🇷 1. CloudWatch의 역할
 
@@ -113,6 +114,9 @@ CloudWatch Metrics → Metric Stream → Amazon Data Firehose → S3 / Third-par
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 | 문제 문구 | 답 |
 |---|---|
 | EC2 메모리(RAM) 사용률 확인 | Unified CloudWatch Agent |
@@ -123,44 +127,61 @@ CloudWatch Metrics → Metric Stream → Amazon Data Firehose → S3 / Third-par
 
 ## 📝 Review Questions
 
-> 해당 문서의 개념을 확인하는 SAA 스타일 복습 문제. 정답은 질문 아래 **정답 및 해설**에서 확인한다.
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-### Q01. EC2에서 CloudWatch로 RAM 사용률을 수집하고자 한다. 가장 적절한 방법은?
+### Q1. EC2에서 CloudWatch로 RAM 사용률을 수집하고자 한다. 가장 적절한 방법은?
 
-- A. EC2 Detailed Monitoring만 활성화
-- B. Unified CloudWatch Agent 설치·설정
-- C. CloudTrail Trail 생성
-- D. EventBridge Rule 생성
+<details>
+<summary>정답 및 해설 보기</summary>
 
-### Q02. EC2 CPUUtilization 기본 모니터링에서 일반적인 게시 간격은?
+**정답:** Unified CloudWatch Agent 설치·설정
 
-- A. 1초
-- B. 10초
-- C. 1분
-- D. 5분
+RAM 사용률은 EC2의 기본 제공 CPU 지표가 아니다. 통합 Agent가 OS 메모리 사용량을 수집한다. Detailed Monitoring은 기본 지표 주기를 1분으로 세분화한다.
 
-### Q03. CPUUtilization이 어느 EC2 인스턴스에 속한 지표인지 구분하는 CloudWatch 구성 요소는?
+</details>
 
-- A. Log Group
-- B. Dimension: InstanceId
-- C. Trail
-- D. Event Pattern
+### Q2. EC2 CPUUtilization 기본 모니터링에서 일반적인 게시 간격은?
 
-### Q04. CloudWatch Metrics를 외부 데이터 파이프라인으로 지속적으로 내보내고 싶다. 적합한 기능은?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-- A. CloudTrail Insights
-- B. AWS Config Aggregator
-- C. CloudWatch Metric Streams
-- D. CloudWatch Logs Live Tail
+**정답:** 5분
 
-### ✅ 정답 및 해설
+EC2 Basic Monitoring은 일반적인 CPU 지표를 5분 간격으로 게시한다. Detailed Monitoring은 1분.
 
-| 문제 | 정답 | 풀이 핵심 |
-|---|---|---|
-| Q01 | **B** | RAM 사용률은 EC2의 기본 제공 CPU 지표가 아니다. 통합 Agent가 OS 메모리 사용량을 수집한다. Detailed Monitoring은 기본 지표 주기를 1분으로 세분화한다. |
-| Q02 | **D** | EC2 Basic Monitoring은 일반적인 CPU 지표를 5분 간격으로 게시한다. Detailed Monitoring은 1분. |
-| Q03 | **B** | Namespace와 Metric 이름이 같아도 InstanceId Dimension 값에 따라 서로 다른 시계열로 구분한다. |
-| Q04 | **C** | Metric Streams는 숫자 지표를 Amazon Data Firehose 등을 통해 지속 전송한다. Logs Subscription은 로그 이벤트 전송. |
+</details>
+
+### Q3. CPUUtilization이 어느 EC2 인스턴스에 속한 지표인지 구분하는 CloudWatch 구성 요소는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** Dimension: InstanceId
+
+Namespace와 Metric 이름이 같아도 InstanceId Dimension 값에 따라 서로 다른 시계열로 구분한다.
+
+</details>
+
+### Q4. CloudWatch Metrics를 외부 데이터 파이프라인으로 지속적으로 내보내고 싶다. 적합한 기능은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** CloudWatch Metric Streams
+
+Metric Streams는 숫자 지표를 Amazon Data Firehose 등을 통해 지속 전송한다. Logs Subscription은 로그 이벤트 전송.
+
+</details>
+
+### Q5. CloudWatch의 역할의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**Amazon CloudWatch**는 AWS 애플리케이션과 인프라의 지표·로그 등을 수집하고 시각화해 운영 상태를 파악하는 모니터링 서비스이다. CloudTrail(누가 API를 호출했는가), AWS Config(설정이 어떻게 바뀌었는가)와 구분한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -202,9 +223,3 @@ CloudWatch Metrics stores time-series measurements identified by a namespace, me
 | IAM Role | IAM 역할 | IAM ロール |
 | Configuration File | 설정 파일 | 設定ファイル |
 | Metric Stream | 지표 스트림 | メトリクスストリーム |
-
-## 📚 Official References
-
-- [CloudWatch Agent overview](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html)
-- [EC2 detailed monitoring](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html)
-- [CloudWatch metric streams](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html)

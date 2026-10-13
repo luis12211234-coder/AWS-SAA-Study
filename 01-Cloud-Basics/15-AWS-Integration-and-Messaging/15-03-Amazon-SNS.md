@@ -1,5 +1,9 @@
 # 📘 15-03. Amazon SNS
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Amazon SNS란?` · `Subscriber` · `SNS Standard` · `SNS FIFO` · `Message Filtering`
+
 ## 🇰🇷 1. Amazon SNS란?
 
 **Amazon Simple Notification Service**
@@ -119,6 +123,9 @@ Access
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Pub/Sub
 One-to-Many
@@ -135,17 +142,53 @@ Ordering + Deduplication
 
 ## 📝 Review Questions
 
-**Q1. 하나의 Event를 여러 Subscriber에게 전달하려면?**
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-Amazon SNS
+### Q1. Amazon SNS란?의 핵심 개념은 무엇인가?
 
-**Q2. Subscriber별로 특정 Message만 받고 싶다면?**
+<details>
+<summary>정답 및 해설 보기</summary>
 
-Subscription Filter Policy
+**Amazon Simple Notification Service**
 
-**Q3. SNS에서 Ordering과 Deduplication이 필요하면?**
+</details>
 
-SNS FIFO Topic
+### Q2. Subscriber의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+SNS는 다양한 Endpoint로 Message를 전달할 수 있습니다.
+
+</details>
+
+### Q3. SNS Standard의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+일반적인 Pub/Sub Messaging에 사용합니다.
+
+</details>
+
+### Q4. SNS FIFO의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Message의 순서와 중복 제거가 중요한 경우 사용합니다.
+
+</details>
+
+### Q5. Message Filtering의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Subscriber마다 필요한 Message만 받을 수 있습니다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -162,3 +205,13 @@ Amazon SNS is a publish/subscribe messaging service.
 Publishers send messages to a topic, and SNS distributes them to subscribers.
 
 Subscription filter policies allow subscribers to receive only selected messages.
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| Amazon SNS란? | Amazon SNS란? | Amazon SNS란? |
+| Subscriber | Subscriber | Subscriber |
+| SNS Standard | SNS Standard | SNS Standard |
+| SNS FIFO | SNS FIFO | SNS FIFO |
+| Message Filtering | Message Filtering | Message Filtering |

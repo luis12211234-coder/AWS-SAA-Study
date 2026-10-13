@@ -1,7 +1,7 @@
-# 🔐 02. IAM
+# 📚 02. IAM
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 02
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 02`
 
 ## 📌 Overview
 

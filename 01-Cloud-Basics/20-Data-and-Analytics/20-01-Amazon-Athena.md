@@ -1,7 +1,8 @@
-# 🔎 20-01. Amazon Athena
+# 📘 20-01. Amazon Athena
 
-> Udemy: Athena 개요 + S3 Access Logs 실습
-> **Keyword: Serverless SQL on S3**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `External Table` · `Schema` · `Query Result` · `Partition Pruning` · `Federated Query`
 
 ## 🇰🇷 1. Overview
 
@@ -106,12 +107,69 @@ flowchart LR
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - **Ad-hoc SQL query over S3 → Athena**.
 - **S3 데이터를 복사하지 않는 SQL 분석 → Athena**.
 - **S3 로그의 날짜별 쿼리·비용 최적화 → Parquet + Partitioning**.
 - **S3 CSV를 Parquet으로 변환 → Glue ETL**.
 - **Data Catalog는 데이터 저장소가 아니라 Metadata Store**.
 - **대규모 반복 분석·복잡한 Data Warehouse → Redshift**.
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Overview의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Amazon Athena는 **Amazon S3에 저장된 데이터를 SQL로 직접 분석하는 서버리스 쿼리 서비스**이다.
+
+</details>
+
+### Q2. Database / External Table / Query Results의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+예시: 단순화된 CSV 로그 파일을 대상으로 한 실행 가능한 예시. 실제 S3 Server Access Logs는 복잡한 로그 형식에 맞는 RegexSerDe와 공식 DDL을 사용해야 한다.
+
+</details>
+
+### Q3. 실습 SQL: HTTP 상태 코드 분석의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+-- 요청 종류 및 상태 코드별 건수
+SELECT operation, httpstatus, COUNT(*) AS request_count
+FROM s3_access_logs_db.mybucket_logs
+GROUP BY operation, httpstatus
+ORDER BY request_count DESC;
+
+</details>
+
+### Q4. 성능·비용 최적화의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+일반적인 Athena SQL 요금은 스캔 데이터량을 기준으로 하므로 쿼리 최적화가 비용에 직결된다. 단, 용량 기반 옵션 등 요금 모델에 따라 달라질 수 있다.
+
+</details>
+
+### Q5. Federated Query의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Lambda 기반 **Data Source Connector** 등을 사용해 S3 이외의 데이터 소스(RDS, DynamoDB 등)를 SQL로 조회하는 기능. 일부 최신 커넥터는 구현 방식이 다를 수 있다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -130,8 +188,3 @@ Athena is a serverless SQL query service for S3 data. Glue Data Catalog stores m
 | Query Result | 쿼리 결과 | クエリ結果 |
 | Partition Pruning | 불필요한 파티션 제외 | パーティションプルーニング |
 | Federated Query | 연합 쿼리 | フェデレーテッドクエリ |
-
-## 📚 Official References
-
-- [Athena managed query results](https://docs.aws.amazon.com/athena/latest/ug/managed-results.html)
-- [Analyze S3 access logs with Athena](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-s3-access-logs-to-identify-requests.html)

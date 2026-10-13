@@ -1,5 +1,9 @@
 # 📘 05-07. EBS Encryption
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Encryption` · `Decryption` · `Data at Rest` · `Data in Transit` · `AWS KMS`
+
 ## 🇰🇷 1. Overview
 
 Amazon EBS는 AWS KMS를 사용하여
@@ -183,6 +187,9 @@ Encrypted EBS
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 Encrypted EBS를 사용하면:
 
 ```text
@@ -231,7 +238,13 @@ EBS Encryption
 
 ## 📝 Review Questions
 
-#### Q1. Encrypted EBS Volume에서 암호화되는 데이터는?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Encrypted EBS Volume에서 암호화되는 데이터는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Data at Rest
@@ -240,30 +253,46 @@ Snapshots
 Volumes Created from Encrypted Snapshots
 ```
 
-#### Q2. EBS Encryption에 사용되는 AWS 서비스는?
+</details>
+
+### Q2. EBS Encryption에 사용되는 AWS 서비스는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 AWS KMS
 ```
 
-#### Q3. 암호화된 EBS에서 Snapshot을 생성하면?
+</details>
+
+### Q3. 암호화된 EBS에서 Snapshot을 생성하면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 Snapshot도 암호화된다.
 
-#### Q4. 암호화된 Snapshot에서 Volume을 생성하면?
+</details>
+
+### Q4. 암호화된 Snapshot에서 Volume을 생성하면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 새 Volume도 암호화된다.
 
-#### Q5. 암호화되지 않은 EBS를 암호화하려면?
+</details>
+
+### Q5. 암호화되지 않은 EBS를 암호화하려면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 Snapshot을 생성한 뒤,
 암호화하여 새 EBS Volume을 생성한다.
 
-#### Q6. EBS Encryption이 애플리케이션에서 직접 Encryption / Decryption을 처리해야 하는가?
-
-아니다.
-
-AWS가 백그라운드에서 처리한다.
+</details>
 
 ## 🇯🇵 日本語 Summary
 

@@ -1,5 +1,9 @@
 # 📘 04-05. IAM Roles for EC2
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `IAM Role` · `IAM Policy` · `Permission` · `Access Key` · `Secret Access Key`
+
 ## 🇰🇷 1. Overview
 
 EC2 Instance에서 AWS CLI 또는 AWS SDK를 사용하여 다른 AWS Service에 접근하려면 적절한 AWS 권한이 필요하다.
@@ -206,6 +210,9 @@ IAM Role을 사용하면 EC2 Instance에 장기 Access Key를 직접 저장하�
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 강의에서는 다음 IAM Role을 EC2 Instance에 연결한다.
 
 ```text
@@ -279,12 +286,53 @@ EC2 Instance에는 필요한 S3 권한을 가진 IAM Role을 연결한다.
 
 ## 📝 Review Questions
 
-1. EC2 Instance에서 AWS Service에 접근하기 위해 권한이 필요할 때 무엇을 사용하는가?
-2. EC2 내부에서 `aws configure`로 IAM User의 Access Key를 저장하는 방식이 권장되지 않는 이유는 무엇인가?
-3. IAM Role에 연결된 Policy는 어떤 역할을 하는가?
-4. IAM Role을 EC2에 연결한 후 AWS CLI가 AWS API를 호출할 수 있는 이유는 무엇인가?
-5. Role에서 필요한 Permission을 제거하면 어떤 결과가 발생할 수 있는가?
-6. IAM Policy 변경 직후 일시적으로 이전 권한 상태가 보일 수 있는 이유는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. EC2 Instance에서 AWS Service에 접근하기 위해 권한이 필요할 때 무엇을 사용하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+EC2가 Assume할 수 있는 IAM Role을 Instance Profile로 연결한다.
+
+</details>
+
+### Q2. EC2 내부에서 `aws configure`로 IAM User의 Access Key를 저장하는 방식이 권장되지 않는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+장기 자격 증명이 인스턴스에 노출되고 수동 교체가 필요하기 때문이다. IAM Role은 자동으로 교체되는 임시 자격 증명을 제공한다.
+
+</details>
+
+### Q3. IAM Role에 연결된 Policy는 어떤 역할을 하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+EC2가 어떤 AWS API Action을 어떤 Resource에 수행할 수 있는지 정의한다.
+
+</details>
+
+### Q4. IAM Role을 EC2에 연결한 후 AWS CLI가 AWS API를 호출할 수 있는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+EC2 Metadata Service를 통해 Role의 임시 자격 증명을 받아 AWS 요청에 자동으로 서명하기 때문이다.
+
+</details>
+
+### Q5. Role에서 필요한 Permission을 제거하면 어떤 결과가 발생할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+해당 Permission이 필요한 API 호출이 Access Denied로 실패한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

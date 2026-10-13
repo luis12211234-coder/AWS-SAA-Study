@@ -1,6 +1,8 @@
-# 🛡️ 22-08. AWS Config: Configuration History, Rules & Remediation
+# 📘 22-08. AWS Config: Configuration History, Rules & Remediation
 
-> AWS SAA-C03 · 검색 키워드: **AWS Config, Configuration Item, Recorder, Compliance, COMPLIANT, NON_COMPLIANT, restricted-ssh, approved-amis-by-id, Resource Timeline, SSM Automation, Remediation, Aggregator, Athena**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Compliance` · `Configuration Item` · `Configuration Recorder` · `Configuration History` · `Resource Timeline`
 
 ## 🇰🇷 1. AWS Config란?
 
@@ -125,6 +127,9 @@ Config Rule 재평가
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 | 문제 키워드 | 선택 |
 |---|---|
 | 특정 포트(예: TCP 84)가 SG에서 인터넷 전체 공개됐나? | Config Rule (적절한 관리형·Custom Rule) |
@@ -137,36 +142,62 @@ Config Rule 재평가
 
 ## 📝 Review Questions
 
-> 해당 문서의 개념을 확인하는 SAA 스타일 복습 문제. 정답은 질문 아래 **정답 및 해설**에서 확인한다.
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-### Q30. EC2 보안 그룹 SSH 22번 포트가 전체 인터넷에 공개됐는지 평가하고 싶다. 알맞은 AWS Config 관리형 규칙은?
+### Q1. EC2 보안 그룹 SSH 22번 포트가 전체 인터넷에 공개됐는지 평가하고 싶다. 알맞은 AWS Config 관리형 규칙은?
 
-- A. approved-amis-by-id
-- B. CloudTrail Insights
-- C. restricted-ssh
-- D. EventBridge Sandbox
+<details>
+<summary>정답 및 해설 보기</summary>
 
-### Q31. AWS Config가 NON_COMPLIANT를 감지할 때 자동으로 올바른 설정을 적용하려면?
+**정답:** restricted-ssh
 
-- A. CloudTrail Event History만 사용
-- B. AWS Config + SSM Automation Remediation
-- C. Detailed Monitoring만 활성화
-- D. S3 Export Task
+restricted-ssh는 SSH 22를 0.0.0.0/0 또는 ::/0에 개방했는지 평가한다. 특정 관리 IP 허용은 규정 준수 가능.
 
-### Q32. 여러 AWS 계정·리전에서 AWS Config 규정 준수 결과를 모아 확인하려면?
+</details>
 
-- A. Metric Stream
-- B. Log Stream
-- C. Schema Registry
-- D. AWS Config Aggregator
+### Q2. AWS Config가 NONCOMPLIANT를 감지할 때 자동으로 올바른 설정을 적용하려면?
 
-### ✅ 정답 및 해설
+<details>
+<summary>정답 및 해설 보기</summary>
 
-| 문제 | 정답 | 풀이 핵심 |
-|---|---|---|
-| Q30 | **C** | restricted-ssh는 SSH 22를 0.0.0.0/0 또는 ::/0에 개방했는지 평가한다. 특정 관리 IP 허용은 규정 준수 가능. |
-| Q31 | **B** | Config 자체는 변경을 막지 않지만 SSM Automation Runbook을 연결하면 사후 교정 조치를 수행할 수 있다. |
-| Q32 | **D** | Config Aggregator는 계정과 리전을 아우르는 설정·준수 결과 조회를 지원한다. |
+**정답:** AWS Config + SSM Automation Remediation
+
+Config 자체는 변경을 막지 않지만 SSM Automation Runbook을 연결하면 사후 교정 조치를 수행할 수 있다.
+
+</details>
+
+### Q3. 여러 AWS 계정·리전에서 AWS Config 규정 준수 결과를 모아 확인하려면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** AWS Config Aggregator
+
+Config Aggregator는 계정과 리전을 아우르는 설정·준수 결과 조회를 지원한다.
+
+</details>
+
+### Q4. AWS Config란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**AWS Config**는 AWS 리소스의 설정 상태와 설정 변경 이력을 기록하고, 규정 준수(Compliance) 규칙에 따라 리소스를 평가하는 서비스다.
+
+</details>
+
+### Q5. AWS Config 시작 설정의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- AWS Config는 **리전 기반 서비스**이므로 필요한 리전마다 설정한다.
+- 계정·리전 간 결과 통합은 **Config Aggregator**.
+- AWS 서비스 자체에 허용된 리소스 범위·전역 리소스 홈 리전 제한에 주의한다. 글로벌 IAM User/Group/Role/Policy는 일부 리전에서만 기록 가능하다.
+- **비용:** 기록된 Configuration Item·Rule 평가 등에 따라 과금. 리소스를 많이 기록하면 비용이 증가한다. 강의의 과거 고정 가격을 암기하지 말고 현재 리전별 요금표를 확인한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -199,9 +230,3 @@ AWS Config records resource configurations and evaluates compliance with managed
 | SSM Automation | 시스템즈 매니저 자동화 | Systems Manager オートメーション |
 | Runbook | 자동화 절차 문서 | ランブック |
 | Aggregator | 집계기 | アグリゲーター |
-
-## 📚 Official References
-
-- [AWS Config resource recording](https://docs.aws.amazon.com/config/latest/developerguide/select-resources.html)
-- [AWS Config restricted-ssh](https://docs.aws.amazon.com/config/latest/developerguide/restricted-ssh.html)
-- [AWS Config Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)

@@ -1,5 +1,9 @@
 # 📘 07-02. Amazon Aurora
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Amazon Aurora` · `Compatible` · `Shared Storage` · `Writer Instance` · `Reader Instance`
+
 ## 🇰🇷 1. 개요
 
 **Amazon Aurora**는 AWS가 자체 개발한 클라우드 네이티브 관계형 데이터베이스이다.
@@ -672,6 +676,9 @@ Aurora Global Database
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Aurora
 → AWS proprietary relational DB
@@ -744,25 +751,53 @@ Aurora Machine Learning
 
 ## 📝 Review Questions
 
-1. Aurora와 일반 RDS MySQL의 가장 중요한 구조적 차이는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-2. Aurora Storage가 3개의 AZ에 6개의 Copy를 저장하는 이유는 무엇인가?
+### Q1. Aurora와 일반 RDS MySQL의 가장 중요한 구조적 차이는 무엇인가?
 
-3. Aurora의 Write에는 6개 Copy 중 몇 개가 필요하고 Read에는 몇 개가 필요한가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-4. Writer Endpoint와 Reader Endpoint의 역할 차이는 무엇인가?
+Aurora는 Compute와 분산 Shared Storage를 분리하고 여러 DB Instance가 같은 Cluster Storage를 사용한다.
 
-5. Reader Endpoint의 Load Balancing은 SQL Statement Level인가, Connection Level인가?
+</details>
 
-6. Replica Auto Scaling과 Aurora Serverless의 차이는 무엇인가?
+### Q2. Aurora Storage가 3개의 AZ에 6개의 Copy를 저장하는 이유는 무엇인가?
 
-7. 특정 고성능 Aurora Reader들만 Analytics workload에 사용하려면 어떤 기능을 사용할 수 있는가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-8. 전 세계 사용자에게 낮은 Read Latency를 제공하고 Region 장애에 대비하려면 어떤 Aurora 기능이 적합한가?
+데이터 내구성과 고가용성을 높이고 일부 Storage Node나 AZ 장애에도 읽기·쓰기를 계속하기 위해서다.
 
-9. Aurora Global Database의 Cross-Region replication 지연시간이 1초 미만이라는 표현이 나오면 어떤 기능을 떠올려야 하는가?
+</details>
 
-10. SQL을 통해 SageMaker 또는 Comprehend의 예측 결과를 사용하려면 어떤 기능을 사용할 수 있는가?
+### Q3. Aurora의 Write에는 6개 Copy 중 몇 개가 필요하고 Read에는 몇 개가 필요한가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+강의의 시험 포인트 기준으로 Write에는 4개, Read에는 3개의 Copy가 필요하다.
+
+</details>
+
+### Q4. Writer Endpoint와 Reader Endpoint의 역할 차이는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Writer Endpoint는 현재 Writer Instance로 연결한다. Reader Endpoint는 여러 Aurora Replica에 읽기 Connection을 분산한다.
+
+</details>
+
+### Q5. Reader Endpoint의 Load Balancing은 SQL Statement Level인가, Connection Level인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Connection Level이다. 개별 SQL 문장이 아니라 새 Database Connection을 Reader들에 분산한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

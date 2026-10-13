@@ -1,5 +1,9 @@
 # 📘 17-07. Amazon Cognito
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `User Pool` · `Identity Pool` · `Authentication` · `Credentials` · `Federation`
+
 ## 🇰🇷 1. Amazon Cognito
 
 Amazon Cognito는 **웹 및 모바일 애플리케이션 사용자의 인증과 AWS 리소스 접근을 지원하는 서비스**이다.
@@ -183,6 +187,9 @@ DynamoDB
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 가장 중요:
 
 ```text
@@ -233,30 +240,51 @@ Temporary AWS Credentials
 
 ## 📝 Review Questions
 
-### Q1. 모바일 앱의 회원가입과 로그인을 구현하려면?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 Cognito User Pool
 
 </details>
 
-### Q2. 로그인한 모바일 사용자가 S3에 직접 접근할 수 있도록 임시 AWS Credentials를 제공하려면?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 Cognito Identity Pool
 
 </details>
 
-### Q3. User Pool과 Identity Pool의 핵심 차이는?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 User Pool은 사용자 회원가입과 인증을 담당하고, Identity Pool은 사용자에게 AWS 리소스 접근에 사용할 Temporary AWS Credentials를 제공한다.
+
+</details>
+
+### Q4. Amazon Cognito의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Amazon Cognito는 **웹 및 모바일 애플리케이션 사용자의 인증과 AWS 리소스 접근을 지원하는 서비스**이다.
+
+</details>
+
+### Q5. Cognito User Pool의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+User Pool은 웹/모바일 애플리케이션의 **사용자 회원가입과 로그인**을 처리한다.
 
 </details>
 

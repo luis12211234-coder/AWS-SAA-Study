@@ -1,7 +1,7 @@
-# 🏗️ 09. Classic Solutions Architecture
+# 📚 09. Classic Solutions Architecture
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 09
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 09`
 
 ## 📌 Overview
 

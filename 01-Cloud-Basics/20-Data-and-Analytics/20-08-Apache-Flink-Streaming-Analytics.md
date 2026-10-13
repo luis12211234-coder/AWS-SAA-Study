@@ -1,7 +1,8 @@
-# 🌊 20-08. Apache Flink Streaming Analytics
+# 📘 20-08. Apache Flink Streaming Analytics
 
-> Kinesis Data Analytics 개요 + 콘솔 실습
-> **Keyword: Real-time Analytics / Window / Checkpoint / Flink**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Streaming` · `Window` · `Checkpoint` · `Snapshot` · `Stateful Processing`
 
 ## 🇰🇷 1. Current Service Names
 
@@ -66,11 +67,69 @@ Flink Code → Build JAR → Upload to S3 → Managed Service for Apache Flink
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - **Stateful Real-time Analytics / Streaming Window → Managed Service for Apache Flink**.
 - **Kinesis Streams or MSK → Flink Input**.
 - **Fault Recovery → Checkpoint**.
 - **Flink development/prototyping → Studio Notebook**.
 - **Kinesis Data Analytics SQL Legacy → 지원 종료된 과거 서비스**.
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Current Service Names의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+강의는 Kinesis Data Analytics를 SQL용과 Apache Flink용으로 구분하지만, **2026-10 기준 현행 서비스는 다음과 같다.**
+
+</details>
+
+### Q2. Streaming Analytics의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- 이벤트가 계속 들어오면 Flink가 지속적으로 처리한다.
+- 시간 창(**Window**) 단위 집계, 상태 기반 연산, JOIN, 이벤트 시간 처리 등에 적합하다.
+- 예: '최근 1분 동안 발생한 결제 실패 횟수'.
+
+</details>
+
+### Q3. Input / Output & Firehose의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- 대표 Flink 스트리밍 입력: **Kinesis Data Streams, Amazon MSK(Apache Kafka)**.
+- 결과는 지원 커넥터·설정에 맞는 서비스로 전송한다.
+- **Amazon Data Firehose는 일반적으로 데이터를 버퍼링하고 대상에 전달하는 서비스**. Flink의 대표적인 직접 입력 소스로 암기하지 않는다.
+- 과거 SQL Applications에서는 Firehose 입력을 지원했지만 서비스가 종료되었다.
+
+</details>
+
+### Q4. Checkpoint vs Snapshot의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Flink는 데이터 처리 위치뿐 아니라 진행 중인 집계 상태 등을 보존할 수 있다. 관리형 서비스가 자동 확장과 컴퓨팅 자원 관리 부담을 줄여준다.
+
+</details>
+
+### Q5. Console Lab: Streaming Application vs Studio Notebook의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+이때 **S3의 JAR는 입력 데이터가 아니라 실행 프로그램 아티팩트**다. 입력 데이터는 Kinesis/MSK에서 별도로 읽는다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -89,7 +148,3 @@ The legacy Kinesis Data Analytics SQL application service has been discontinued.
 | Checkpoint | 처리 상태 저장점 | チェックポイント |
 | Snapshot | 특정 시점 상태 백업 | スナップショット |
 | Stateful Processing | 상태 기반 처리 | ステートフル処理 |
-
-## 📚 Official References
-
-- [SQL Applications end of support](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/discontinuation.html)

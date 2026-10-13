@@ -1,5 +1,9 @@
 # 📘 04-01. Amazon EC2 Overview
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `EC2` · `Instance` · `Infrastructure as a Service` · `Virtual Machine` · `CPU`
+
 ## 🇰🇷 1. Overview
 
 Amazon EC2(Elastic Compute Cloud)는 AWS에서 가상 서버를 임대하여 사용할 수 있는 서비스이다.
@@ -133,6 +137,9 @@ EC2 Instance 생성
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 강의에서 소개된 예시
 
 | Instance | vCPU | Memory | Storage | Network |
@@ -179,14 +186,53 @@ User Data를 사용하면 서버 생성 후 직접 접속해서 소프트웨어�
 
 ## 📝 Review Questions
 
-1. EC2는 무엇의 약자인가?
-2. EC2는 어떤 Cloud Service Model에 해당하는가?
-3. EC2 Instance를 생성할 때 선택할 수 있는 주요 설정은 무엇인가?
-4. EBS와 EC2 Instance Store의 차이는 무엇인가?
-5. Security Group의 역할은 무엇인가?
-6. EC2 User Data란 무엇인가?
-7. Bootstrapping이란 무엇인가?
-8. EC2 User Data Script는 언제 실행되는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. EC2는 무엇의 약자인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Elastic Compute Cloud의 약자다.
+
+</details>
+
+### Q2. EC2는 어떤 Cloud Service Model에 해당하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+사용자가 OS와 애플리케이션을 관리하는 Infrastructure as a Service(IaaS)에 해당한다.
+
+</details>
+
+### Q3. EC2 Instance를 생성할 때 선택할 수 있는 주요 설정은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AMI, Instance Type, Key Pair, Network와 Subnet, Security Group, Storage, User Data 등을 선택할 수 있다.
+
+</details>
+
+### Q4. EBS와 EC2 Instance Store의 차이는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+EBS는 인스턴스와 분리된 영구 Network Block Storage다. Instance Store는 물리 호스트에 연결된 임시 Storage로 인스턴스 중지·종료나 호스트 장애 시 데이터가 사라질 수 있다.
+
+</details>
+
+### Q5. Security Group의 역할은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+EC2 인스턴스의 Inbound와 Outbound 트래픽을 제어하는 Stateful 가상 방화벽이다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

@@ -1,5 +1,9 @@
 # 📘 13-07. AWS Global Accelerator
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Global Accelerator` · `Anycast` · `Unicast` · `Static IP` · `Listener`
+
 ## 🇰🇷 1. Global Accelerator란?
 
 AWS Global Accelerator는 AWS Global Network를 이용하여 전 세계 사용자의 Traffic을 Application Endpoint로 빠르고 안정적으로 전달하는 서비스입니다.
@@ -279,6 +283,9 @@ Multi-Region Failover
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Global Accelerator
 = Network Acceleration
@@ -312,45 +319,51 @@ Cache
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. Global Accelerator가 사용하는 IP 방식은?
+
 <details>
-<summary>Q1. Global Accelerator가 사용하는 IP 방식은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Static Anycast IP입니다.
 
 </details>
 
+### Q2. Q2. 두 개의 Static Anycast IP가 각각 다른 Region을 의미하는가?
+
 <details>
-<summary>Q2. 두 개의 Static Anycast IP가 각각 다른 Region을 의미하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. 둘 다 동일한 Global Accelerator로 들어가는 고정된 글로벌 진입점입니다.
 
 </details>
 
+### Q3. Q3. Endpoint Group은 무엇을 기준으로 구성되는가?
+
 <details>
-<summary>Q3. Endpoint Group은 무엇을 기준으로 구성되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 AWS Region을 기준으로 구성됩니다.
 
 </details>
 
+### Q4. Q4. Endpoint로 사용할 수 있는 대표 Resource는?
+
 <details>
-<summary>Q4. Endpoint로 사용할 수 있는 대표 Resource는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 EC2, ALB, NLB, Elastic IP 등이 있습니다.
 
 </details>
 
+### Q5. Q5. Endpoint가 비정상이 되면?
+
 <details>
-<summary>Q5. Endpoint가 비정상이 되면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Health Check를 기반으로 정상 Endpoint로 Traffic을 Failover할 수 있습니다.
-
-</details>
-
-<details>
-<summary>Q6. Global Accelerator가 Multi-Region EC2와 Data를 자동 동기화하는가?</summary>
-
-아닙니다. Global Accelerator는 Network Routing과 Acceleration을 담당합니다.
 
 </details>
 

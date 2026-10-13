@@ -1,5 +1,9 @@
 # 📘 18-01. MyTodoList Mobile Application
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Authentication` · `Authorization` · `Temporary Credentials` · `Cache Hit` · `Cache Miss`
+
 ## 🇰🇷 1. Requirements
 
 모바일 Todo 애플리케이션을 AWS에 구축한다.
@@ -298,6 +302,9 @@ API Gateway Response Cache는 필요할 때 추가하는 선택적 계층이다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Serverless REST API: API Gateway + Lambda
 - Serverless NoSQL Database: DynamoDB
 - User Authentication: Cognito User Pool
@@ -320,10 +327,13 @@ API Gateway Response Cache는 필요할 때 추가하는 선택적 계층이다.
 
 ## 📝 Review Questions
 
-### Q1. User Pool과 Identity Pool의 차이는?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 User Pool은 사용자 인증과 토큰 발급을 담당한다.
 
@@ -331,10 +341,10 @@ Identity Pool은 사용자에게 IAM Role에 기반한 임시 AWS 자격 증명�
 
 </details>
 
-### Q2. DAX와 API Gateway Cache의 차이는?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 DAX는 DynamoDB 읽기 결과를 캐싱한다.
 
@@ -342,12 +352,30 @@ API Gateway Cache는 API 응답을 캐싱하여 백엔드 호출 자체를 줄�
 
 </details>
 
-### Q3. 사용자가 자신의 S3 폴더에만 접근하도록 하려면?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 Cognito Identity Pool과 IAM 정책을 이용하여 사용자별 S3 Prefix 접근 권한을 제한한다.
+
+</details>
+
+### Q4. Requirements의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+모바일 Todo 애플리케이션을 AWS에 구축한다.
+
+</details>
+
+### Q5. Initial Serverless Architecture의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+클라이언트의 HTTP 요청을 수신하고 백엔드 서비스로 전달한다.
 
 </details>
 

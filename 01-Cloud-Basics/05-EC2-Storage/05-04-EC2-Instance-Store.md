@@ -1,5 +1,9 @@
 # 📘 05-04. EC2 Instance Store
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Instance Store` · `Local Storage` · `Ephemeral Storage` · `I/O Performance` · `Buffer`
+
 ## 🇰🇷 1. Overview
 
 **EC2 Instance Store**는 EC2가 실행되는 물리 서버에 직접 연결된 **Local Storage**이다.
@@ -123,6 +127,9 @@ Instance Store와의 상대적인 개념 구분이다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 High-performance local disk
 Very high I/O
@@ -143,21 +150,42 @@ Backup 또는 Replication이 필요하다.
 
 ## 📝 Review Questions
 
-#### Q1. EC2 Instance Store란?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. EC2 Instance Store란?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 EC2가 실행되는 Physical Host에 연결된
 고성능 Local Storage이다.
 
-#### Q2. Instance Store의 가장 큰 장점은?
+</details>
+
+### Q2. Instance Store의 가장 큰 장점은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 매우 높은 I/O 성능이다.
 
-#### Q3. 장기적인 데이터 저장에 적합한가?
+</details>
+
+### Q3. 장기적인 데이터 저장에 적합한가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 아니다. Ephemeral Storage이므로
 장기 데이터에는 EBS가 더 적합하다.
 
-#### Q4. 대표적인 사용 사례는?
+</details>
+
+### Q4. 대표적인 사용 사례는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Buffer
@@ -166,9 +194,16 @@ Scratch Data
 Temporary Content
 ```
 
-#### Q5. Instance Store에서 중요한 데이터를 사용한다면?
+</details>
+
+### Q5. Instance Store에서 중요한 데이터를 사용한다면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 데이터 손실에 대비해 Backup 또는 Replication을 구성해야 한다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

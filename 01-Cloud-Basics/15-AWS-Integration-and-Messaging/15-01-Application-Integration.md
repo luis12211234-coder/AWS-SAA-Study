@@ -1,5 +1,9 @@
 # 📘 15-01. Application Integration
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Application Communication` · `AWS Integration` · `Application Integration` · `Application Communication Application` · `Synchronous Service`
+
 ## 🇰🇷 1. Application Communication
 
 Application 간 통신에는 크게 두 가지 방식이 있습니다.
@@ -50,6 +54,9 @@ Kinesis
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Decouple Applications
 Traffic Spike
@@ -61,9 +68,54 @@ Asynchronous Processing
 
 ## 📝 Review Questions
 
-**Q. Decoupling이란?**
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-Service 사이의 직접적인 의존성을 줄여 각각 독립적으로 동작하고 Scaling할 수 있도록 하는 것입니다.
+### Q1. Application Communication의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Application 간 통신에는 크게 두 가지 방식이 있습니다.
+
+</details>
+
+### Q2. AWS Integration의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+SNS
+→ Pub/Sub
+
+</details>
+
+### Q3. 이 문서에서 반드시 기억해야 할 시험 포인트 3은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Application 간 통신에는 크게 두 가지 방식이 있습니다.
+
+</details>
+
+### Q4. 이 문서에서 반드시 기억해야 할 시험 포인트 4은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Application 간 통신에는 크게 두 가지 방식이 있습니다.
+
+</details>
+
+### Q5. 이 문서에서 반드시 기억해야 할 시험 포인트 5은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Application 간 통신에는 크게 두 가지 방식이 있습니다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -76,3 +128,13 @@ SQSはQueue、SNSはPub/Sub、KinesisはReal-Time Streamingに使用されます
 A messaging layer can decouple application components and allow them to scale independently.
 
 SQS provides queues, SNS provides pub/sub messaging, and Kinesis handles real-time streaming.
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| Application Communication | Application Communication | Application Communication |
+| AWS Integration | AWS Integration | AWS Integration |
+| Application Integration | Application Integration | Application Integration |
+| NOTE | NOTE | NOTE |
+| C03 Study Note | C03 Study Note | C03 Study Note |

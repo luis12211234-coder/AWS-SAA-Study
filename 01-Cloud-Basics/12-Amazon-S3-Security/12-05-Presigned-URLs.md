@@ -1,5 +1,9 @@
 # 📘 12-05. S3 Presigned URLs
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Presigned URL` · `Temporary Access` · `Expiration` · `Private Object` · `Download`
+
 ## 🇰🇷 1. Presigned URL이란?
 
 Presigned URL은 Private S3 Object에 제한된 시간 동안 접근할 수 있도록 서명된 URL을 생성하는 기능입니다.
@@ -102,6 +106,9 @@ Private S3 Bucket
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 문제에서 다음 표현이 나오면 Presigned URL을 생각합니다.
 
 ```text
@@ -137,24 +144,51 @@ Bucket Public
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. Private S3 Object를 Public으로 만들지 않고 외부 사용자에게 임시로 공유하려면?
+
 <details>
-<summary>Q1. Private S3 Object를 Public으로 만들지 않고 외부 사용자에게 임시로 공유하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Presigned URL을 사용합니다.
 
 </details>
 
+### Q2. Q2. Presigned URL에는 무엇이 존재하는가?
+
 <details>
-<summary>Q2. Presigned URL에는 무엇이 존재하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Expiration Time이 존재합니다.
 
 </details>
 
+### Q3. Q3. Presigned URL은 Download에만 사용할 수 있는가?
+
 <details>
-<summary>Q3. Presigned URL은 Download에만 사용할 수 있는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. PUT 등을 이용한 Temporary Upload에도 사용할 수 있습니다.
+
+</details>
+
+### Q4. Presigned URL이란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Presigned URL은 Private S3 Object에 제한된 시간 동안 접근할 수 있도록 서명된 URL을 생성하는 기능입니다.
+
+</details>
+
+### Q5. 권한은 URL 생성자의 권한을 기반으로 한다의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Presigned URL은 URL을 생성한 IAM Principal의 권한을 기반으로 생성됩니다.
 
 </details>
 

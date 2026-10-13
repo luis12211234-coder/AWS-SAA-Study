@@ -1,6 +1,8 @@
-# 🌊 20-07. AWS Lake Formation
+# 📘 20-07. AWS Lake Formation
 
-> **Keyword: Data Lake / Centralized Permissions / Fine-grained Access**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Data Lake` · `Governance` · `Fine-grained Access` · `Row-level Security` · `Column-level Security`
 
 ## 🇰🇷 1. Data Lake란?
 
@@ -71,12 +73,65 @@ Lake Formation Permissions
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - **Create and govern a data lake → Lake Formation**.
 - **Centralize data permissions across analytics tools → Lake Formation**.
 - **Row-/Column-level fine-grained access → Lake Formation**.
 - **Discover schema → Glue Crawler**.
 - **Store table metadata → Glue Data Catalog**.
 - **SQL over data lake → Athena**.
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Data Lake란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Data Lake는 여러 형태의 데이터를 분석 목적으로 모아두는 **중앙화된 저장소/아키텍처**이다. AWS에서는 주로 S3를 저장소로 사용한다.
+
+</details>
+
+### Q2. Glue vs Lake Formation의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Lake Formation이 모든 사용자 데이터를 직접 저장·변환한다는 뜻이 아니다. AWS Glue 및 S3와 연계한다.
+
+</details>
+
+### Q3. Centralized Fine-grained Permissions의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+예시: 회사의 주문 테이블에 다음 컬럼이 존재한다.
+
+</details>
+
+### Q4. Blueprint / Data Lake Setup의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Lake Formation의 데이터 수집 Blueprint는 데이터 수집·카탈로그·ETL 워크플로 구성을 단순화한다.
+
+</details>
+
+### Q5. 이 문서에서 반드시 기억해야 할 시험 포인트 5은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**Create and govern a data lake → Lake Formation**.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

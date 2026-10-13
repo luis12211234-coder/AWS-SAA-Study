@@ -1,4 +1,8 @@
-# 🆕 19-02. New Database Services
+# 📘 19-02. New Database Services
+
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Document` · `Graph Traversal` · `Ledger` · `Immutable` · `Time-Series`
 
 ## 🇰🇷 1. Amazon DocumentDB
 **MongoDB 호환 관리형 문서형 NoSQL DB.** JSON과 유사한 문서를 저장한다.
@@ -114,6 +118,9 @@ flowchart TD
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 | 키워드 | 서비스 |
 |---|---|
 | MongoDB | DocumentDB |
@@ -123,6 +130,56 @@ flowchart TD
 | Time-Series | Timestream |
 | Event Streaming | Kinesis Data Streams |
 | Event Transformation | Lambda |
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Amazon DocumentDB의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**MongoDB 호환 관리형 문서형 NoSQL DB.** JSON과 유사한 문서를 저장한다.
+
+</details>
+
+### Q2. Amazon Neptune의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**복잡한 연결 관계를 탐색하는 관리형 Graph DB.**
+
+</details>
+
+### Q3. Amazon Keyspaces의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**Apache Cassandra 호환 서버리스 NoSQL DB.**
+
+</details>
+
+### Q4. Amazon QLDB (Retired)의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**Quantum Ledger Database:** 암호화 방식으로 변경 이력을 검증할 수 있었던 중앙화 원장 DB.
+
+</details>
+
+### Q5. Amazon Timestream의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**시간 정보가 포함된 데이터를 저장하고 분석하는 시계열 DB.**
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

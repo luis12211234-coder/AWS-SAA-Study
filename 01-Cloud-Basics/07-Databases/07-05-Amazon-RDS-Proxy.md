@@ -1,8 +1,8 @@
 # 📘 07-05. Amazon RDS Proxy
 
-Amazon RDS Proxy는 RDS/Aurora 앞에 배치되는 **Fully Managed Database Proxy**이다.
-
-핵심 목적은 **Database Connection을 Pooling하고 공유하여 DB의 Connection 부담을 줄이는 것**이다.
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Database Proxy` · `Connection Pooling` · `Database Connection` · `Failover` · `Serverless`
 
 ## 🇰🇷 1. Connection Pooling
 
@@ -175,6 +175,9 @@ Lambda에 대한 자세한 내용은 이후 Lambda Section에서 학습한다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 RDS Proxy
 → Fully Managed Database Proxy
@@ -206,12 +209,53 @@ Lambda + RDS
 
 ## 📝 Review Questions
 
-1. Amazon RDS Proxy의 가장 중요한 목적은 무엇인가?
-2. Connection Pooling이 Database의 CPU/RAM 부담을 줄이는 이유는 무엇인가?
-3. RDS Proxy는 RDS/Aurora의 Failover에 어떤 도움을 주는가?
-4. RDS Proxy에서 IAM Authentication과 AWS Secrets Manager는 각각 어떤 역할을 하는가?
-5. RDS Proxy에 Internet에서 직접 접근할 수 있는가?
-6. 많은 Lambda 함수가 RDS에 연결하는 환경에서 RDS Proxy가 유용한 이유는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Amazon RDS Proxy의 가장 중요한 목적은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Database Connection을 Pooling하고 재사용하여 Connection 급증으로부터 RDS/Aurora를 보호하는 것이다.
+
+</details>
+
+### Q2. Connection Pooling이 Database의 CPU/RAM 부담을 줄이는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+애플리케이션마다 새 Connection을 계속 만드는 대신 제한된 기존 Connection을 공유해 연결 생성 비용과 동시 연결 수를 줄이기 때문이다.
+
+</details>
+
+### Q3. RDS Proxy는 RDS/Aurora의 Failover에 어떤 도움을 주는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Database Failover와 새 Instance 연결을 관리하여 애플리케이션의 장애 시간을 줄인다.
+
+</details>
+
+### Q4. RDS Proxy에서 IAM Authentication과 AWS Secrets Manager는 각각 어떤 역할을 하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+애플리케이션은 IAM Authentication으로 Proxy에 인증할 수 있고, Proxy는 Secrets Manager에 보관된 Database 자격 증명을 사용해 Database에 연결한다.
+
+</details>
+
+### Q5. RDS Proxy에 Internet에서 직접 접근할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+아니다. RDS Proxy는 VPC 내부에서 접근하는 서비스다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

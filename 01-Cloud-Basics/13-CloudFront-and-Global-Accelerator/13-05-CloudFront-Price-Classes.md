@@ -1,5 +1,9 @@
 # 📘 13-05. CloudFront Price Classes
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Price Class` · `Edge Location` · `Coverage` · `Cost` · `Latency`
+
 ## 🇰🇷 1. Price Class란?
 
 CloudFront Edge Location은 전 세계에 분산되어 있으며 지역에 따라 데이터 전송 비용이 다릅니다.
@@ -41,6 +45,9 @@ Global Coverage
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 다음과 같은 키워드가 나오면 Price Class를 생각합니다.
 
 ```text
@@ -71,24 +78,52 @@ Class All
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. CloudFront에서 사용할 Edge Location의 범위를 조절하는 기능은?
+
 <details>
-<summary>Q1. CloudFront에서 사용할 Edge Location의 범위를 조절하는 기능은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Price Class입니다.
 
 </details>
 
+### Q2. Q2. 가장 넓은 Edge Location 범위를 사용하는 것은?
+
 <details>
-<summary>Q2. 가장 넓은 Edge Location 범위를 사용하는 것은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Price Class All입니다.
 
 </details>
 
+### Q3. Q3. 가장 저렴한 Price Class가 항상 최선인가?
+
 <details>
-<summary>Q3. 가장 저렴한 Price Class가 항상 최선인가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. 비용뿐 아니라 사용자 위치, Latency, 필요한 Global Coverage도 함께 고려해야 합니다.
+
+</details>
+
+### Q4. Price Class란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+CloudFront Edge Location은 전 세계에 분산되어 있으며 지역에 따라 데이터 전송 비용이 다릅니다.
+
+</details>
+
+### Q5. Price Class 종류의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Price Class 200
+→ 더 넓은 Edge 범위
 
 </details>
 

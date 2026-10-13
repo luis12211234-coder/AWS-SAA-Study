@@ -1,5 +1,9 @@
 # 📘 11-03. S3 Event Notifications
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Event Notification` · `Event` · `Destination` · `Prefix` · `Suffix`
+
 ## 🇰🇷 1. S3 Event Notification이란?
 
 S3 Bucket에서 특정 Event가 발생했을 때 다른 AWS 서비스가 반응하도록 알림을 전달하는 S3 기능입니다.
@@ -261,6 +265,9 @@ Prefix = incoming/
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 실습에서는 다음 흐름을 확인했습니다.
 
 ```text
@@ -326,36 +333,49 @@ Lambda Loop 방지
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. S3 Event Notification의 대표적인 직접 Destination 3개는?
+
 <details>
-<summary>Q1. S3 Event Notification의 대표적인 직접 Destination 3개는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 SNS, SQS, Lambda입니다.
 
 </details>
 
+### Q2. Q2. 특정 확장자의 Object만 Event 대상으로 만들 때 사용할 수 있는 것은?
+
 <details>
-<summary>Q2. 특정 확장자의 Object만 Event 대상으로 만들 때 사용할 수 있는 것은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Suffix Filter를 사용할 수 있습니다.
 
 </details>
 
+### Q3. Q3. S3가 SQS로 Event를 보내려면 어떤 권한이 필요한가?
+
 <details>
-<summary>Q3. S3가 SQS로 Event를 보내려면 어떤 권한이 필요한가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 SQS Queue의 Resource Policy에서 S3의 메시지 전송을 허용해야 합니다.
 
 </details>
 
+### Q4. Q4. EventBridge가 Event Notification을 완전히 대체하는가?
+
 <details>
-<summary>Q4. EventBridge가 Event Notification을 완전히 대체하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. 단순한 S3 Event 처리는 Event Notification을 사용할 수 있고, 더 복잡한 Filtering 및 Routing에는 EventBridge가 유용합니다.
 
 </details>
 
+### Q5. Q5. S3 → Lambda → 같은 S3 구조에서 주의할 문제는?
+
 <details>
-<summary>Q5. S3 → Lambda → 같은 S3 구조에서 주의할 문제는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Lambda의 Output Object가 같은 Event Trigger를 다시 발생시켜 Recursive Loop가 생기지 않도록 해야 합니다.
 

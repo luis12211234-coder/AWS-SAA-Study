@@ -1,7 +1,7 @@
-# 📊 20. Data & Analytics
+# 📚 20. Data & Analytics
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 20
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 20`
 
 ## 📌 Overview
 

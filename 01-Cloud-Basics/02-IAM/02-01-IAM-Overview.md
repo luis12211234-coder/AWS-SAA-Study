@@ -1,5 +1,9 @@
 # 📘 02-01. IAM (Identity and Access Management)
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Identity` · `Access` · `Management` · `IAM` · `Root User`
+
 ## 🇰🇷 1. Overview
 
 IAM(Identity and Access Management)은 AWS에서 사용자(User), 그룹(Group), 권한(Permission)을 관리하는 서비스이다.
@@ -65,6 +69,9 @@ AWS는 최소 권한의 원칙(Principle of Least Privilege)을 따른다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - IAM은 Global Service이다.
 - Root User는 계정 생성 시 자동 생성된다.
 - Root User는 일상적인 작업에 사용하지 않고 MFA로 보호한다.
@@ -97,17 +104,53 @@ Developers 그룹에 EC2와 S3 권한을 부여하면,
 
 ## 📝 Review Questions
 
-1. IAM은 Global Service인가, Regional Service인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-2. Root User는 언제 사용해야 하는가?
+### Q1. IAM은 Global Service인가, Regional Service인가?
 
-3. IAM User와 IAM Group의 차이점은 무엇인가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-4. IAM Group에는 무엇을 포함할 수 있는가?
+IAM은 특정 Region에 종속되지 않는 Global Service이다.
 
-5. IAM Policy는 무엇이며 어떤 형식으로 작성되는가?
+</details>
 
-6. Principle of Least Privilege란 무엇인가?
+### Q2. Root User는 언제 사용해야 하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS 계정 설정이나 Root User 자격 증명이 반드시 필요한 제한적인 작업에만 사용한다. 일상적인 관리 작업에는 사용하지 않는다.
+
+</details>
+
+### Q3. IAM User와 IAM Group의 차이점은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+IAM User는 한 사람이나 애플리케이션을 나타내는 개별 자격 증명이고, IAM Group은 여러 IAM User의 권한을 묶어 관리하는 단위다.
+
+</details>
+
+### Q4. IAM Group에는 무엇을 포함할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+IAM User만 포함할 수 있다. Group 안에 다른 Group을 중첩할 수는 없다.
+
+</details>
+
+### Q5. IAM Policy는 무엇이며 어떤 형식으로 작성되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS에서 허용하거나 거부할 작업과 대상 리소스를 정의하는 권한 문서이며 JSON 형식으로 작성된다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

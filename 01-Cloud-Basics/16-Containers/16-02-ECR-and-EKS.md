@@ -1,5 +1,9 @@
 # 📘 16-02. Amazon ECR & Amazon EKS
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `ECR` · `Repository` · `EKS` · `Kubernetes` · `Cluster`
+
 ## 🇰🇷 1. Amazon ECR
 
 Amazon ECR(Elastic Container Registry)은 **Container Image를 저장하고 관리하는 AWS의 Container Registry 서비스**이다.
@@ -272,6 +276,9 @@ EKS + Fargate
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 #### Amazon ECR
 
 > **Container Image를 저장하고 관리하는 AWS Registry**
@@ -389,37 +396,40 @@ EC2 Node를 직접 관리하고 싶지 않다면 AWS Fargate를 사용할 수 �
 
 ## 📝 Review Questions
 
-#### Q1. AWS에서 Container Image를 저장하고 관리하는 서비스는?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **Amazon ECR**
 
 </details>
 
-#### Q2. AWS에서 Kubernetes Cluster를 운영하기 위한 Managed Service는?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **Amazon EKS**
 
 </details>
 
-#### Q3. Kubernetes에서 Container를 실행하는 기본 단위는?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **Pod**
 
 </details>
 
-#### Q4. Kubernetes에서 Pod가 실제로 실행되는 Compute Resource는?
+### Q4. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **Node**
 
@@ -427,30 +437,12 @@ EC2 기반 EKS에서는 EC2 Instance가 Node 역할을 할 수 있다.
 
 </details>
 
-#### Q5. EKS에서 EC2 Node를 직접 관리하지 않고 Pod를 실행하고 싶다면?
+### Q5. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **AWS Fargate**
-
-</details>
-
-#### Q6. 회사가 이미 Kubernetes를 사용하고 있으며 AWS로 이전하면서 Kubernetes 환경을 유지하려 한다. 적합한 서비스는?
-
-<details>
-<summary>정답 보기</summary>
-
-**Amazon EKS**
-
-</details>
-
-#### Q7. Kubernetes에서 AWS Storage를 연결하기 위해 사용하는 표준 Interface는?
-
-<details>
-<summary>정답 보기</summary>
-
-**CSI (Container Storage Interface)**
 
 </details>
 

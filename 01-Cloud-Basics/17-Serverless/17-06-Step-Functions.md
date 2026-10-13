@@ -1,5 +1,9 @@
 # 📘 17-06. AWS Step Functions
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Workflow` · `Orchestration` · `Sequence` · `Parallel` · `Condition`
+
 ## 🇰🇷 1. Step Functions
 
 AWS Step Functions는 여러 작업으로 구성된 **Workflow를 관리하고 Orchestration하는 서비스**이다.
@@ -80,6 +84,9 @@ Continue       Stop
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Step Functions
 = Workflow
@@ -118,21 +125,51 @@ Complete
 
 ## 📝 Review Questions
 
-### Q1. 여러 Lambda의 실행 순서와 실패 처리를 관리하려면?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 AWS Step Functions
 
 </details>
 
-### Q2. Step Functions가 직접 모든 비즈니스 로직을 처리하는 서비스인가?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다. 각 작업은 Lambda 등의 서비스가 수행할 수 있으며 Step Functions의 핵심 역할은 전체 Workflow를 관리하고 Orchestration하는 것이다.
+
+</details>
+
+### Q3. Step Functions의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS Step Functions는 여러 작업으로 구성된 **Workflow를 관리하고 Orchestration하는 서비스**이다.
+
+</details>
+
+### Q4. Workflow Control의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Step Functions에서 구성할 수 있는 대표적인 흐름:
+
+</details>
+
+### Q5. AWS Service Integration의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Lambda뿐 아니라 다양한 AWS 서비스와 Workflow를 구성할 수 있다.
 
 </details>
 

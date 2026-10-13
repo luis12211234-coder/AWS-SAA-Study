@@ -1,5 +1,9 @@
 # 📘 14-03. AWS Storage Gateway
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Hybrid Cloud` · `AWS Storage Gateway` · `Storage Gateway 종류` · `S3 File Gateway` · `FSx File Gateway`
+
 ## 🇰🇷 1. Hybrid Cloud
 
 Hybrid Cloud는 일부 Infrastructure는 On-Premises에 유지하면서 일부는 AWS Cloud를 사용하는 Architecture입니다.
@@ -304,6 +308,9 @@ Hardware Appliance는 새로운 Gateway 종류가 아니라 **Storage Gateway를
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Storage Gateway
 = On-Premises ↔ AWS Storage Bridge
@@ -330,22 +337,31 @@ Hardware Appliance
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. On-Premises에서 NFS/SMB를 사용하여 S3에 접근하려면?
+
 <details>
-<summary>Q1. On-Premises에서 NFS/SMB를 사용하여 S3에 접근하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 File Gateway를 사용합니다.
 
 </details>
 
+### Q2. Q2. FSx for Windows의 파일을 On-Premises에 Cache하려면?
+
 <details>
-<summary>Q2. FSx for Windows의 파일을 On-Premises에 Cache하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 FSx File Gateway를 사용합니다.
 
 </details>
 
+### Q3. Q3. Cached Volume과 Stored Volume의 차이는?
+
 <details>
-<summary>Q3. Cached Volume과 Stored Volume의 차이는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Cached Volume은 주요 데이터를 AWS에 저장하고 자주 사용하는 데이터만 On-Premises에 Cache합니다.
 
@@ -353,10 +369,21 @@ Stored Volume은 전체 데이터를 On-Premises에 저장하고 AWS를 Backup �
 
 </details>
 
+### Q4. Q4. 기존 Tape Backup Process를 AWS로 Migration하려면?
+
 <details>
-<summary>Q4. 기존 Tape Backup Process를 AWS로 Migration하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Tape Gateway를 사용합니다.
+
+</details>
+
+### Q5. Hybrid Cloud의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Hybrid Cloud는 일부 Infrastructure는 On-Premises에 유지하면서 일부는 AWS Cloud를 사용하는 Architecture입니다.
 
 </details>
 
@@ -391,3 +418,13 @@ The four major gateway types are:
 Cached Volumes store primary data in AWS while keeping frequently accessed data locally.
 
 Stored Volumes keep the full dataset on-premises and use AWS for off-site backup.
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| Hybrid Cloud | Hybrid Cloud | Hybrid Cloud |
+| AWS Storage Gateway | AWS Storage Gateway | AWS Storage Gateway |
+| Storage Gateway 종류 | Storage Gateway 종류 | Storage Gateway 종류 |
+| S3 File Gateway | S3 File Gateway | S3 File Gateway |
+| FSx File Gateway | FSx File Gateway | FSx File Gateway |

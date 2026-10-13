@@ -1,6 +1,8 @@
-# 📨 20-09. Amazon MSK
+# 📘 20-09. Amazon MSK
 
-> **Keyword: Managed Apache Kafka / Broker / Topic / Partition**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Broker` · `Topic` · `Partition` · `Producer` · `Consumer`
 
 ## 🇰🇷 1. Overview
 
@@ -69,11 +71,70 @@ Amazon MSK (Kafka Topic)
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - **Existing Kafka workloads on AWS → Amazon MSK**.
 - **Serverless Kafka Capacity → MSK Serverless**.
 - **Kafka Topic Partition ≈ Kinesis Shard**(유사하나 완전 동일하진 않다).
 - **Kafka Broker = 데이터 저장 및 요청 처리 서버**.
 - **Streaming real-time analysis of MSK events → Managed Service for Apache Flink**.
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Overview의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Amazon MSK(Managed Streaming for Apache Kafka)는 **Apache Kafka를 AWS에서 관리형으로 실행**하는 스트리밍 서비스다.
+
+</details>
+
+### Q2. Kafka 기본 구성의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- Partition 안의 메시지 순서는 보장되지만 **Topic 전체에 걸친 전역 순서는 보장되지 않는다**.
+- Topic은 Kafka의 보존 정책에 따라 데이터를 유지한다. Consumer가 읽었다고 즉시 삭제되는 구조가 아니다.
+- Replication Factor=3이면 특정 Partition에 세 복제본을 둘 수 있다. **모든 Broker에 모든 Topic 데이터가 복제되는 것은 아니다.**
+
+</details>
+
+### Q3. Kinesis Data Streams vs Amazon MSK의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**강의 시점과 달라진 부분:** Kinesis의 레코드 크기는 기본 1MiB이고, 지원되는 대형 레코드 설정으로 최대 10MiB까지 가능하다. 암호화·크기·파티션 기능은 각 서비스의 구성 제약에 따라 다르므로 숫자만 고정 암기하지 않는다.
+
+</details>
+
+### Q4. MSK Provisioned / Serverless & Storage의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+- Provisioned: Broker 타입/용량 등을 선택한다.
+- Serverless: 용량 프로비저닝과 규모 조절을 AWS가 관리한다.
+- 기존 Standard Broker는 EBS를 활용하고, 최신 Broker 유형은 스토리지 관리 모델이 다를 수 있다.
+- 과거 Kafka는 ZooKeeper를 사용했으나, 현재 Kafka/MSK는 **KRaft** 기반 구성도 지원한다.
+- 데이터 보관은 Topic 정책과 스토리지 용량·비용의 제약을 받는다.
+
+</details>
+
+### Q5. Consumers / Architecture의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**Existing Kafka workloads on AWS → Amazon MSK**.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

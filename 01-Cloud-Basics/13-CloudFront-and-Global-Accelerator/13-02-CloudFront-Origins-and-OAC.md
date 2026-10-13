@@ -1,5 +1,9 @@
 # 📘 13-02. CloudFront Origins & OAC
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Origin Access Control` · `Origin Access Identity` · `Private Bucket` · `Bucket Policy` · `Distribution`
+
 ## 🇰🇷 1. S3를 CloudFront Origin으로 사용
 
 S3 Bucket을 CloudFront의 Origin으로 사용할 수 있습니다.
@@ -125,6 +129,9 @@ https://distribution-domain/
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Private S3
 +
@@ -152,24 +159,51 @@ OAC
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. Private S3 Bucket을 CloudFront Origin으로 안전하게 사용하기 위한 권장 기능은?
+
 <details>
-<summary>Q1. Private S3 Bucket을 CloudFront Origin으로 안전하게 사용하기 위한 권장 기능은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Origin Access Control(OAC)입니다.
 
 </details>
 
+### Q2. Q2. OAC를 사용하면 S3 Bucket을 Public으로 만들어야 하는가?
+
 <details>
-<summary>Q2. OAC를 사용하면 S3 Bucket을 Public으로 만들어야 하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. S3 Bucket을 Private으로 유지할 수 있습니다.
 
 </details>
 
+### Q3. Q3. OAC와 함께 S3에서 확인해야 할 중요한 설정은?
+
 <details>
-<summary>Q3. OAC와 함께 S3에서 확인해야 할 중요한 설정은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 CloudFront Distribution의 접근을 허용하는 S3 Bucket Policy입니다.
+
+</details>
+
+### Q4. S3를 CloudFront Origin으로 사용의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+S3 Bucket을 CloudFront의 Origin으로 사용할 수 있습니다.
+
+</details>
+
+### Q5. Private S3 + CloudFront의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+사용자는 S3에 직접 접근하지 않고 CloudFront를 통해 콘텐츠를 받습니다.
 
 </details>
 

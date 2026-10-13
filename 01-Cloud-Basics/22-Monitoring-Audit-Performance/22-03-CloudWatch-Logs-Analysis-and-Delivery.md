@@ -1,6 +1,8 @@
-# 🔎 22-03. CloudWatch Logs Insights, Filters, Live Tail & Delivery
+# 📘 22-03. CloudWatch Logs Insights, Filters, Live Tail & Delivery
 
-> AWS SAA-C03 · 검색 키워드: **Logs Insights, query, filter pattern, Metric Filter, Subscription Filter, Live Tail, CreateExportTask, S3 Export, Cross-Account Log Aggregation**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Query` · `Logs Insights` · `Filter Pattern` · `Metric Filter` · `Subscription Filter`
 
 ## 🇰🇷 1. 로그를 가지고 할 수 있는 네 가지 일
 
@@ -147,6 +149,9 @@ DemoLogGroup → DemoLogStream → hello world 이벤트 수집
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 | 키워드 | 정답 |
 |---|---|
 | `count ERROR logs`, Alarm | Metric Filter + CloudWatch Alarm |
@@ -158,60 +163,63 @@ DemoLogGroup → DemoLogStream → hello world 이벤트 수집
 
 ## 📝 Review Questions
 
-> 해당 문서의 개념을 확인하는 SAA 스타일 복습 문제. 정답은 질문 아래 **정답 및 해설**에서 확인한다.
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-### Q08. CloudWatch Logs에 저장된 지난 60일 로그에서 ERROR를 검색하고 시간별 발생 건수를 집계하려면?
+### Q1. CloudWatch Logs에 저장된 지난 60일 로그에서 ERROR를 검색하고 시간별 발생 건수를 집계하려면?
 
-- A. CloudWatch Logs Insights
-- B. CloudWatch Logs Live Tail
-- C. EC2 Detailed Monitoring
-- D. EventBridge Scheduler
+<details>
+<summary>정답 및 해설 보기</summary>
 
-### Q09. 새 ERROR 로그마다 값 1을 기록해 CloudWatch Alarm을 만들려 한다. 핵심 기능은?
+**정답:** CloudWatch Logs Insights
 
-- A. Subscription Filter
-- B. Metric Filter
-- C. S3 Export Task
-- D. Schema Registry
+Logs Insights는 저장된 로그에 쿼리를 실행하며 필터, 통계, 정렬을 제공한다. Live Tail은 새 로그 관찰용이다.
 
-### Q10. Metric Filter를 만들었지만 지난주에 저장된 ERROR 로그에 대한 지표가 즉시 보이지 않는다. 가장 타당한 이유는?
+</details>
 
-- A. Metric Filter는 새로 수집되는 로그부터 적용
-- B. IAM Role은 절대 필요하지 않음
-- C. CloudTrail이 비활성화됨
-- D. EventBridge 버스가 없음
+### Q2. 새 ERROR 로그마다 값 1을 기록해 CloudWatch Alarm을 만들려 한다. 핵심 기능은?
 
-### Q11. CloudWatch Logs에 새로 들어오는 ERROR 로그 내용을 Lambda로 지속적으로 전달하고자 한다. 사용하는 기능은?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-- A. Metric Filter
-- B. Event History
-- C. Subscription Filter
-- D. S3 Export Task
+**정답:** Metric Filter
 
-### Q12. 지난달 CloudWatch Logs를 S3로 일괄 내보낼 때 사용하는 API는?
+Metric Filter는 일치한 로그 이벤트를 숫자 지표로 변환한다. 결과 지표의 Sum을 기준으로 Alarm을 설정할 수 있다.
 
-- A. PutMetricData
-- B. SetAlarmState
-- C. AssumeRole
-- D. CreateExportTask
+</details>
 
-### Q13. 개발자가 서비스 실행 중 새 로그를 콘솔 화면에서 즉시 관찰하려고 한다. 기능은?
+### Q3. Metric Filter를 만들었지만 지난주에 저장된 ERROR 로그에 대한 지표가 즉시 보이지 않는다. 가장 타당한 이유는?
 
-- A. Live Tail
-- B. S3 Export
-- C. Config Rule
-- D. CloudTrail Insights
+<details>
+<summary>정답 및 해설 보기</summary>
 
-### ✅ 정답 및 해설
+**정답:** Metric Filter는 새로 수집되는 로그부터 적용
 
-| 문제 | 정답 | 풀이 핵심 |
-|---|---|---|
-| Q08 | **A** | Logs Insights는 저장된 로그에 쿼리를 실행하며 필터, 통계, 정렬을 제공한다. Live Tail은 새 로그 관찰용이다. |
-| Q09 | **B** | Metric Filter는 일치한 로그 이벤트를 숫자 지표로 변환한다. 결과 지표의 Sum을 기준으로 Alarm을 설정할 수 있다. |
-| Q10 | **A** | Metric Filter는 기존 로그를 소급 집계하지 않는다. 필터 생성 이후 로그가 들어오면 지표가 만들어진다. |
-| Q11 | **C** | Subscription Filter는 로그 이벤트 자체를 Lambda/Kinesis/Firehose로 전달한다. Metric Filter는 숫자로 변환한다. |
-| Q12 | **D** | CreateExportTask는 지정 시간 범위의 과거 로그를 S3로 배치 내보내기 한다. 준실시간 전달에는 구독 필터가 적합하다. |
-| Q13 | **A** | Live Tail은 수집되는 새 로그를 거의 실시간으로 화면에 표시한다. 필요 없으면 세션을 종료해 사용 시간을 관리한다. |
+Metric Filter는 기존 로그를 소급 집계하지 않는다. 필터 생성 이후 로그가 들어오면 지표가 만들어진다.
+
+</details>
+
+### Q4. CloudWatch Logs에 새로 들어오는 ERROR 로그 내용을 Lambda로 지속적으로 전달하고자 한다. 사용하는 기능은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** Subscription Filter
+
+Subscription Filter는 로그 이벤트 자체를 Lambda/Kinesis/Firehose로 전달한다. Metric Filter는 숫자로 변환한다.
+
+</details>
+
+### Q5. 지난달 CloudWatch Logs를 S3로 일괄 내보낼 때 사용하는 API는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** CreateExportTask
+
+CreateExportTask는 지정 시간 범위의 과거 로그를 S3로 배치 내보내기 한다. 준실시간 전달에는 구독 필터가 적합하다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -242,10 +250,3 @@ Use Logs Insights to query stored log data. A metric filter converts matching ne
 | Near Real-Time | 준실시간 | ほぼリアルタイム |
 | Subscription Destination | 구독 목적지 | サブスクリプション宛先 |
 | Cross-Account Aggregation | 계정 간 통합 | クロスアカウント集約 |
-
-## 📚 Official References
-
-- [CloudWatch Logs subscription filters](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html)
-- [CloudWatch Logs quotas](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html)
-- [CloudWatch Logs filter patterns](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html)
-- [CloudWatch pricing, Live Tail](https://aws.amazon.com/cloudwatch/pricing/)

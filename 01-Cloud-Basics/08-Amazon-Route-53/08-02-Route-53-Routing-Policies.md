@@ -1,5 +1,9 @@
 # 📘 08-02. Route 53 Routing Policies
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Routing Policy` · `Weighted Routing` · `Latency` · `Failover` · `Primary`
+
 ## 🇰🇷 1. Routing Policy란?
 
 Route 53의 Routing Policy는 DNS Query에 대해 **어떤 Resource의 주소를 응답할지 결정하는 규칙**이다.
@@ -324,12 +328,26 @@ IP-based     = Client CIDR
 Multi-Value  = 여러 Healthy Resource
 ```
 
+## 🎯 Exam Notes
+
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
+- 하나의 Record에 하나 이상의 값을 지정할 수 있다.
+- 여러 값이 있으면 Route 53은 여러 값을 반환할 수 있다.
+- Health Check를 연결할 수 없다.
+- 특별한 라우팅 조건이 필요하지 않을 때 사용한다.
+- Weight의 합이 반드시 100일 필요는 없다.
+
 ## 📝 Review Questions
 
-#### 1. 사용자의 네트워크 지연시간을 기준으로 Resource를 선택하려면 어떤 정책을 사용하는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: Latency-based Routing**
 
@@ -337,10 +355,10 @@ Multi-Value  = 여러 Healthy Resource
 
 </details>
 
-#### 2. Primary가 장애 상태일 때 Secondary로 자동 전환하려면?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: Failover Routing**
 
@@ -348,10 +366,10 @@ Primary Record에 Health Check를 연결하여 장애를 감지하고 Secondary 
 
 </details>
 
-#### 3. 특정 국가의 사용자에게 특정 Resource를 제공하려면?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: Geolocation Routing**
 
@@ -359,10 +377,10 @@ Primary Record에 Health Check를 연결하여 장애를 감지하고 Secondary 
 
 </details>
 
-#### 4. Bias라는 키워드가 등장하면 어떤 Routing Policy를 떠올려야 하는가?
+### Q4. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: Geoproximity Routing**
 
@@ -370,36 +388,14 @@ Bias를 사용하여 특정 Resource가 담당하는 지리적 영향 영역을 
 
 </details>
 
-#### 5. 특정 ISP의 Client IP 범위를 이미 알고 있으며 해당 사용자들을 특정 Endpoint로 보내고 싶다면?
+### Q5. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: IP-based Routing**
 
 Client IP가 어느 CIDR 범위에 포함되는지 확인하여 지정된 Endpoint의 DNS 값을 반환한다.
-
-</details>
-
-#### 6. 여러 정상 Resource를 한 DNS Query에서 반환하고 싶다면?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: Multi-Value Answer Routing**
-
-Health Check와 결합하여 정상 Resource만 반환할 수 있으며, 한 Query에서 최대 8개의 Healthy Record를 반환할 수 있다.
-
-</details>
-
-#### 7. Multi-Value Answer Routing은 ELB를 대체할 수 있는가?
-
-<details>
-<summary>정답 보기</summary>
-
-**정답: 아니다.**
-
-Multi-Value는 DNS 응답으로 여러 Resource 주소를 제공하는 방식이다. ELB처럼 실제 Client Request를 받아 Backend로 분배하는 Load Balancer가 아니다.
 
 </details>
 

@@ -1,5 +1,9 @@
 # 📘 06-02. Application Load Balancer (ALB)
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Load Balancer` · `Listener` · `Target` · `Target Group` · `Health Check`
+
 ## 🇰🇷 1. Overview
 
 **Load Balancer**는 들어오는 Traffic을 여러 Backend Server에 분산한다.
@@ -231,6 +235,9 @@ X-Forwarded-Proto
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 ALB
 → Layer 7
@@ -280,27 +287,53 @@ X-Forwarded-For
 
 ## 📝 Review Questions
 
-#### Q1. ALB는 OSI 몇 계층에서 동작하는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. ALB는 OSI 몇 계층에서 동작하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Layer 7
 ```
 
-#### Q2. Listener란?
+</details>
+
+### Q2. Listener란?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ALB가 요청을 받을
 Protocol과 Port를 정의하는 설정이다.
 
-#### Q3. Target Group이란?
+</details>
+
+### Q3. Target Group이란?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ALB가 Traffic을 전달할
 Backend Target들의 그룹이다.
 
-#### Q4. Target이 Unhealthy하면?
+</details>
+
+### Q4. Target이 Unhealthy하면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ALB가 해당 Target으로 Traffic을 전달하지 않는다.
 
-#### Q5. ALB가 Routing에 사용할 수 있는 정보는?
+</details>
+
+### Q5. ALB가 Routing에 사용할 수 있는 정보는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Path
@@ -309,18 +342,7 @@ Query String
 HTTP Header
 ```
 
-#### Q6. EC2를 ALB를 통해서만 접근하게 하려면?
-
-```text
-EC2 Security Group
-Source = ALB Security Group
-```
-
-#### Q7. 실제 Client IP를 확인할 때 사용하는 Header는?
-
-```text
-X-Forwarded-For
-```
+</details>
 
 ## 🇯🇵 日本語 Summary
 

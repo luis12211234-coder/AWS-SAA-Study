@@ -1,5 +1,9 @@
 # 📘 08-04. Domain Registrar vs DNS Service
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Domain Name` · `Domain Registrar` · `DNS Service` · `Hosted Zone` · `Public Hosted Zone`
+
 ## 🇰🇷 1. Domain Registrar와 DNS Service
 
 Domain Registrar와 DNS Service는 서로 다른 역할을 한다.
@@ -141,12 +145,26 @@ Route 53 Name Servers로 변경
 
 > **Registrar는 도메인 등록, Route 53은 DNS 관리라는 식으로 분리할 수 있다.**
 
+## 🎯 Exam Notes
+
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
+- **Domain Registrar와 DNS Service**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **Route 53의 역할**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **Third-Party Registrar + Route 53**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **설정 과정**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **핵심 구조**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+
 ## 📝 Review Questions
 
-#### 1. Domain Registrar와 DNS Service는 반드시 같은 업체를 사용해야 하는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: 아니다.**
 
@@ -154,10 +172,10 @@ Domain Registrar는 Domain을 등록하는 역할이고 DNS Service는 DNS Recor
 
 </details>
 
-#### 2. 외부 Registrar에서 구매한 Domain을 Route 53에서 관리할 수 있는가?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: 가능하다.**
 
@@ -165,10 +183,10 @@ Route 53에서 해당 Domain의 Public Hosted Zone을 생성한 뒤 Registrar의
 
 </details>
 
-#### 3. Third-Party Registrar에서 Route 53 DNS를 사용하기 위한 핵심 설정은?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: Registrar의 Name Server(NS)를 Route 53 Name Servers로 변경한다.**
 
@@ -176,10 +194,10 @@ Route 53에서 해당 Domain의 Public Hosted Zone을 생성한 뒤 Registrar의
 
 </details>
 
-#### 4. Route 53에서 Public Hosted Zone을 생성하면 무엇을 확인해야 하는가?
+### Q4. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: Route 53이 할당한 Name Servers**
 
@@ -187,10 +205,10 @@ Route 53에서 해당 Domain의 Public Hosted Zone을 생성한 뒤 Registrar의
 
 </details>
 
-#### 5. Route 53은 Domain Registrar와 DNS Service 중 어느 역할을 제공하는가?
+### Q5. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: 둘 다 제공할 수 있다.**
 

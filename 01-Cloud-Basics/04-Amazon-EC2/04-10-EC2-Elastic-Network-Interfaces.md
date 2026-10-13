@@ -1,5 +1,9 @@
 # 📘 04-10. EC2 Elastic Network Interfaces (ENI)
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `ENI` · `Network Interface` · `Virtual Network Card` · `Primary ENI` · `Secondary ENI`
+
 ## 🇰🇷 1. Overview
 
 **ENI (Elastic Network Interface)** 는
@@ -671,6 +675,9 @@ ENI = 이동 가능한 AWS 가상 랜카드
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 두 개의 EC2가 같은 애플리케이션을 실행한다고 가정한다.
 
 ```text
@@ -810,60 +817,56 @@ ENI
 
 ## 📝 Review Questions
 
-#### Q1. ENI란 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. ENI란 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 VPC 내부에서 사용하는 논리적인 Network Interface이며,
 쉽게 말하면 AWS의 Virtual Network Card이다.
 
-#### Q2. ENI가 가질 수 있는 주요 속성은?
+</details>
+
+### Q2. ENI가 가질 수 있는 주요 속성은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 Primary / Secondary Private IPv4, Public IPv4, Elastic IP association,
 Security Groups, MAC Address 등이 있다.
 
-#### Q3. ENI는 EC2와 별도로 생성할 수 있는가?
+</details>
+
+### Q3. ENI는 EC2와 별도로 생성할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 가능하다.
 
-#### Q4. Secondary ENI를 다른 EC2로 이동할 수 있는가?
+</details>
+
+### Q4. Secondary ENI를 다른 EC2로 이동할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 가능하다.
 단, 대상 EC2가 **같은 Availability Zone**에 있어야 한다.
 
-#### Q5. Primary ENI도 다른 EC2로 이동할 수 있는가?
+</details>
+
+### Q5. Primary ENI도 다른 EC2로 이동할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 Primary ENI는 일반적인 Secondary ENI처럼 Detach할 수 없다.
 
-#### Q6. ENI를 다른 EC2로 이동하면 Private IP도 같이 이동하는가?
-
-ENI에 할당된 Private IP가 ENI와 함께 사용되므로
-같은 Private IP 기반의 Network Identity를 다른 EC2에서 사용할 수 있다.
-
-#### Q7. ENI를 Failover에 사용할 수 있는 이유는?
-
-Secondary ENI를 장애가 발생한 EC2에서 분리하고
-같은 AZ의 다른 EC2에 연결할 수 있기 때문이다.
-
-#### Q8. ENI와 Elastic IP의 차이는?
-
-```text
-ENI
-= Virtual Network Card
-
-Elastic IP
-= Static Public IPv4 Address
-```
-
-#### Q9. ENI는 Availability Zone과 어떤 관계가 있는가?
-
-ENI는 특정 Subnet에 생성되고,
-Subnet은 특정 AZ에 속하기 때문에 ENI 역시 특정 AZ에 종속된다.
-
-#### Q10. EC2가 종료되면 ENI도 반드시 삭제되는가?
-
-항상 그런 것은 아니다.
-
-ENI의 연결 및 `Delete on termination` 설정에 따라
-EC2 종료 후 ENI를 유지하도록 구성할 수 있다.
+</details>
 
 ## 🇯🇵 日本語 Summary
 

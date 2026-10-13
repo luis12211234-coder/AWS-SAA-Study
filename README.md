@@ -60,9 +60,13 @@ AWS Certified Solutions Architect – Associate(SAA-C03)를 준비하며 작성�
 
 ## 🧭 Document Format
 
-한국어 핵심 개념 → Exam Notes → Review Questions → 日本語 Summary → English Summary → Vocabulary → Official References
+모든 학습 노트는 다음 고정 순서를 사용합니다.
 
-필요하지 않은 섹션은 생략하되, 포함된 섹션의 순서는 저장소 전체에서 동일하게 유지합니다.
+`📘 제목 → NOTE → 🇰🇷 한국어 본문 → 🎯 Exam Notes → 📝 Review Questions 5개 → 🇯🇵 日本語 Summary → 🇺🇸 English Summary → 📚 Vocabulary`
+
+복습 문제는 모두 동일하게 **질문 + 접을 수 있는 정답 및 해설** 형식으로 작성합니다.
+
+- [전체 문서 스타일 가이드](./DOCUMENT-STYLE-GUIDE.md)
 
 ## 🔐 Security
 

@@ -1,5 +1,9 @@
 # 📘 04-08. EC2 Public IP, Private IP and Elastic IP
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Public IP` · `Private IP` · `IPv4` · `IPv6` · `Elastic IP`
+
 ## 🇰🇷 1. Overview
 
 EC2 Instance에서는 네트워크 통신을 위해 Public IP와 Private IP를 사용할 수 있다.
@@ -382,6 +386,9 @@ Terminate / Release unused resources
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ### Public vs Private IP
 
 ```text
@@ -497,16 +504,53 @@ EC2
 
 ## 📝 Review Questions
 
-1. Public IP와 Private IP의 가장 큰 차이는 무엇인가?
-2. 서로 다른 Private Network에서 같은 Private IP를 사용할 수 있는 이유는 무엇인가?
-3. Local PC에서 EC2의 Private IP로 직접 SSH할 수 없는 이유는 무엇인가?
-4. EC2 Instance를 Stop 후 Start하면 일반 Public IPv4는 어떻게 될 수 있는가?
-5. Primary Private IPv4는 Stop / Start 후 일반적으로 어떻게 되는가?
-6. Elastic IP란 무엇인가?
-7. 고정 Public IPv4가 필요한 경우 어떤 AWS 기능을 사용할 수 있는가?
-8. Elastic IP를 다른 EC2 Instance로 Remap할 수 있는 이유는 무엇인가?
-9. Disassociate와 Release의 차이는 무엇인가?
-10. AWS Architecture에서 Elastic IP에 지나치게 의존하는 것을 피하는 이유는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Public IP와 Private IP의 가장 큰 차이는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Public IP는 인터넷에서 라우팅되고 전역적으로 고유하다. Private IP는 사설 네트워크 내부에서 사용되며 인터넷에서 직접 라우팅되지 않는다.
+
+</details>
+
+### Q2. 서로 다른 Private Network에서 같은 Private IP를 사용할 수 있는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Private IP는 각 사설 네트워크 내부에서만 고유하면 되며 서로 다른 네트워크의 주소 공간은 독립적이기 때문이다.
+
+</details>
+
+### Q3. Local PC에서 EC2의 Private IP로 직접 SSH할 수 없는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Private IP는 공용 인터넷에서 라우팅되지 않기 때문이다. VPN, Direct Connect, Bastion Host 같은 사설 네트워크 접근 경로가 필요하다.
+
+</details>
+
+### Q4. EC2 Instance를 Stop 후 Start하면 일반 Public IPv4는 어떻게 될 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+자동 할당된 Public IPv4는 해제되고 새로운 주소가 할당될 수 있다.
+
+</details>
+
+### Q5. Primary Private IPv4는 Stop / Start 후 일반적으로 어떻게 되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Primary ENI에 유지되므로 일반적으로 변경되지 않는다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

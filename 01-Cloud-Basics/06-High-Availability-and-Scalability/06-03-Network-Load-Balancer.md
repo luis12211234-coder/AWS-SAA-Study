@@ -1,5 +1,9 @@
 # 📘 06-03. Network Load Balancer (NLB)
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Network Load Balancer` · `Layer 4` · `TCP` · `UDP` · `Static IP`
+
 ## 🇰🇷 1. Overview
 
 **Network Load Balancer (NLB)**는
@@ -187,6 +191,9 @@ NLB를 통해 두 Instance로 Traffic이 분산되는 것을 확인했다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 NLB
 → Layer 4
@@ -236,19 +243,35 @@ NLB
 
 ## 📝 Review Questions
 
-#### Q1. NLB는 OSI 몇 계층에서 동작하는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. NLB는 OSI 몇 계층에서 동작하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Layer 4
 ```
 
-#### Q2. NLB의 대표 Protocol은?
+</details>
+
+### Q2. NLB의 대표 Protocol은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 TCP / UDP
 ```
 
-#### Q3. 고정 IP가 필요한 Load Balancer는?
+</details>
+
+### Q3. 고정 IP가 필요한 Load Balancer는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 NLB
@@ -257,7 +280,12 @@ NLB
 NLB는 AZ별 Static IP를 가지며
 Elastic IP도 할당할 수 있다.
 
-#### Q4. NLB의 대표 Target은?
+</details>
+
+### Q4. NLB의 대표 Target은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 EC2
@@ -265,7 +293,12 @@ Private IP
 ALB
 ```
 
-#### Q5. NLB Health Check가 지원하는 Protocol은?
+</details>
+
+### Q5. NLB Health Check가 지원하는 Protocol은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 TCP
@@ -273,10 +306,7 @@ HTTP
 HTTPS
 ```
 
-#### Q6. NLB Target이 Unhealthy가 되는 원인 중 하나는?
-
-Backend EC2의 Security Group이
-NLB의 Traffic 또는 Health Check를 허용하지 않는 경우이다.
+</details>
 
 ## 🇯🇵 日本語 Summary
 

@@ -1,6 +1,8 @@
-# 🔄 19-01. Database Review
+# 📘 19-01. Database Review
 
-> 기존에 배운 서비스는 핵심 차이와 시험 함정 위주로 복습한다.
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Read Replica` · `Failover` · `Cache Hit` · `Replication Lag`
 
 ## 🇰🇷 1. Amazon RDS
 관리형 **관계형 데이터베이스** 서비스. SQL과 트랜잭션이 필요한 경우 적합하다.
@@ -73,6 +75,9 @@ flowchart LR
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 | 요구사항 | 선택 |
 |---|---|
 | SQL 관계형 데이터 | RDS / Aurora |
@@ -84,6 +89,56 @@ flowchart LR
 | Item 변경 이벤트 | DynamoDB Streams |
 | 글로벌 NoSQL 쓰기 | Global Tables |
 | 객체 저장 | S3 |
+
+## 📝 Review Questions
+
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Amazon RDS의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+관리형 **관계형 데이터베이스** 서비스. SQL과 트랜잭션이 필요한 경우 적합하다.
+
+</details>
+
+### Q2. Amazon Aurora의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS가 개발한 **MySQL/PostgreSQL 호환 관계형 DB 엔진**이자 RDS의 관리형 데이터베이스.
+
+</details>
+
+### Q3. Amazon ElastiCache의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+반복 조회를 가속하는 **인메모리 캐시**. 자주 조회하는 데이터, 세션, 랭킹에 활용한다.
+
+</details>
+
+### Q4. Amazon DynamoDB의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+서버리스 **Key-Value/Document NoSQL**. Key 기반 저지연 조회에 적합하다.
+
+</details>
+
+### Q5. Amazon S3의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+일반적인 DBMS가 아닌 **객체 스토리지**. 이미지, 파일, 로그, 백업에 적합하다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

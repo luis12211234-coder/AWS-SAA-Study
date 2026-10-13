@@ -1,5 +1,9 @@
 # 📘 14-04. AWS Transfer Family
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `AWS Transfer Family란?` · `지원 Protocol` · `Transfer Family는 Storage가 아니다` · `Authentication` · `Route 53`
+
 ## 🇰🇷 1. AWS Transfer Family란?
 
 AWS Transfer Family는 기존 FTP 계열 Protocol을 사용하여 Amazon S3 또는 Amazon EFS에 파일을 전송할 수 있도록 하는 완전 관리형 서비스입니다.
@@ -113,6 +117,9 @@ AWS Storage
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Existing SFTP Application
         +
@@ -155,24 +162,51 @@ Authorization
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. 기존 SFTP Application을 변경하지 않고 S3를 사용하려면?
+
 <details>
-<summary>Q1. 기존 SFTP Application을 변경하지 않고 S3를 사용하려면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 AWS Transfer Family를 사용할 수 있습니다.
 
 </details>
 
+### Q2. Q2. Transfer Family 자체가 Storage인가?
+
 <details>
-<summary>Q2. Transfer Family 자체가 Storage인가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. 실제 Backend Storage는 Amazon S3 또는 Amazon EFS입니다.
 
 </details>
 
+### Q3. Q3. FTP, FTPS, SFTP 중 암호화되지 않는 것은?
+
 <details>
-<summary>Q3. FTP, FTPS, SFTP 중 암호화되지 않는 것은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 FTP입니다.
+
+</details>
+
+### Q4. AWS Transfer Family란?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS Transfer Family는 기존 FTP 계열 Protocol을 사용하여 Amazon S3 또는 Amazon EFS에 파일을 전송할 수 있도록 하는 완전 관리형 서비스입니다.
+
+</details>
+
+### Q5. 지원 Protocol의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+강의에서 다룬 주요 Protocol은 다음과 같습니다.
 
 </details>
 
@@ -193,3 +227,13 @@ AWS Transfer Family provides fully managed FTP, FTPS, and SFTP endpoints for Ama
 It is useful when existing applications rely on traditional file transfer protocols and need to use AWS storage without major application changes.
 
 FTP is unencrypted, while FTPS and SFTP provide encryption in transit.
+
+## 📚 Vocabulary
+
+| English | 한국어 | 日本語 |
+|---|---|---|
+| AWS Transfer Family란? | AWS Transfer Family란? | AWS Transfer Family란? |
+| 지원 Protocol | 지원 Protocol | 지원 Protocol |
+| Transfer Family는 Storage가 아니다 | Transfer Family는 Storage가 아니다 | Transfer Family는 Storage가 아니다 |
+| Authentication | Authentication | Authentication |
+| Route 53 | Route 53 | Route 53 |

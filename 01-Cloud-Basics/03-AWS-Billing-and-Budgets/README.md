@@ -1,7 +1,7 @@
-# 💰 03. AWS Billing and Budgets
+# 📚 03. AWS Billing and Budgets
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 03
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 03`
 
 ## 📌 Overview
 

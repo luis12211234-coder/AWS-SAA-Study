@@ -1,5 +1,9 @@
 # 📘 07-01. Amazon RDS
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Relational Database` · `Managed Service` · `Database Engine` · `DB Instance` · `Read Replica`
+
 ## 🇰🇷 1. 개요
 
 **Amazon RDS (Relational Database Service)** 는 AWS에서 제공하는 **관리형 관계형 데이터베이스 서비스**이다.
@@ -970,6 +974,9 @@ Storage Auto Scaling
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 RDS
 → Managed Relational Database Service
@@ -1034,25 +1041,53 @@ RDS Custom
 
 ## 📝 Review Questions
 
-1. Amazon RDS와 EC2에 직접 Database Engine을 설치하는 방식의 가장 큰 차이는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-2. Primary DB의 SELECT 요청이 너무 많아 성능 문제가 발생하고 있다. 어떤 RDS 기능이 적합한가?
+### Q1. Amazon RDS와 EC2에 직접 Database Engine을 설치하는 방식의 가장 큰 차이는 무엇인가?
 
-3. Read Replica가 Eventually Consistent한 이유는 무엇인가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-4. Read Replica와 Multi-AZ의 가장 중요한 목적 차이는 무엇인가?
+RDS는 Backup, Patch, Monitoring, Failover 같은 운영 작업을 AWS가 관리한다. EC2에 직접 설치하면 사용자가 OS와 Database 운영을 모두 책임진다.
 
-5. Multi-AZ Standby가 일반적인 읽기 요청을 처리하지 않는 이유는 무엇인가?
+</details>
 
-6. Read Replica 자체를 Multi-AZ로 구성했을 때 Replica의 Standby는 어떤 DB를 보호하는가?
+### Q2. Primary DB의 SELECT 요청이 너무 많아 성능 문제가 발생하고 있다. 어떤 RDS 기능이 적합한가?
 
-7. Application이 RDS에 접속할 때 Endpoint, Port, Security Group, Authentication은 각각 어떤 역할을 하는가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-8. 데이터베이스 Storage 사용량을 예측하기 어려운 경우 어떤 기능을 사용할 수 있는가?
+Read Replica를 추가하고 읽기 요청을 분산한다.
 
-9. Automated Backup과 Manual Snapshot의 차이는 무엇인가?
+</details>
 
-10. Oracle 또는 Microsoft SQL Server에서 기저 OS에 접근해 Custom Patch를 적용해야 한다면 어떤 서비스를 사용해야 하는가?
+### Q3. Read Replica가 Eventually Consistent한 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Primary의 변경 사항을 일반적으로 비동기 방식으로 복제하므로 복제 지연이 발생할 수 있기 때문이다.
+
+</details>
+
+### Q4. Read Replica와 Multi-AZ의 가장 중요한 목적 차이는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Read Replica는 읽기 성능 확장, Multi-AZ는 고가용성과 자동 Failover가 주목적이다.
+
+</details>
+
+### Q5. Multi-AZ Standby가 일반적인 읽기 요청을 처리하지 않는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+기존 Multi-AZ DB 인스턴스의 Standby는 장애 시 Failover를 위한 동기식 대기 복제본이기 때문이다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

@@ -1,5 +1,9 @@
 # 📘 02-03. IAM Policies
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `AWS Managed Policy` · `Customer Managed Policy` · `Inline Policy` · `Effect` · `Principal`
+
 ## 🇰🇷 1. Overview
 
 IAM Policy는 사용자(User), 그룹(Group), 또는 역할(Role)에 권한을 부여하는 JSON 형식의 정책 문서이다.
@@ -161,6 +165,9 @@ IAMReadOnlyAccess 정책은
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Policy는 JSON 문서이다.
 - Allow와 Deny를 사용한다.
 - 명시적 Deny는 명시적 Allow보다 우선한다.
@@ -203,14 +210,53 @@ List*
 
 ## 📝 Review Questions
 
-1. Managed Policy와 Inline Policy의 차이점은 무엇인가?
-2. IAM Policy는 어떤 형식으로 작성되는가?
-3. Identity-based Policy에서 주로 확인해야 할 요소는 무엇인가?
-4. Action과 Resource의 차이점은 무엇인가?
-5. `Action: "*"`의 의미는 무엇인가?
-6. IAMReadOnlyAccess의 특징은 무엇인가?
-7. Principal은 어떤 Policy에서 사용하며, Identity-based Policy에서 사용할 수 있는가?
-8. Allow와 명시적 Deny가 동시에 적용되면 어떤 결과가 발생하는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Managed Policy와 Inline Policy의 차이점은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Managed Policy는 여러 User, Group, Role에 재사용할 수 있는 독립 정책이다. Inline Policy는 하나의 Identity에 직접 포함되어 그 Identity와 수명 주기를 함께한다.
+
+</details>
+
+### Q2. IAM Policy는 어떤 형식으로 작성되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+JSON 형식으로 작성된다.
+
+</details>
+
+### Q3. Identity-based Policy에서 주로 확인해야 할 요소는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Effect, Action, Resource와 선택적인 Condition을 확인한다. Resource-based Policy에서는 Principal도 중요하다.
+
+</details>
+
+### Q4. Action과 Resource의 차이점은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Action은 허용하거나 거부할 AWS API 작업이고, Resource는 그 작업이 적용되는 AWS 리소스다.
+
+</details>
+
+### Q5. `Action: "*"`의 의미는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+모든 API 작업을 의미한다. `Effect: Allow`, `Action: "*"`, `Resource: "*"`의 조합은 모든 리소스에 대한 모든 작업을 허용하므로 매우 강한 권한이다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

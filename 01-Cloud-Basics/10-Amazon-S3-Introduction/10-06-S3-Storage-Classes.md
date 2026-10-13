@@ -1,5 +1,9 @@
 # 📘 10-06. S3 Storage Classes
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Storage Class` · `Durability` · `Availability` · `Infrequent Access` · `Retrieval`
+
 ## 🇰🇷 1. S3 Storage Classes란?
 
 Amazon S3에서는 데이터의 **Access Pattern, Availability 요구사항, 보관 기간, 비용**에 따라 여러 Storage Class를 선택할 수 있다.
@@ -584,6 +588,9 @@ Intelligent-Tiering
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 S3 Standard
 → 자주 사용
@@ -638,22 +645,31 @@ Intelligent-Tiering
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 자주 사용하는 일반적인 데이터에는 어떤 Storage Class가 적합한가?
+
 <details>
-<summary>1. 자주 사용하는 일반적인 데이터에는 어떤 Storage Class가 적합한가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 Standard가 적합하다.
 
 </details>
 
+### Q2. 가끔 사용하지만 필요할 때 즉시 접근해야 하는 데이터에는?
+
 <details>
-<summary>2. 가끔 사용하지만 필요할 때 즉시 접근해야 하는 데이터에는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 Standard-IA가 적합하다.
 
 </details>
 
+### Q3. Standard-IA와 One Zone-IA의 중요한 차이는?
+
 <details>
-<summary>3. Standard-IA와 One Zone-IA의 중요한 차이는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Standard-IA는 여러 Availability Zone을 사용하지만 One Zone-IA는 하나의 Availability Zone에 데이터를 저장한다.
 
@@ -661,8 +677,10 @@ Standard-IA는 여러 Availability Zone을 사용하지만 One Zone-IA는 하나
 
 </details>
 
+### Q4. Standard-IA와 Glacier Instant Retrieval은 둘 다 빠른데 무엇이 다른가?
+
 <details>
-<summary>4. Standard-IA와 Glacier Instant Retrieval은 둘 다 빠른데 무엇이 다른가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 둘 다 Millisecond Retrieval이 가능하지만 Access Pattern이 다르다.
 
@@ -676,42 +694,12 @@ Glacier Instant Retrieval
 
 </details>
 
+### Q5. Archive 데이터인데 필요할 때 즉시 접근해야 한다면?
+
 <details>
-<summary>5. Archive 데이터인데 필요할 때 즉시 접근해야 한다면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 Glacier Instant Retrieval을 고려할 수 있다.
-
-</details>
-
-<details>
-<summary>6. 매우 장기간 보관하고 거의 접근하지 않는 데이터에는?</summary>
-
-S3 Glacier Deep Archive가 적합하다.
-
-</details>
-
-<details>
-<summary>7. Access Pattern을 예측하기 어렵다면?</summary>
-
-S3 Intelligent-Tiering을 고려할 수 있다.
-
-</details>
-
-<details>
-<summary>8. Intelligent-Tiering에서 Infrequent Access Tier로 이동하면 Storage Class가 Standard-IA로 바뀌는가?</summary>
-
-아니다.
-
-Storage Class는 계속 `S3 Intelligent-Tiering`이며, 그 내부의 Access Tier가 변경되는 것이다.
-
-</details>
-
-<details>
-<summary>9. Lifecycle Rule과 Intelligent-Tiering의 핵심 차이는?</summary>
-
-Lifecycle Rule은 사용자가 미리 정한 규칙에 따라 Storage Class를 Transition한다.
-
-Intelligent-Tiering은 실제 Access Pattern을 기반으로 Access Tier를 자동으로 조정한다.
 
 </details>
 

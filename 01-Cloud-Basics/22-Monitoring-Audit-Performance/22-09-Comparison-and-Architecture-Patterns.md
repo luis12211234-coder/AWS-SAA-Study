@@ -1,7 +1,8 @@
-# 🧠 22-09. Final Comparison & Architecture Patterns
+# 📘 22-09. Final Comparison & Architecture Patterns
 
-> AWS SAA-C03 · **이번 섹션의 마지막 종합 비교 자료**
-> 검색 키워드: **CloudWatch vs CloudTrail vs Config, EventBridge vs Alarm vs S3 Event, Metric Filter vs Subscription Filter, Logs Insights vs Live Tail, Agent vs Detailed Monitoring, Decision Tree, ALB, Security Group, S3, EC2**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Metric vs Log` · `Audit vs Monitoring` · `Detective vs Preventive` · `Metric Filter vs Subscription Filter` · `Live Tail vs Logs Insights`
 
 ## 🇰🇷 1. 가장 중요한 세 서비스 비교
 
@@ -127,46 +128,74 @@ CloudWatch는 지표·로그, CloudTrail은 API 호출자, AWS Config는 설정�
 11. **EventBridge API Call via CloudTrail**: 활성 로깅 Trail 필요, Best Effort 전달.
 12. **Composite Alarm은 여러 Metric을 직접 읽는 것이 아니라 다른 Alarm의 상태를 조합**.
 
+## 🎯 Exam Notes
+
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
+- **CloudWatch Logs 기능 비교**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **EC2 Monitoring 비교**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **사례별 실전 아키텍처**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **한 줄 의사 결정 가이드**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+- **자주 틀리는 함정 12선**의 선택 기준, 동작 방식과 제한 사항을 구분한다.
+
 ## 📝 Review Questions
 
-> 해당 문서의 개념을 확인하는 SAA 스타일 복습 문제. 정답은 질문 아래 **정답 및 해설**에서 확인한다.
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-### Q33. ALB의 5XX 오류가 증가했는지 시각화하고, 누가 HTTPS 리스너를 삭제했으며, 보안 규칙 위반이 있는지도 조사하려 한다. 서비스 조합은?
+### Q1. ALB의 5XX 오류가 증가했는지 시각화하고, 누가 HTTPS 리스너를 삭제했으며, 보안 규칙 위반이 있는지도 조사하려 한다. 서비스 조합은?
 
-- A. CloudWatch / CloudTrail / AWS Config
-- B. CloudTrail / CloudWatch / EventBridge
-- C. AWS Config 단독
-- D. EventBridge Scheduler 단독
+<details>
+<summary>정답 및 해설 보기</summary>
 
-### Q34. EC2 CPU가 높아 자동 확장을 실행하려 한다. EC2가 stopped로 바뀔 때 SNS 알림을 보내는 요구사항은 별도로 있다. 각각 무엇을 사용할까?
+**정답:** CloudWatch / CloudTrail / AWS Config
 
-- A. CloudTrail / Athena
-- B. Config / CloudWatch Agent
-- C. CloudWatch Alarm + Auto Scaling / EventBridge Rule + SNS
-- D. EventBridge Archive / S3 Export
+CloudWatch는 성능, CloudTrail은 API 실행자, AWS Config는 설정 변경과 준수 여부를 담당한다.
 
-### Q35. 새 ERROR 로그의 횟수를 집계해 경보를 만들고, 동시에 새 ERROR 로그 원문은 Lambda로 보내려 한다. 필요한 두 필터는?
+</details>
 
-- A. Metric Filter + Subscription Filter
-- B. Event Pattern + S3 Lifecycle
-- C. Config Rule + Metric Streams
-- D. Logs Insights + Schema Registry
+### Q2. EC2 CPU가 높아 자동 확장을 실행하려 한다. EC2가 stopped로 바뀔 때 SNS 알림을 보내는 요구사항은 별도로 있다. 각각 무엇을 사용할까?
 
-### Q36. Security Group의 TCP 84번 전체 공개 여부를 감시하며, 누가 설정을 바꾸었는지 조사하려고 한다. 알맞은 조합은?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-- A. CloudWatch + CloudTrail Insights
-- B. EventBridge Scheduler + SNS
-- C. Logs Insights + Live Tail
-- D. AWS Config Rule + CloudTrail
+**정답:** CloudWatch Alarm + Auto Scaling / EventBridge Rule + SNS
 
-### ✅ 정답 및 해설
+숫자 지표의 임계값은 Alarm, 리소스 상태 변경 이벤트는 EventBridge Rule이 알맞다.
 
-| 문제 | 정답 | 풀이 핵심 |
-|---|---|---|
-| Q33 | **A** | CloudWatch는 성능, CloudTrail은 API 실행자, AWS Config는 설정 변경과 준수 여부를 담당한다. |
-| Q34 | **C** | 숫자 지표의 임계값은 Alarm, 리소스 상태 변경 이벤트는 EventBridge Rule이 알맞다. |
-| Q35 | **A** | Metric Filter는 숫자 지표, Subscription Filter는 로그 원문을 전달한다. |
-| Q36 | **D** | Config는 공개 설정을 검사하고, CloudTrail은 변경 API 호출자를 추적한다. |
+</details>
+
+### Q3. 새 ERROR 로그의 횟수를 집계해 경보를 만들고, 동시에 새 ERROR 로그 원문은 Lambda로 보내려 한다. 필요한 두 필터는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** Metric Filter + Subscription Filter
+
+Metric Filter는 숫자 지표, Subscription Filter는 로그 원문을 전달한다.
+
+</details>
+
+### Q4. Security Group의 TCP 84번 전체 공개 여부를 감시하며, 누가 설정을 바꾸었는지 조사하려고 한다. 알맞은 조합은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** AWS Config Rule + CloudTrail
+
+Config는 공개 설정을 검사하고, CloudTrail은 변경 API 호출자를 추적한다.
+
+</details>
+
+### Q5. 가장 중요한 세 서비스 비교의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**암기:** `CloudWatch = 성능`, `CloudTrail = API 활동`, `AWS Config = 설정·규정 준수`.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

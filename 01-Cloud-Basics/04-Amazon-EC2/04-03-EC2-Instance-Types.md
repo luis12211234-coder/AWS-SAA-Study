@@ -1,5 +1,9 @@
 # 📘 04-03. EC2 Instance Types
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Instance Type` · `Instance Class` · `Generation` · `Instance Size` · `General Purpose`
+
 ## 🇰🇷 1. Overview
 
 Amazon EC2는 다양한 작업 유형에 맞게 여러 종류의 Instance Type을 제공한다.
@@ -275,6 +279,9 @@ AWS 공식 Instance Type 페이지에서도 최신 Instance 종류와 특성을 
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - `m5.2xlarge`
   - `m` = Instance Class
   - `5` = Generation
@@ -317,25 +324,53 @@ Video Transcoding처럼 CPU 사용량이 높은 작업은 Compute Optimized Inst
 
 ## 📝 Review Questions
 
-1. `m5.2xlarge`에서 `m`, `5`, `2xlarge`는 각각 무엇을 의미하는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-2. General Purpose Instance의 특징은 무엇인가?
+### Q1. `m5.2xlarge`에서 `m`, `5`, `2xlarge`는 각각 무엇을 의미하는가?
 
-3. Compute Optimized Instance는 어떤 Workload에 적합한가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-4. Compute Optimized Instance Family는 일반적으로 어떤 문자로 시작하는가?
+`m`은 Instance Family, `5`는 세대, `2xlarge`는 Family 안에서의 크기를 의미한다.
 
-5. Memory Optimized Instance는 어떤 작업에 적합한가?
+</details>
 
-6. `R` 계열 Instance가 특히 강점을 가지는 자원은 무엇인가?
+### Q2. General Purpose Instance의 특징은 무엇인가?
 
-7. Storage Optimized Instance는 어떤 종류의 작업에 사용되는가?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-8. Video Transcoding에는 어떤 Instance Category가 적합한가?
+Compute, Memory, Networking 자원의 균형이 좋아 웹 서버나 일반 애플리케이션 등 폭넓은 Workload에 적합하다.
 
-9. In-Memory Database에는 어떤 Instance Category가 적합한가?
+</details>
 
-10. EC2 Instance Type을 선택할 때 확인해야 하는 주요 자원은 무엇인가?
+### Q3. Compute Optimized Instance는 어떤 Workload에 적합한가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+고성능 CPU가 필요한 Batch Processing, Media Transcoding, HPC, Gaming Server 등에 적합하다.
+
+</details>
+
+### Q4. Compute Optimized Instance Family는 일반적으로 어떤 문자로 시작하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+일반적으로 `C`로 시작한다.
+
+</details>
+
+### Q5. Memory Optimized Instance는 어떤 작업에 적합한가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+In-memory Database, Distributed Cache, 대규모 실시간 데이터 처리처럼 많은 메모리가 필요한 작업에 적합하다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

@@ -1,7 +1,7 @@
-# 🏗️ 18. Serverless Architectures
+# 📚 18. Serverless Architectures
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 18
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 18`
 
 ## 📌 Overview
 

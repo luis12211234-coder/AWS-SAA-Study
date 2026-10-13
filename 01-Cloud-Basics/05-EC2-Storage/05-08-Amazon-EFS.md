@@ -1,5 +1,9 @@
 # 📘 05-08. Amazon EFS (Elastic File System)
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Elastic File System` · `Network File System` · `NFS` · `Mount` · `Mount Target`
+
 ## 🇰🇷 1. Overview
 
 **Amazon EFS (Elastic File System)**는
@@ -444,6 +448,9 @@ EFS
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 가장 중요한 EFS 특징:
 
 ```text
@@ -503,45 +510,59 @@ Rarely Accessed
 
 ## 📝 Review Questions
 
-#### Q1. Amazon EFS란?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Amazon EFS란?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 AWS가 제공하는 Managed NFS File System이다.
 
-#### Q2. 서로 다른 AZ의 여러 EC2가 같은 EFS를 사용할 수 있는가?
+</details>
+
+### Q2. 서로 다른 AZ의 여러 EC2가 같은 EFS를 사용할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 가능하다.
 
-#### Q3. EFS는 어떤 OS 계열과 주로 호환되는가?
+</details>
+
+### Q3. EFS는 어떤 OS 계열과 주로 호환되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Linux
 ```
 
-#### Q4. EFS에서 사용하는 NFS Port는?
+</details>
+
+### Q4. EFS에서 사용하는 NFS Port는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 TCP 2049
 ```
 
-#### Q5. Production 환경에서 적합한 EFS 유형은?
+</details>
+
+### Q5. Production 환경에서 적합한 EFS 유형은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Regional
 ```
 
-#### Q6. 예측하기 어려운 Workload에 적합한 Throughput Mode는?
-
-```text
-Elastic
-```
-
-#### Q7. 자주 접근하지 않는 파일의 비용을 줄이기 위해 사용하는 기능은?
-
-```text
-EFS Storage Classes
-+
-Lifecycle Management
-```
+</details>
 
 ## 🇯🇵 日本語 Summary
 

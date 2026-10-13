@@ -1,5 +1,9 @@
 # 📘 04-07. EC2 Spot Instances and Spot Fleet
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Spot Instance` · `Spot Fleet` · `Spot Pool` · `Spare Capacity` · `Target Capacity`
+
 ## 🇰🇷 1. Overview
 
 EC2 Spot Instances는 AWS의 남는 EC2 Compute Capacity를 낮은 가격으로 사용할 수 있는 구매 옵션이다.
@@ -611,6 +615,9 @@ Spot Block
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ### Spot Instance
 
 ```text
@@ -726,25 +733,53 @@ Amazon S3
 
 ## 📝 Review Questions
 
-1. Spot Instance가 On-Demand Instance보다 저렴한 이유는 무엇인가?
-2. Spot Instance에서 말하는 Spare Capacity란 무엇인가?
-3. AWS가 Spot Instance를 중단할 수 있는 이유는 무엇인가?
-4. Spot Instance에 적합한 Workload의 특징은 무엇인가?
-5. Critical Database에 Spot Instance가 일반적으로 적합하지 않은 이유는 무엇인가?
-6. Spot Interruption Notice는 약 몇 분 전에 제공되는가?
-7. Maximum Price를 너무 낮게 설정하면 어떤 문제가 발생할 수 있는가?
-8. One-Time Spot Request와 Persistent Spot Request의 차이는 무엇인가?
-9. Persistent Spot Request에서 Instance만 먼저 종료하면 어떤 일이 발생할 수 있는가?
-10. Persistent Spot Request를 완전히 종료하려면 어떤 순서로 처리해야 하는가?
-11. Spot Pool이란 무엇인가?
-12. Spot Fleet은 일반 Spot Request와 어떤 차이가 있는가?
-13. Spot Fleet의 Target Capacity는 어떤 기준으로 설정할 수 있는가?
-14. 여러 Instance Type과 Availability Zone을 허용하는 것이 Spot에서 유리한 이유는 무엇인가?
-15. Lowest Price Strategy는 무엇을 기준으로 Pool을 선택하는가?
-16. Diversified Strategy를 사용하는 목적은 무엇인가?
-17. Capacity Optimized Strategy는 무엇을 우선하는가?
-18. Price-Capacity-Optimized Strategy는 무엇을 함께 고려하는가?
-19. 현재 AWS에서 대부분의 Spot Workload에 권장되는 Allocation Strategy는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Spot Instance가 On-Demand Instance보다 저렴한 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+AWS의 사용되지 않는 여유 EC2 Capacity를 활용하는 대신 AWS가 필요할 때 회수할 수 있기 때문이다.
+
+</details>
+
+### Q2. Spot Instance에서 말하는 Spare Capacity란 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+현재 On-Demand 등으로 사용되지 않는 AWS의 여유 EC2 컴퓨팅 Capacity를 의미한다.
+
+</details>
+
+### Q3. AWS가 Spot Instance를 중단할 수 있는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+해당 Capacity가 더 이상 남지 않거나 AWS가 다른 수요를 위해 회수해야 할 수 있기 때문이다.
+
+</details>
+
+### Q4. Spot Instance에 적합한 Workload의 특징은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+중단을 허용하고 재시작하거나 분산 처리할 수 있는 Stateless·Fault-tolerant Workload에 적합하다.
+
+</details>
+
+### Q5. Critical Database에 Spot Instance가 일반적으로 적합하지 않은 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+예고 후 중단될 수 있어 지속적인 가용성과 안정적인 상태 유지가 필요한 Database에 위험하기 때문이다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

@@ -1,8 +1,8 @@
 # 📘 07-03. RDS & Aurora Backup, Restore and Cloning
 
-Amazon RDS와 Aurora는 **Automated Backup, Manual Snapshot, Point-in-Time Recovery(PITR)** 기능을 제공한다.
-
-또한 Aurora는 **Database Cloning**을 통해 기존 Cluster에서 빠르게 새로운 Cluster를 생성할 수 있다.
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Automated Backup` · `Manual Snapshot` · `Retention Period` · `Point-in-Time Recovery` · `Transaction Log`
 
 ## 🇰🇷 1. RDS Automated Backups
 
@@ -228,6 +228,9 @@ Staging ────┘
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 RDS Automated Backup
 → Daily Full Backup
@@ -263,13 +266,53 @@ Aurora Database Cloning
 
 ## 📝 Review Questions
 
-1. RDS Automated Backup의 Backup Retention Period는 얼마인가?
-2. Point-in-Time Recovery는 어떤 상황에서 사용하는가?
-3. RDS와 Aurora의 Automated Backup에서 중요한 차이점은 무엇인가?
-4. Manual Snapshot과 Automated Backup의 보존 방식에는 어떤 차이가 있는가?
-5. Backup 또는 Snapshot을 Restore하면 기존 Database를 덮어쓰는가?
-6. On-Premises MySQL을 Aurora MySQL로 Restore할 때 어떤 Backup 도구를 사용할 수 있는가?
-7. Aurora Database Cloning이 Snapshot & Restore보다 빠른 이유는 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. RDS Automated Backup의 Backup Retention Period는 얼마인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+1일부터 35일까지 설정할 수 있으며, 비활성화가 허용되는 구성에서는 0일로 설정할 수 있다.
+
+</details>
+
+### Q2. Point-in-Time Recovery는 어떤 상황에서 사용하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+보존 기간 안에서 실수나 장애가 발생하기 직전의 특정 시점으로 새 Database를 복구할 때 사용한다.
+
+</details>
+
+### Q3. RDS와 Aurora의 Automated Backup에서 중요한 차이점은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+RDS는 일일 Snapshot과 Transaction Log를 사용한다. Aurora는 분산 Cluster Storage를 지속적으로 백업하며 두 서비스 모두 보존 기간 내 PITR을 지원한다.
+
+</details>
+
+### Q4. Manual Snapshot과 Automated Backup의 보존 방식에는 어떤 차이가 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Automated Backup은 설정한 보존 기간에 따라 만료된다. Manual Snapshot은 사용자가 삭제할 때까지 유지된다.
+
+</details>
+
+### Q5. Backup 또는 Snapshot을 Restore하면 기존 Database를 덮어쓰는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+아니다. Restore하면 새 Database Instance 또는 Cluster가 생성된다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

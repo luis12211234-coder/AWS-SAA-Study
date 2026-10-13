@@ -1,5 +1,9 @@
 # 📘 12-01. S3 Encryption
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Encryption` · `Decryption` · `Server-Side Encryption` · `Client-Side Encryption` · `KMS Key`
+
 ## 🇰🇷 1. S3 암호화 방식
 
 S3 Object를 암호화하는 방법은 크게 Server-Side와 Client-Side로 나눌 수 있습니다.
@@ -308,6 +312,9 @@ SSE-C가 필요한 경우 명시적으로 활성화해야 합니다.
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 AWS가 Key 관리
 → SSE-S3
@@ -355,36 +362,49 @@ Bucket Policy
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. AWS가 Key를 완전히 관리하는 가장 기본적인 S3 암호화 방식은?
+
 <details>
-<summary>Q1. AWS가 Key를 완전히 관리하는 가장 기본적인 S3 암호화 방식은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 SSE-S3입니다.
 
 </details>
 
+### Q2. Q2. KMS Key 사용 기록을 감사하고 싶다면?
+
 <details>
-<summary>Q2. KMS Key 사용 기록을 감사하고 싶다면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 SSE-KMS를 사용합니다.
 
 </details>
 
+### Q3. Q3. 고객이 직접 Encryption Key를 제공하지만 S3가 암호화를 수행하는 방식은?
+
 <details>
-<summary>Q3. 고객이 직접 Encryption Key를 제공하지만 S3가 암호화를 수행하는 방식은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 SSE-C입니다.
 
 </details>
 
+### Q4. Q4. SSE-KMS에서 KMS API 호출 비용을 줄이는 기능은?
+
 <details>
-<summary>Q4. SSE-KMS에서 KMS API 호출 비용을 줄이는 기능은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 S3 Bucket Key입니다.
 
 </details>
 
+### Q5. Q5. HTTP 요청을 차단하고 HTTPS만 강제할 때 사용할 수 있는 Condition은?
+
 <details>
-<summary>Q5. HTTP 요청을 차단하고 HTTPS만 강제할 때 사용할 수 있는 Condition은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 `aws:SecureTransport`입니다.
 

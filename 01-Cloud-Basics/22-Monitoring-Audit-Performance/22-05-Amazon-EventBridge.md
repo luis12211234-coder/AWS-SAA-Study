@@ -1,6 +1,8 @@
-# ⚡ 22-05. Amazon EventBridge: Events, Rules, Scheduler & Replay
+# 📘 22-05. Amazon EventBridge: Events, Rules, Scheduler & Replay
 
-> AWS SAA-C03 · 검색 키워드: **CloudWatch Events, EventBridge Rule, Event Bus, Event Pattern, Target, Scheduler, Cron, Rate, Partner Event Bus, Custom Event Bus, Archive, Replay, Schema Registry, PutEvents, Cross-Account**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Event` · `Event Bus` · `Rule` · `Event Pattern` · `Target`
 
 ## 🇰🇷 1. EventBridge의 정의
 
@@ -168,6 +170,9 @@ Account B ─ PutEvents ─┘
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 | 요구사항 | 선택 |
 |---|---|
 | 어떤 AWS 상태 변경에 반응해 Lambda | EventBridge Rule |
@@ -181,52 +186,63 @@ Account B ─ PutEvents ─┘
 
 ## 📝 Review Questions
 
-> 해당 문서의 개념을 확인하는 SAA 스타일 복습 문제. 정답은 질문 아래 **정답 및 해설**에서 확인한다.
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
 
-### Q19. EC2가 stopped 상태가 되었을 때 SNS를 실행하려 한다. 적절한 구조는?
+### Q1. EC2가 stopped 상태가 되었을 때 SNS를 실행하려 한다. 적절한 구조는?
 
-- A. CloudTrail만 생성
-- B. EventBridge 상태 변경 Rule → SNS
-- C. Config Rule → IAM
-- D. Metrics Stream → CloudTrail
+<details>
+<summary>정답 및 해설 보기</summary>
 
-### Q20. 매주 월요일 오전 9시 Lambda를 자동 실행할 현재 권장 AWS 기능은?
+**정답:** EventBridge 상태 변경 Rule → SNS
 
-- A. EventBridge Scheduler
-- B. EventBridge Archive
-- C. CloudTrail Insights
-- D. Config Resource Timeline
+EC2 상태 변경 이벤트는 EventBridge로 직접 전달될 수 있다. Rule로 stopped 상태를 필터링한다.
 
-### Q21. 회사가 6개월 뒤 테스트를 위해 과거 이벤트를 다시 처리해야 한다. 가장 적합한 기능은?
+</details>
 
-- A. CloudWatch Logs Live Tail
-- B. Config Aggregator
-- C. EventBridge Archive & Replay
-- D. EC2 Reboot
+### Q2. 매주 월요일 오전 9시 Lambda를 자동 실행할 현재 권장 AWS 기능은?
 
-### Q22. 여러 AWS 계정이 중앙 계정의 Event Bus에 PutEvents로 이벤트를 보내려 한다. 핵심 수신 측 권한은?
+<details>
+<summary>정답 및 해설 보기</summary>
 
-- A. S3 Versioning
-- B. EC2 Security Group
-- C. CloudWatch Agent
-- D. Event Bus Resource-Based Policy
+**정답:** EventBridge Scheduler
 
-### Q23. CloudTrail의 AWS API Call via CloudTrail 이벤트를 EventBridge에서 감지하려면?
+Scheduler는 Cron/Rate 시간 기준 반복 예약을 지원한다. 기존 Scheduled Rule은 레거시이다.
 
-- A. Event History만 기본 활성화돼 있으면 모든 API가 완전 전달
-- B. 로깅이 활성화된 CloudTrail Trail 및 적절한 이벤트 설정
-- C. EC2 Detailed Monitoring
-- D. S3 Object Lock만 설정
+</details>
 
-### ✅ 정답 및 해설
+### Q3. 회사가 6개월 뒤 테스트를 위해 과거 이벤트를 다시 처리해야 한다. 가장 적합한 기능은?
 
-| 문제 | 정답 | 풀이 핵심 |
-|---|---|---|
-| Q19 | **B** | EC2 상태 변경 이벤트는 EventBridge로 직접 전달될 수 있다. Rule로 stopped 상태를 필터링한다. |
-| Q20 | **A** | Scheduler는 Cron/Rate 시간 기준 반복 예약을 지원한다. 기존 Scheduled Rule은 레거시이다. |
-| Q21 | **C** | Archive에서 이벤트를 일정 기간 보관하고 Replay로 다시 원래 Event Bus에 전송한다. 사전 아카이빙과 보존 기간 설정이 필요하다. |
-| Q22 | **D** | 중앙 Event Bus의 Resource-Based Policy가 외부 계정의 PutEvents를 허용해야 하며 송신 측 IAM 권한도 필요하다. |
-| Q23 | **B** | AWS 공식 안내에 따라 CloudTrail API 이벤트용 EventBridge 전달에는 로깅 중인 Trail이 필요하다. 모든 API의 완전 전달은 보장되지 않는다. |
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** EventBridge Archive & Replay
+
+Archive에서 이벤트를 일정 기간 보관하고 Replay로 다시 원래 Event Bus에 전송한다. 사전 아카이빙과 보존 기간 설정이 필요하다.
+
+</details>
+
+### Q4. 여러 AWS 계정이 중앙 계정의 Event Bus에 PutEvents로 이벤트를 보내려 한다. 핵심 수신 측 권한은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** Event Bus Resource-Based Policy
+
+중앙 Event Bus의 Resource-Based Policy가 외부 계정의 PutEvents를 허용해야 하며 송신 측 IAM 권한도 필요하다.
+
+</details>
+
+### Q5. CloudTrail의 AWS API Call via CloudTrail 이벤트를 EventBridge에서 감지하려면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+**정답:** 로깅이 활성화된 CloudTrail Trail 및 적절한 이벤트 설정
+
+AWS 공식 안내에 따라 CloudTrail API 이벤트용 EventBridge 전달에는 로깅 중인 Trail이 필요하다. 모든 API의 완전 전달은 보장되지 않는다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
@@ -265,10 +281,3 @@ EventBridge routes JSON events from AWS services, SaaS partners, and custom appl
 | PutEvents | 이벤트 게시 API | イベント送信 API |
 | Loose Coupling | 느슨한 결합 | 疎結合（そけつごう） |
 | Idempotency | 멱등성 | 冪等性（べきとうせい） |
-
-## 📚 Official References
-
-- [EventBridge Rules](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-rules.html)
-- [Scheduling legacy rules vs Scheduler](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html)
-- [CloudTrail events delivered to EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event-cloudtrail.html)
-- [Read-only CloudTrail events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event-cloudtrail-management.html)

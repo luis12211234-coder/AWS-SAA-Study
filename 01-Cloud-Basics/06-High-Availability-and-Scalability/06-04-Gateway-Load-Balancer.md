@@ -1,5 +1,9 @@
 # 📘 06-04. Gateway Load Balancer (GWLB)
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Gateway Load Balancer` · `Virtual Appliance` · `Firewall` · `IDS` · `IPS`
+
 ## 🇰🇷 1. Overview
 
 **Gateway Load Balancer (GWLB)**는
@@ -151,6 +155,9 @@ GWLB
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 GWLB
 → Layer 3
@@ -191,14 +198,25 @@ Port 6081
 
 ## 📝 Review Questions
 
-#### Q1. GWLB는 OSI 몇 계층에서 동작하는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. GWLB는 OSI 몇 계층에서 동작하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Layer 3
 Network Layer
 ```
 
-#### Q2. GWLB의 주요 사용 사례는?
+</details>
+
+### Q2. GWLB의 주요 사용 사례는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Firewall
@@ -206,7 +224,12 @@ IDS / IPS
 Deep Packet Inspection
 ```
 
-#### Q3. GWLB가 결합한 두 가지 기능은?
+</details>
+
+### Q3. GWLB가 결합한 두 가지 기능은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Transparent Network Gateway
@@ -214,17 +237,29 @@ Transparent Network Gateway
 Load Balancer
 ```
 
-#### Q4. GWLB의 Target은 무엇인가?
+</details>
+
+### Q4. GWLB의 Target은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 주로 Network Virtual Appliance이며,
 EC2 Instance 또는 Private IP로 등록할 수 있다.
 
-#### Q5. GWLB가 사용하는 Protocol과 Port는?
+</details>
+
+### Q5. GWLB가 사용하는 Protocol과 Port는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 GENEVE
 Port 6081
 ```
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

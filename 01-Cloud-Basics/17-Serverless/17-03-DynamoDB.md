@@ -1,5 +1,9 @@
 # 📘 17-03. Amazon DynamoDB
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Item` · `Attribute` · `Partition Key` · `Sort Key` · `RCU`
+
 ## 🇰🇷 1. DynamoDB
 
 Amazon DynamoDB는 AWS의 **Serverless Fully Managed NoSQL Database**이다.
@@ -140,6 +144,9 @@ Sudden Spike
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 DynamoDB
 = Serverless
@@ -174,21 +181,51 @@ Sort Key = GameID
 
 ## 📝 Review Questions
 
-### Q1. DynamoDB Item의 최대 크기는?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 400 KB
 
 </details>
 
-### Q2. 트래픽이 매우 불규칙하고 갑자기 증가한다면 어떤 Capacity Mode가 적합한가?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 On-Demand Capacity Mode
+
+</details>
+
+### Q3. DynamoDB의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Amazon DynamoDB는 AWS의 **Serverless Fully Managed NoSQL Database**이다.
+
+</details>
+
+### Q4. Table Structure의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+DynamoDB의 기본 구조:
+
+</details>
+
+### Q5. Primary Key의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+모든 DynamoDB Table에는 Primary Key가 필요하다.
 
 </details>
 

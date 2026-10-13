@@ -1,5 +1,9 @@
 # 📘 14-01. AWS Snow Family
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Data Migration` · `Edge Computing` · `Offline Transfer` · `Snowcone` · `Snowball Edge`
+
 ## 🇰🇷 1. AWS Snow Family란?
 
 AWS Snow Family는 대용량 데이터를 AWS 안팎으로 이동하거나, 네트워크 연결이 제한된 Edge 환경에서 데이터를 저장하고 처리하기 위한 물리적 장치입니다.
@@ -267,6 +271,9 @@ Snowball → S3 → Lifecycle → Glacier ⭕
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 다음과 같은 키워드가 나오면 Snow Family를 생각합니다.
 
 ```text
@@ -324,36 +331,49 @@ Snowball → S3 → Lifecycle → Glacier ⭕
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. AWS Snow Family의 두 가지 주요 사용 목적은?
+
 <details>
-<summary>Q1. AWS Snow Family의 두 가지 주요 사용 목적은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Data Migration과 Edge Computing입니다.
 
 </details>
 
+### Q2. Q2. 인터넷 연결이 매우 느리거나 없는 현장에서 데이터를 처리해야 한다면?
+
 <details>
-<summary>Q2. 인터넷 연결이 매우 느리거나 없는 현장에서 데이터를 처리해야 한다면?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Snowball Edge 또는 Snowcone의 Edge Computing 기능을 사용할 수 있습니다.
 
 </details>
 
+### Q3. Q3. Snowball Edge는 작은 AWS Region인가?
+
 <details>
-<summary>Q3. Snowball Edge는 작은 AWS Region인가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. Compute와 Storage 및 지원되는 Local 기능을 제공하는 물리적인 Edge 장비입니다.
 
 </details>
 
+### Q4. Q4. Snowball에서 S3 Glacier로 데이터를 직접 Import할 수 있는가?
+
 <details>
-<summary>Q4. Snowball에서 S3 Glacier로 데이터를 직접 Import할 수 있는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. 먼저 Amazon S3로 Import한 후 Lifecycle Rule을 이용해 Glacier Storage Class로 Transition할 수 있습니다.
 
 </details>
 
+### Q5. Q5. Snowball Edge Storage Optimized와 Compute Optimized의 기본적인 차이는?
+
 <details>
-<summary>Q5. Snowball Edge Storage Optimized와 Compute Optimized의 기본적인 차이는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Storage Optimized는 Storage 중심이며, Compute Optimized는 현장에서 더 많은 연산이 필요한 Edge Computing에 적합합니다.
 

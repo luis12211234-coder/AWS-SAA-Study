@@ -1,5 +1,9 @@
 # 📘 10-04. S3 Versioning
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Versioning` · `Version` · `Version ID` · `Current Version` · `Null Version`
+
 ## 🇰🇷 1. S3 Versioning이란?
 
 S3 Versioning은 **같은 Object Key의 여러 Version을 보관하는 기능**이다.
@@ -422,6 +426,9 @@ null
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 S3 Versioning
 → 같은 Key의 여러 Version 보관
@@ -470,15 +477,22 @@ Versioning Suspend
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. S3 Versioning의 주요 목적은?
+
 <details>
-<summary>1. S3 Versioning의 주요 목적은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 동일한 Object Key의 여러 Version을 보관하여 실수로 발생한 덮어쓰기나 삭제로부터 데이터를 복구할 수 있게 하는 것이다.
 
 </details>
 
+### Q2. Versioning은 Object 단위로 활성화하는가?
+
 <details>
-<summary>2. Versioning은 Object 단위로 활성화하는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
@@ -486,8 +500,10 @@ Versioning은 Bucket 단위로 활성화한다.
 
 </details>
 
+### Q3. null version은 데이터가 없는 Version인가?
+
 <details>
-<summary>3. null version은 데이터가 없는 Version인가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
@@ -495,8 +511,10 @@ Versioning 활성화 이전 등에 존재했던 Object가 `null` Version ID를 �
 
 </details>
 
+### Q4. Versioning된 Bucket에서 Object를 일반 Delete하면 기존 Version이 즉시 영구 삭제되는가?
+
 <details>
-<summary>4. Versioning된 Bucket에서 Object를 일반 Delete하면 기존 Version이 즉시 영구 삭제되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
@@ -504,37 +522,12 @@ Delete Marker가 생성되어 Current 상태가 되고 기존 Version들은 남�
 
 </details>
 
+### Q5. Delete Marker를 제거하면 어떻게 되는가?
+
 <details>
-<summary>5. Delete Marker를 제거하면 어떻게 되는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 Delete Marker 아래에 있던 이전 Version이 다시 Current Version으로 나타날 수 있다.
-
-</details>
-
-<details>
-<summary>6. 일반 Delete와 특정 Version Delete의 차이는?</summary>
-
-일반 Delete는 Delete Marker를 생성한다.
-
-Version ID를 지정한 Delete는 해당 Object Version 자체를 삭제한다.
-
-</details>
-
-<details>
-<summary>7. Versioning을 Suspend하면 기존 Version들이 삭제되는가?</summary>
-
-아니다.
-
-기존 Version은 그대로 유지된다.
-
-</details>
-
-<details>
-<summary>8. Versioning을 사용하면 Storage Cost가 증가할 수 있는 이유는?</summary>
-
-각 Object Version이 실제 데이터를 저장하기 때문이다.
-
-여러 Version이 계속 누적되면 그만큼 Storage 사용량도 증가할 수 있다.
 
 </details>
 

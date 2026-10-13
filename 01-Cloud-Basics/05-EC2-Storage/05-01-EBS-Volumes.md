@@ -1,5 +1,9 @@
 # 📘 05-01. Amazon EBS Volumes
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `EBS` · `Block Storage` · `Network Drive` · `Persistent Storage` · `Volume`
+
 ## 🇰🇷 1. Overview
 
 **EBS (Elastic Block Store)** 는
@@ -1047,6 +1051,9 @@ EC2 종료 후 Root EBS를 남기려면?
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 EC2에서 중요한 Application Data를 저장한다고 하자.
 
 ```text
@@ -1224,12 +1231,23 @@ Disable Delete on Termination
 
 ## 📝 Review Questions
 
-#### Q1. EBS란 무엇인가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. EBS란 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 EC2 Instance에 Network를 통해 연결하는
 Persistent Block Storage이다.
 
-#### Q2. EBS를 쉽게 비유하면?
+</details>
+
+### Q2. EBS를 쉽게 비유하면?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 Network USB Stick
@@ -1237,72 +1255,39 @@ Network USB Stick
 
 이라고 생각할 수 있다.
 
-#### Q3. EC2가 Terminate되면 EBS 데이터도 반드시 삭제되는가?
+</details>
+
+### Q3. EC2가 Terminate되면 EBS 데이터도 반드시 삭제되는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 아니다.
 
 `Delete on Termination` 설정에 따라 달라진다.
 
-#### Q4. 하나의 EC2에 여러 EBS Volume을 연결할 수 있는가?
+</details>
+
+### Q4. 하나의 EC2에 여러 EBS Volume을 연결할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 가능하다.
 
-#### Q5. 하나의 EBS를 여러 EC2에 동시에 연결할 수 있는가?
+</details>
+
+### Q5. 하나의 EBS를 여러 EC2에 동시에 연결할 수 있는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 일반적인 EBS 사용에서는 하나의 EC2에 연결한다.
 
 일부 지원되는 Volume Type에서는
 EBS Multi-Attach를 사용할 수 있다.
 
-#### Q6. EBS는 Availability Zone에 종속되는가?
-
-그렇다.
-
-#### Q7. AZ-A의 EBS를 AZ-B의 EC2에 바로 Attach할 수 있는가?
-
-불가능하다.
-
-#### Q8. EBS 데이터를 다른 AZ로 이동하려면?
-
-EBS Snapshot을 생성한 후
-대상 AZ에서 새로운 EBS Volume을 생성/복원한다.
-
-#### Q9. Root EBS의 Delete on Termination 기본값은?
-
-```text
-Enabled
-```
-
-이다.
-
-#### Q10. 추가 EBS Volume의 Delete on Termination 기본값은?
-
-강의에서 설명한 기본 설정에서는:
-
-```text
-Disabled
-```
-
-이다.
-
-#### Q11. EC2 Termination 후 Root EBS를 보존하려면?
-
-```text
-Delete on Termination
-→ Disable
-```
-
-하면 된다.
-
-#### Q12. EBS의 성능을 나타내는 주요 요소는?
-
-```text
-Size
-IOPS
-Throughput
-```
-
-이다.
+</details>
 
 ## 🇯🇵 日本語 Summary
 

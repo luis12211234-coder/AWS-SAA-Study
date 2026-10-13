@@ -1,7 +1,7 @@
-# 📦 14. AWS Storage Extra Features
+# 📚 14. AWS Storage Extra Features
 
-> AWS Certified Solutions Architect – Associate (SAA-C03)  
-> GitHub Section 14
+> [!NOTE]
+> **AWS SAA-C03 Section Guide** · `GitHub Section 14`
 
 ## 📌 Overview
 

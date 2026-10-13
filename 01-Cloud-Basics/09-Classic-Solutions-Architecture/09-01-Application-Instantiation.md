@@ -1,5 +1,9 @@
 # 📘 09-01. 애플리케이션을 빠르게 생성하기
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Golden AMI` · `Bootstrap` · `User Data` · `Dependency` · `Snapshot`
+
 ## 🇰🇷 1. Overview
 
 EC2, EBS, RDS 등을 포함한 전체 애플리케이션 스택을 새롭게 시작할 때는 여러 초기 작업 때문에 시간이 필요할 수 있다.
@@ -215,6 +219,9 @@ EBS Volume
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 - Golden AMI는 별도의 AWS 서비스가 아니다.
 - Golden AMI는 Application과 Dependency 등을 미리 준비한 표준 AMI이다.
 - User Data는 Instance 시작 시 Bootstrap 및 동적 구성에 사용할 수 있다.
@@ -224,10 +231,13 @@ EBS Volume
 
 ## 📝 Review Questions
 
-### 1. EC2가 생성될 때마다 Application과 Dependency를 설치하여 시작 시간이 오래 걸린다. 어떤 방법을 사용할 수 있는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: Golden AMI**
 
@@ -235,10 +245,10 @@ Application과 Dependency를 미리 설치한 AMI를 사용하여 Instance 초�
 
 </details>
 
-### 2. Instance가 시작될 때 필요한 동적인 Configuration에는 무엇을 사용할 수 있는가?
+### Q2. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: EC2 User Data**
 
@@ -246,10 +256,10 @@ User Data를 통해 Instance 시작 시 Bootstrap 및 동적 구성을 수행할
 
 </details>
 
-### 3. Golden AMI와 User Data는 동시에 사용할 수 있는가?
+### Q3. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: 가능하다.**
 
@@ -257,10 +267,10 @@ User Data를 통해 Instance 시작 시 Bootstrap 및 동적 구성을 수행할
 
 </details>
 
-### 4. 기존 Schema와 Data가 준비된 RDS Database를 빠르게 생성하려면?
+### Q4. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: RDS Snapshot에서 Restore한다.**
 
@@ -268,10 +278,10 @@ Snapshot에 저장된 Database 상태를 기반으로 새로운 RDS Database를 
 
 </details>
 
-### 5. 기존 File System과 Data가 준비된 EBS Volume을 생성하려면?
+### Q5. 정답 보기
 
 <details>
-<summary>정답 보기</summary>
+<summary>정답 및 해설 보기</summary>
 
 **정답: EBS Snapshot에서 Restore한다.**
 

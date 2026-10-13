@@ -1,30 +1,8 @@
 # 📘 07-06. Amazon ElastiCache
 
-Amazon ElastiCache는 AWS에서 **Redis 또는 Memcached를 Managed Service로 제공**하는 서비스이다.
-
-RDS가 Managed Relational Database를 제공하는 것처럼, ElastiCache는 **Managed In-Memory Cache**를 제공한다.
-
-```text
-Amazon ElastiCache
-       │
-       ├─ Redis
-       └─ Memcached
-```
-
-Cache는 데이터를 Memory에 저장하여 **매우 높은 Performance와 낮은 Latency**를 제공한다.
-
-주요 사용 목적은 다음과 같다.
-
-- Read-intensive Workload에서 Database 부하 감소
-- 자주 조회되는 데이터의 빠른 반환
-- User Session 저장
-- Application을 Stateless하게 구성
-
-AWS는 ElastiCache의 OS 유지 관리, Patch, 설정, Monitoring, 장애 복구 및 Backup 등을 관리한다.
-
-단, ElastiCache를 활성화한다고 Application이 자동으로 Cache를 사용하는 것은 아니다.
-
-Application이 Cache를 조회하고 관리하도록 **Application Code 변경이 필요하다.**
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Cache` · `In-Memory` · `Cache Hit` · `Cache Miss` · `Cache Invalidation`
 
 ## 🇰🇷 1. Cache Hit & Cache Miss
 
@@ -486,6 +464,9 @@ Application이 직접 복잡한 Ranking Logic을 구현하는 대신 Redis Sorte
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Amazon ElastiCache
 → Managed Redis / Memcached
@@ -545,13 +526,53 @@ Real-time Leaderboard
 
 ## 📝 Review Questions
 
-1. ElastiCache가 Read-intensive Workload에서 Database 부하를 줄일 수 있는 이유는 무엇인가?
-2. Cache Hit와 Cache Miss의 차이는 무엇인가?
-3. Lazy Loading과 Write Through는 Cache를 언제 갱신하는가?
-4. ElastiCache에 User Session을 저장하면 Application을 Stateless하게 만들 수 있는 이유는 무엇인가?
-5. 강의에서 Redis의 Replication과 Memcached의 Sharding을 어떻게 구분하는가?
-6. Redis와 Memcached에서 사용하는 Authentication 방식은 각각 무엇인가?
-7. Real-time Gaming Leaderboard를 구현할 때 Redis의 어떤 기능을 사용할 수 있는가?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. ElastiCache가 Read-intensive Workload에서 Database 부하를 줄일 수 있는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+자주 조회하는 데이터를 메모리에 저장해 Cache Hit 시 Database 조회를 생략하기 때문이다.
+
+</details>
+
+### Q2. Cache Hit와 Cache Miss의 차이는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Cache Hit는 요청한 데이터가 Cache에 있어 바로 반환되는 경우이고, Cache Miss는 없어 Database 등 원본에서 가져와야 하는 경우다.
+
+</details>
+
+### Q3. Lazy Loading과 Write Through는 Cache를 언제 갱신하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Lazy Loading은 Cache Miss가 발생했을 때 데이터를 채운다. Write Through는 Database에 쓸 때 Cache도 함께 갱신한다.
+
+</details>
+
+### Q4. ElastiCache에 User Session을 저장하면 Application을 Stateless하게 만들 수 있는 이유는 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Session을 개별 Application Instance가 아닌 공유 Cache에 저장하므로 어떤 Instance가 요청을 받아도 같은 Session을 사용할 수 있기 때문이다.
+
+</details>
+
+### Q5. 강의에서 Redis의 Replication과 Memcached의 Sharding을 어떻게 구분하는가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+Redis는 Replication과 고가용성 기능에 강점이 있고, Memcached는 여러 Node에 데이터를 Sharding하는 단순 분산 Cache에 적합하다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 

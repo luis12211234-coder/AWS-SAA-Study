@@ -1,5 +1,9 @@
 # 📘 13-06. CloudFront Cache Invalidation
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Invalidation` · `TTL` · `Cache` · `Path` · `Expiration`
+
 ## 🇰🇷 1. Cache와 TTL
 
 CloudFront Edge에 저장된 콘텐츠에는 TTL(Time To Live)이 존재합니다.
@@ -99,6 +103,9 @@ S3 파일을 수정한다고 CloudFront Cache가 자동으로 제거되는 것�
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 TTL
 = Cache 유효 시간
@@ -124,24 +131,51 @@ Invalidation
 
 ## 📝 Review Questions
 
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Q1. Origin의 파일을 수정하면 CloudFront Cache도 즉시 바뀌는가?
+
 <details>
-<summary>Q1. Origin의 파일을 수정하면 CloudFront Cache도 즉시 바뀌는가?</summary>
+<summary>정답 및 해설 보기</summary>
 
 아닙니다. 기존 Cache는 TTL이 만료될 때까지 남아 있을 수 있습니다.
 
 </details>
 
+### Q2. Q2. 변경된 콘텐츠를 즉시 반영하기 위해 사용할 수 있는 기능은?
+
 <details>
-<summary>Q2. 변경된 콘텐츠를 즉시 반영하기 위해 사용할 수 있는 기능은?</summary>
+<summary>정답 및 해설 보기</summary>
 
 CloudFront Cache Invalidation입니다.
 
 </details>
 
+### Q3. Q3. 모든 이미지 Cache를 제거하기 위한 Path 예시는?
+
 <details>
-<summary>Q3. 모든 이미지 Cache를 제거하기 위한 Path 예시는?</summary>
+<summary>정답 및 해설 보기</summary>
 
 `/images/*`와 같은 Path를 사용할 수 있습니다.
+
+</details>
+
+### Q4. Cache와 TTL의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+CloudFront Edge에 저장된 콘텐츠에는 TTL(Time To Live)이 존재합니다.
+
+</details>
+
+### Q5. Origin을 수정하면?의 핵심 개념은 무엇인가?
+
+<details>
+<summary>정답 및 해설 보기</summary>
+
+S3 Origin의 `index.html`을 수정했다고 가정합니다.
 
 </details>
 

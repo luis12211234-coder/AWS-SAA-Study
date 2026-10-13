@@ -1,5 +1,9 @@
 # 📘 08-01. Amazon Route 53
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Domain Name System (DNS)` · `Domain Registrar` · `DNS Record` · `Hosted Zone` · `Zone Apex`
+
 ## 🇰🇷 1. DNS Basics
 
 DNS(Domain Name System)는 사람이 읽기 쉬운 **도메인 이름을 IP 주소로 변환**하는 시스템이다.
@@ -565,12 +569,26 @@ DNS Resolution 성공
 Application 접속 성공
 ```
 
+## 🎯 Exam Notes
+
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
+- **Root DNS Server**: `.com`, `.org` 등 다음 DNS 서버를 안내
+- **TLD DNS Server**: `example.com`을 담당하는 Name Server를 안내
+- **Authoritative DNS Server**: 실제 DNS Record를 가지고 최종 응답
+- **DNS Resolver**: DNS 조회를 수행하고 결과를 캐싱
+- Domain Registration
+
 ## 📝 Review Questions
 
-#### Q1. Hosted Zone과 Zone Apex의 차이는?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Answer
 
 <details>
-<summary>Answer</summary>
+<summary>정답 및 해설 보기</summary>
 
 Hosted Zone은 Domain과 Subdomain의 DNS Records를 관리하는 **영역 전체**이다.
 
@@ -586,10 +604,10 @@ Zone Apex
 
 </details>
 
-#### Q2. A Record와 CNAME Record의 차이는?
+### Q2. Answer
 
 <details>
-<summary>Answer</summary>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 A
@@ -603,10 +621,10 @@ CNAME 대상 Hostname은 다시 DNS Resolution을 통해 최종 IP를 찾는다.
 
 </details>
 
-#### Q3. `example.com` 자체를 ALB에 연결해야 한다. CNAME과 Alias 중 무엇을 사용하는가?
+### Q3. Answer
 
 <details>
-<summary>Answer</summary>
+<summary>정답 및 해설 보기</summary>
 
 **Alias Record**
 
@@ -616,10 +634,10 @@ Route 53 Alias는 Zone Apex에서 사용할 수 있으며 ALB를 Target으로 �
 
 </details>
 
-#### Q4. High TTL과 Low TTL의 차이는?
+### Q4. Answer
 
 <details>
-<summary>Answer</summary>
+<summary>정답 및 해설 보기</summary>
 
 ```text
 High TTL
@@ -635,41 +653,14 @@ Low TTL
 
 </details>
 
-#### Q5. Public Hosted Zone과 Private Hosted Zone의 차이는?
+### Q5. Answer
 
 <details>
-<summary>Answer</summary>
+<summary>정답 및 해설 보기</summary>
 
 Public Hosted Zone은 Internet에서 조회 가능한 DNS Records를 관리한다.
 
 Private Hosted Zone은 연결된 VPC 내부에서 사용하는 Private DNS Records를 관리한다.
-
-</details>
-
-#### Q6. Route 53 Alias Record의 주요 특징은?
-
-<details>
-<summary>Answer</summary>
-
-- 지원되는 AWS Resource를 Target으로 지정
-- Zone Apex에서 사용 가능
-- Query 비용 없음
-- Native Health Check 지원
-- TTL을 직접 설정하지 않음
-- AWS Resource의 IP 변경을 자동으로 반영
-
-</details>
-
-#### Q7. Route 53에서 A Record의 IP를 변경했는데 사용자가 잠시 이전 서버에 계속 접속한다. 가장 먼저 확인할 것은?
-
-<details>
-<summary>Answer</summary>
-
-**TTL과 DNS Cache**
-
-기존 DNS 응답의 TTL이 아직 만료되지 않았다면 Resolver가 이전 IP를 Cache하고 있을 수 있다.
-
-TTL이 만료된 후 Route 53을 다시 조회하면 새로운 Record 값이 반영된다.
 
 </details>
 

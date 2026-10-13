@@ -1,5 +1,9 @@
 # 📘 06-01. High Availability and Scalability
 
+> [!NOTE]
+> **AWS SAA-C03 Study Note**  
+> 핵심 키워드: `Scalability` · `Vertical Scaling` · `Horizontal Scaling` · `Scale Up` · `Scale Down`
+
 ## 🇰🇷 1. Overview
 
 Scalability는 시스템이 증가하는 Load를 처리할 수 있도록
@@ -126,6 +130,9 @@ High Availability
 
 ## 🎯 Exam Notes
 
+> [!IMPORTANT]
+> SAA-C03에서 구분해야 할 핵심 포인트입니다.
+
 ```text
 Vertical Scaling
 → Bigger Instance
@@ -157,26 +164,54 @@ High Availability는 장애 상황에서도 서비스를 유지하는 능력이�
 
 ## 📝 Review Questions
 
-#### Q1. Vertical Scaling이란?
+> [!TIP]
+> 먼저 답을 생각한 뒤 **정답 및 해설**을 펼쳐 확인하세요.
+
+### Q1. Vertical Scaling이란?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 Instance 자체의 성능을 증가시키는 것이다.
 
-#### Q2. Scale Out이란?
+</details>
+
+### Q2. Scale Out이란?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 Instance의 개수를 증가시키는 것이다.
 
-#### Q3. Scale In이란?
+</details>
+
+### Q3. Scale In이란?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 Instance의 개수를 감소시키는 것이다.
 
-#### Q4. High Availability의 주요 목적은?
+</details>
+
+### Q4. High Availability의 주요 목적은?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 Infrastructure 장애가 발생해도
 Application을 계속 사용할 수 있도록 하는 것이다.
 
-#### Q5. High Availability를 위해 AWS에서 주로 사용하는 구조는?
+</details>
+
+### Q5. High Availability를 위해 AWS에서 주로 사용하는 구조는?
+
+<details>
+<summary>정답 및 해설 보기</summary>
 
 여러 Availability Zone에 Application을 배치하는 것이다.
+
+</details>
 
 ## 🇯🇵 日本語 Summary
 
