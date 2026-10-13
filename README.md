@@ -49,6 +49,7 @@ AWS Certified Solutions Architect – Associate(SAA-C03)를 준비하며 작성�
 - [20. Data & Analytics](./01-Cloud-Basics/20-Data-and-Analytics/)
 - [21. Machine Learning](./01-Cloud-Basics/21-Machine-Learning/)
 - [22. Monitoring, Audit & Performance](./01-Cloud-Basics/22-Monitoring-Audit-Performance/)
+- [23. Advanced IAM & Organizations](./01-Cloud-Basics/23-Advanced-IAM-and-Organizations/)
 
 ## 🏗️ Architecture Projects
 
