@@ -48,6 +48,7 @@
 | 20 | [Data & Analytics](./20-Data-and-Analytics/) | 10 |
 | 21 | [Machine Learning](./21-Machine-Learning/) | 1 |
 | 22 | [Monitoring, Audit & Performance](./22-Monitoring-Audit-Performance/) | 9 |
+| 23 | [Advanced IAM & Organizations](./23-Advanced-IAM-and-Organizations/)
 
 ## 🎯 Study Principles
 
