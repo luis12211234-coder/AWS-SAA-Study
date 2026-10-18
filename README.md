@@ -51,6 +51,11 @@ AWS Certified Solutions Architect – Associate(SAA-C03)를 준비하며 작성�
 - [22. Monitoring, Audit & Performance](./01-Cloud-Basics/22-Monitoring-Audit-Performance/)
 - [23. Advanced IAM & Organizations](./01-Cloud-Basics/23-Advanced-IAM-and-Organizations/)
 
+### Security & Networking
+
+- [24. Security & Encryption](./01-Cloud-Basics/24-Security-and-Encryption/)
+- [25. VPC & Networking](./01-Cloud-Basics/25-VPC/)
+
 ## 🏗️ Architecture Projects
 
 - [01. What Is The Time?](./Architecture-Projects/01-WhatIsTheTime/)
