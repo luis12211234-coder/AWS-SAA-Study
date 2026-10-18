@@ -50,6 +50,7 @@
 | 22 | [Monitoring, Audit & Performance](./22-Monitoring-Audit-Performance/) | 9 |
 | 23 | [Advanced IAM & Organizations](./23-Advanced-IAM-and-Organizations/) | 9 |
 | 24 | [Security & Encryption](./24-Security-and-Encryption/) | 18 |
+| 25 | [VPC & Networking](./25-VPC/) | 26 |
 
 ## 🎯 Study Principles
 
