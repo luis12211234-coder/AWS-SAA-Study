@@ -53,6 +53,7 @@
 | 25 | [VPC & Networking](./25-VPC/) | 26 |
 | 26 | [Disaster Recovery & Migrations](./26-Disaster-Recovery-and-Migrations/) | 12 |
 | 27 | [More Solution Architectures](./27-More-Solution-Architectures/) | 5 |
+| 28 | [Deployment and Other Services](./28-Deployment-and-Other-Services/) | 10 |
 
 
 ## 🎯 Study Principles
