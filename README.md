@@ -57,6 +57,7 @@ AWS Certified Solutions Architect – Associate(SAA-C03)를 준비하며 작성�
 - [25. VPC & Networking](./01-Cloud-Basics/25-VPC/)
 - [26. Disaster Recovery & Migrations](./01-Cloud-Basics/26-Disaster-Recovery-and-Migrations/)
 - [27. More Solution Architectures](./01-Cloud-Basics/27-More-Solution-Architectures/)
+- [28. Deployment and Other Services](./01-Cloud-Basics/28-Deployment-and-Other-Services/)
 
 
 ## 🏗️ Architecture Projects
