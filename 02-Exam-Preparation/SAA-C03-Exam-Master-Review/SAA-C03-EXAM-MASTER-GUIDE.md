@@ -1,4 +1,4 @@
-# 📘 AWS SAA-C03 시험 전용 마스터 정리본 v1.0
+# 📘 AWS SAA-C03 시험 전용 마스터 정리본 v1.2
 
 > [!NOTE]
 > **학습용 원본 | 2026-10-21 기준 | 시험 영역별 재구성 | 추후 PDF 전환 예정**  
@@ -50,6 +50,62 @@ AWS SAA는 '서비스를 기억하는가'보다 **정해진 제약을 만족하�
 
 > [!IMPORTANT]
 > **학습 우선순위 규칙:** 공식 도메인에 직접 등장하면서 유사 서비스와 혼동될 가능성이 큰 주제가 1순위. 강사가 강조했지만 세부 점수 영향이 작은 서비스 소개는 후순위. 후기에서 반복된 개념은 보조 검증 신호일 뿐 확정 출제 목록이 아니다.
+
+## 🇰🇷 0.1 첫 모의고사(37/65) 실전 피드백 [실제 학습 자료]
+
+> [!IMPORTANT]
+> **정답률 56.9%는 첫 진단 결과**다. 이 자료는 네가 풀었던 Udemy 모의고사 채점 화면 12장에 기반하며, **정답·오답 선택지는 제공되지 않았다.** 따라서 [03-FIRST-MOCK-EXAM-REVIEW.md](./03-FIRST-MOCK-EXAM-REVIEW.md)의 권장 판단과 원본 시험의 정확한 정답 표기는 구분한다.
+
+**진단 우선순위 A (반드시 다시 풀어볼 것)**
+
+| 취약 조합 | 모의고사에서 확인된 문제 번호 | 기억할 판단 원리 |
+|---|---|---|
+| **CloudWatch Alarm + SNS** | Q02 | CPU 임계값 감지와 이메일 전달은 서로 다른 역할 |
+| **VPC Peering vs Transit Gateway vs AWS RAM** | Q04, Q10 | 비전이 Peering / 중앙 라우팅 TGW / VPC Subnet 공유 RAM |
+| **Golden AMI / Mixed ASG / User Data** | Q16, Q23, Q30 | 시작할 때마다 설치하지 말고 이미지 Bake, ASG 정책과 부팅 로직 구분 |
+| **EC2 App 장애 vs Instance 장애** | Q24 | 앱 프로세스 무응답은 EC2 시스템 상태 장애와 다름 |
+| **S3 기존 객체 vs 새로운 객체** | Q28, Q35 | CRR 신규 객체 복제와 Batch Replication 기존 객체 백필 분리 |
+| **Kinesis / Firehose / SQS / 실시간 계산** | Q03, Q29, Q36 | Buffering, Streaming, ETL, HPC 노드 통신 문제 분리 |
+| **EC2 역할 + Cross-account S3 정책** | Q39, Q62 | 주체 권한·버킷 정책·VPC Endpoint를 목적별로 분리 |
+| **S3 비용 최적화** | Q45 | Intelligent-Tiering은 미접근 30일 기준, 즉시 조회 계층 확인 |
+
+**진단 우선순위 B:** Q19 Blue/Green DNS Shift, Q25 GuardDuty 입력 소스, Q27 관계형 DB 선택, Q32 HIPAA 캐시, Q34 구형 VPC Wizard, Q38 글로벌 S3 업로드, Q42 NLB 타깃 분산, Q46 NAT Instance/Gateway 차이, Q59 DB 보안 그룹.
+
+### 첫 모의고사에서 발견한 공식 문서 업데이트
+
+- **Redshift Zero-ETL Integrations:** RDS for Oracle 및 RDS for PostgreSQL을 포함한 지원 소스가 현재 공식 문서에 기재되어 있다. 지원 리전/엔진 버전을 확인해야 한다. (Q61)
+- **S3 Batch Replication:** 기존 객체는 실시간 CRR만 켠다고 소급 복제되는 것이 아니다. (Q28)
+- **Snowball Edge:** 신규 고객에게 제공되지 않아 구형 PB 전송 문제의 과거 정답을 그대로 실무 선택으로 옮기면 안 된다. (Q12)
+- **S3 Intelligent-Tiering:** 30일간 미접근 시 IA, 90일간 미접근 시 Archive Instant Access 계층으로 자동 이동한다. (Q45)
+
+> 이 표의 우선순위는 **이 사용자가 틀린 문제에 따른 맞춤형 우선순위**이지 AWS 공식 출제 확률을 뜻하지 않는다. 구체적인 문항별 소거법과 65개 문항 링크는 별도 해설서에서 확인한다.
+
+### 0.2 추가 확보된 Q48~Q57: 오답을 가르는 핵심 다섯 가지
+
+> [!IMPORTANT]
+> Q48~Q57 화면도 확보했다. **Q50, Q51, Q52, Q54, Q56**이 오답이고, 나머지 다섯 문항은 정답이다. 답안의 실제 선택지는 제공되지 않았으므로 본문은 학습용 권장 설계이며 원본 정답 번호는 아니다.
+
+| 새로 확인한 오답 | 지문에서 잡아야 할 단서 | 우선 기억할 개념 |
+|---|---|---|
+| **Q50. 특수 OS + Oracle 기존 라이선스** | '기존 라이선스 유지', '코어/소켓', '절약' | **EC2 Dedicated Hosts + BYOL**, 계약 조건·License Manager 확인 |
+| **Q51. Standard → FIFO (3개)** | 기존 큐를 FIFO로 변경 | 직접 변환 불가. **새 FIFO 큐 + MessageGroupId + Deduplication** 및 생산자 조정 |
+| **Q52. Lambda (3개)** | 서버리스 백본 | 인프라 AWS 관리, 이벤트 실행·확장, 일반 호출 15분, 상태 외부화, 동시성/재시도 고려 |
+| **Q54. 소셜 관계 다단계 조회** | '친구의 친구', 관계 탐색 | **Amazon Neptune**, 노드·엣지·그래프 Traversal |
+| **Q56. S3 덮어쓰기 직후 GET** | 업데이트 후 즉시 읽기 | **Strong Read-after-Write Consistency**, 성공한 PUT 이후 GET/LIST 최신 상태 반영 |
+
+#### 한 번에 구별하는 흐름
+
+```text
+라이선스가 코어/소켓 단위?    → EC2 Dedicated Hosts / BYOL
+메시지 그룹별 순서 필요?     → 새로운 SQS FIFO 큐 생성
+서버리스 함수 실행·확장?     → Lambda (일반 함수는 최대 15분)
+친구의 친구를 연속 조회?     → Neptune Graph Traversal
+S3 덮어쓰기 후 즉시 읽기?   → S3 Strong Consistency (현재)
+```
+
+**추가로 맞힌 다섯 문항:** Q48 RDS 읽기 복제본, Q49 Gateway Endpoint, Q53 라이선스 BYOL, Q55 EBS 암호화, Q57 ALB+ASG+Aurora 확장. 이 문제도 찍어서 맞혔다면 해설서에서 재확인한다.
+
+**개념 출처:** [S3 Strong Consistency](https://aws.amazon.com/s3/consistency/), [SQS FIFO 이전](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-moving.html), [Neptune](https://docs.aws.amazon.com/neptune/latest/userguide/graph-get-started.html), [Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html).
 
 ## 🇰🇷 1. Secure Architectures (30%)
 

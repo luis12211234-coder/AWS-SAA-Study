@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > **AWS Certified Solutions Architect – Associate (SAA-C03) 시험 대비 전용 정리본**  
-> **Edition:** v1.0 · **Date:** 2026-10-21 · **Status:** Draft for review → PDF after final revisions
+> **Edition:** v1.2 · **Date:** 2026-10-21 · **Status:** Mock-01 incorporated → further review → PDF after final revisions
 
 ## 📌 Overview
 
@@ -17,6 +17,7 @@
 | [SAA-C03-EXAM-MASTER-GUIDE.md](./SAA-C03-EXAM-MASTER-GUIDE.md) | **단일 마스터 본문**: 4개 도메인, 선택 기준, 함정 30개, 시나리오 12개, 복습 문제 |
 | [01-EXAM-EMPHASIS-EVIDENCE.md](./01-EXAM-EMPHASIS-EVIDENCE.md) | **출제 우선순위 근거**: 공식 가이드, 대본에서 확인된 강사 강조, 2026년 후기와 각각의 한계 |
 | [02-ERROR-LOG-TEMPLATE.md](./02-ERROR-LOG-TEMPLATE.md) | **실전 오답 기록 양식**: 56% 진단 점수에서 출발하는 보강 훈련 |
+| [03-FIRST-MOCK-EXAM-REVIEW.md](./03-FIRST-MOCK-EXAM-REVIEW.md) | **첫 모의고사 65문항 복기:** 전체 65문항의 문제 요약·권장 해법·대표 오답 함정·번호별 기존 노트 링크 부록 |
 
 ## 📊 Official Domain Weights
 
@@ -27,11 +28,20 @@
 | High-Performing Architectures | **24%** | S3 / EC2 / Database / Networking / Analytics |
 | Cost-Optimized Architectures | **20%** | Pricing / Lifecycle / Data Transfer / Right-Sizing |
 
+## 🧩 First Mock Exam Diagnosis
+
+- **65문항 / 37정답 / 28오답 (56.9%)** · 첫 독립 모의고사 결과.
+- 제공된 이미지에서 **Q01~Q65 전체 65문항**을 복원해 **요지 중심**으로 분석했다.
+- **Q48~Q57을 추가 반영**했고, Q41의 정오 표시는 화면에 가려져 있지만 전체 집계로 정답으로 추정했다.
+- **실제 선택지 없음**: 정확한 정답 조합이나 선택한 오답의 이유를 확정하지 않고, 학습용 권장 설계·대표 탈락 논리를 분리했다.
+- 보완 우선순위: 네트워크/교차 계정 → 배포·모니터링 → SQS FIFO·Lambda·Neptune·S3 일관성 → 데이터 복제·스트리밍 → 성능·스토리지 비용.
+- 모든 문항의 기존 GitHub 학습 노트 링크는 **03 문서 마지막 부록**에서 확인한다.
+
 ## 🧭 Study Method
 
 1. 마스터 본문을 읽으며 모르는 주제는 기존 GitHub의 해당 섹션으로 돌아가 복습한다.
 2. 새 모의고사 65문항을 **130분 제한 시간**으로 풀고 정답뿐 아니라 확신 없는 문제를 표시한다.
-3. `02-ERROR-LOG-TEMPLATE.md`에 **조건·정답 이유·오답 이유**를 기록한다.
+3. `03-FIRST-MOCK-EXAM-REVIEW.md`에서 실제 틀린 문제를 분석하고, `02-ERROR-LOG-TEMPLATE.md`에 **조건·정답 이유·오답 이유**를 기록한다.
 4. 한 번 풀었던 문제의 암기 효과를 배제하고, **처음 보는 문제**로 다시 평가한다.
 5. 정리본 보완이 마무리되면 PDF로 변환한다.
 
