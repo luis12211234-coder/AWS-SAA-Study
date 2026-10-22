@@ -187,7 +187,6 @@ Amazon Data Firehose
 → Fully Managed
 → Near Real-Time
 → 자체 Data Retention / Replay 없음
-```
 
 </details>
 
