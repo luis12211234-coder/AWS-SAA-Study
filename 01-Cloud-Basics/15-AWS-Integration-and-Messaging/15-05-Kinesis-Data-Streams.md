@@ -130,14 +130,24 @@ Shard 수를 직접 지정
 Capacity 자동 관리
 → Traffic에 따라 자동 Scaling
 ```
+## 🇰🇷 7. Consumer & Enhanced Fan-Out (EFO) ⭐
 
-## 🇰🇷 7. Consumer
+### Standard Consumer
+- **Pull Model**: Consumer가 `GetRecords` API로 데이터를 요청한다.
+- Shard당 **2 MB/s 읽기 처리량을 모든 Standard Consumer가 공유**한다.
+- Consumer가 많아지면 처리량 경쟁과 지연이 발생할 수 있다.
 
-기본 Consumer는 Kinesis에서 데이터를 읽어오는 **Pull Model**입니다.
+### Enhanced Fan-Out (EFO)
+- 각 Consumer에게 **Shard당 2 MB/s 전용 읽기 처리량** 제공.
+- **HTTP/2 Push Model**: 데이터를 Consumer에게 직접 전달한다.
+- Consumer 간 읽기 처리량 경쟁을 방지하고 지연을 줄인다.
+- 추가 비용이 발생한다.
 
-Enhanced Fan-Out을 사용하면 각 등록 Consumer에게 전용 Read Throughput을 제공할 수 있습니다.
-
-## 🎯 Exam Notes
+### 🎯 Exam Notes
+- 여러 Consumer가 동일 Stream을 읽고 처리량 경쟁 발생 → **EFO**
+- Standard: **Shard당 2 MB/s 공유**
+- EFO: **Consumer마다 Shard당 2 MB/s 전용**
+- EFO는 읽기 처리량을 개선하며 쓰기 처리량은 증가시키지 않는다.
 
 > [!IMPORTANT]
 > SAA-C03에서 구분해야 할 핵심 포인트입니다.
